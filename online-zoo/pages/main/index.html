@@ -3,35 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>PetStory Online</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <div class="logo">
-                <h1 class="logo__title">
-                    <a href="" class="logo__link">PetStory Online</a>
-                </h1>
+            <div class="header__wrapper">
+                <div class="logo">
+                    <h1 class="logo__title">
+                        <a href="" class="logo__link">PetStory Online</a>
+                    </h1>
+                </div>
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="" class="nav__link active">About</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="" class="nav__link">Map</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="" class="nav__link">Zoos</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="" class="nav__link">Donate</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="" class="nav__link">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <a href="https://www.figma.com/file/jfEFwkXVj1WRq7sUHDr8os/PetStory-online" target="_blank" class="header__link">Designed by&nbsp;&copy;</a>
             </div>
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="" class="nav__link">About</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="" class="nav__link">Map</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="" class="nav__link">Zoos</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="" class="nav__link">Donate</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="" class="nav__link">Contact us</a>
-                    </li>
-                </ul>
-            </nav>
-            <a href="https://www.figma.com/file/jfEFwkXVj1WRq7sUHDr8os/PetStory-online" target="_blank" class="header__link">Designed by ©</a>
         </div>
     </header>
     <main class="main">
@@ -136,7 +139,7 @@
         </section>
         <section class="testimonials">
             <div class="container">
-                <h4 class="testimonials__title"></h4>
+                <h4 class="testimonials__title">Testimonials</h4>
                 <ul class="testimonials__list">
                     <li class="testimonials__item">
                         <div class="testimonials__card">
@@ -191,11 +194,11 @@
                         </div>
                     </li>
                 </ul>
+                <label class="testimonials__label">
+                    <input type="range"  min="0" max="12" value="0" step="3" class="testimonials__input">
+                </label>
+                <a href="" class="btn btn-rec">leave feedback</a>
             </div>
-            <label class="testimonials__label">
-                <input type="range"  min="0" max="12" value="0" step="3" class="testimonials__input">
-            </label>
-            <a href="" class="btn btn-rec">leave feedback</a>
         </section>
     </main>
     <footer class="footer">
