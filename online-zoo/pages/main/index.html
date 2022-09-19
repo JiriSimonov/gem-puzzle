@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PetStory Online</title>
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -40,16 +41,26 @@
     <main class="main">
         <section class="hero">
             <div class="container">
-                <h2 class="hero__title">Watch your favorite animal online</h2>
-                <a href="#" class="btn">watch online</a>
+                <div class="hero__wrapper">
+                    <h2 class="hero__title">Watch your <span class="hero__title--yellow">favorite</span> animal online</h2>
+                    <a href="#" class="btn btn-hero">watch online</a>
+                </div>
             </div>
         </section>
         <section class="info">
             <div class="container">
-                <h3 class="info__title">The Backstage of the Wilderness World.</h3>
-                <p class="info__text">The site was founded on the basis of a volunteer movement to protect and care for animals.</p>
-                <h4 class="info__title_small">How it works </h4>
-                <p class="info__text">The main goal is to help the animals, as well as the nature reserves and zoos where they are kept. We are currently working on video projects targeting pandas in China, eagles on an island near Los Angeles, alligators in Florida and gorillas in the Congo. These have a total of more than 1,500 mammals and reptiles.</p>
+                <div class="info__wrapper">
+                    <picture class="info__picture">
+                        <source srcset="../../assets/images/info/bamboo-cap-small.jpg" type="image/svg+xml" media="(max-width: 1400px)">
+                        <img src="../../assets/images/info/bamboo-cap.jpg" alt="Bamboo cap" class="pets__image">
+                    </picture>
+                    <div class="info__content">
+                        <h3 class="info__title">The Backstage of the Wilderness World.</h3>
+                        <p class="info__text">The site was founded on the basis of a volunteer movement to protect and care for animals.</p>
+                        <h4 class="info__title info__title--small">How it works </h4>
+                        <p class="info__text info__text--blh">The main goal is to help the animals, as well as the nature reserves and zoos where they are kept. We are currently working on video projects targeting pandas in China, eagles on an island near Los Angeles, alligators in Florida and gorillas in the Congo. These have a total of more than 1,500 mammals and reptiles.</p>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="pets">
