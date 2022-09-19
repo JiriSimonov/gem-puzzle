@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("online-zoo/assets/fonts/Roboto-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("online-zoo/assets/fonts/Roboto-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("online-zoo/assets/fonts/Roboto-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("online-zoo/assets/fonts/Roboto-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+}
+/* colors */
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+section {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 220px;
+  max-width: 1160px;
+}
+
+.header {
+  background-color: #000;
+}
+.header .header__wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 63px;
+  padding: 14px 0;
+}
+.header .header__link {
+  margin-left: auto;
+}
+
+.logo .logo__title {
+  position: relative;
+  margin: 0;
+  padding: 4px 5px;
+  width: 70px;
+  height: 42px;
+  border: 1px solid #FFF;
+  border-radius: 2px;
+  transition: all 0.3s linear;
+}
+.logo .logo__link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 120%;
+  text-decoration: none;
+  text-align: center;
+  color: #FFF;
+  background: url("../../assets/icons/bamboo.svg") no-repeat 16% 83%;
+  transition: all 0.3s linear;
+}
+.logo .logo__link:focus {
+  color: #F9804B;
+  background: url("../../assets/icons/bamboo-active.svg") no-repeat 16% 83%;
+  outline: none;
+}
+.logo:hover .logo__title {
+  border-color: #F9804B;
+}
+.logo:hover .logo__link {
+  color: #F9804B;
+  background: url("../../assets/icons/bamboo-active.svg") no-repeat 16% 83%;
+}
+
+.nav__list {
+  display: flex;
+  column-gap: 58px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link, .header__link {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+  text-decoration: none;
+  text-align: center;
+  color: #FFF;
+  transition: all 0.3s linear;
+}
+.nav__link:hover, .header__link:hover {
+  color: #F9804B;
+}
+.nav__link:focus, .header__link:focus {
+  color: #F9804B;
+  text-decoration: underline;
+  outline: none;
+}
+
+.active {
+  color: #F9804B;
+}
+
+/*# sourceMappingURL=style.css.map */

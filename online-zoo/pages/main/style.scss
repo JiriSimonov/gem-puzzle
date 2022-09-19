@@ -1,0 +1,102 @@
+@import "../../assets/fonts/fonts";
+@import "../../assets/styles/vars";
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+section {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 220px;
+  max-width: 1160px;
+}
+
+.header {
+  background-color: $Black;
+  .header__wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 63px;
+    padding: 14px 0;
+  }
+  .header__link {
+    margin-left: auto;
+  }
+}
+
+.logo {
+  .logo__title {
+    position: relative;
+    margin: 0;
+    padding: 4px 5px;
+    width: 70px;
+    height: 42px;
+    border: 1px solid $White;
+    border-radius: 2px;
+    transition: all 0.3s linear;
+  }
+  .logo__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 120%;
+    text-decoration: none;
+    text-align: center;
+    color: $White;
+    background: url('../../assets/icons/bamboo.svg') no-repeat 16% 83%;
+    transition: all 0.3s linear;
+    &:focus {
+      color: $Orange;
+      background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+      outline: none;
+    }
+  }
+  &:hover {
+    .logo__title {
+      border-color: $Orange;
+    }
+    .logo__link {
+      color: $Orange;
+      background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+    }
+  }
+}
+
+.nav__list {
+  display: flex;
+  column-gap: 58px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav__link, .header__link {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+  text-decoration: none;
+  text-align: center;
+  color: $White;
+  transition: all 0.3s linear;
+  &:hover {
+    color: $Orange;
+  }
+  &:focus {
+    color: $Orange;
+    text-decoration: underline;
+    outline: none;
+  }
+  }
+
+.active {
+  color: $Orange;
+}
+
+
