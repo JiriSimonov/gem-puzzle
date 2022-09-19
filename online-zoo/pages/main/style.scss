@@ -151,5 +151,41 @@ section {
   }
 }
 
+/* info */
+
+.info {
+  .container {
+    background-image: url('../../assets/images/info/info-bg.png');
+    background-repeat: no-repeat;
+    background-position: right 12px;
+  }
+  .info__wrapper {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 87px;
+    padding: 140px 0 180px 0;
+    .info__title {
+      margin: 0 0 20px 0;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 120%;
+      color: $Black_blue;
+    }
+    .info__text {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 130%;
+      color: $Black_blue;
+    }
+    .info__title--small {
+      margin: 54px 0 34px 0;
+      font-size: 24px;
+    }
+    .info__text--blh {
+      line-height: 140%;
+    }
+  }
+}
 
 

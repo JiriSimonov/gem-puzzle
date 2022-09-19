@@ -173,4 +173,38 @@ section {
   color: #FFEE2E;
 }
 
+/* info */
+.info .container {
+  background-image: url("../../assets/images/info/info-bg.png");
+  background-repeat: no-repeat;
+  background-position: right 12px;
+}
+.info .info__wrapper {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 87px;
+  padding: 140px 0 180px 0;
+}
+.info .info__wrapper .info__title {
+  margin: 0 0 20px 0;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 120%;
+  color: #333B41;
+}
+.info .info__wrapper .info__text {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 130%;
+  color: #333B41;
+}
+.info .info__wrapper .info__title--small {
+  margin: 54px 0 34px 0;
+  font-size: 24px;
+}
+.info .info__wrapper .info__text--blh {
+  line-height: 140%;
+}
+
 /*# sourceMappingURL=style.css.map */
