@@ -32,6 +32,7 @@ section {
 }
 
 .logo {
+  max-width: 82px;
   .logo__title {
     position: relative;
     margin: 0;
@@ -200,7 +201,7 @@ section {
     url('../../assets/images/pets/pets-bg-2.png') no-repeat bottom right;
   }
   .pets__slider {
-    padding-bottom: 115px;
+    padding-bottom: 116px;
   }
   .pets__list {
     display: flex;
@@ -254,17 +255,17 @@ section {
 /* work */
 
 .work {
-  text-align: center;
   margin: 0 auto;
   padding: 69px 0 100px 0;
   max-width: 1600px;
   background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
   .work__wrapper {
-    padding: 41px 59px 59px 99px;
+    text-align: center;
+    padding: 41px 59px 72px 99px;
     border-radius: 20px;
     background: rgba(253, 253, 255, 0.52);
     .work__title {
-      margin: 0 0 30px 0;
+      margin: 0 39px 32px 0;
       font-size: 48px;
       font-weight: 400;
       line-height: 120%;
@@ -280,7 +281,7 @@ section {
     }
     .work__text {
       margin: 0 0 60px 0;
-      max-width: 803px;
+      max-width: 870px;
       font-size: 16px;
       font-weight: 400;
       line-height: 130%;
@@ -289,6 +290,7 @@ section {
     }
     .work__text--bold {
       margin-bottom: 10px;
+      max-width: 100%;
       font-weight: 500;
     }
     .work__link {
@@ -345,6 +347,15 @@ section {
         height: 36px;
         background-image: url('../../assets/icons/work-arrow.svg');
       }
+      &:nth-child(2)::after {
+        content: '';
+        position: absolute;
+        top: 58px;
+        left: 197px;
+        width: 70px;
+        height: 36px;
+        background-image: url('../../assets/icons/work-arrow.svg');
+      }
     }
     .work__info {
       font-size: 16px;
@@ -352,9 +363,10 @@ section {
       line-height: 140%;
       color: $Black_blue;
     }
-  }
-  .btn {
-
+    .btn {
+      margin-right: 39px;
+      padding: 19px 74px 17px 74px;
+    }
   }
 }
 
@@ -383,13 +395,13 @@ section {
     display: flex;
     column-gap: 30px;
     row-gap: 15px;
-    margin: 0 0 21px 0;
+    margin: 0 0 23px 0;
     padding: 0;
     list-style: none;
   }
   .testimonials__item {
     position: relative;
-    padding: 15px 15px 19px 16px;
+    padding: 15px 12px 0 16px;
     box-sizing: border-box;
     background-clip: padding-box;
     border: solid 2px transparent;
@@ -463,7 +475,7 @@ section {
   .testimonials__input {
     display: block;
     position: relative;
-    margin: 0 auto 47px auto;
+    margin: 0 auto 31px auto;
     box-sizing: border-box;
     border-radius: 5px;
     width: 599px;
@@ -507,6 +519,8 @@ section {
     }
   }
   .btn {
+    padding: 14px 10px 14px 10px;
+    width: 299px;
     border-color: transparent;
     border-radius: 5px;
     outline: none;
@@ -519,7 +533,8 @@ section {
   .footer__list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 174px 134px;
+    row-gap: 44px;
     margin: 0 auto;
     padding: 41px 0 50px 0;
   }
@@ -528,43 +543,97 @@ section {
     grid-row: 1 /1;
   }
   .footer__item:nth-child(2) {
-    padding-top: 17px;
+    align-self: flex-end;
     grid-column: 1 / 3;
-    grid-row: 2 / 3;
+    grid-row: 1;
+    padding-bottom: 16px;
   }
   .footer__item:nth-child(3) {
-
-    grid-row: 3 / 3;
+   align-self: flex-end;
+    grid-row: 2;
   }
   .footer__item:nth-child(4) {
     align-self: flex-end;
     grid-column: 2;
-    grid-row: 3 / 3;
+    grid-row: 2;
   }
   .footer__item:nth-child(5) {
     grid-column: 3;
     grid-row: 1 / 2;
+    padding-left: 20px;
   }
   .footer__item:nth-child(6) {
     align-self: flex-end;
     grid-column: 3;
-    grid-row: 3;
+    grid-row: 2;
   }
   .social__list {
     padding: 0;
     list-style: none;
   }
+  .social__item {
+    &:nth-child(1) .social__link:after {
+      background-image: url('../../assets/icons/facebook.svg');
+    }
+    &:nth-child(2) .social__link:after {
+      background-image: url('../../assets/icons/twitter.svg');
+    }
+    &:nth-child(3) .social__link:after {
+      background-image: url('../../assets/icons/instargam.svg');
+    }
+    &:nth-child(4) .social__link:after {
+      background-image: url('../../assets/icons/YouTube.svg');
+    }
+  }
   .social__item:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
   .social__link {
+    position: relative;
+    padding-left: 38px;
+    padding-top: 5px;
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
     color: $White;
     text-decoration: none;
+    transition: all .3s linear;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background-color: #C4C4C4;
+      transition: all .3s linear;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 26px;
+      height: 26px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 26px;
+    }
+    &:hover, &:focus {
+      outline: none;
+      color: #4B9200;
+    }
+    &:hover:before {
+      background-color: #4B9200;
+    }
+    &:focus:before {
+      background-color: #4B9200;
+    }
   }
-
+  .nav__list {
+    padding-left: 13px;
+  }
   .footer__title {
     margin: 0;
     font-size: 24px;
@@ -604,9 +673,10 @@ section {
     color: $Black;
     cursor: pointer;
     transition: all .3s linear;
-    &:hover {
+    &:hover, &:focus {
       border-color: #4B9200;
       color: #4B9200;
+      outline: none;
     }
   }
   .btn {
@@ -622,6 +692,9 @@ section {
       line-height: 130%;
       color: $White;
       transition: all .3s linear;
+    }
+    .copyright__author {
+      margin-bottom: 11px;
     }
     &:hover {
       .copyright__author, .copyright__text {
