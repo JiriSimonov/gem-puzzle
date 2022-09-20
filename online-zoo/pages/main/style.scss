@@ -117,6 +117,11 @@ section {
   &:hover {
     background-color: $Orange_dark;
   }
+  &:focus {
+    color: $Black_blue;
+    background-color: $Orange_dark;
+    outline: 0;
+  }
 }
 
 /* hero */
@@ -165,8 +170,8 @@ section {
     background-position: right 12px;
   }
   .info__wrapper {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 85px;
     padding: 138px 0 177px 0;
     .info__title {
@@ -175,6 +180,9 @@ section {
       font-weight: 400;
       line-height: 120%;
       color: $Black_blue;
+    }
+    .info__content {
+      align-self: flex-start;
     }
     .info__text {
       margin: 0;
@@ -202,6 +210,53 @@ section {
   }
   .pets__slider {
     padding-bottom: 116px;
+  }
+  .pets__wrapper {
+    position: relative;
+  }
+  .pets__btn--prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -83px;
+    width: 62px;
+    height: 62px;
+    border: none;
+    border-radius: 50%;
+    font-size: 0;
+    background-color: $Orange;
+    background-image: url('../../assets/icons/pets-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all .3s linear;
+    cursor: pointer;
+    outline: none;
+  }
+  .pets__btn--next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -79px;
+    width: 62px;
+    height: 62px;
+    border: none;
+    border-radius: 50%;
+    font-size: 0;
+    background-color: $Orange;
+    background-image: url('../../assets/icons/pets-arrow-r.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all .3s linear;
+    cursor: pointer;
+    outline: none;
+  }
+  .pets__btn--prev:hover, .pets__btn--prev:focus {
+    background-color: #4B9200;
+    outline: none;
+  }
+  .pets__btn--next:hover, .pets__btn--next:focus {
+    background-color: #4B9200;
+    outline: none;
   }
   .pets__list {
     display: flex;
@@ -297,6 +352,10 @@ section {
       border-bottom: 1px solid $Orange;
       color: $Black_blue;
       text-decoration: none;
+      &:hover, &:focus {
+        color: $Orange;
+        outline: none;
+      }
     }
     .work__title--small {
       margin-bottom: 40px;
@@ -485,6 +544,7 @@ section {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    cursor: pointer;
     &::-webkit-slider-runnable-track {
       border-radius: 5px;
       height: 7px;
@@ -516,6 +576,9 @@ section {
       background: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%),
       linear-gradient(315.75deg, rgba(254, 214, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
       z-index: -1;
+    }
+    &:focus {
+      outline: none;
     }
   }
   .btn {
