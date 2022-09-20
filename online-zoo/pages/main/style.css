@@ -524,4 +524,119 @@ section {
   cursor: pointer;
 }
 
+.footer {
+  background-color: #000;
+}
+.footer .footer__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin: 0 auto;
+  padding: 41px 0 50px 0;
+}
+.footer .footer__item:nth-child(1) {
+  grid-column: 1/1;
+  grid-row: 1/1;
+}
+.footer .footer__item:nth-child(2) {
+  padding-top: 17px;
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+.footer .footer__item:nth-child(3) {
+  grid-row: 3/3;
+}
+.footer .footer__item:nth-child(4) {
+  align-self: flex-end;
+  grid-column: 2;
+  grid-row: 3/3;
+}
+.footer .footer__item:nth-child(5) {
+  grid-column: 3;
+  grid-row: 1/2;
+}
+.footer .footer__item:nth-child(6) {
+  align-self: flex-end;
+  grid-column: 3;
+  grid-row: 3;
+}
+.footer .social__list {
+  padding: 0;
+  list-style: none;
+}
+.footer .social__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+.footer .social__link {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #FFF;
+  text-decoration: none;
+}
+.footer .footer__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 120%;
+  color: #FFF;
+}
+.footer .footer__controls {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+}
+.footer .footer__input {
+  margin: 0;
+  padding: 9px 7px 9px 13px;
+  width: 207px;
+  height: 22px;
+  border: 1px solid #F9804B;
+  border-radius: 2px;
+  background-color: transparent;
+  color: #4B9200;
+  transition: all 0.3s linear;
+}
+.footer .footer__input:hover, .footer .footer__input:focus {
+  border-color: #4B9200;
+  outline: none;
+}
+.footer .footer__btn {
+  padding: 9px 10px;
+  width: 129px;
+  border: 1px solid #333B41;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.footer .footer__btn:hover {
+  border-color: #4B9200;
+  color: #4B9200;
+}
+.footer .btn {
+  padding: 17px 50px 18px 50px;
+  border-radius: 5px;
+}
+.footer .copyright {
+  margin-left: auto;
+  max-width: 230px;
+}
+.footer .copyright .copyright__author, .footer .copyright .copyright__text {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 130%;
+  color: #FFF;
+  transition: all 0.3s linear;
+}
+.footer .copyright:hover .copyright__author, .footer .copyright:hover .copyright__text {
+  border-bottom: 1px solid #4B9200;
+  color: #4B9200;
+  outline: none;
+}
+
 /*# sourceMappingURL=style.css.map */
