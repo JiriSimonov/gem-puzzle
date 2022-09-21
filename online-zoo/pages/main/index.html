@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../../pages/main/script.js" defer></script>
     <title>PetStory Online</title>
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -52,7 +53,7 @@
                 <div class="info__wrapper">
                     <picture class="info__picture">
                         <source srcset="../../assets/images/info/bamboo-cap-small.jpg" type="image/svg+xml" media="(max-width: 1400px)">
-                        <img src="../../assets/images/info/bamboo-cap.jpg" alt="Bamboo cap" class="pets__image">
+                        <img src="../../assets/images/info/bamboo-cap.jpg" alt="Bamboo cap" class="info__image">
                     </picture>
                     <div class="info__content">
                         <h3 class="info__title">The Backstage of&nbsp;the Wilderness World.</h3>
@@ -72,19 +73,26 @@
                         <ul class="pets__list">
                             <li class="pets__item">
                                 <picture class="pets__picture">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 1000px)">
+                                    <source srcset="../../assets/images/pets/p-1.png" type="image/svg+xml" media="(max-width: 1600px)">
                                     <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
-                                    <img src="../../assets/images/pets/pets-1.jpg" alt="giant Pandas" width="366" height="366" class="pets__image">
+                                    <img src="../../assets/images/pets/pets-1.jpg" alt="giant Pandas" class="pets__image">
                                 </picture>
                                 <div class="pets__info">
                                     <h5 class="pets__title">giant Pandas</h5>
                                     <div class="pets__text">Native to Southwest China</div>
                                     <img src="../../assets/icons/banana-bamboo.svg" alt="" class="pets__diet">
                                 </div>
+                                <div class="tooltip">
+                                    <div class="tooltip_wrapper">
+                                        <h5 class="tooltip__title">giant Pandas</h5>
+                                        <h5 class="tooltip__title">Southwest China</h5>
+                                        <a href="" class="tooltip__link">Watch online</a>
+                                    </div>
+                                </div>
                             </li>
                             <li class="pets__item">
                                 <picture class="pets__picture">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 1000px)">
+                                    <source srcset="../../assets/images/pets/p-2.jpg" type="image/svg+xml" media="(max-width: 1600px)">
                                     <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
                                     <img src="../../assets/images/pets/pets-2.jpg" alt="Eagles" class="pets__image">
                                 </picture>
@@ -93,10 +101,16 @@
                                     <div class="pets__text">Native to South America</div>
                                     <img src="../../assets/icons/meet-fish.svg" alt="" class="pets__diet">
                                 </div>
+                                <div class="tooltip">
+                                    <div class="tooltip_wrapper">
+                                        <h5 class="tooltip__title">Eagles</h5>
+                                        <h5 class="tooltip__title">South America</h5>
+                                        <a href="" class="tooltip__link">Watch online</a>
+                                    </div>
                             </li>
                             <li class="pets__item">
                                 <picture class="pets__picture">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 1000px)">
+                                    <source srcset="../../assets/images/pets/p-3.jpg" type="image/svg+xml" media="(max-width: 1600px)">
                                     <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
                                     <img src="../../assets/images/pets/pets-3.jpg" alt="Gorillas" class="pets__image">
                                 </picture>
@@ -105,34 +119,52 @@
                                     <div class="pets__text">Native to Congo</div>
                                     <img src="../../assets/icons/banana-bamboo.svg" alt="" class="pets__diet">
                                 </div>
+                                <div class="tooltip">
+                                    <div class="tooltip_wrapper">
+                                        <h5 class="tooltip__title">Gorillas</h5>
+                                        <h5 class="tooltip__title">Congo</h5>
+                                        <a href="" class="tooltip__link">Watch online</a>
+                                    </div>
                             </li>
                             <li class="pets__item">
                                 <picture class="pets__picture">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 1000px)">
+                                    <source srcset="../../assets/images/pets/p-4.jpg" type="image/svg+xml" media="(max-width: 1600px)">
                                     <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
                                     <img src="../../assets/images/pets/pets-4.jpg" alt="Two-toed Sloth" class="pets__image">
                                 </picture>
                                 <div class="pets__info">
                                     <h5 class="pets__title">Two-toed Sloth</h5>
-                                    <div class="pets__text">Mesoamerica, South America</div>
+                                    <div class="pets__text">South America</div>
                                     <img src="../../assets/icons/banana-bamboo.svg" alt="" class="pets__diet">
                                 </div>
+                                <div class="tooltip">
+                                    <div class="tooltip_wrapper">
+                                        <h5 class="tooltip__title">Two-toed Sloth</h5>
+                                        <h5 class="tooltip__title">Mesoamerica, South America</h5>
+                                        <a href="" class="tooltip__link">Watch online</a>
+                                    </div>
                             </li>
                             <li class="pets__item">
                                 <picture class="pets__picture">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 1000px)">
+                                    <source srcset="../../assets/images/pets/p-5.jpg" type="image/svg+xml" media="(max-width: 1600px)">
                                     <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
                                     <img src="../../assets/images/pets/pets-5.jpg" alt="cheetahs" class="pets__image">
                                 </picture>
                                 <div class="pets__info">
-                                    <h5 class="pets__title">cheetahs</h5>
+                                    <h5 class="pets__title">Cheetahs</h5>
                                     <div class="pets__text">Native to Africa</div>
                                     <img src="../../assets/icons/meet-fish.svg" alt="" class="pets__diet">
                                 </div>
+                                <div class="tooltip">
+                                    <div class="tooltip_wrapper">
+                                        <h5 class="tooltip__title">Cheetahs</h5>
+                                        <h5 class="tooltip__title">Africa</h5>
+                                        <a href="" class="tooltip__link">Watch online</a>
+                                    </div>
                             </li>
                             <li class="pets__item">
                                 <picture class="pets__picture">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 1000px)">
+                                    <source srcset="../../assets/images/pets/p-6.jpg" type="image/svg+xml" media="(max-width: 1600px)">
                                     <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
                                     <img src="../../assets/images/pets/pets-6.jpg" alt="Penguins" class="pets__image">
                                 </picture>
@@ -141,6 +173,12 @@
                                     <div class="pets__text">Native to Antarctica</div>
                                     <img src="../../assets/icons/meet-fish.svg" alt="" class="pets__diet">
                                 </div>
+                                <div class="tooltip">
+                                    <div class="tooltip_wrapper">
+                                        <h5 class="tooltip__title">Penguins</h5>
+                                        <h5 class="tooltip__title">Antarctica</h5>
+                                        <a href="" class="tooltip__link">Watch online</a>
+                                    </div>
                             </li>
                         </ul>
                     </div>

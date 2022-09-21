@@ -259,10 +259,9 @@ section {
     outline: none;
   }
   .pets__list {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    flex-wrap: wrap;
     column-gap: 20px;
     row-gap: 20px;
     margin: 0 0 99px 0;
@@ -270,6 +269,7 @@ section {
     list-style: none;
     text-align: left;
     .pets__item {
+      position: relative;
       padding: 0 1px 10px 0;
       max-width: 366px;
       box-sizing: border-box;
@@ -277,11 +277,27 @@ section {
       -webkit-box-sizing: border-box;
       border: 1px solid $Orange_grad;
       border-radius: 5px;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(0,0,0,.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all .3s linear;
+      }
       .pets__info {
-        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
         padding: 2px 0 0 16px;
       }
       .pets__title {
+        grid-column: 1 / 1;
+        grid-row: 1/2;
         margin: 0;
         font-size: 16px;
         font-weight: 500;
@@ -290,15 +306,92 @@ section {
         text-transform: uppercase;
       }
       .pets__text {
+        grid-column: 1 / 1;
+        grid-row: 1/2;
+        margin-top: 20px;
         font-size: 15px;
         font-weight: 300;
         line-height: 120%;
         color: $Black;
       }
       .pets__diet {
+        grid-column: 2;
+        grid-row: 1/2;
+        margin-left: auto;
+        padding: 10px 15px;
+      }
+      .tooltip {
         position: absolute;
-        bottom: 0;
-        right: 12px;
+        left: 50%;
+        bottom: -50%;
+        margin-top: 10px;
+        padding: 15px 10px;
+        border: 1px solid $Black;
+        border-radius: 5px;
+        background-color: $White;
+        transform: translateX(-50%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all .2s ease-in;
+        .tooltip_wrapper {
+          width: 136px;
+          height: 86px;
+          position: relative;
+          transition: all .3s linear;
+            &:after {
+              content: '';
+              position: absolute;
+              top: -18px;
+              left: 7px;
+              width: 5px;
+              height: 5px;
+              border-top: 1px solid $Black;
+              border-left: 1px solid $Black;
+              background-color:$White;
+              transform: rotate(45deg);
+              transition: all .3s linear;
+            }
+        }
+        .tooltip__title {
+          margin: 0;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 140%;
+          color: $Black;
+          &:nth-child(1) {
+            margin-bottom: 2px;
+          }
+          &:nth-child(2) {
+            margin-bottom: 11px;
+          }
+        }
+        .tooltip__link {
+          padding: 5px 17px;
+          border-radius: 5px;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 140%;
+          color: #4B9200;
+          text-decoration: none;
+          background-color: #F1F3F2;
+        }
+      }
+      &:hover {
+        &:before {
+          opacity: 1;
+          visibility: visible;
+        }
+        .tooltip {
+          bottom: 10%;
+          opacity: 1;
+          visibility: visible;
+        }
+        .pets__picture {
+          transform: scale(1.1);
+          .pets__image {
+            transform: scale(1.1);
+          }
+        }
       }
     }
   }
