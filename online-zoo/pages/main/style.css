@@ -366,7 +366,7 @@ section {
 .pets .pets__list .pets__item .tooltip .tooltip_wrapper:after {
   content: "";
   position: absolute;
-  top: -18px;
+  top: -19px;
   left: 7px;
   width: 5px;
   height: 5px;
@@ -725,6 +725,7 @@ section {
 }
 .footer .footer__item:nth-child(4) {
   align-self: flex-end;
+  justify-self: center;
   grid-column: 2;
   grid-row: 2;
 }
@@ -799,9 +800,6 @@ section {
 }
 .footer .social__link:focus:before {
   background-color: #4B9200;
-}
-.footer .nav__list {
-  padding-left: 13px;
 }
 .footer .footer__title {
   margin: 0;
