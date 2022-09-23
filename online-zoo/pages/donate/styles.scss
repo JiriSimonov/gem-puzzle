@@ -645,9 +645,9 @@ section {
   }
   .footer__input {
     margin: 0;
-    padding: 9px 7px 9px 9px;
+    padding: 9px 7px 9px 7px;
     width: 210px;
-    height: 22px;
+    height: 20px;
     border: 1px solid transparent;
     border-radius: 2px;
     background-color: $Black;
@@ -667,6 +667,7 @@ section {
   .footer__btn {
     padding: 9px 10px;
     width: 129px;
+    max-height: 42px;
     border: 1px solid $Black_blue;
     border-radius: 5px;
     font-size: 16px;
