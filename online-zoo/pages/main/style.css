@@ -316,6 +316,7 @@ section {
 }
 .pets .pets__list .pets__item .pets__picture, .pets .pets__list .pets__item .pets__image {
   max-width: 364px;
+  height: 366px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
