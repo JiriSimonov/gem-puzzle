@@ -46,5 +46,18 @@ function getActive() {
 
 
 }
+
+function getMinMax() {
+    const input = document.querySelector('.donation__input');
+    const min = +input.min;
+    const max = +input.max;
+    input.addEventListener('input', (e) => {
+        const value = +input.value;
+        if (value > max) { input.value = max }
+        else if (value < min) { input.value = min }
+    })
+}
+
+getMinMax();
 setActive();
 getActive();
