@@ -279,14 +279,20 @@ section {
   align-items: center;
   margin-top: 14px;
 }
+.footer .footer__label {
+  display: inline-flex;
+  padding: 1px;
+  background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+  border-radius: 2px;
+}
 .footer .footer__input {
   margin: 0;
   padding: 9px 7px 9px 9px;
   width: 210px;
   height: 22px;
-  border: 1px solid #F9804B;
+  border: 1px solid transparent;
   border-radius: 2px;
-  background-color: transparent;
+  background-color: #000;
   color: #BDBDBD;
   transition: all 0.3s linear;
 }
