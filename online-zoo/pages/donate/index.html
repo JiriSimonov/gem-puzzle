@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <script src="../../pages/donate/script.js" defer></script>
+    <link rel="stylesheet" href="../../pages/donate/styles.css">
+    <title>PetStory Online</title>
 </head>
 <body>
     <header class="header">
@@ -10,13 +12,13 @@
             <div class="header__wrapper">
                 <div class="logo">
                     <h1 class="logo__title">
-                        <a href="" class="logo__link">PetStory Online</a>
+                        <a href="../../pages/main/index.html" class="logo__link">PetStory Online</a>
                     </h1>
                 </div>
                 <nav class="nav">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="" class="nav__link active">About</a>
+                            <a href="../../pages/main/index.html" class="nav__link">About</a>
                         </li>
                         <li class="nav__item">
                             <a href="" class="nav__link">Map</a>
@@ -25,7 +27,7 @@
                             <a href="" class="nav__link">Zoos</a>
                         </li>
                         <li class="nav__item">
-                            <a href="../../pages/donate/index.html" class="nav__link">Donate</a>
+                            <a href="../../pages/donate/index.html" class="nav__link active">Donate</a>
                         </li>
                         <li class="nav__item">
                             <a href="" class="nav__link">Contact us</a>
@@ -36,39 +38,147 @@
         </div>
     </div>
     </header>
-    <main class="main"></main>
+    <main class="main">
+        <section class="donate">
+            <div class="container">
+              <div class="donate__wrapper">
+                  <h2 class="donate__title">THE ZOO HAS OFFICIALLY REOPENED BUT WE STILL NEED YOUR HELP!</h2>
+                  <p class="donate__text">Even though the Zoo has been able to reopen, we are at a greatly reduced capacity with educational programs and public and private events cancelled or postponed for additional months. We need you now more than ever to help ensure that we overcome these challenges. We have been actively raising funds in the community, and we are grateful for the generosity.  But much more support is still needed, and we need your help! Please consider a gift today – no matter what size – to help us sustain our mission.</p>
+                  <h3 class="donate__title donate__title--orange">Donation Information</h3>
+                  <div class="donation">
+                      <h2 class="donation__title">Pick and feed a friend</h2>
+                      <div class="donation__text">We know the animals bring you joy, and in these extraordinary times, we’re glad.</div>
+                      <div class="diet">
+                          <div class="diet__info">
+                              <div class="diet__count">4</div>
+                              <div class="diet__text">Panda diet for the day.</div>
+                          </div>
+                          <img src="../../assets/icons/panda.svg" width="284" height="246" alt="panda" class="diet__img">
+                      </div>
+                      <div class="donation__descr">Amount</div>
+                      <div class="donation__wrapper">
+                          <ul class="donation__line">
+                              <li class="donation__item">
+                                  <div class="donation__btn">
+                                      <div class="donation__button">5000</div>
+                                  </div>
+                              </li>
+                              <li class="donation__item">
+                                  <div class="donation__btn">
+                                      <div class="donation__button">2000</div>
+                                  </div>
+                              </li>
+                              <li class="donation__item active">
+                                  <div class="donation__btn">
+                                      <div class="donation__button">1000</div>
+                                  </div>
+                              </li>
+                              <li class="donation__item">
+                                  <div class="donation__btn">
+                                      <div class="donation__button">500</div>
+                                  </div>
+                              </li>
+                              <li class="donation__item">
+                                  <div class="donation__btn">
+                                      <div class="donation__button">250</div>
+                                  </div>
+                              </li>
+                              <li class="donation__item">
+                                  <div class="donation__btn">
+                                      <div class="donation__button">100</div>
+                                  </div>
+                              </li>
+                              <li class="donation__item">
+                                  <div class="donation__btn">
+                                      <div class="donation__button">50</div>
+                                  </div>
+                              </li>
+                              <li class="donation__item">
+                                  <div class="donation__btn">
+                                      <div class="donation__button">25</div>
+                                  </div>
+                              </li>
+                          </ul>
+                          <ul class="donation__count">
+                              <li class="donation__total">5000</li>
+                              <li class="donation__total">2000</li>
+                              <li class="donation__total current">1000</li>
+                              <li class="donation__total">500</li>
+                              <li class="donation__total">250</li>
+                              <li class="donation__total">100</li>
+                              <li class="donation__total">50</li>
+                              <li class="donation__total">25</li>
+                          </ul>
+                      </div>
+                      <label class="donation__label">
+                          <input type="number" name="d-pay"  min="0" max="9999" placeholder="Another amount" class="donation__input">
+                      </label>
+                      <div class="radio">
+                          <label class="radio__label">
+                              <input type="radio" name="r-pay" class="radio__input">
+                              <span class="radio__text">Monthly</span>
+                          </label>
+                          <label class="radio__label">
+                              <input type="radio" name="r-pay" checked class="radio__input">
+                              <span class="radio__text">Once</span>
+                          </label>
+                      </div>
+                      <a href="" class="btn">Feed a friend now</a>
+                      <div class="donation__share">Share with your friends on social networks </div>
+                  </div>
+              </div>
+            </div>
+        </section>
+    </main>
     <footer class="footer">
         <div class="container">
-            <ul class="footer__list">
-                <li class="footer__item">
-                    <div class="logo">
-                        <h2 class="logo__title">
-                            <a href="" class="logo__link">PetStory Online</a>
-                        </h2>
-                    </div>
-                </li>
-                <li class="footer__item">
-                    <a href="../../pages/donate/index.html" class="btn btn-rec">donate for volunteers</a>
-                </li>
-                <li class="footer__item">
-                    <div class="social">
-                        <ul class="social__list">
-                            <li class="social__item">
-                                <a href="" class="social__link">Facebook</a>
-                            </li>
-                            <li class="social__item">
-                                <a href="" class="social__link">Twitter</a>
-                            </li>
-                            <li class="social__item">
-                                <a href="" class="social__link">Instagram</a>
-                            </li>
-                            <li class="social__item">
-                                <a href="" class="social__link">YouTube</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="footer__item">
+            <div class="footer__wrapper">
+                <ul class="footer__list">
+                    <li class="footer__item">
+                        <div class="logo">
+                            <h2 class="logo__title">
+                                <a href="" class="logo__link">PetStory Online</a>
+                            </h2>
+                        </div>
+                    </li>
+                    <li class="footer__item">
+                        <a href="../../pages/donate/index.html" class="btn btn-rec">donate for volunteers</a>
+                    </li>
+                    <li class="footer__item">
+                        <div class="social">
+                            <ul class="social__list">
+                                <li class="social__item">
+                                    <a href="" class="social__link">Facebook</a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="" class="social__link">Twitter</a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="" class="social__link">Instagram</a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="" class="social__link">YouTube</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="footer__item">
+                        <form action="" method="POST" class="footer__form">
+                            <h3 class="footer__title">Subscribe to our news</h3>
+                            <div class="footer__controls">
+                                <label for="POST-email" class="footer__label">
+                                    <input type="email" name="email" id="POST-email" required placeholder="Enter your email" class="footer__input">
+                                </label>
+                                <input type="button" value="Submit" class="footer__btn">
+                            </div>
+                        </form>
+                    </li>
+                    <li class="footer__item">
+                        <div class="copyright">
+                            <div class="copyright__author">Designed by Alisa Samborskaya</div>
+                            <div class="copyright__text">©RSSchool & ©Yem Digital 2021</div>
+                        </div>
+                    </li>
                     <nav class="nav">
                         <ul class="nav__list">
                             <li class="nav__item">
@@ -85,25 +195,8 @@
                             </li>
                         </ul>
                     </nav>
-                </li>
-                <li class="footer__item">
-                    <form action="" method="POST" class="footer__form">
-                        <h3 class="footer__title">Subscribe to our news</h3>
-                        <div class="footer__controls">
-                            <label for="POST-email" class="footer__label">
-                                <input type="email" name="email" id="POST-email" required placeholder="Enter your email" class="footer__input">
-                            </label>
-                            <input type="button" value="Submit" class="footer__btn">
-                        </div>
-                    </form>
-                </li>
-                <li class="footer__item">
-                    <div class="copyright">
-                        <div class="copyright__author">Designed by Alisa Samborskaya</div>
-                        <div class="copyright__text">©RSSchool & ©Yem Digital 2021</div>
-                    </div>
-                </li>
-            </ul>
+                </ul>
+            </div>
         </div>
     </footer>
 </body>
