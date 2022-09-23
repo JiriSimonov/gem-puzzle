@@ -870,11 +870,18 @@ section {
   background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
   border-radius: 2px;
 }
+.footer .footer__label:hover, .footer .footer__label:focus {
+  background: transparent;
+}
+.footer .footer__label:hover .footer__input, .footer .footer__label:focus .footer__input {
+  border-color: #4B9200;
+  outline: none;
+}
 .footer .footer__input {
   margin: 0;
-  padding: 9px 7px 9px 9px;
+  padding: 9px 7px 9px 7px;
   width: 210px;
-  height: 22px;
+  height: 20px;
   border: 1px solid transparent;
   border-radius: 2px;
   background-color: #000;
@@ -894,6 +901,7 @@ section {
 .footer .footer__btn {
   padding: 9px 10px;
   width: 129px;
+  max-height: 42px;
   border: 1px solid #333B41;
   border-radius: 5px;
   font-size: 16px;
