@@ -277,7 +277,7 @@ section {
       padding-bottom: 10px;
       max-width: 364px;
       max-height: 426px;
-      border: 1px solid $Orange_grad;
+      border: 1px solid #FA6F32;
       border-radius: 5px;
       &:before {
         content: '';
@@ -290,6 +290,11 @@ section {
         opacity: 0;
         visibility: hidden;
         transition: all .3s linear;
+      }
+      .pets__picture, .pets__image {
+        max-width: 364px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
       }
       .pets__info {
         display: grid;

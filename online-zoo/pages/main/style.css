@@ -299,7 +299,7 @@ section {
   padding-bottom: 10px;
   max-width: 364px;
   max-height: 426px;
-  border: 1px solid #FED290;
+  border: 1px solid #FA6F32;
   border-radius: 5px;
 }
 .pets .pets__list .pets__item:before {
@@ -313,6 +313,11 @@ section {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s linear;
+}
+.pets .pets__list .pets__item .pets__picture, .pets .pets__list .pets__item .pets__image {
+  max-width: 364px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .pets .pets__list .pets__item .pets__info {
   display: grid;
