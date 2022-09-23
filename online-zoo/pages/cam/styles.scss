@@ -260,6 +260,13 @@ section {
     padding: 1px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     border-radius: 2px;
+    &:hover, &:focus {
+      background: transparent;
+      .footer__input {
+          border-color: #4B9200;
+          outline: none;
+      }
+    }
   }
   .footer__input {
     margin: 0;
@@ -276,10 +283,6 @@ section {
       font-weight: 400;
       line-height: 140%;
       color: #BDBDBD;
-    }
-    &:hover, &:focus {
-      border-color: #4B9200;
-      outline: none;
     }
   }
   .footer__btn {

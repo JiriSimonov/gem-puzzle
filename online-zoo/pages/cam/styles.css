@@ -285,6 +285,13 @@ section {
   background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
   border-radius: 2px;
 }
+.footer .footer__label:hover, .footer .footer__label:focus {
+  background: transparent;
+}
+.footer .footer__label:hover .footer__input, .footer .footer__label:focus .footer__input {
+  border-color: #4B9200;
+  outline: none;
+}
 .footer .footer__input {
   margin: 0;
   padding: 9px 7px 9px 7px;
@@ -301,10 +308,6 @@ section {
   font-weight: 400;
   line-height: 140%;
   color: #BDBDBD;
-}
-.footer .footer__input:hover, .footer .footer__input:focus {
-  border-color: #4B9200;
-  outline: none;
 }
 .footer .footer__btn {
   padding: 9px 10px;
