@@ -112,15 +112,19 @@ section {
   color: $White;
   text-transform: uppercase;
   text-decoration: none;
-  background-color: $Orange;
+  background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
   transition: all .3s linear;
   &:hover {
-    background-color: $Orange_dark;
+    background: $Orange_dark;
   }
   &:focus {
     color: $Black_blue;
-    background-color: $Orange_dark;
+    background: $Orange_dark;
     outline: 0;
+  }
+  &:active {
+    background: #4B9200;
+    color: $White;
   }
 }
 
@@ -374,6 +378,12 @@ section {
           color: #4B9200;
           text-decoration: none;
           background-color: #F1F3F2;
+          transition: all .3s linear;
+          &:hover, &:focus, &:active {
+            background-color: #4B9200;
+            color: $White;
+            outline: none;
+          }
         }
       }
       &:hover {
@@ -616,6 +626,9 @@ section {
   }
   .testimonials__text {
     max-width: 237px;
+    max-height: 306px;
+    overflow-y: hidden;
+    -ms-overflow-y: hidden;
   }
   .testimonials__paragraph {
     margin: 0;
@@ -686,13 +699,19 @@ section {
 
 .footer {
   background-color: $Black;
+  margin: 0 auto;
+  max-width: 1600px;
+  .footer__wrapper {
+    padding: 41px 0 50px 0;
+  }
   .footer__list {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 174px 134px;
     row-gap: 44px;
     margin: 0 auto;
-    padding: 41px 0 50px 0;
+    padding: 0;
   }
   .footer__item:nth-child(1) {
     grid-column: 1 / 1;
@@ -709,17 +728,11 @@ section {
     grid-row: 2;
   }
   .footer__item:nth-child(4) {
-    align-self: flex-end;
-    justify-self: center;
-    grid-column: 2;
-    grid-row: 2;
-  }
-  .footer__item:nth-child(5) {
     grid-column: 3;
     grid-row: 1 / 2;
     padding-left: 20px;
   }
-  .footer__item:nth-child(6) {
+  .footer__item:nth-child(5) {
     align-self: flex-end;
     grid-column: 3;
     grid-row: 2;
@@ -789,6 +802,8 @@ section {
     }
   }
   .nav__list {
+    position: absolute;
+    bottom: 0;
   }
   .footer__title {
     margin: 0;
@@ -805,14 +820,20 @@ section {
   }
   .footer__input {
     margin: 0;
-    padding: 9px 7px 9px 13px;
-    width: 207px;
+    padding: 9px 7px 9px 9px;
+    width: 210px;
     height: 22px;
     border: 1px solid $Orange;
     border-radius: 2px;
     background-color: transparent;
-    color: #4B9200;
+    color: #BDBDBD;
     transition: all .3s linear;
+    &::placeholder {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 140%;
+      color: #BDBDBD;
+    }
     &:hover, &:focus {
       border-color: #4B9200;
       outline: none;

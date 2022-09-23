@@ -137,16 +137,20 @@ section {
   color: #FFF;
   text-transform: uppercase;
   text-decoration: none;
-  background-color: #F9804B;
+  background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
   transition: all 0.3s linear;
 }
 .btn:hover {
-  background-color: #E47209;
+  background: #E47209;
 }
 .btn:focus {
   color: #333B41;
-  background-color: #E47209;
+  background: #E47209;
   outline: 0;
+}
+.btn:active {
+  background: #4B9200;
+  color: #FFF;
 }
 
 /* hero */
@@ -398,6 +402,12 @@ section {
   color: #4B9200;
   text-decoration: none;
   background-color: #F1F3F2;
+  transition: all 0.3s linear;
+}
+.pets .pets__list .pets__item .tooltip .tooltip__link:hover, .pets .pets__list .pets__item .tooltip .tooltip__link:focus, .pets .pets__list .pets__item .tooltip .tooltip__link:active {
+  background-color: #4B9200;
+  color: #FFF;
+  outline: none;
 }
 .pets .pets__list .pets__item:hover:before {
   opacity: 1;
@@ -632,6 +642,9 @@ section {
 }
 .testimonials .testimonials__text {
   max-width: 237px;
+  max-height: 306px;
+  overflow-y: hidden;
+  -ms-overflow-y: hidden;
 }
 .testimonials .testimonials__paragraph {
   margin: 0;
@@ -700,14 +713,20 @@ section {
 
 .footer {
   background-color: #000;
+  margin: 0 auto;
+  max-width: 1600px;
+}
+.footer .footer__wrapper {
+  padding: 41px 0 50px 0;
 }
 .footer .footer__list {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 174px 134px;
   row-gap: 44px;
   margin: 0 auto;
-  padding: 41px 0 50px 0;
+  padding: 0;
 }
 .footer .footer__item:nth-child(1) {
   grid-column: 1/1;
@@ -724,17 +743,11 @@ section {
   grid-row: 2;
 }
 .footer .footer__item:nth-child(4) {
-  align-self: flex-end;
-  justify-self: center;
-  grid-column: 2;
-  grid-row: 2;
-}
-.footer .footer__item:nth-child(5) {
   grid-column: 3;
   grid-row: 1/2;
   padding-left: 20px;
 }
-.footer .footer__item:nth-child(6) {
+.footer .footer__item:nth-child(5) {
   align-self: flex-end;
   grid-column: 3;
   grid-row: 2;
@@ -801,6 +814,10 @@ section {
 .footer .social__link:focus:before {
   background-color: #4B9200;
 }
+.footer .nav__list {
+  position: absolute;
+  bottom: 0;
+}
 .footer .footer__title {
   margin: 0;
   font-size: 24px;
@@ -816,14 +833,20 @@ section {
 }
 .footer .footer__input {
   margin: 0;
-  padding: 9px 7px 9px 13px;
-  width: 207px;
+  padding: 9px 7px 9px 9px;
+  width: 210px;
   height: 22px;
   border: 1px solid #F9804B;
   border-radius: 2px;
   background-color: transparent;
-  color: #4B9200;
+  color: #BDBDBD;
   transition: all 0.3s linear;
+}
+.footer .footer__input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #BDBDBD;
 }
 .footer .footer__input:hover, .footer .footer__input:focus {
   border-color: #4B9200;
