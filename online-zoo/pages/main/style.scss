@@ -277,8 +277,11 @@ section {
       padding-bottom: 10px;
       max-width: 364px;
       max-height: 426px;
-      border: 1px solid #FA6F32;
+      border: 1px solid transparent;
       border-radius: 5px;
+      box-sizing: border-box;
+      background-clip: padding-box;
+      background-color: $White;
       &:before {
         content: '';
         position: absolute;
@@ -291,11 +294,24 @@ section {
         visibility: hidden;
         transition: all .3s linear;
       }
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: -2px;
+        border-radius: inherit;
+        border: 1px solid transparent;
+        background: linear-gradient(113.96deg, #FA6F32 1.49%, #FE9013 101.44%);
+        z-index: -1;
+      }
       .pets__picture, .pets__image {
-        max-width: 364px;
+        max-width: 362px;
         height: 366px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
       }
       .pets__info {
         display: grid;
