@@ -356,7 +356,8 @@ section {
         transform: translateX(-50%);
         opacity: 0;
         visibility: hidden;
-        transition: all .2s ease-in;
+        pointer-events: none;
+        transition: all .3s linear;
         .tooltip_wrapper {
           width: 136px;
           height: 86px;
@@ -398,7 +399,7 @@ section {
           color: #4B9200;
           text-decoration: none;
           background-color: #F1F3F2;
-          transition: all .3s linear;
+          transition: all .2s linear;
           &:hover, &:focus, &:active {
             background-color: #4B9200;
             color: $White;
@@ -414,6 +415,7 @@ section {
         .tooltip {
           bottom: 10%;
           opacity: 1;
+          pointer-events: auto;
           visibility: visible;
         }
         .pets__picture {
