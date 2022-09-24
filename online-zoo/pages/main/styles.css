@@ -242,45 +242,58 @@ section {
 .pets .pets__btn--prev {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   left: -83px;
   width: 62px;
   height: 62px;
   border: none;
   border-radius: 50%;
   font-size: 0;
-  background-color: #F9804B;
+  background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+  transform: translateY(-50%);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s linear;
+}
+.pets .pets__btn--prev:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 8px;
   background-image: url("../../assets/icons/pets-arrow.svg");
   background-repeat: no-repeat;
   background-position: center;
-  transition: all 0.3s linear;
-  cursor: pointer;
-  outline: none;
 }
 .pets .pets__btn--next {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   right: -79px;
   width: 62px;
   height: 62px;
   border: none;
   border-radius: 50%;
   font-size: 0;
-  background-color: #F9804B;
-  background-image: url("../../assets/icons/pets-arrow-r.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: all 0.3s linear;
+  background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+  transform: translateY(-50%);
   cursor: pointer;
   outline: none;
+  transition: all 0.3s linear;
+}
+.pets .pets__btn--next:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 8px;
+  background-image: url("../../assets/icons/pets-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotate(180deg);
 }
 .pets .pets__btn--prev:hover, .pets .pets__btn--prev:focus {
-  background-color: #4B9200;
+  background: #4B9200;
   outline: none;
 }
 .pets .pets__btn--next:hover, .pets .pets__btn--next:focus {
-  background-color: #4B9200;
+  background: #4B9200;
   outline: none;
 }
 .pets .pets__list {
