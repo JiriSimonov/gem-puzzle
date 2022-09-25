@@ -917,10 +917,6 @@ section {
   line-height: 140%;
   color: #BDBDBD;
 }
-.footer .footer__input:hover, .footer .footer__input:focus {
-  border-color: #4B9200;
-  outline: none;
-}
 .footer .footer__btn {
   padding: 9px 10px;
   width: 129px;
