@@ -190,7 +190,19 @@ section {
 }
 
 /* info */
+.info {
+  padding-bottom: 174px;
+}
 .info .container {
+  position: relative;
+}
+.info .container:before {
+  content: "";
+  position: absolute;
+  top: -140px;
+  right: 0;
+  width: 293px;
+  height: 605px;
   background-image: url("../../assets/images/info/info-bg.png");
   background-repeat: no-repeat;
   background-position: right 12px;
@@ -199,7 +211,7 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 85px;
-  padding: 138px 0 177px 0;
+  margin: 138px 0 0 0;
 }
 .info .info__wrapper .info__title {
   margin: 0 0 20px 0;
@@ -208,14 +220,11 @@ section {
   line-height: 120%;
   color: #333B41;
 }
-.info .info__wrapper .info__content {
-  align-self: flex-start;
-}
 .info .info__wrapper .info__text {
   margin: 0;
   font-size: 16px;
   font-weight: 400;
-  line-height: 130%;
+  line-height: 140%;
   color: #333B41;
 }
 .info .info__wrapper .info__title--small {
@@ -234,7 +243,7 @@ section {
   background: url("../../assets/images/pets/pets-bg-1.png") no-repeat bottom left, url("../../assets/images/pets/pets-bg-2.png") no-repeat bottom right;
 }
 .pets .pets__slider {
-  padding-bottom: 116px;
+  padding-bottom: 115px;
 }
 .pets .pets__wrapper {
   position: relative;
@@ -302,7 +311,7 @@ section {
   align-items: center;
   column-gap: 30px;
   row-gap: 20px;
-  margin: 0 0 97px 0;
+  margin: 0 0 99px 0;
   padding: 0;
   list-style: none;
   text-align: left;
@@ -686,7 +695,6 @@ section {
   margin-left: 7px;
 }
 .testimonials .testimonials__text {
-  max-width: 237px;
   max-height: 306px;
   overflow-y: hidden;
   -ms-overflow-y: hidden;
