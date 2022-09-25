@@ -948,6 +948,27 @@ section {
     }
   }
 }
-@media screen and (max-width: 1599px) {
+@media (max-width: 1599px) {
+  .container {
+    padding: 0 30px;
+  }
+  .header {
+}
+  .info {
+    .container:before {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .info__wrapper {
+      column-gap: 31px;
+    }
+  }
+  .pets {
+    .pets__slider {
+      padding-bottom: 165px;
+    }
+  }
+  .footer {
 
+  }
 }

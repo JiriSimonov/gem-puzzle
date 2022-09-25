@@ -959,4 +959,20 @@ section {
   outline: none;
 }
 
+@media (max-width: 1599px) {
+  .container {
+    padding: 0 30px;
+  }
+  .info .container:before {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .info .info__wrapper {
+    column-gap: 31px;
+  }
+  .pets .pets__slider {
+    padding-bottom: 165px;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */
