@@ -587,9 +587,11 @@ section {
     }
     .work__list {
       display: flex;
+      align-items: flex-start;
       column-gap: 130px;
-      margin: 0 0 79px 0;
-      padding: 0 98px;
+      margin: 0 auto 79px auto;
+      padding: 0;
+      max-width: 801px;
       list-style: none;
       text-align: left;
     }
@@ -692,7 +694,8 @@ section {
   }
   .testimonials__item {
     position: relative;
-    padding: 15px 12px 19px 16px;
+    padding: 15px 11px 19px 16px;
+    width: 268px;
     box-sizing: border-box;
     background-clip: padding-box;
     border: solid 2px transparent;
@@ -755,6 +758,10 @@ section {
   }
   .testimonials__text {
     max-height: 306px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 120%;
+    color: $Gray;
     overflow-y: hidden;
     -ms-overflow-y: hidden;
   }
@@ -1045,13 +1052,13 @@ section {
       url('../../assets/images/pets/pets-bg-sm-2.png') no-repeat bottom right;
     }
     .pets__wrapper {
-      row-gap: 7px;
+      row-gap: 15px;
     }
     .pets__controls {
       display: flex;
       justify-content: space-between;
+      column-gap: 171px;
       margin: 0 auto;
-      width: 295px;
     }
     .pets__btn--prev, .pets__btn--next {
       position: relative;
@@ -1063,6 +1070,48 @@ section {
     }
     .pets__slider {
       padding-bottom: 165px;
+    }
+    .pets__list {
+      row-gap: 29px;
+      .pets__item {
+        padding: 294px 0 10px 0;
+        width: 294px;
+        height: 354px;
+        background-size: 294px;
+      }
+    }
+    .pets__list--1 {
+      .pets__item:nth-child(1) {
+        background-image: url('../../assets/images/pets/p-1.jpg');
+      }
+      .pets__item:nth-child(2) {
+        background-image: url('../../assets/images/pets/p-2.jpg');
+      }
+      .pets__item:nth-child(3) {
+        background-image: url('../../assets/images/pets/p-3.jpg');
+      }
+    }
+    .pets__list--2 {
+      .pets__item:nth-child(1) {
+        background-image: url('../../assets/images/pets/p-4.jpg');
+      }
+
+      .pets__item:nth-child(2) {
+        background-image: url('../../assets/images/pets/p-5.jpg');
+      }
+
+      .pets__item:nth-child(3) {
+        background-image: url('../../assets/images/pets/p-6.jpg');
+      }
+    }
+  }
+  .testimonials {
+    .testimonials__list {
+      margin: 0 auto 21px auto;
+      grid-template-columns: repeat(3, 293px);
+      .testimonials__item:nth-child(4) {
+        display: none;
+      }
     }
   }
   .footer {
