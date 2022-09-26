@@ -6,7 +6,6 @@
     <link type="image/x-icon" href="../../assets/icons/favicon.ico" rel="shortcut icon">
     <link type="Image/x-icon" href="../../assets/icons/favicon.ico" rel="icon">
     <link rel="stylesheet" href="styles.css">
-    <script src="../../pages/main/script.js"></script>
     <title>PetStory Online</title>
 </head>
 <body>
@@ -38,6 +37,9 @@
                     </ul>
                 </nav>
                 <a href="https://www.figma.com/file/jfEFwkXVj1WRq7sUHDr8os/PetStory-online" target="_blank" class="header__link">Designed by&nbsp;&copy;</a>
+                <button type="button" class="burger" data-burger>
+                    <span class="burger__line"></span>
+                </button>
             </div>
         </div>
     </header>
@@ -70,18 +72,13 @@
             <div class="container">
                 <div class="pets__slider">
                     <div class="pets__wrapper">
-                            <button type="button" class="pets__btn pets__btn--prev">Prev slide</button>
-                            <button type="button" class="pets__btn pets__btn--next">Next slide</button>
-                        <ul class="pets__list">
+                        <ul class="pets__list pets__list--1">
                             <li class="pets__item">
-                                <picture class="pets__picture">
-                                    <source srcset="../../assets/images/pets/p-1.png" type="image/svg+xml" media="(max-width: 1599px)">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
-                                    <img src="../../assets/images/pets/pets-1.jpg" alt="giant Pandas" class="pets__image">
-                                </picture>
                                 <div class="pets__info">
-                                    <h5 class="pets__title">giant Pandas</h5>
-                                    <div class="pets__text">Native to Southwest China</div>
+                                    <div class="pets__descr">
+                                        <h5 class="pets__title">giant Pandas</h5>
+                                        <div class="pets__text">Native to Southwest China</div>
+                                    </div>
                                     <img src="../../assets/icons/banana-bamboo.svg" alt="" class="pets__diet">
                                 </div>
                                 <div class="tooltip">
@@ -93,14 +90,11 @@
                                 </div>
                             </li>
                             <li class="pets__item">
-                                <picture class="pets__picture">
-                                    <source srcset="../../assets/images/pets/p-2.jpg" type="image/svg+xml" media="(max-width: 1599px)">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
-                                    <img src="../../assets/images/pets/pets-2.jpg" alt="Eagles" class="pets__image">
-                                </picture>
                                 <div class="pets__info">
-                                    <h5 class="pets__title">Eagles</h5>
-                                    <div class="pets__text">Native to South America</div>
+                                    <div class="pets__descr">
+                                        <h5 class="pets__title">Eagles</h5>
+                                        <div class="pets__text">Native to South America</div>
+                                    </div>
                                     <img src="../../assets/icons/meet-fish.svg" alt="diet" class="pets__diet">
                                 </div>
                                 <div class="tooltip">
@@ -112,14 +106,11 @@
                                 </div>
                             </li>
                             <li class="pets__item">
-                                <picture class="pets__picture">
-                                    <source srcset="../../assets/images/pets/p-3.jpg" type="image/svg+xml" media="(max-width: 1599px)">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
-                                    <img src="../../assets/images/pets/pets-3.jpg" alt="Gorillas" class="pets__image">
-                                </picture>
                                 <div class="pets__info">
-                                    <h5 class="pets__title">Gorillas</h5>
-                                    <div class="pets__text">Native to Congo</div>
+                                    <div class="pets__descr">
+                                        <h5 class="pets__title">Gorillas</h5>
+                                        <div class="pets__text">Native to Congo</div>
+                                    </div>
                                     <img src="../../assets/icons/banana-bamboo.svg" alt="diet" class="pets__diet">
                                 </div>
                                 <div class="tooltip">
@@ -130,15 +121,18 @@
                                     </div>
                                 </div>
                             </li>
+                        </ul>
+                        <div class="pets__controls">
+                            <button type="button" class="pets__btn pets__btn--prev">Prev slide</button>
+                            <button type="button" class="pets__btn pets__btn--next">Next slide</button>
+                        </div>
+                        <ul class="pets__list pets__list--2">
                             <li class="pets__item">
-                                <picture class="pets__picture">
-                                    <source srcset="../../assets/images/pets/p-4.jpg" type="image/svg+xml" media="(max-width: 1599px)">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
-                                    <img src="../../assets/images/pets/pets-4.jpg" alt="Two-toed Sloth" class="pets__image">
-                                </picture>
                                 <div class="pets__info">
-                                    <h5 class="pets__title">Two-toed Sloth</h5>
-                                    <div class="pets__text">Mesoamerica, South America</div>
+                                    <div class="pets__descr">
+                                        <h5 class="pets__title">Two-toed Sloth</h5>
+                                        <div class="pets__text">Mesoamerica, South America</div>
+                                    </div>
                                     <img src="../../assets/icons/banana-bamboo.svg" alt="diet" class="pets__diet">
                                 </div>
                                 <div class="tooltip">
@@ -150,14 +144,11 @@
                                 </div>
                             </li>
                             <li class="pets__item">
-                                <picture class="pets__picture">
-                                    <source srcset="../../assets/images/pets/p-5.jpg" type="image/svg+xml" media="(max-width: 1599px)">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
-                                    <img src="../../assets/images/pets/pets-5.jpg" alt="cheetahs" class="pets__image">
-                                </picture>
                                 <div class="pets__info">
-                                    <h5 class="pets__title">Cheetahs</h5>
-                                    <div class="pets__text">Native to Africa</div>
+                                    <div class="pets__descr">
+                                        <h5 class="pets__title">Cheetahs</h5>
+                                        <div class="pets__text">Native to Africa</div>
+                                    </div>
                                     <img src="../../assets/icons/meet-fish.svg" alt="diet" class="pets__diet">
                                 </div>
                                 <div class="tooltip">
@@ -169,14 +160,11 @@
                                 </div>
                             </li>
                             <li class="pets__item">
-                                <picture class="pets__picture">
-                                    <source srcset="../../assets/images/pets/p-6.jpg" type="image/svg+xml" media="(max-width: 1599px)">
-                                    <source srcset="" type="image/svg+xml" media="(max-width: 640px)">
-                                    <img src="../../assets/images/pets/pets-6.jpg" alt="Penguins" class="pets__image">
-                                </picture>
                                 <div class="pets__info">
-                                    <h5 class="pets__title">Penguins</h5>
-                                    <div class="pets__text">Native to Antarctica</div>
+                                    <div class="pets__descr">
+                                        <h5 class="pets__title">Penguins</h5>
+                                        <div class="pets__text">Native to Antarctica</div>
+                                    </div>
                                     <img src="../../assets/icons/meet-fish.svg" alt="diet" class="pets__diet">
                                 </div>
                                 <div class="tooltip">
@@ -235,8 +223,8 @@
                                 </div>
                             </div>
                             <div class="testimonials__text">
-                                <p class="testimonials__paragraph">The best online zoo I’ve met.My son delighted very much ljves to watch gouillas.Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met.My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.</p>
-                                <p class="testimonials__paragraph">The best online zoo I’ve met.My son delighted very much ljves to watch gouillas.Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met.My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for</p>
+                                <p class="testimonials__paragraph">The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.</p>
+                                <p class="testimonials__paragraph">The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.</p>
                             </div>
                         </li>
                         <li class="testimonials__item">
@@ -251,8 +239,8 @@
                                 </div>
                             </div>
                             <div class="testimonials__text">
-                                <p class="testimonials__paragraph">Online zoo is&nbsp;one jf&nbsp;the ways to&nbsp;instill a&nbsp;love for animals.The best online zoo I&rsquo;ve met. My&nbsp;son delighted very much ljves to&nbsp;watch gouillas. Online zoo is&nbsp;one jf&nbsp;the ways to&nbsp;instill a&nbsp;love for animals.The best online zoo I&rsquo;ve met. My&nbsp;son delighted very much ljves to&nbsp;watch gouillas.</p>
-                                <p class="testimonials__paragraph">The best online zoo I&rsquo;ve met. My&nbsp;son delighted very much ljves to&nbsp;watch gouillas. Online zoo is&nbsp;one jf&nbsp;the ways to&nbsp;instill a&nbsp;love for animals.The best online zoo I&rsquo;ve met. My&nbsp;son delighted very much ljves to&nbsp;watch gouillas. Online zoo is&nbsp;one jf&nbsp;the ways to&nbsp;instill a&nbsp;love for</p>
+                                <p class="testimonials__paragraph">Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas.</p>
+                                <p class="testimonials__paragraph">The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.</p>
                             </div>
                         </li>
                         <li class="testimonials__item">
@@ -267,8 +255,9 @@
                                 </div>
                             </div>
                             <div class="testimonials__text">
-                                <p class="testimonials__paragraph">Online zoo is&nbsp;one jf&nbsp;the ways to&nbsp;instill a&nbsp;love for animals.The best online zoo I&rsquo;ve met. My&nbsp;son delighted very much ljves to&nbsp;watch gouillas. Online zoo is&nbsp;one jf&nbsp;the ways to&nbsp;instill a&nbsp;love for animals.The best online zoo I&rsquo;ve met. My&nbsp;son delighted very much ljves to&nbsp;watch gouillas.</p>
-                                <p class="testimonials__paragraph">The best online zoo I&rsquo;ve met. My&nbsp;son delighted very much ljves to&nbsp;watch gouillas. Online zoo is&nbsp;one jf&nbsp;the ways to&nbsp;instill a&nbsp;love for animals.The best online zoo I&rsquo;ve met. My&nbsp;son delighted very much ljves to&nbsp;watch gouillas. Online zoo is&nbsp;one jf&nbsp;the ways to&nbsp;instill a&nbsp;love for</p>
+                                <p class="testimonials__paragraph">The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.</p>
+                                <p class="testimonials__paragraph">The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met.</p>
+                                <p class="testimonials__paragraph">The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met.</p>
                             </div>
                         </li>
                         <li class="testimonials__item">
@@ -283,8 +272,9 @@
                                 </div>
                             </div>
                             <div class="testimonials__text">
-                                <p class="testimonials__paragraph">My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met.My son delighted very much ljves to watch gouillas.</p>
-                                <p class="testimonials__paragraph">The best online zoo I&rsquo;ve met. My&nbsp;son delighted very much ljves to&nbsp;watch gouillas. Online zoo is&nbsp;one&nbsp;jf</p>
+                                <p class="testimonials__paragraph">
+                                    My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas.</p>
+                                <p class="testimonials__paragraph">The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met.</p>
                             </div>
                         </li>
                     </ul>
@@ -367,5 +357,6 @@
           </div>
         </div>
     </footer>
+    <script src="../../pages/main/script.js"></script>
 </body>
 </html>
