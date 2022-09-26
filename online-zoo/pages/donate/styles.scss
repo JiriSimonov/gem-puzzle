@@ -104,7 +104,8 @@ section {
 }
 
 .btn {
-  padding: 18px 74px 18px 74px;
+  padding: 17px 65px 16px 65px;
+  border: none;
   border-radius: 25px;
   font-size: 16px;
   font-weight: 500;
@@ -113,6 +114,7 @@ section {
   text-transform: uppercase;
   text-decoration: none;
   background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+  outline: none;
   transition: all .3s linear;
   &:hover {
     background: $Orange_dark;
@@ -146,7 +148,7 @@ section {
     background-repeat: no-repeat;
   }
   .donate__wrapper {
-    padding-bottom: 178px;
+    padding-bottom: 180px;
   }
 }
 
@@ -460,7 +462,7 @@ section {
   .radio {
     display: flex;
     column-gap: 50px;
-    margin: 0 auto 48px auto;
+    margin: 0 auto 30px auto;
     max-width: 218px;
     .radio__input {
       position: absolute;
@@ -507,7 +509,7 @@ section {
     }
   }
   .donation__share {
-    margin-top: 46px;
+    margin-top: 29px;
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
