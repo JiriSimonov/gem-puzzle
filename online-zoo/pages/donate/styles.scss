@@ -131,7 +131,7 @@ section {
 .donate {
   position: relative;
   margin: 0 auto;
-  padding-top: 425px;
+  padding-top: 426px;
   max-width: 1600px;
   background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
   &:before {
@@ -140,13 +140,13 @@ section {
     top: 0;
     left: 0;
     width: 100%;
-    height: 390px;
+    height: 386px;
     background-image: url('../../assets/images/donate/panda_bg.jpg');
     background-position: left top;
     background-repeat: no-repeat;
   }
   .donate__wrapper {
-    padding-bottom: 180px;
+    padding-bottom: 178px;
   }
 }
 
@@ -198,7 +198,7 @@ section {
   text-align: left;
 }
 .donation__wrapper {
-  margin-bottom: 50px;
+  margin-bottom: 51px;
   .donation__line {
     display: flex;
     margin: 0 0 12px 0;
@@ -416,7 +416,7 @@ section {
   }
   .donation__input {
     margin-bottom: 23px;
-    padding: 20px 20px 17px 9px;
+    padding: 15px 20px 15px 9px;
     border: 1px solid #929699;
     border-radius: 2px;
     width: 239px;
@@ -460,7 +460,7 @@ section {
   .radio {
     display: flex;
     column-gap: 50px;
-    margin: 0 auto 47px auto;
+    margin: 0 auto 48px auto;
     max-width: 218px;
     .radio__input {
       position: absolute;
