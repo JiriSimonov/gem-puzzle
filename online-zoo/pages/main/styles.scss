@@ -1033,16 +1033,45 @@ section {
 @media (max-width: 1599px) {
   .container {
     padding: 0 30px;
+    max-width: 940px;
   }
   .header {
-}
+    .nav__list {
+      column-gap: 48px;
+    }
+  }
+  .hero {
+    background-image: url('../../assets/images/hero/panda-sm.jpg');
+    background-position: center -80px;
+    .hero__wrapper {
+       row-gap: 41px;
+       padding: 43px 0 47px 74px;
+       max-width: 510px;
+       background-image: url('../../assets/images/hero/bg-sm.png');
+       background-position: 70px -11px;
+    }
+    .hero__title {
+      font-size: 85px;
+     }
+    }
   .info {
+    padding: 0;
+    margin-bottom: 140px;
     .container:before {
       opacity: 0;
       visibility: hidden;
     }
     .info__wrapper {
+      align-items: flex-start;
+      margin-top: 90px;
+      padding-top: 10px;
       column-gap: 31px;
+      .info__title--small {
+        margin-bottom: 32px;
+      }
+    }
+    .info__picture {
+      padding-top: 9px;
     }
   }
   .pets {
@@ -1069,7 +1098,7 @@ section {
       transform: none;
     }
     .pets__slider {
-      padding-bottom: 165px;
+      padding-bottom: 155px;
     }
     .pets__list {
       row-gap: 29px;
@@ -1105,16 +1134,88 @@ section {
       }
     }
   }
+  .work {
+    padding: 30px 0 50px 0;
+    .work__wrapper {
+      padding: 31px 49px 64px 48px;
+      .work__title {
+        margin: 0 0 21px 0;
+      }
+      .work__title--small {
+        margin-bottom: 39px;
+      }
+      .work__subtitle {
+        margin-bottom: 20px;
+      }
+      .work__text {
+        margin-bottom: 40px;
+      }
+      .work__text--bold {
+        margin-bottom: 10px;
+        max-width: 95%;
+      }
+      .work__list {
+        justify-content: space-between;
+        margin-bottom: 90px;
+        max-width: 765px;
+      }
+      .btn {
+        margin: 0;
+      }
+    }
+  }
   .testimonials {
+    margin-top: 101px;
+    .container {
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 135px;
+        height: 226px;
+        background-image: url('../../assets/images/testimonials/bg-sm.png');
+        background-repeat: no-repeat;
+        background-position: bottom right;
+      }
+    }
+    .testimonials__container {
+      padding-bottom: 139px;
+    }
+    .testimonials__title {
+      margin-bottom: 29px;
+    }
     .testimonials__list {
-      margin: 0 auto 21px auto;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 20px;
+      max-width: 940px;
       grid-template-columns: repeat(3, 293px);
+      .testimonials__item {
+        padding-right: 22px;
+        width: 293px;
+      }
+      .testimonials__item:nth-child(1) {
+        padding-right: 21px;
+      }
       .testimonials__item:nth-child(4) {
         display: none;
       }
     }
+    .testimonials__input {
+      margin-bottom: 52px;
+    }
   }
   .footer {
-
+    .footer__wrapper {
+      padding: 41px 0 50px 14px;
+    }
+    .footer__item:nth-child(4) {
+      padding-right: 20px;
+    }
+    .nav__list {
+      column-gap: 48px;
+      padding-left: 30px;
+    }
   }
 }

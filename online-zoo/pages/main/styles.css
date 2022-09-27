@@ -1036,13 +1036,44 @@ section {
 @media (max-width: 1599px) {
   .container {
     padding: 0 30px;
+    max-width: 940px;
+  }
+  .header .nav__list {
+    column-gap: 48px;
+  }
+  .hero {
+    background-image: url("../../assets/images/hero/panda-sm.jpg");
+    background-position: center -80px;
+  }
+  .hero .hero__wrapper {
+    row-gap: 41px;
+    padding: 43px 0 47px 74px;
+    max-width: 510px;
+    background-image: url("../../assets/images/hero/bg-sm.png");
+    background-position: 70px -11px;
+  }
+  .hero .hero__title {
+    font-size: 85px;
+  }
+  .info {
+    padding: 0;
+    margin-bottom: 140px;
   }
   .info .container:before {
     opacity: 0;
     visibility: hidden;
   }
   .info .info__wrapper {
+    align-items: flex-start;
+    margin-top: 90px;
+    padding-top: 10px;
     column-gap: 31px;
+  }
+  .info .info__wrapper .info__title--small {
+    margin-bottom: 32px;
+  }
+  .info .info__picture {
+    padding-top: 9px;
   }
   .pets .container {
     background: url("../../assets/images/pets/pets-bg-sm-1.png") no-repeat bottom left, url("../../assets/images/pets/pets-bg-sm-2.png") no-repeat bottom right;
@@ -1065,7 +1096,7 @@ section {
     transform: none;
   }
   .pets .pets__slider {
-    padding-bottom: 165px;
+    padding-bottom: 155px;
   }
   .pets .pets__list {
     row-gap: 29px;
@@ -1094,12 +1125,85 @@ section {
   .pets .pets__list--2 .pets__item:nth-child(3) {
     background-image: url("../../assets/images/pets/p-6.jpg");
   }
+  .work {
+    padding: 30px 0 50px 0;
+  }
+  .work .work__wrapper {
+    padding: 31px 49px 64px 48px;
+  }
+  .work .work__wrapper .work__title {
+    margin: 0 0 21px 0;
+  }
+  .work .work__wrapper .work__title--small {
+    margin-bottom: 39px;
+  }
+  .work .work__wrapper .work__subtitle {
+    margin-bottom: 20px;
+  }
+  .work .work__wrapper .work__text {
+    margin-bottom: 40px;
+  }
+  .work .work__wrapper .work__text--bold {
+    margin-bottom: 10px;
+    max-width: 95%;
+  }
+  .work .work__wrapper .work__list {
+    justify-content: space-between;
+    margin-bottom: 90px;
+    max-width: 765px;
+  }
+  .work .work__wrapper .btn {
+    margin: 0;
+  }
+  .testimonials {
+    margin-top: 101px;
+  }
+  .testimonials .container:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 135px;
+    height: 226px;
+    background-image: url("../../assets/images/testimonials/bg-sm.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+  .testimonials .testimonials__container {
+    padding-bottom: 139px;
+  }
+  .testimonials .testimonials__title {
+    margin-bottom: 29px;
+  }
   .testimonials .testimonials__list {
-    margin: 0 auto 21px auto;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 20px;
+    max-width: 940px;
     grid-template-columns: repeat(3, 293px);
+  }
+  .testimonials .testimonials__list .testimonials__item {
+    padding-right: 22px;
+    width: 293px;
+  }
+  .testimonials .testimonials__list .testimonials__item:nth-child(1) {
+    padding-right: 21px;
   }
   .testimonials .testimonials__list .testimonials__item:nth-child(4) {
     display: none;
+  }
+  .testimonials .testimonials__input {
+    margin-bottom: 52px;
+  }
+  .footer .footer__wrapper {
+    padding: 41px 0 50px 14px;
+  }
+  .footer .footer__item:nth-child(4) {
+    padding-right: 20px;
+  }
+  .footer .nav__list {
+    column-gap: 48px;
+    padding-left: 30px;
   }
 }
 
