@@ -839,6 +839,152 @@ section {
   outline: none;
   cursor: pointer;
 }
+.testimonials .modal .modal__overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s linear;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  z-index: 10;
+}
+.testimonials .modal .modal__content {
+  position: relative;
+  display: none;
+  width: 886px;
+  height: 530px;
+  background-color: #FFF;
+  transition: all 0.3s linear;
+  overflow: hidden;
+}
+.testimonials .modal .modal__overlay--visible {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s linear;
+}
+.testimonials .modal .modal__content--visible {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 530px;
+  align-items: flex-start;
+  justify-content: center;
+  transition: all 0.3s linear;
+}
+.testimonials .modal .modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+}
+.testimonials .modal .modal__form .modal__input {
+  padding: 0 5px 10px 0;
+  width: 381px;
+  border-top: none;
+  border-right: none;
+  border-bottom: 1px solid #ABABAB;
+  border-left: none;
+}
+.testimonials .modal .modal__form .modal__input:focus, .testimonials .modal .modal__form .modal__input:hover {
+  outline: none;
+  border-bottom: 1px solid #4B9200;
+  color: #4B9200;
+}
+.testimonials .modal .modal__form .modal__input::placeholder {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  color: rgba(87, 87, 89, 0.5);
+}
+.testimonials .modal .modal__form .modal__btn {
+  margin-left: auto;
+  padding: 10px 39px;
+  max-width: 131px;
+  border: 1px solid #333B41;
+  background-color: transparent;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.testimonials .modal .modal__form .modal__btn:hover, .testimonials .modal .modal__form .modal__btn:focus {
+  color: #4B9200;
+  border-color: #4B9200;
+}
+.testimonials .modal .modal__form .modal__text {
+  margin-top: 7px;
+  width: 383px;
+  height: 285px;
+  border: 1px solid #ABABAC;
+  resize: none;
+  transition: 0.3s linear;
+}
+.testimonials .modal .modal__form .modal__text::placeholder {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  color: rgba(87, 87, 89, 0.5);
+}
+.testimonials .modal .modal__form .modal__text:focus {
+  border-color: #4B9200;
+}
+.testimonials .modal .modal__right {
+  width: 100%;
+  height: 100%;
+  background-color: #F5F7F6;
+  text-align: center;
+}
+.testimonials .modal .modal__right .modal__title {
+  position: relative;
+  align-self: center;
+  margin: 0 auto;
+  padding-top: 316px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 120%;
+  background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.testimonials .modal .modal__right .modal__title:before {
+  content: "";
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  width: 114px;
+  height: 108px;
+  background-image: url("../../assets/icons/modal-comment.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  transform: translateX(-50%);
+}
+.testimonials .modal .modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 14px;
+  height: 14px;
+  padding: 20px;
+  border: none;
+  background-color: transparent;
+  background-image: url("../../assets/icons/x-modal.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: all 1s linear;
+}
+.testimonials .modal .modal__close:hover {
+  transform: rotate(320deg);
+}
 
 .footer {
   background-color: #000;
@@ -1211,6 +1357,11 @@ section {
     margin: 0 auto;
     padding: 0 20px;
     max-width: 600px;
+  }
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
   .header .nav {
     display: none;

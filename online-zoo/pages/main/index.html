@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <title>PetStory Online</title>
 </head>
-<body>
+<body class="body">
     <header class="header">
         <div class="container">
             <div class="header__wrapper">
@@ -299,7 +299,29 @@
                     <label class="testimonials__label">
                         <input type="range"  min="0" max="12" value="0" step="3" class="testimonials__input">
                     </label>
-                    <button type="button" class="btn">leave feedback</button>
+                    <button type="button" class="btn btn-modal">leave feedback</button>
+                </div>
+            </div>
+            <div class="modal">
+                <div class="modal__overlay">
+                    <div class="modal__content">
+                        <form action="" method="POST" class="modal__form">
+                            <label class="modal__label">
+                                <input type="text" placeholder="Full Name" class="modal__input">
+                            </label>
+                            <label class="modal__label">
+                                <input type="email" placeholder="Enter your email*" required class="modal__input">
+                            </label>
+                            <label class="modal__label">
+                                <textarea placeholder="What would you like to say?" class="modal__input modal__text"></textarea>
+                            </label>
+                            <button type="submit" class="modal__btn">Submit</button>
+                        </form>
+                        <div class="modal__right">
+                            <h2 class="modal__title">Leave Us a Comment</h2>
+                            <button class="modal__close"></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
