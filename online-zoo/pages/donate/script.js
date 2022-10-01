@@ -1,6 +1,15 @@
 const line = document.querySelector('.donation__line');
 let items = document.querySelectorAll('.donation__item');
 const buttons = document.querySelectorAll('.donation__btn, .donation__button');
+const burgerItem = document.querySelector('.burger');
+const burgerBtn = document.querySelector('.burger--orange');
+const menu = document.querySelector('.nav');
+
+burgerItem.addEventListener('click', () => {
+    burgerItem.classList.toggle('is-open');
+    menu.classList.toggle('nav--open');
+})
+
 function setActive() {
     line.addEventListener('click', (event) => {
         if (event.target.classList.contains('donation__item')) {
