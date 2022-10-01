@@ -65,14 +65,18 @@ section {
       }
     }
     .is-open {
+      z-index: 12;
       &:before {
         top: 50%;
         transform: rotate(45deg);
+        background-color: $Orange;
+
       }
       &:after {
         top: 50%;
         bottom: auto;
         transform: rotate(-45deg);
+        background-color: $Orange;
       }
       .burger__line {
         opacity: 0;
@@ -108,6 +112,52 @@ section {
     text-align: center;
     color: $White;
     background: url('../../assets/icons/bamboo.svg') no-repeat 16% 83%;
+    transition: all 0.3s linear;
+    &:focus {
+      color: $Orange;
+      background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+      outline: none;
+    }
+  }
+  &:hover {
+    .logo__title {
+      border-color: $Orange;
+    }
+    .logo__link {
+      color: $Orange;
+      background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+    }
+  }
+}
+.nav {
+  .header__link--burger {
+    display: none;
+  }
+}
+.logo--burger {
+  display: none;
+  max-width: 82px;
+  .logo__title {
+    position: relative;
+    margin: 0;
+    padding: 4px 5px;
+    width: 70px;
+    height: 42px;
+    border-color: $Orange;
+    border-radius: 2px;
+    transition: all 0.3s linear;
+  }
+  .logo__link {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 120%;
+    text-decoration: none;
+    text-align: center;
+    color: $Orange;
+    background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
     transition: all 0.3s linear;
     &:focus {
       color: $Orange;
@@ -832,6 +882,156 @@ section {
     outline: none;
     cursor: pointer;
   }
+  .modal {
+     .modal__overlay {
+       position: fixed;
+       left: 0;
+       top: 0;
+       right: 0;
+       bottom: 0;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       height: 100vh;
+       width: 100%;
+       background-color: rgba(0,0,0, .5);
+       transition: all .3s linear;
+       opacity: 0;
+       visibility: hidden;
+       overflow: hidden;
+       z-index: 10;
+     }
+    .modal__content {
+      position: relative;
+      display: none;
+      width: 886px;
+      height: 530px;
+      background-color: $White;
+      transition: all .3s linear;
+      overflow: hidden;
+    }
+    .modal__overlay--visible {
+      opacity: 1;
+      visibility: visible;
+      transition: all .3s linear;
+    }
+    .modal__content--visible {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 530px;
+      align-items: flex-start;
+      justify-content: center;
+      transition: all .3s linear;
+    }
+    .modal__form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 30px;
+      .modal__input {
+        font-family: Roboto, sans-serif;
+        padding: 0 5px 10px 0;
+        width: 381px;
+        border-top: none;
+        border-right: none;
+        border-bottom: 1px solid #ABABAB;
+        border-left: none;
+        &:focus, &:hover {
+          outline: none;
+          border-bottom: 1px solid #4B9200;
+          color: #4B9200;
+        }
+      }
+      .modal__input::placeholder {
+        padding-top: 7px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        color: rgba(87,87,89,.5);
+      }
+      .modal__btn {
+        margin-left: auto;
+        padding: 10px 39px;
+        max-width: 131px;
+        border: 1px solid $Black_blue;
+        background-color: transparent;
+        color: $Black;
+        cursor: pointer;
+        transition: all .3s linear;
+        &:hover, &:focus {
+          color: #4B9200;
+          border-color: #4B9200;
+        }
+      }
+      .modal__text {
+        margin-top: 7px;
+        width: 383px;
+        height: 285px;
+        border: 1px solid #ABABAC;
+        resize: none;
+        transition: .3s linear;
+        &::placeholder {
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%;
+          color: rgba(87,87,89,.5);
+        }
+        &:focus {
+          border-color: #4B9200;
+        }
+      }
+    }
+    .modal__right {
+      width: 100%;
+      height: 100%;
+      background-color: #F5F7F6;
+      text-align: center;
+      .modal__title {
+        position: relative;
+        align-self: center;
+        margin: 0 auto;
+        padding-top: 316px;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 120%;
+        background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: 48px;
+          left: 50%;
+          width: 114px;
+          height: 108px;
+          background-image: url('../../assets/icons/modal-comment.png');
+          background-repeat: no-repeat;
+          background-position: left center;
+          transform: translateX(-50%);
+        }
+      }
+    }
+    .modal__close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 14px;
+      height: 14px;
+      padding: 20px;
+      border: none;
+      background-color: transparent;
+      background-image: url('../../assets/icons/x-modal.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      transition: all 1s linear;
+      &:hover {
+        transform: rotate(320deg);
+      }
+    }
+  }
 }
 
 .footer {
@@ -1226,8 +1426,100 @@ section {
     max-width: 600px;
   }
   .header {
+    position: sticky;
+    top: 0;
+    max-width: 640px;
+    z-index: 10;
     .nav {
       display: none;
+      transition: all .3s linear;
+    }
+    .nav--open {
+      position: fixed;
+      top: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 10px 10px 40px 10px;
+      width: 300px;
+      background-color: $White;
+      z-index: 11;
+      .logo--burger {
+        display: block;
+        margin-bottom: 30px;
+        max-width: 82px;
+        .logo__title {
+          position: relative;
+          margin: 0;
+          padding: 4px 5px;
+          width: 70px;
+          height: 42px;
+          border: 1px solid $Orange;
+          border-radius: 2px;
+          transition: all 0.3s linear;
+        }
+        .logo__link {
+          position: absolute;
+          top: 3px;
+          left: 0;
+          font-size: 19px;
+          font-weight: 400;
+          line-height: 120%;
+          text-decoration: none;
+          text-align: center;
+          color: $Orange;
+          background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+          transition: all 0.3s linear;
+          &:focus {
+            color: $Orange;
+            background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+            outline: none;
+          }
+        }
+        &:hover {
+          .logo__title {
+            border-color: $Orange;
+          }
+          .logo__link {
+            color: $Orange;
+            background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+          }
+        }
+      }
+      .header__link--burger {
+        text-align: left;
+        display: block;
+        margin-left: 0;
+        color: $Black_blue;
+      }
+      .nav__list {
+        flex-direction: column;
+        align-items: start;
+        text-align: left;
+        .nav__item {
+          margin-bottom: 15px;
+        }
+        .nav__link {
+          color: $Black_blue;
+        }
+        .active {
+          color: #E47209;
+        }
+      }
+      .burger--orange {
+        padding: 10px;
+        position: absolute;
+        top: 10px;
+        right: 10px ;
+        .burger__line {
+          &:before {
+            background-color: red;
+          }
+          &:after {
+            background-color: red;
+          }
+        }
+      }
     }
     .header__link {
       display: none;
@@ -1241,7 +1533,6 @@ section {
         visibility: visible;
       }
     }
-
     .logo {
       max-width: 46px;
       .logo__title {
@@ -1560,7 +1851,7 @@ section {
   }
   .hero {
     background-image: url('../../assets/images/hero/panda-m.jpg');
-    background-position: center 0px;
+    background-position: center 0;
     .hero__wrapper {
       position: relative;
       row-gap: 0;

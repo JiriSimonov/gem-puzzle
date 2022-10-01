@@ -92,14 +92,19 @@ section {
   transform: translateY(-50%);
   transition: all 0.3s linear;
 }
+.header .header__wrapper .is-open {
+  z-index: 12;
+}
 .header .header__wrapper .is-open:before {
   top: 50%;
   transform: rotate(45deg);
+  background-color: #F9804B;
 }
 .header .header__wrapper .is-open:after {
   top: 50%;
   bottom: auto;
   transform: rotate(-45deg);
+  background-color: #F9804B;
 }
 .header .header__wrapper .is-open .burger__line {
   opacity: 0;
@@ -144,6 +149,50 @@ section {
   border-color: #F9804B;
 }
 .logo:hover .logo__link {
+  color: #F9804B;
+  background: url("../../assets/icons/bamboo-active.svg") no-repeat 16% 83%;
+}
+
+.nav .header__link--burger {
+  display: none;
+}
+
+.logo--burger {
+  display: none;
+  max-width: 82px;
+}
+.logo--burger .logo__title {
+  position: relative;
+  margin: 0;
+  padding: 4px 5px;
+  width: 70px;
+  height: 42px;
+  border-color: #F9804B;
+  border-radius: 2px;
+  transition: all 0.3s linear;
+}
+.logo--burger .logo__link {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 120%;
+  text-decoration: none;
+  text-align: center;
+  color: #F9804B;
+  background: url("../../assets/icons/bamboo-active.svg") no-repeat 16% 83%;
+  transition: all 0.3s linear;
+}
+.logo--burger .logo__link:focus {
+  color: #F9804B;
+  background: url("../../assets/icons/bamboo-active.svg") no-repeat 16% 83%;
+  outline: none;
+}
+.logo--burger:hover .logo__title {
+  border-color: #F9804B;
+}
+.logo--burger:hover .logo__link {
   color: #F9804B;
   background: url("../../assets/icons/bamboo-active.svg") no-repeat 16% 83%;
 }
@@ -886,6 +935,7 @@ section {
   padding: 30px;
 }
 .testimonials .modal .modal__form .modal__input {
+  font-family: Roboto, sans-serif;
   padding: 0 5px 10px 0;
   width: 381px;
   border-top: none;
@@ -899,6 +949,7 @@ section {
   color: #4B9200;
 }
 .testimonials .modal .modal__form .modal__input::placeholder {
+  padding-top: 7px;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -1361,10 +1412,95 @@ section {
   .header {
     position: sticky;
     top: 0;
+    max-width: 640px;
     z-index: 10;
   }
   .header .nav {
     display: none;
+    transition: all 0.3s linear;
+  }
+  .header .nav--open {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 40px 10px;
+    width: 300px;
+    background-color: #FFF;
+    z-index: 11;
+  }
+  .header .nav--open .logo--burger {
+    display: block;
+    margin-bottom: 30px;
+    max-width: 82px;
+  }
+  .header .nav--open .logo--burger .logo__title {
+    position: relative;
+    margin: 0;
+    padding: 4px 5px;
+    width: 70px;
+    height: 42px;
+    border: 1px solid #F9804B;
+    border-radius: 2px;
+    transition: all 0.3s linear;
+  }
+  .header .nav--open .logo--burger .logo__link {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 120%;
+    text-decoration: none;
+    text-align: center;
+    color: #F9804B;
+    background: url("../../assets/icons/bamboo-active.svg") no-repeat 16% 83%;
+    transition: all 0.3s linear;
+  }
+  .header .nav--open .logo--burger .logo__link:focus {
+    color: #F9804B;
+    background: url("../../assets/icons/bamboo-active.svg") no-repeat 16% 83%;
+    outline: none;
+  }
+  .header .nav--open .logo--burger:hover .logo__title {
+    border-color: #F9804B;
+  }
+  .header .nav--open .logo--burger:hover .logo__link {
+    color: #F9804B;
+    background: url("../../assets/icons/bamboo-active.svg") no-repeat 16% 83%;
+  }
+  .header .nav--open .header__link--burger {
+    text-align: left;
+    display: block;
+    margin-left: 0;
+    color: #333B41;
+  }
+  .header .nav--open .nav__list {
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
+  }
+  .header .nav--open .nav__list .nav__item {
+    margin-bottom: 15px;
+  }
+  .header .nav--open .nav__list .nav__link {
+    color: #333B41;
+  }
+  .header .nav--open .nav__list .active {
+    color: #E47209;
+  }
+  .header .nav--open .burger--orange {
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .header .nav--open .burger--orange .burger__line:before {
+    background-color: red;
+  }
+  .header .nav--open .burger--orange .burger__line:after {
+    background-color: red;
   }
   .header .header__link {
     display: none;
@@ -1680,7 +1816,7 @@ section {
   }
   .hero {
     background-image: url("../../assets/images/hero/panda-m.jpg");
-    background-position: center 0px;
+    background-position: center 0;
   }
   .hero .hero__wrapper {
     position: relative;
