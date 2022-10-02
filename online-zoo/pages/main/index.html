@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="image/x-icon" href="../../assets/icons/favicon.ico" rel="shortcut icon">
     <link type="Image/x-icon" href="../../assets/icons/favicon.ico" rel="icon">
     <link rel="stylesheet" href="styles.css">
     <title>PetStory Online</title>
 </head>
-<body>
+<body class="body">
     <header class="header">
         <div class="container">
             <div class="header__wrapper">
@@ -18,6 +19,11 @@
                     </h1>
                 </div>
                 <nav class="nav">
+                    <div class="logo logo--burger">
+                        <h2 class="logo__title">
+                            <a href="../../pages/main/index.html" class="logo__link">PetStory online</a>
+                        </h2>
+                    </div>
                     <ul class="nav__list">
                         <li class="nav__item">
                             <a href="../../pages/main/index.html" class="nav__link active">About</a>
@@ -35,6 +41,7 @@
                             <a href="" class="nav__link">Contact us</a>
                         </li>
                     </ul>
+                    <a href="https://www.figma.com/file/jfEFwkXVj1WRq7sUHDr8os/PetStory-online" target="_blank" class="header__link header__link--burger">Designed by&nbsp;&copy;</a>
                 </nav>
                 <a href="https://www.figma.com/file/jfEFwkXVj1WRq7sUHDr8os/PetStory-online" target="_blank" class="header__link">Designed by&nbsp;&copy;</a>
                 <button type="button" class="burger" data-burger>
@@ -56,14 +63,14 @@
             <div class="container">
                 <div class="info__wrapper">
                     <picture class="info__picture">
-                        <source srcset="../../assets/images/info/bamboo-cap-small.jpg" type="image/svg+xml" media="(max-width: 1400px)">
+                        <source srcset="../../assets/images/info/bamboo-cap-small.jpg" type="image/svg+xml" media="(max-width: 1599px)">
                         <img src="../../assets/images/info/bamboo-cap.jpg" alt="Bamboo cap" class="info__image">
                     </picture>
                     <div class="info__content">
                         <h3 class="info__title">The Backstage of&nbsp;the Wilderness World.</h3>
                         <p class="info__text">The site was founded on the basis of a volunteer movement to protect and care for animals.</p>
                         <h4 class="info__title info__title--small">How it&nbsp;works</h4>
-                        <p class="info__text info__text--blh">The main goal is&nbsp;to&nbsp;help the animals, as&nbsp;well as&nbsp;the nature reserves and zoos where they are kept. We&nbsp;are currently working on&nbsp;video projects targeting pandas in&nbsp;China, eagles on&nbsp;an&nbsp;island near Los Angeles, alligators in&nbsp;Florida and gorillas in&nbsp;the Congo. These have a&nbsp;total of&nbsp;more than 1,500 mammals and reptiles.</p>
+                        <p class="info__text info__text--blh">The main goal is to help the animals, as well as the nature reserves and zoos where they are kept. We are currently working on video projects targeting pandas in China, eagles on an island near Los Angeles, alligators in Florida and gorillas in the Congo. These have a total of more than 1,500 mammals and reptiles.</p>
                     </div>
                 </div>
             </div>
@@ -79,7 +86,10 @@
                                         <h5 class="pets__title">giant Pandas</h5>
                                         <div class="pets__text">Native to Southwest China</div>
                                     </div>
-                                    <img src="../../assets/icons/banana-bamboo.svg" alt="" class="pets__diet">
+                                    <picture class="pets__picture">
+                                        <source srcset="../../assets/icons/banana-bamboo-t.svg" type="image/svg+xml" media="(max-width: 999px)">
+                                        <img src="../../assets/icons/banana-bamboo.svg" alt="" class="pets__diet">
+                                    </picture>
                                 </div>
                                 <div class="tooltip">
                                     <div class="tooltip_wrapper">
@@ -95,7 +105,10 @@
                                         <h5 class="pets__title">Eagles</h5>
                                         <div class="pets__text">Native to South America</div>
                                     </div>
-                                    <img src="../../assets/icons/meet-fish.svg" alt="diet" class="pets__diet">
+                                    <picture class="pets__picture">
+                                        <source srcset="../../assets/icons/meet-fish-t.svg" type="image/svg+xml" media="(max-width: 999px)">
+                                        <img src="../../assets/icons/meet-fish.svg" alt="" class="pets__diet">
+                                    </picture>
                                 </div>
                                 <div class="tooltip">
                                     <div class="tooltip_wrapper">
@@ -111,7 +124,10 @@
                                         <h5 class="pets__title">Gorillas</h5>
                                         <div class="pets__text">Native to Congo</div>
                                     </div>
-                                    <img src="../../assets/icons/banana-bamboo.svg" alt="diet" class="pets__diet">
+                                    <picture class="pets__picture">
+                                        <source srcset="../../assets/icons/banana-bamboo-t.svg" type="image/svg+xml" media="(max-width: 999px)">
+                                        <img src="../../assets/icons/banana-bamboo.svg" alt="" class="pets__diet">
+                                    </picture>
                                 </div>
                                 <div class="tooltip">
                                     <div class="tooltip_wrapper">
@@ -133,7 +149,10 @@
                                         <h5 class="pets__title">Two-toed Sloth</h5>
                                         <div class="pets__text">Mesoamerica, South America</div>
                                     </div>
-                                    <img src="../../assets/icons/banana-bamboo.svg" alt="diet" class="pets__diet">
+                                    <picture class="pets__picture">
+                                        <source srcset="../../assets/icons/banana-bamboo-t.svg" type="image/svg+xml" media="(max-width: 999px)">
+                                        <img src="../../assets/icons/banana-bamboo.svg" alt="" class="pets__diet">
+                                    </picture>
                                 </div>
                                 <div class="tooltip">
                                     <div class="tooltip_wrapper">
@@ -149,7 +168,10 @@
                                         <h5 class="pets__title">Cheetahs</h5>
                                         <div class="pets__text">Native to Africa</div>
                                     </div>
-                                    <img src="../../assets/icons/meet-fish.svg" alt="diet" class="pets__diet">
+                                    <picture class="pets__picture">
+                                        <source srcset="../../assets/icons/meet-fish-t.svg" type="image/svg+xml" media="(max-width: 999px)">
+                                        <img src="../../assets/icons/meet-fish.svg" alt="" class="pets__diet">
+                                    </picture>
                                 </div>
                                 <div class="tooltip">
                                     <div class="tooltip_wrapper">
@@ -165,7 +187,10 @@
                                         <h5 class="pets__title">Penguins</h5>
                                         <div class="pets__text">Native to Antarctica</div>
                                     </div>
-                                    <img src="../../assets/icons/meet-fish.svg" alt="diet" class="pets__diet">
+                                    <picture class="pets__picture">
+                                        <source srcset="../../assets/icons/meet-fish-t.svg" type="image/svg+xml" media="(max-width: 999px)">
+                                        <img src="../../assets/icons/meet-fish.svg" alt="" class="pets__diet">
+                                    </picture>
                                 </div>
                                 <div class="tooltip">
                                     <div class="tooltip_wrapper">
@@ -186,7 +211,7 @@
                <div class="work__wrapper">
                        <h3 class="work__title">Pick and feed a&nbsp;friend</h3>
                    <div class="work__subtitle">We&nbsp;know the animals bring you joy, and in&nbsp;these extraordinary times, we&rsquo;re glad.</div>
-                   <p class="work__text work__text--bold">During a&nbsp;time when the COVID-19 epidemic is&nbsp;touching all of&nbsp;our lives, we&rsquo;re proud and glad that people around the world find joy in&nbsp;PetStory.</p>
+                   <p class="work__text work__text--bold">During a time when the COVID-19 epidemic is touching all of our lives, we’re proud and glad that people around the world find joy in PetStory.</p>
                    <p class="work__text">Even though the zoo has reopened, we&nbsp;need you now more than ever to&nbsp;help&nbsp;us deal with these problems. Please consider a&nbsp;gift to&nbsp;our
                        <a href="../../pages/donate/index.html" class="work__link">Emergency Support Fund</a>.
                    </p>
@@ -281,7 +306,29 @@
                     <label class="testimonials__label">
                         <input type="range"  min="0" max="12" value="0" step="3" class="testimonials__input">
                     </label>
-                    <button type="button" class="btn">leave feedback</button>
+                    <button type="button" class="btn btn-modal">leave feedback</button>
+                </div>
+            </div>
+            <div class="modal">
+                <div class="modal__overlay">
+                    <div class="modal__content">
+                        <form action="" method="POST" class="modal__form">
+                            <label class="modal__label">
+                                <input type="text" placeholder="Full Name" class="modal__input">
+                            </label>
+                            <label class="modal__label">
+                                <input type="email" placeholder="Enter your email*" required class="modal__input">
+                            </label>
+                            <label class="modal__label">
+                                <textarea placeholder="What would you like to say?" class="modal__input modal__text"></textarea>
+                            </label>
+                            <button type="submit" class="modal__btn">Submit</button>
+                        </form>
+                        <div class="modal__right">
+                            <h2 class="modal__title">Leave Us a Comment</h2>
+                            <button class="modal__close"></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -358,5 +405,6 @@
         </div>
     </footer>
     <script src="../../pages/main/script.js"></script>
+    <script src="../../pages/main/slider.js"></script>
 </body>
 </html>
