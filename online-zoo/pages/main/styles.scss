@@ -1232,6 +1232,7 @@ section {
 }
 @media (max-width: 1599px) {
   .container {
+    overflow: hidden;
     padding: 0 30px;
     max-width: 940px;
   }
@@ -1587,23 +1588,25 @@ section {
     }
   }
   .info {
+    position: relative;
     padding: 0 0 40px 0;
     margin-bottom: 38px;
+    &:before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: 0;
+      width: 128px;
+      height: 478px;
+      background-image: url('../../assets/images/info/info-bg-t.png');
+      background-repeat: no-repeat;
+      background-position: right 12px;
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
     .container {
       position: relative;
-      &:before {
-        content: '';
-        position: absolute;
-        top: -78px;
-        right: 0;
-        width: 128px;
-        height: 478px;
-        background-image: url('../../assets/images/info/info-bg-t.png');
-        background-repeat: no-repeat;
-        background-position: right 12px;
-        opacity: 1;
-        visibility: visible;
-      }
     }
     .info__wrapper {
       display: block;
@@ -1850,12 +1853,9 @@ section {
     max-width: 620px;
   }
   .hero {
-    background-image: url('../../assets/images/hero/panda-m.jpg');
-    background-position: center 0;
     .hero__wrapper {
       position: relative;
       row-gap: 0;
-      padding: 42px 0 115px 169px;
       max-width: 250px;
       background-image: url('../../assets/images/hero/bg-m.png');
       background-position: 151px 23px;
@@ -1865,10 +1865,15 @@ section {
       }
     }
     .hero__title {
+      margin-left: auto;
+      max-width: 139px;
       font-size: 28px;
     }
   }
   .info {
+    &:before {
+      display: none;
+    }
     margin-bottom: 0;
     padding-bottom: 36px;
     .container {
@@ -1911,7 +1916,7 @@ section {
     }
     .pets__list {
       flex-direction: column;
-      margin: 0;
+      margin: 0 auto;
       max-width: 285px;
       gap: 20px;
     }
@@ -1926,6 +1931,7 @@ section {
     .work__wrapper {
       position: relative;
       padding: 22px 11px 76px 10px;
+      text-align: center;
       .work__title {
         margin: 0 0 11px 0;
         font-size: 24px;
@@ -2124,6 +2130,34 @@ section {
     }
     .btn {
       padding-bottom: 18px;
+    }
+  }
+}
+
+@media  (max-width: 360px) {
+  .hero {
+    background-image: url('../../assets/images/hero/panda-m.jpg');
+    background-position: center 0;
+    .hero__wrapper {
+      padding: 42px 0 115px 169px;
+    }
+  }
+  .info {
+    .container {
+      overflow: visible;
+      &:before {
+        opacity: 1;
+        visibility: visible;
+        top: -67px;
+      }
+    }
+  }
+}
+
+@media  (max-width: 332px) {
+  .pets {
+    .pets__list {
+      margin: 0;
     }
   }
 }

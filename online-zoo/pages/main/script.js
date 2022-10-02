@@ -1,5 +1,3 @@
-
-
 const burgerItem = document.querySelector('.burger');
 const testimonialsBtn = document.querySelector('.btn-modal');
 const modalOverlay = document.querySelector('.modal__overlay');
