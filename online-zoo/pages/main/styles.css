@@ -1829,6 +1829,8 @@ section {
     bottom: 0;
   }
   .hero .hero__title {
+    margin-left: auto;
+    max-width: 139px;
     font-size: 28px;
   }
   .info {
