@@ -19,13 +19,69 @@ section {
 
 .header {
   margin: 0 auto;
-  max-width: 1600px;
   background-color: $Black;
   .header__wrapper {
     display: flex;
     align-items: center;
     column-gap: 63px;
     padding: 14px 0;
+    .burger {
+      position: relative;
+      display: none;
+      padding: 0;
+      border: none;
+      width: 18px;
+      height: 10px;
+      background-color: transparent;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        background-color: $White;
+        transition: all .3s linear;
+      }
+      &:before {
+        top: 0;
+      }
+      &:after {
+        bottom: 0;
+      }
+      .burger__line {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        background-color: $White;
+        transform: translateY(-50%);
+        transition: all .3s linear;
+      }
+    }
+    .is-open {
+      z-index: 12;
+      &:before {
+        top: 50%;
+        transform: rotate(45deg);
+        background-color: $Orange;
+      }
+      &:after {
+        top: 50%;
+        bottom: auto;
+        transform: rotate(-45deg);
+        background-color: $Orange;
+      }
+      .burger__line {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
   }
   .header__link {
     margin-left: auto;
@@ -55,6 +111,53 @@ section {
     text-align: center;
     color: $White;
     background: url('../../assets/icons/bamboo.svg') no-repeat 16% 83%;
+    transition: all 0.3s linear;
+    &:focus {
+      color: $Orange;
+      background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+      outline: none;
+    }
+  }
+  &:hover {
+    .logo__title {
+      border-color: $Orange;
+    }
+    .logo__link {
+      color: $Orange;
+      background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+    }
+  }
+}
+
+.nav {
+  .header__link--burger {
+    display: none;
+  }
+}
+.logo--burger {
+  display: none;
+  max-width: 82px;
+  .logo__title {
+    position: relative;
+    margin: 0;
+    padding: 4px 5px;
+    width: 70px;
+    height: 42px;
+    border-color: $Orange;
+    border-radius: 2px;
+    transition: all 0.3s linear;
+  }
+  .logo__link {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 120%;
+    text-decoration: none;
+    text-align: center;
+    color: $Orange;
+    background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
     transition: all 0.3s linear;
     &:focus {
       color: $Orange;
@@ -131,24 +234,22 @@ section {
 }
 
 .donate {
-  position: relative;
-  margin: 0 auto;
-  padding-top: 426px;
-  max-width: 1600px;
   background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 386px;
-    background-image: url('../../assets/images/donate/panda_bg.jpg');
-    background-position: left top;
-    background-repeat: no-repeat;
-  }
   .donate__wrapper {
+    position: relative;
+    padding-top: 426px;
     padding-bottom: 180px;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 386px;
+      background-image: url('../../assets/images/donate/panda_bg.jpg');
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
   }
 }
 
@@ -360,6 +461,7 @@ section {
   .donation__descr {
     text-align: left;
     margin-bottom: 17px;
+    padding-left: 5px;
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
@@ -517,9 +619,8 @@ section {
   }
 
 .footer {
-  margin: 0 auto;
-  max-width: 1600px;
   background-color: $Black;
+  margin: 0 auto;
   .footer__wrapper {
     padding: 41px 0 50px 0;
   }
@@ -531,7 +632,6 @@ section {
     row-gap: 44px;
     margin: 0 auto;
     padding: 0;
-    list-style: none;
   }
   .footer__item:nth-child(1) {
     grid-column: 1 / 1;
@@ -637,7 +737,7 @@ section {
     display: flex;
     column-gap: 10px;
     align-items: center;
-    margin-top: 13px;
+    margin-top: 14px;
   }
   .footer__label {
     display: inline-flex;
@@ -710,6 +810,806 @@ section {
         color: #4B9200;
         outline: none;
       }
+    }
+  }
+}
+
+@media (max-width: 1599px) {
+  .container {
+    padding: 0 30px;
+    max-width: 940px;
+  }
+  .header {
+    .nav__list {
+      column-gap: 48px;
+    }
+  }
+  .donate {
+    }
+    .donate__wrapper {
+      padding-top: 431px;
+      padding-bottom: 30px;
+      &:before {
+        height: 390px;
+        background-image: url('../../assets/images/donate/panda_bg.jpg');
+        background-position: top center;
+    }
+  }
+  .donate__title {
+    margin-bottom: 30px;
+    max-width: 778px;
+  }
+  .donate__title--orange {
+    margin-bottom: 40px;
+  }
+  .donate__text {
+    max-width: 930px;
+  }
+  .donation {
+    margin: 0 auto;
+    padding: 21px 34px 44px 47px;
+    .donation__wrapper {
+      .donation__line {
+        display: flex;
+        padding: 9px 9px 8px 11px;
+        max-width: 790px;
+        background-color: #404950;
+      }
+      .donation__item {
+        &:nth-child(1) {
+          display: none;
+        }
+        &:not(:last-child)  {
+          padding-right: 65px;
+        }
+        &:not(:nth-child(2)) {
+          padding-left: 65px;
+        }
+        &:nth-child(2) {
+          padding-left: 0;
+          .donation__btn {
+            left: -30px;
+          }
+        }
+        &:last-child {
+          .donation__btn {
+            left: 30px;
+          }
+        }
+        .active {
+          .donation__button:before {
+            opacity: 0;
+            visibility: hidden;
+          }
+          .donation__button:after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+      .donation__count {
+        max-width: 810px;
+        .donation__total {
+          &:first-child {
+            display: none;
+          }
+        }
+      }
+    }
+    .donation__title {
+      margin: 0 25px 10px auto;
+      padding-right: 5px;
+    }
+    .diet {
+      justify-content: space-between;
+      max-width: 565px;
+      padding: 0;
+      column-gap: 60px;
+    }
+    .diet__img {
+      padding-right: 31px;
+    }
+    .donation__descr {
+      padding-left: 18px;
+    }
+    .donation__wrapper {
+      margin-left: 18px;
+    }
+    .donation__label {
+      padding-right: 13px;
+    }
+    .radio {
+      max-width: 230px;
+    }
+    .btn {
+      margin-right: 9px;
+    }
+    .donation__share {
+      margin-right: 10px;
+    }
+  }
+  .footer {
+    .footer__wrapper {
+      padding: 41px 0 50px 14px;
+    }
+    .footer__item:nth-child(4) {
+      padding-right: 20px;
+    }
+    .nav__list {
+      column-gap: 48px;
+      padding-left: 30px;
+    }
+  }
+}
+@media (max-width: 999px) {
+  .container {
+    margin:  0 auto;
+    padding: 0 20px;
+    max-width: 600px;
+  }
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    .nav {
+      display: none;
+      transition: all .3s linear;
+    }
+    .nav--open {
+      position: fixed;
+      top: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 10px 10px 40px 10px;
+      width: 300px;
+      background-color: $White;
+      z-index: 11;
+      .logo--burger {
+        display: block;
+        margin-bottom: 30px;
+        max-width: 82px;
+        .logo__title {
+          position: relative;
+          margin: 0;
+          padding: 4px 5px;
+          width: 70px;
+          height: 42px;
+          border: 1px solid $Orange;
+          border-radius: 2px;
+          transition: all 0.3s linear;
+        }
+        .logo__link {
+          position: absolute;
+          top: 3px;
+          left: 0;
+          font-size: 19px;
+          font-weight: 400;
+          line-height: 120%;
+          text-decoration: none;
+          text-align: center;
+          color: $Orange;
+          background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+          transition: all 0.3s linear;
+          &:focus {
+            color: $Orange;
+            background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+            outline: none;
+          }
+        }
+        &:hover {
+          .logo__title {
+            border-color: $Orange;
+          }
+          .logo__link {
+            color: $Orange;
+            background: url('../../assets/icons/bamboo-active.svg') no-repeat 16% 83%;
+          }
+        }
+      }
+      .header__link--burger {
+        text-align: left;
+        display: block;
+        margin-left: 0;
+        color: $Black_blue;
+      }
+      .nav__list {
+        flex-direction: column;
+        align-items: start;
+        text-align: left;
+        .nav__item {
+          margin-bottom: 15px;
+        }
+        .nav__link {
+          color: $Black_blue;
+        }
+        .active {
+          color: #E47209;
+        }
+      }
+    }
+    .header__link {
+      display: none;
+    }
+    .header__wrapper {
+      padding: 2px 0 3px 0;
+      .burger {
+        display: block;
+        margin: auto 0 auto auto;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    .logo {
+      max-width: 46px;
+      .logo__title {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 47px;
+        height: 29px;
+        border: none;
+        border-radius: 0;
+        transition: all 0.3s linear;
+      }
+      .logo__link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 12px;
+        color: $White;
+        background: url('../../assets/icons/bamboo-t.svg') no-repeat 10% 83%;
+        &:focus {
+          color: $Orange;
+          background: url('../../assets/icons/bamboo-t-active.svg') no-repeat 13% 83%;
+          outline: none;
+        }
+      }
+      &:hover {
+        .logo__link {
+          color: $Orange;
+          background: url('../../assets/icons/bamboo-t-active.svg') no-repeat 13% 83%;
+        }
+      }
+    }
+  }
+  .donate {
+    .container {
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 390px;
+        background-image: url('../../assets/images/donate/panda_bg-sm.jpg');
+        background-repeat: no-repeat;
+        background-position: top center;
+      }
+    }
+    .donate__wrapper {
+      padding-top: 367px;
+      padding-bottom: 45px;
+      &:before {
+        display: none;
+      }
+    }
+    }
+  .donate__title {
+    margin-bottom: 17px;
+    font-size: 24px;
+    max-width: 600px;
+    line-height: 120%;
+  }
+  .donate__text {
+    margin-bottom: 30px;
+    max-width: 600px;
+    text-align: left;
+    line-height: 22.4px;
+    .donate__medium {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22.4px
+    }
+  }
+  .donate__title--orange {
+    margin-bottom: 29px;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 130%;
+  }
+  .donation {
+    padding: 30px 0 31px 0;
+    text-align: center;
+    .donation__wrapper {
+      margin-left: 0;
+      .donation__line {
+        display: flex;
+        padding: 9px 35px 8px 35px;
+        max-width: 530px;
+        background-color: #404950;
+      }
+      .donation__item {
+        &:nth-child(1) {
+          display: none;
+        }
+        &:nth-child(2) {
+          display: none;
+        }
+        &:nth-child(3) {
+          display: none;
+        }
+        &:not(:last-child) {
+          padding-right: 65px;
+        }
+        &:not(:nth-child(4)) {
+          padding-left: 65px;
+        }
+        &:nth-child(4) {
+          padding-left: 0;
+          .donation__btn {
+            left: -30px;
+          }
+        }
+        &:last-child {
+          .donation__btn {
+            left: 30px;
+          }
+        }
+        .active {
+          .donation__button:before {
+            opacity: 0;
+            visibility: hidden;
+          }
+          .donation__button:after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+      .donation__count {
+        max-width: 785px;
+        padding-left: 18px;
+        .donation__total {
+          &:first-child {
+            display: none;
+          }
+          &:nth-child(2) {
+            display: none;
+          }
+          &:nth-child(3) {
+            display: none;
+          }
+        }
+      }
+    }
+    .donation__title {
+      margin: 0 auto 22px auto;
+      padding-right: 0;
+    }
+    .donation__text {
+      margin: 0 auto 48px auto;
+      text-align: center;
+    }
+    .diet {
+      margin-bottom: 42px;
+      max-width: 546px;
+      gap: 0;
+    }
+    .diet__img {
+      padding-right: 14px;
+    }
+    .donation__descr {
+      margin-bottom: 6px;
+      padding-left: 10px;
+    }
+    .donation__label {
+      padding: 0;
+    }
+    .donation__input {
+      margin-bottom: 31px;
+      padding: 8px 8px 9px 2px;
+      width: 167px;
+      background-position: 160px center;
+    }
+    .radio {
+      margin-bottom: 28px;
+      max-width: 218px;
+    }
+    .btn {
+      margin: 0;
+    }
+    .donation__share {
+      margin-right: 0;
+    }
+  }
+  .footer {
+    .footer__wrapper {
+      padding: 11px 0 12px 0;
+    }
+    .footer__list {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 140px 119px;
+      row-gap: 0;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .footer__item:nth-child(1) {
+      grid-column: 1 / 1;
+      grid-row: 1 /1;
+    }
+    .footer__item:nth-child(2) {
+      align-self: flex-end;
+      grid-column: 1 / 2;
+      grid-row: 1;
+      padding-bottom: 16px;
+    }
+    .footer__item:nth-child(3) {
+      margin-left: auto;
+      align-self: flex-start;
+      grid-column: 2 / 2;
+      grid-row: 1 / 2;
+      .social__link {
+        padding: 14px 0 0 26px;
+        font-size: 0;
+      }
+    }
+    .footer__item:nth-child(4) {
+      display: none;
+    }
+    .footer__item:nth-child(5) {
+      align-self: flex-end;
+      grid-column:2;
+      grid-row: 2;
+    }
+    .footer__item:nth-child(6) {
+      align-self: flex-end;
+      grid-column:1;
+      grid-row: 2;
+    }
+    .nav__list {
+      position: relative;
+      column-gap: 37px;
+      padding: 0;
+    }
+    .social__list {
+      padding: 0;
+      list-style: none;
+    }
+    .social__item {
+      width: 26px;
+      height: 26px;
+    }
+    .social__item:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    .logo {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    overflow: hidden;
+    padding: 0 10px;
+    max-width: 300px;
+  }
+  .donate {
+    .container {
+      &:before {
+        height: 187px;
+        background-image: url('../../assets/images/donate/panda_bg-m.png');
+        background-repeat: no-repeat;
+        background-position: top center;
+      }
+    }
+    .donate__title {
+      margin-bottom: 20px;
+    }
+    .donate__title--orange {
+      margin-bottom: 29px;
+    }
+    .donate__wrapper {
+      padding-top: 217px;
+      padding-bottom: 21px;
+    }
+    .donate__text {
+      margin-bottom: 26px;
+    }
+  }
+  .donate__title--orange {
+    font-size: 24px;
+    line-height: 120%;
+  }
+  .donation {
+    padding: 21px 0 20px 0;
+    .donation__wrapper {
+      margin-bottom: 25px;
+      .donation__line {
+        display: flex;
+        margin: 0 0 7px 0;
+        padding: 5px 17px 5px 17px;
+        max-width: 266px;
+        border-radius: 2px;
+        list-style: none;
+        background-color: #404950;
+      }
+      .donation__item {
+        &:nth-child(4) {
+          .donation__btn {
+            left: -20px;
+          }
+        }
+        &:last-child {
+          .donation__btn {
+            left: 10px;
+          }
+        }
+        &:not(:last-child)  {
+          padding-right: 35px;
+        }
+        &:not(:nth-child(4)) {
+          padding-left: 35px;
+        }
+        height: 3px;
+      }
+      .donation__button {
+        position: relative;
+        margin: 0;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        font-size: 0;
+        background-color: #FFEE2E;
+        transition: all .3s linear;
+        &:before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 12px;
+          height: 12px;
+          border: 1px solid #FE9013;
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          visibility: hidden;
+          transition: all .3s linear;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 20px;
+          height: 20px;
+          border: 1px solid #FE9013;
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          visibility: hidden;
+          transition: all .3s linear;
+        }
+      }
+      .target {
+        .donation__button {
+          &:before {
+            opacity: 1;
+            visibility: visible;
+          }
+          &:after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+      .donation__btn {
+        position: absolute;
+        left: 10px;
+        top: -20px;
+        padding: 20px;
+      }
+      .donation__count {
+        padding-left: 8px;
+        max-width: 300px;
+        .donation__total {
+          padding-left: 6px;
+          font-size: 13px;
+          background-image: url('../../assets/icons/dollar-m.svg');
+          background-position: center left;
+          &:nth-child(3) {
+            margin-right: 36px;
+          }
+          &:nth-child(4) {
+            margin-right: 36px;
+          }
+          &:nth-child(5) {
+            margin-right: 36px;
+          }
+          &:nth-child(6) {
+            margin-right: 38px;
+          }
+          &:nth-child(7) {
+            margin-right: 45px;
+          }
+        }
+        .current {
+          background-image: url('../../assets/icons/dollar-m-a.svg');
+          color: #FE9013;
+        }
+      }
+    }
+    .donation__input {
+      margin-bottom: 25px;
+      padding: 10px 9px 7px 7px;
+      width: 162px;
+    }
+    .donation__title {
+      margin-bottom: 12px;
+    }
+    .donation__share {
+      font-size: 15px;
+      text-align: left;
+    }
+    .donation__text {
+      margin-bottom: 14px;
+      font-size: 16px;
+    }
+    .donation__descr {
+      margin-bottom: 7px;
+      padding-left: 0;
+    }
+
+    .donation__title {
+      font-size: 24px;
+    }
+    .diet {
+      margin-bottom: 0;
+      width: 100%;
+      max-width: 300px;
+      justify-content: space-between;
+      .diet__info {
+        padding-left: 5px;
+        padding-top: 36px;
+      }
+      .diet__count {
+        font-size: 40px;
+        &:before {
+          top: 51%;
+          left: 90px;
+          background-image: url('../../assets/icons/x-m.svg');
+          background-repeat: no-repeat;
+        }
+      }
+      .diet__text {
+        max-width: 80px;
+        font-size: 9px;
+      }
+      .diet__picture {
+        .diet__img {
+          padding: 0;
+        }
+      }
+    }
+    .radio {
+      margin-bottom: 27px;
+    }
+
+  }
+  .footer {
+    max-height: 334px;
+    .footer__wrapper {
+      padding: 15px 0 0 0;
+    }
+    .logo {
+      margin: 0 auto;
+      max-width: 128px;
+      height: 23px;
+      .logo__title {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 128px;
+        height: 23px;
+        border: none;
+        border-radius: 0;
+      }
+      .logo__link {
+        position: relative;
+        top: 0;
+        left: 0;
+        font-size: 19px;
+        color: $White;
+        background: none;
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: -15px;
+          left: 72px;
+          width: 20px;
+          height: 40px;
+          background-image: url('../../assets/icons/bamboo.svg');
+          background-repeat: no-repeat;
+          transition: all .3s linear;
+        }
+        &:focus {
+          color: $Orange;
+          background: none;
+          outline: none;
+        }
+      }
+      &:hover {
+        .logo__link {
+          color: $Orange;
+          background: none;
+          &:before {
+            background-image: url('../../assets/icons/bamboo-active.svg');
+            background-repeat: no-repeat;
+          }
+        }
+      }
+    }
+    .footer__list {
+      grid-template-columns: 100%;
+      grid-template-rows: 27px 30px repeat(3, 1fr);
+      gap: 30px;
+    }
+    .footer__item:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .footer__item:nth-child(2) {
+      grid-column: 1;
+      grid-row: 3;
+    }
+    .footer__item:nth-child(3) {
+      margin-left: 0;
+      align-self: flex-start;
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .footer__item:nth-child(4) {
+      grid-column: 1;
+      grid-row: 3;
+    }
+    .footer__item:nth-child(5) {
+      grid-column: 1;
+      grid-row: 4;
+      margin-left: auto;
+    }
+    .footer__item:nth-child(6) {
+      grid-column: 1;
+      grid-row: 5;
+      align-self: flex-start;
+    }
+    .nav__list {
+      gap: 30px;
+      padding-left: 11px;
+    }
+    .social {
+      margin: 0 auto;
+      max-width: 194px;
+    }
+    .social__list {
+      display: flex;
+      gap: 30px;
+    }
+    .social__item {
+      &:not(:last-child) {
+        margin: 0;
+      }
+    }
+    .copyright {
+      text-align: center;
+      margin: 0 auto;
+      .copyright__author, .copyright__text {
+        font-size: 15px;
+      }
+    }
+    .btn {
+      padding-bottom: 18px;
     }
   }
 }
