@@ -18,7 +18,6 @@ section {
 
 .header {
   margin: 0 auto;
-  max-width: 1600px;
   background-color: $Black;
   .header__wrapper {
     display: flex;
@@ -235,10 +234,21 @@ section {
 /* hero */
 
 .hero {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 720px;
+    z-index: -5;
+    background-image: url('../../assets/images/hero/Giant Panda.jpg');
+    background-repeat: no-repeat;
+    background-position: center -80px;
+    background-size: cover;
+  }
   text-align: center;
-  background-image: url('../../assets/images/hero/Giant Panda.jpg');
-  background-repeat: no-repeat;
-  background-position: center -80px;
   .hero__wrapper {
     display: flex;
     flex-direction: column;
@@ -273,19 +283,20 @@ section {
 
 .info {
   padding-bottom: 174px;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: -140px;
+    right: 0;
+    width: 293px;
+    height: 605px;
+    background-image: url('../../assets/images/info/info-bg.png');
+    background-repeat: no-repeat;
+    background-position: right 12px;
+  }
   .container {
     position: relative;
-    &:before {
-      content: '';
-      position: absolute;
-      top: -140px;
-      right: 0;
-      width: 293px;
-      height: 605px;
-      background-image: url('../../assets/images/info/info-bg.png');
-      background-repeat: no-repeat;
-      background-position: right 12px;
-    }
   }
   .info__wrapper {
     display: grid;
@@ -321,9 +332,25 @@ section {
 /* pets */
 .pets {
   text-align: center;
-  .container {
-    background: url('../../assets/images/pets/pets-bg-1.png') no-repeat bottom left,
-    url('../../assets/images/pets/pets-bg-2.png') no-repeat bottom right;
+  position: relative;
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    background-repeat: no-repeat;
+  }
+  &:before {
+    bottom: 0;
+    left: 0;
+    width: 292px;
+    height: 460px;
+    background: url('../../assets/images/pets/pets-bg-1.png') no-repeat bottom left;
+  }
+  &:after {
+    bottom: 0;
+    right: 0;
+    width: 368px;
+    height: 275px;
+    background:  url('../../assets/images/pets/pets-bg-2.png') no-repeat bottom right;
   }
   .pets__slider {
     padding-bottom: 115px;
@@ -584,7 +611,6 @@ section {
 .work {
   margin: 0 auto;
   padding: 69px 0 100px 0;
-  max-width: 1600px;
   background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
   .work__wrapper {
     text-align: center;
@@ -706,21 +732,19 @@ section {
 /* testimonials */
 
 .testimonials {
+  position: relative;
   margin-top: 140px;
-  .container {
-    overflow: hidden;
-    position: relative;
-    &:before {
-      content: '';
-      position: absolute;
-      bottom: -132px;
-      right: -163px;
-      width: 350px;
-      height: 370px;
-      background-image: url('../../assets/images/testimonials/bg.png');
-      background-repeat: no-repeat;
-      background-position: bottom right;
-    }
+  overflow: hidden;
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -85px;
+    width: 250px;
+    height: 268px;
+    background-image: url(../../assets/images/testimonials/bg.png);
+    background-repeat: no-repeat;
+    background-position: top center;
   }
   .testimonials__container {
     padding-bottom: 180px;
@@ -1037,7 +1061,6 @@ section {
 .footer {
   background-color: $Black;
   margin: 0 auto;
-  max-width: 1600px;
   .footer__wrapper {
     padding: 41px 0 50px 0;
   }
@@ -1230,6 +1253,48 @@ section {
     }
   }
 }
+@media  (max-width: 1601px) {
+  .hero {
+    &:before {
+      display: none;
+    }
+    background-image: url('../../assets/images/hero/Giant Panda.jpg');
+    background-repeat: no-repeat;
+    background-position: center -80px;
+  }
+  .pets {
+    &:before {
+      display: none;
+    }
+    &:after {
+      display: none;
+    }
+    .container {
+      background: url('../../assets/images/pets/pets-bg-1.png') no-repeat bottom left,
+      url('../../assets/images/pets/pets-bg-2.png') no-repeat bottom right;
+    }
+  }
+  .testimonials {
+    &:before {
+      display: none;
+    }
+    .container {
+      overflow: hidden;
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -132px;
+        right: -163px;
+        width: 350px;
+        height: 370px;
+        background-image: url('../../assets/images/testimonials/bg.png');
+        background-repeat: no-repeat;
+        background-position: bottom right;
+      }
+    }
+  }
+}
 @media (max-width: 1599px) {
   .container {
     overflow: hidden;
@@ -1242,8 +1307,6 @@ section {
     }
   }
   .hero {
-    background-image: url('../../assets/images/hero/panda-sm.jpg');
-    background-position: center -80px;
     .hero__wrapper {
        row-gap: 41px;
        padding: 43px 0 47px 74px;
@@ -1258,6 +1321,9 @@ section {
   .info {
     padding: 0;
     margin-bottom: 140px;
+    &:before {
+      display: none;
+    }
     .container:before {
       opacity: 0;
       visibility: hidden;
@@ -1276,10 +1342,24 @@ section {
     }
   }
   .pets {
+    &:before {
+      display: block;
+      bottom: 0;
+      left: 0;
+      width: 292px;
+      height: 460px;
+      background: url('../../assets/images/pets/pets-bg-sm-1.png') no-repeat bottom left;
+    }
+    &:after {
+      display: block;
+      bottom: 0;
+      right: 0;
+      width: 368px;
+      height: 275px;
+      background:  url('../../assets/images/pets/pets-bg-sm-2.png') no-repeat bottom right;
+    }
     .container {
-      background:
-      url('../../assets/images/pets/pets-bg-sm-1.png') no-repeat bottom left,
-      url('../../assets/images/pets/pets-bg-sm-2.png') no-repeat bottom right;
+      background: none;
     }
     .pets__wrapper {
       row-gap: 15px;
@@ -1366,18 +1446,16 @@ section {
     }
   }
   .testimonials {
+    &:before {
+      display: block;
+      width: 305px;
+      height: 220px;
+      background-image: url('../../assets/images/testimonials/bg-sm.png');
+    }
     margin-top: 101px;
     .container {
       &:before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 135px;
-        height: 226px;
-        background-image: url('../../assets/images/testimonials/bg-sm.png');
-        background-repeat: no-repeat;
-        background-position: bottom right;
+        display: none;
       }
     }
     .testimonials__container {
@@ -1420,6 +1498,40 @@ section {
     }
   }
 }
+@media (max-width: 1001px) {
+  .hero {
+    background-image: url('../../assets/images/hero/panda-sm.jpg');
+    background-position: center -80px;
+  }
+  .pets {
+    &:before, &:after {
+      display: none;
+    }
+    .container {
+      background: url('../../assets/images/pets/pets-bg-sm-1.png') no-repeat bottom left,
+      url('../../assets/images/pets/pets-bg-sm-2.png') no-repeat bottom right;
+    }
+  }
+  .testimonials {
+    &:before {
+      display: none;
+    }
+    .container {
+      &:before {
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 135px;
+        height: 226px;
+        background-image: url('../../assets/images/testimonials/bg-sm.png');
+        background-repeat: no-repeat;
+        background-position: bottom right;
+      }
+    }
+  }
+}
 @media (max-width: 999px) {
   .container {
     margin:  0 auto;
@@ -1429,7 +1541,6 @@ section {
   .header {
     position: sticky;
     top: 0;
-    max-width: 640px;
     z-index: 10;
     .nav {
       display: none;
@@ -1568,8 +1679,6 @@ section {
     }
   }
   .hero {
-    background-image: url('../../assets/images/hero/panda-t.jpg');
-    background-position: center -34px;
     .hero__wrapper {
       position: relative;
       row-gap: 0;
@@ -1592,6 +1701,7 @@ section {
     padding: 0 0 40px 0;
     margin-bottom: 38px;
     &:before {
+      display: block;
       content: '';
       position: absolute;
       top: -20px;
@@ -1625,9 +1735,16 @@ section {
     }
   }
   .pets {
+    &:before {
+      display: block;
+      background: url('../../assets/images/pets/pets-bg-t-1.png') no-repeat bottom left;
+    }
+    &:after {
+      display: block;
+      background: url('../../assets/images/pets/pets-bg-t-2.png') no-repeat bottom right;
+    }
     .container {
-      background: url('../../assets/images/pets/pets-bg-t-1.png') no-repeat bottom left,
-      url('../../assets/images/pets/pets-bg-t-2.png') no-repeat bottom right;
+      background: none;
     }
     .pets__wrapper {
       row-gap: 11px;
@@ -1746,11 +1863,18 @@ section {
   .testimonials {
     margin-top: 61px;
     text-align: center;
+    &:before {
+      display: block;
+      bottom: -85px;
+      right: -10px;
+      width: 135px;
+      height: 226px;
+      background-image: url('../../assets/images/testimonials/bg-t.png');
+      background-repeat: no-repeat;
+    }
     .container {
       &:before {
-        bottom:-69px;
-        background-image: url('../../assets/images/testimonials/bg-t.png');
-        background-repeat: no-repeat;
+        display: none;
       }
     }
     .testimonials__container {
@@ -1845,7 +1969,56 @@ section {
     }
   }
 }
+@media  (max-width: 641px) {
+  .hero {
+    background-image: url('../../assets/images/hero/panda-t.jpg');
+    background-position: center -34px;
+  }
+  .info {
 
+  }
+  .pets {
+    &:before, &:after {
+      display: none;
+    }
+    .container {
+      background: url('../../assets/images/pets/pets-bg-t-1.png') no-repeat bottom left,
+      url('../../assets/images/pets/pets-bg-t-2.png') no-repeat bottom right;
+    }
+  }
+  .testimonials {
+    .testimonials__list {
+      .testimonials__item:first-child {
+        padding: 13px 11px 19px 11px;
+        .testimonials__text {
+          white-space: normal;
+          padding-left: 5px;
+        }
+        .testimonials__info {
+          padding-top: 1px;
+        }
+      }
+      .testimonials__item {
+        padding: 11px 11px 19px 10px;
+      }
+      .testimonials__text {
+        white-space: normal;
+        padding-left: 7px;
+      }
+    }
+    &:before {
+      display: none;
+    }
+    .container {
+      &:before {
+        display: block;
+        bottom:-69px;
+        background-image: url('../../assets/images/testimonials/bg-t.png');
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
 @media  (max-width: 639px) {
   .container {
     margin:  0 auto;
@@ -1861,7 +2034,7 @@ section {
       background-position: 151px 23px;
       .btn {
         left: 0;
-        bottom: 0;
+        bottom: 20px;
       }
     }
     .hero__title {
@@ -1871,8 +2044,17 @@ section {
     }
   }
   .info {
+    overflow: hidden;
     &:before {
-      display: none;
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -18px;
+        width: 30px;
+        height: 217px;
+        background-image: url('../../assets/images/info/info-bg-m.png');
+        background-repeat: no-repeat;
+        background-position: right top;
     }
     margin-bottom: 0;
     padding-bottom: 36px;
@@ -1999,17 +2181,20 @@ section {
       }
     }
     .testimonials__container {
-      padding-bottom: 60px;
+      padding-bottom: 59px;
     }
     .testimonials__list {
       margin-bottom: 32px;
+      .testimonials__item {
+        padding: 9px 11px 10px 12px;
+      }
+      .testimonials__item:first-child {
+        padding: 9px 11px 10px 21px;
+      }
     }
     .testimonials__title {
       margin-bottom: 18px;
       font-size: 24px;
-    }
-    .testimonials__item {
-      padding: 9px 11px 10px 12px;
     }
     .testimonials__card {
       column-gap: 5px;
@@ -2140,9 +2325,16 @@ section {
     background-position: center 0;
     .hero__wrapper {
       padding: 42px 0 115px 169px;
+      .btn {
+        bottom: 0;
+      }
     }
   }
   .info {
+    overflow: visible;
+    &:before {
+      display: none;
+    }
     .container {
       overflow: visible;
       &:before {
@@ -2154,7 +2346,29 @@ section {
   }
 }
 
-@media  (max-width: 332px) {
+@media  (max-width: 321px) {
+  .hero {
+    background-image: url('../../assets/images/hero/panda-m.jpg');
+    background-position: center 0;
+    .hero__wrapper {
+      .btn {
+        bottom: 0;
+      }
+    }
+  }
+  .info {
+    &:before {
+      content: '';
+      position: absolute;
+      top: -67px;
+      right: 0;
+      width: 128px;
+      height: 478px;
+      background-image: url('../../assets/images/info/info-bg-m.png');
+      background-repeat: no-repeat;
+      background-position: right top;
+    }
+  }
   .pets {
     .pets__list {
       margin: 0;
