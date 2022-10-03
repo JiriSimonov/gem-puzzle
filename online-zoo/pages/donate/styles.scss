@@ -245,6 +245,7 @@ section {
     background-image: url('../../assets/images/donate/panda_bg.jpg');
     background-position: center top;
     background-repeat: no-repeat;
+    background-size: cover;
   }
   background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
   .donate__wrapper {
@@ -461,7 +462,7 @@ section {
   }
   .donation__descr {
     text-align: left;
-    margin-bottom: 17px;
+    margin-bottom: 14px;
     padding-left: 5px;
     font-size: 16px;
     font-weight: 400;
@@ -633,6 +634,7 @@ section {
     row-gap: 44px;
     margin: 0 auto;
     padding: 0;
+    list-style: none;
   }
   .footer__item:nth-child(1) {
     grid-column: 1 / 1;
@@ -912,6 +914,7 @@ section {
       padding-right: 31px;
     }
     .donation__descr {
+      margin-bottom: 16px;
       padding-left: 18px;
     }
     .donation__wrapper {
@@ -936,10 +939,11 @@ section {
     }
     .footer__item:nth-child(4) {
       padding-right: 20px;
+      padding-right: 33px;
     }
     .nav__list {
       column-gap: 48px;
-      padding-left: 30px;
+      padding-left: 42px;
     }
   }
 }
@@ -1094,21 +1098,7 @@ section {
   }
   .donate {
     &:before {
-      display: none;
-    }
-    .container {
-      position: relative;
-      &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 335px;
-        background-image: url('../../assets/images/donate/panda_bg-sm.jpg');
-        background-repeat: no-repeat;
-        background-position: top center;
-      }
+      height: 335px;
     }
     .donate__wrapper {
       padding-top: 367px;
@@ -1312,6 +1302,28 @@ section {
   }
 }
 
+@media (max-width: 641px) {
+  .donate {
+    &:before {
+      display: none;
+    }
+    .container {
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 335px;
+        background-image: url('../../assets/images/donate/panda_bg-t.png');
+        background-repeat: no-repeat;
+        background-position: top center;
+      }
+    }
+  }
+}
+
 @media (max-width: 639px) {
   .container {
     overflow: hidden;
@@ -1333,12 +1345,16 @@ section {
     line-height: 120%;
   }
   .donation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 21px 0 20px 0;
     .donation__wrapper {
-      margin-bottom: 25px;
+      margin-bottom: 12px;
       .donation__line {
         display: flex;
-        margin: 0 0 7px 0;
+        margin: 0 auto 7px auto;
         padding: 5px 17px 5px 17px;
         max-width: 266px;
         border-radius: 2px;
@@ -1421,7 +1437,6 @@ section {
         padding: 20px;
       }
       .donation__count {
-        padding-left: 8px;
         max-width: 300px;
         .donation__total {
           padding-left: 6px;
@@ -1636,6 +1651,15 @@ section {
     .donate__wrapper {
       padding-top: 217px;
       padding-bottom: 21px;
+    }
+  }
+  .donation {
+    display: block;
+    .donation__wrapper {
+      margin-bottom: 24px;
+    }
+    .donation__descr {
+      align-self: flex-start;
     }
   }
 }
