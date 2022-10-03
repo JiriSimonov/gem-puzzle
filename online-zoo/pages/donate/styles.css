@@ -268,6 +268,7 @@ section {
   background-image: url("../../assets/images/donate/panda_bg.jpg");
   background-position: center top;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 .donate .donate__wrapper {
   position: relative;
@@ -474,7 +475,7 @@ section {
 
 .donation__descr {
   text-align: left;
-  margin-bottom: 17px;
+  margin-bottom: 14px;
   padding-left: 5px;
   font-size: 16px;
   font-weight: 400;
@@ -648,6 +649,7 @@ section {
   row-gap: 44px;
   margin: 0 auto;
   padding: 0;
+  list-style: none;
 }
 .footer .footer__item:nth-child(1) {
   grid-column: 1/1;
@@ -909,6 +911,7 @@ section {
     padding-right: 31px;
   }
   .donation .donation__descr {
+    margin-bottom: 16px;
     padding-left: 18px;
   }
   .donation .donation__wrapper {
@@ -931,10 +934,11 @@ section {
   }
   .footer .footer__item:nth-child(4) {
     padding-right: 20px;
+    padding-right: 33px;
   }
   .footer .nav__list {
     column-gap: 48px;
-    padding-left: 30px;
+    padding-left: 42px;
   }
 }
 @media (max-width: 1024px) {
@@ -1079,21 +1083,7 @@ section {
     background: url("../../assets/icons/bamboo-t-active.svg") no-repeat 13% 83%;
   }
   .donate:before {
-    display: none;
-  }
-  .donate .container {
-    position: relative;
-  }
-  .donate .container:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 335px;
-    background-image: url("../../assets/images/donate/panda_bg-sm.jpg");
-    background-repeat: no-repeat;
-    background-position: top center;
   }
   .donate .donate__wrapper {
     padding-top: 367px;
@@ -1285,6 +1275,25 @@ section {
     margin-bottom: 5px;
   }
 }
+@media (max-width: 641px) {
+  .donate:before {
+    display: none;
+  }
+  .donate .container {
+    position: relative;
+  }
+  .donate .container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 335px;
+    background-image: url("../../assets/images/donate/panda_bg-t.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+}
 @media (max-width: 639px) {
   .container {
     overflow: hidden;
@@ -1304,14 +1313,18 @@ section {
     line-height: 120%;
   }
   .donation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 21px 0 20px 0;
   }
   .donation .donation__wrapper {
-    margin-bottom: 25px;
+    margin-bottom: 12px;
   }
   .donation .donation__wrapper .donation__line {
     display: flex;
-    margin: 0 0 7px 0;
+    margin: 0 auto 7px auto;
     padding: 5px 17px 5px 17px;
     max-width: 266px;
     border-radius: 2px;
@@ -1386,7 +1399,6 @@ section {
     padding: 20px;
   }
   .donation .donation__wrapper .donation__count {
-    padding-left: 8px;
     max-width: 300px;
   }
   .donation .donation__wrapper .donation__count .donation__total {
@@ -1587,6 +1599,15 @@ section {
   .donate .donate__wrapper {
     padding-top: 217px;
     padding-bottom: 21px;
+  }
+  .donation {
+    display: block;
+  }
+  .donation .donation__wrapper {
+    margin-bottom: 24px;
+  }
+  .donation .donation__descr {
+    align-self: flex-start;
   }
 }
 
