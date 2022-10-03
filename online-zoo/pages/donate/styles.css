@@ -649,6 +649,7 @@ section {
   row-gap: 44px;
   margin: 0 auto;
   padding: 0;
+  list-style: none;
 }
 .footer .footer__item:nth-child(1) {
   grid-column: 1/1;
@@ -933,10 +934,11 @@ section {
   }
   .footer .footer__item:nth-child(4) {
     padding-right: 20px;
+    padding-right: 33px;
   }
   .footer .nav__list {
     column-gap: 48px;
-    padding-left: 30px;
+    padding-left: 42px;
   }
 }
 @media (max-width: 1024px) {
