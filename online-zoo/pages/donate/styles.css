@@ -1479,6 +1479,7 @@ section {
     margin-bottom: 27px;
   }
   .footer {
+    overflow: hidden;
     max-height: 335px;
   }
   .footer .footer__wrapper {
