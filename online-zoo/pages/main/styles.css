@@ -2134,6 +2134,9 @@ section {
   .testimonials .testimonials__text {
     padding-left: 5px;
   }
+  .footer {
+    max-height: 319px;
+  }
   .footer .footer__wrapper {
     padding: 15px 0 0 0;
   }
