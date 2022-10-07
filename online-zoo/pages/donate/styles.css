@@ -32,6 +32,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 section {
   margin: 0;
 }
@@ -971,6 +975,21 @@ section {
   }
   .header .nav--open {
     position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s linear;
+    z-index: 10;
+  }
+  .header .nav--open .nav__overlay {
+    position: fixed;
     top: 0;
     right: 0;
     display: flex;
@@ -1039,6 +1058,18 @@ section {
   }
   .header .nav--open .nav__list .active {
     color: #E47209;
+  }
+  .header .nav--open .burger--orange {
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .header .nav--open .burger--orange .burger__line:before {
+    background-color: red;
+  }
+  .header .nav--open .burger--orange .burger__line:after {
+    background-color: red;
   }
   .header .header__link {
     display: none;
