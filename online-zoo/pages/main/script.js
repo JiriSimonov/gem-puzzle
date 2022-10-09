@@ -10,10 +10,10 @@ const mediaQueryTablet = window.matchMedia('(max-width: 999px)');
 const mediaQuery = window.matchMedia('(max-width: 1599px)');
 
 modalOverlay.addEventListener('click', (e) => {
-   if (e.target == modalOverlay) {
-       modalOverlay.classList.remove('modal__overlay--visible');
-       modalContent.classList.remove('modal__content--visible');
-   }
+    if (e.target == modalOverlay) {
+        modalOverlay.classList.remove('modal__overlay--visible');
+        modalContent.classList.remove('modal__content--visible');
+    }
 })
 testimonialsBtn.addEventListener('click', () => {
     modalOverlay.classList.add('modal__overlay--visible');
@@ -73,26 +73,33 @@ if (mediaQuery.matches) {
 }
 
 /* 999px @media */
-if(mediaQueryTablet.matches === true) {
+if (mediaQueryTablet.matches === true) {
     const container = document.querySelector('.testimonials__list');
     const items = document.querySelectorAll('.testimonials__item');
     const bodyCont = document.querySelector('.body');
     const overlay = document.querySelectorAll('.popup__overlay');
+    const closeBtns = document.querySelectorAll('.popup__close');
     container.addEventListener('click', (e) => {
         let target = e.target;
         items.forEach(i => {
-            i.classList.remove('open');
             if (target === i || i === target.parentNode || i === target.parentNode.parentNode) {
                 i.classList.add('open');
                 bodyCont.classList.add('no-scroll');
             }
         });
         overlay.forEach(y => {
-            if (target === y) {
+            if (target === y && target !== target.closest('.popup__content') && target !== target.closest('.popup__item')) {
                 bodyCont.classList.remove('no-scroll');
                 y.closest('.open').classList.remove('open');
             }
         });
+        closeBtns.forEach(x => {
+            if (target === x) {
+                bodyCont.classList.remove('no-scroll');
+                x.closest('.open').classList.remove('open');
+            }
+        }
+        )
     });
 }
 
@@ -129,7 +136,7 @@ btnPrev.addEventListener('click', () => {
         setRandom(list2);
         setPosition();
     }
-    setTimeout(function() { btnPrev.disabled = false }, 500);
+    setTimeout(function () { btnPrev.disabled = false }, 500);
 })
 btnPrevSm.addEventListener('click', () => {
     btnPrevSm.disabled = true;
@@ -144,7 +151,7 @@ btnPrevSm.addEventListener('click', () => {
         setRandom(list2);
         setPosition();
     }
-    setTimeout(function() { btnPrevSm.disabled = false }, 500);
+    setTimeout(function () { btnPrevSm.disabled = false }, 500);
 })
 btnNext.addEventListener('click', () => {
     btnNext.disabled = true;
@@ -159,7 +166,7 @@ btnNext.addEventListener('click', () => {
         position = position + -petsWrapper.clientWidth + -28;
         setPosition();
     }
-    setTimeout(function() { btnNext.disabled = false }, 500);
+    setTimeout(function () { btnNext.disabled = false }, 500);
 })
 
 btnNextSm.addEventListener('click', () => {
@@ -175,7 +182,7 @@ btnNextSm.addEventListener('click', () => {
         position = position + -petsWrapper.clientWidth + -29;
         setPosition();
     }
-    setTimeout(function() { btnNextSm.disabled = false }, 500);
+    setTimeout(function () { btnNextSm.disabled = false }, 500);
 })
 
 if (mediaQueryTablet.matches) {
@@ -186,7 +193,7 @@ if (mediaQueryTablet.matches) {
     }
     btnPrevSm.addEventListener('click', () => {
         btnPrevSm.disabled = true;
-        if(stepPosition === 289) {
+        if (stepPosition === 289) {
             stepPosition = -1260;
             setRandom(list1);
             setRandom(list2);
@@ -202,7 +209,7 @@ if (mediaQueryTablet.matches) {
             setRandom(list2);
             setNewPosition();
         }
-        setTimeout(function() { btnPrevSm.disabled = false }, 500);
+        setTimeout(function () { btnPrevSm.disabled = false }, 500);
     })
     btnNextSm.addEventListener('click', () => {
         btnNextSm.disabled = true;
@@ -217,6 +224,6 @@ if (mediaQueryTablet.matches) {
             stepPosition = stepPosition - 630;
             setNewPosition();
         }
-        setTimeout(function() { btnNextSm.disabled = false }, 500);
+        setTimeout(function () { btnNextSm.disabled = false }, 500);
     })
 }
