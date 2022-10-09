@@ -30,7 +30,6 @@ burgerItem.addEventListener('click', () => {
     menu.classList.toggle('nav--open');
     body.classList.toggle('no-scroll');
 })
-
 menu.addEventListener('click', (e) => {
     if (e.target == menu) {
         menu.classList.remove('nav--open');
@@ -73,10 +72,10 @@ if (mediaQuery.matches) {
     })
 }
 
-if(mediaQueryTablet) {
+/* 999px @media */
+if(mediaQueryTablet.matches === true) {
     const container = document.querySelector('.testimonials__list');
     const items = document.querySelectorAll('.testimonials__item');
-    const closeBtn = document.querySelector('.popup__close');
     const bodyCont = document.querySelector('.body');
     const overlay = document.querySelectorAll('.popup__overlay');
     container.addEventListener('click', (e) => {
