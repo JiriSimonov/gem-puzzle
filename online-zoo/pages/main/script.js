@@ -13,6 +13,7 @@ modalOverlay.addEventListener('click', (e) => {
     if (e.target == modalOverlay) {
         modalOverlay.classList.remove('modal__overlay--visible');
         modalContent.classList.remove('modal__content--visible');
+        body.classList.remove('no-scroll');
     }
 })
 testimonialsBtn.addEventListener('click', () => {
