@@ -5,6 +5,7 @@ const lineBtns = document.querySelectorAll('.donation__button');
 const burgerItem = document.querySelector('.burger');
 const menu = document.querySelector('.nav');
 const input = document.querySelector('.donation__input');
+const body = document.body;
 let values = document.querySelectorAll('.donation__total');
 let count = 0;
 
@@ -42,6 +43,15 @@ input.addEventListener('input', () => {
 burgerItem.addEventListener('click', () => {
     burgerItem.classList.toggle('is-open');
     menu.classList.toggle('nav--open');
+    body.classList.toggle('no-scroll');
+})
+
+menu.addEventListener('click', (e) => {
+    if (e.target == menu) {
+        menu.classList.remove('nav--open');
+        burgerItem.classList.toggle('is-open');
+        body.classList.toggle('no-scroll');
+    }
 })
 
 function setActive() {
