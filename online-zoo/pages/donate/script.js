@@ -110,7 +110,7 @@ function getMinMax() {
         else if (value < min) { input.value = min }
     })
     input.addEventListener('keydown', (e) => {
-        if (['e', '-', '+', '.', ','].includes(e.key)) {
+        if (['e','E', '-', '+', '.', ','].includes(e.key)) {
             e.preventDefault();
         }
     })
