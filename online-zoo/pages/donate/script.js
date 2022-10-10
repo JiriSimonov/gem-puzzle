@@ -109,6 +109,11 @@ function getMinMax() {
         if (value > max) { input.value = max }
         else if (value < min) { input.value = min }
     })
+    input.addEventListener('keydown', (e) => {
+        if (['e', '-', '+', '.', ','].includes(e.key)) {
+            e.preventDefault();
+        }
+    })
 }
 
 getMinMax();
