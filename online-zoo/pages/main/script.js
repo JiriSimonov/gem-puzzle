@@ -124,6 +124,7 @@ const btnNextSm = document.querySelector('.pets__btn--next');
 const petsWrapper = document.querySelector('.pets__wrapper');
 
 btnPrev.addEventListener('click', () => {
+    btnNext.disabled = true;
     btnPrev.disabled = true;
     if (position === 0) {
         position = -1188;
@@ -137,6 +138,7 @@ btnPrev.addEventListener('click', () => {
         setPosition();
     }
     setTimeout(function () { btnPrev.disabled = false }, 500);
+    setTimeout(function () { btnNext.disabled = false }, 500);
 })
 btnPrevSm.addEventListener('click', () => {
     btnPrevSm.disabled = true;
@@ -155,6 +157,7 @@ btnPrevSm.addEventListener('click', () => {
 })
 btnNext.addEventListener('click', () => {
     btnNext.disabled = true;
+    btnPrev.disabled = true;
     if (position <= -969) {
         position = 0;
         setRandom(list1);
@@ -167,9 +170,11 @@ btnNext.addEventListener('click', () => {
         setPosition();
     }
     setTimeout(function () { btnNext.disabled = false }, 500);
+    setTimeout(function () { btnPev.disabled = false }, 500);
 })
 
 btnNextSm.addEventListener('click', () => {
+    btnPrevSm.disabled = true;
     btnNextSm.disabled = true;
     if (position <= -969) {
         position = 0;
@@ -183,6 +188,7 @@ btnNextSm.addEventListener('click', () => {
         setPosition();
     }
     setTimeout(function () { btnNextSm.disabled = false }, 500);
+    setTimeout(function () { btnPrevSm.disabled = false }, 500);
 })
 
 if (mediaQueryTablet.matches) {
@@ -193,6 +199,7 @@ if (mediaQueryTablet.matches) {
     }
     btnPrevSm.addEventListener('click', () => {
         btnPrevSm.disabled = true;
+        btnNextSm.disabled = true;
         if (stepPosition === 289) {
             stepPosition = -1260;
             setRandom(list1);
@@ -209,9 +216,11 @@ if (mediaQueryTablet.matches) {
             setRandom(list2);
             setNewPosition();
         }
+        setTimeout(function () { btnNextSm.disabled = false }, 500);
         setTimeout(function () { btnPrevSm.disabled = false }, 500);
     })
     btnNextSm.addEventListener('click', () => {
+        btnPrevSm.disabled = true;
         btnNextSm.disabled = true;
         if (stepPosition <= -1260) {
             stepPosition = 0;
@@ -225,6 +234,7 @@ if (mediaQueryTablet.matches) {
             setNewPosition();
         }
         setTimeout(function () { btnNextSm.disabled = false }, 500);
+        setTimeout(function () { btnPrevSm.disabled = false }, 500);
     })
 }
 
