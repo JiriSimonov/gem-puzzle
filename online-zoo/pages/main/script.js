@@ -60,8 +60,8 @@ testInput.addEventListener('input', () => {
 })
 
 
-if (mediaQuery.matches) {
-    /* slider */
+if (mediaQuery.matches === true) {
+    testInput.max = '8';
     testInput.addEventListener('click', () => {
         testimonPosition = testInput.value * -testimonItem;
         setPosition();
