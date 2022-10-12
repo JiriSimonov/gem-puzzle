@@ -173,7 +173,7 @@ btnNext.addEventListener('click', () => {
         setPosition();
     }
     setTimeout(function () { btnNext.disabled = false }, 500);
-    setTimeout(function () { btnPev.disabled = false }, 500);
+    setTimeout(function () { btnPrev.disabled = false }, 500);
 })
 
 btnNextSm.addEventListener('click', () => {
