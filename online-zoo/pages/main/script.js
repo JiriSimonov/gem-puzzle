@@ -143,6 +143,7 @@ btnPrev.addEventListener('click', () => {
 })
 btnPrevSm.addEventListener('click', () => {
     btnPrevSm.disabled = true;
+    btnNextSm.disabled = true;
     if (position === 0) {
         position = -969;
         setRandom(list1);
@@ -154,6 +155,7 @@ btnPrevSm.addEventListener('click', () => {
         setRandom(list2);
         setPosition();
     }
+    setTimeout(function () { btnNextSm.disabled = false }, 500);
     setTimeout(function () { btnPrevSm.disabled = false }, 500);
 })
 btnNext.addEventListener('click', () => {
