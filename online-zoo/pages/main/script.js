@@ -13,6 +13,7 @@ modalOverlay.addEventListener('click', (e) => {
     if (e.target == modalOverlay) {
         modalOverlay.classList.remove('modal__overlay--visible');
         modalContent.classList.remove('modal__content--visible');
+        body.classList.remove('no-scroll');
     }
 })
 testimonialsBtn.addEventListener('click', () => {
@@ -241,3 +242,4 @@ if (mediaQueryTablet.matches) {
 }
 
 alert('Привет! Не забывайте обновлять страницу при смене разрешения. В слайдере pets есть ограничение на пролистывание во время анимации, его можно отследить в DevTools. Кнопке добавляется атрибут disabled на время анимаци. Карточки перелистываются по 6 и 4, в зависимости от разрешения экрана(когда слайды заканчиваются слайдер перелистывается в начальное положение(в порядке оценки снятия баллов за это нет)). В testimonials попап открывается только при клике на карточку или текст карточки(при нажатии на имя/дату поста он не откроется (в критериях снятия баллов за это нет)). Оставляйте, пожалуйста, свои данные после ревью. Спасибо, что прочитали!')
+
