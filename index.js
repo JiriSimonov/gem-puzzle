@@ -6,11 +6,22 @@ import { bottm } from './bottom-side.js';
 
 const body = document.querySelector('body');
 export const container = createElement({tag: 'div', eClass: 'container', parent: body});
-const puzzesWrapper = createElement({tag: 'div', eClass: 'puzzles', parent: container});
+const puzzlesWrapper = createElement({tag: 'div', eClass: 'puzzles', parent: container});
+const setNewBg = createElement({tag: 'button', eClass: 'btn', parent: puzzlesWrapper, inner: 'Switch background', attr: {'type' : 'button'}});
 
-puzzesWrapper.appendChild(controlsPanel);
-export const playGround = createElement({tag: 'div', eClass: 'playground', parent: puzzesWrapper});
-puzzesWrapper.appendChild(bottm);
+function getRandomNum(min, max) {
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
+}
+
+setNewBg.addEventListener('click', () => {
+    puzzlesWrapper.style.background = `url('./assets/backrounds/bg-${getRandomNum(1, 7)}.jpg')`;
+});
+
+puzzlesWrapper.appendChild(controlsPanel);
+
+export const playGround = createElement({tag: 'div', eClass: 'playground', parent: puzzlesWrapper});
+puzzlesWrapper.appendChild(bottm);
 export const puzzlesArr = createElementsArr({
     arrLength: +State.currentFrame * +State.currentFrame, 
     parent: playGround, 
