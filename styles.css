@@ -4,6 +4,10 @@ body {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .container {
   margin: 0 auto;
   padding: 40px;
@@ -122,6 +126,9 @@ body {
   cursor: pointer;
   transition: all 0.3s linear;
 }
+.puzzles .is-won .playground__item {
+  border-color: #c2a03c;
+}
 .puzzles .bottm .bottm__wrapper {
   display: flex;
   justify-content: space-between;
@@ -147,4 +154,38 @@ body {
   background-color: #c2a03c;
   color: black;
   border-color: rgba(255, 255, 255, 0.8);
+}
+
+.modal .modal__overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s linear;
+  overflow: hidden;
+  z-index: 10;
+}
+.modal .modal__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 30%;
+  background-color: white;
+  text-align: center;
+  transition: all 0.3s linear;
+  overflow: hidden;
+}
+
+.modal--visible .modal__overlay {
+  display: flex;
 }/*# sourceMappingURL=styles.css.map */

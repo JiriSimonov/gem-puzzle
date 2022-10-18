@@ -3,6 +3,7 @@ import { createElement } from './utils/createElement.js';
 import controlsPanel from './controls.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { bottm } from './bottom-side.js';
+import { modal } from './modal.js';
 
 const body = document.querySelector('body');
 export const container = createElement({tag: 'div', eClass: 'container', parent: body});
@@ -11,6 +12,7 @@ const setNewBg = createElement({tag: 'button', eClass: 'btn', parent: puzzlesWra
 puzzlesWrapper.appendChild(controlsPanel);
 export const playGround = createElement({tag: 'div', eClass: 'playground', parent: puzzlesWrapper});
 puzzlesWrapper.appendChild(bottm);
+body.appendChild(modal);
 
 function getRandomNum(min, max) {
     let rand = min - 0.5 + Math.random() * (max - min + 1);
@@ -114,8 +116,34 @@ function switchBtns(posOne, posTwo, matrix) {
     const posNumber = matrix[posOne.y][posOne.x];
     matrix[posOne.y][posOne.x] = matrix[posTwo.y][posTwo.x];
     matrix[posTwo.y][posTwo.x] = posNumber; 
+    if (isWon(matrix)) {
+        addWon();
+    }
 }
 
 function playSound() {
     const audio = createElement({tag: 'audio', eClass: 'audio', parent:body, inner: '<source src=\"./assets/audio/audio.mp3\" type=\"audio/mpeg\">', attr: {'autoplay': true}});
+    setTimeout(() => {
+        body.removeChild(audio);
+    }, 1000);
+}
+
+function generateWinArr(currentFrame) {
+    const winArr = new Array(currentFrame * currentFrame).fill(0).map((_item, index) => index + 1);
+    return winArr;
+}
+function isWon(matrix) {
+    const flatMatrix = matrix.flat();
+    let winArr = generateWinArr(State.currentFrame);
+    for (let i = 0; i < winArr.length; i++) {
+        if (flatMatrix[i] !== winArr[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function addWon() {
+    body.classList.toggle('no-scroll');
+    modal.classList.toggle('modal--visible');
 }
