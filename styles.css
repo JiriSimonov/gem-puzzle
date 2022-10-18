@@ -1,17 +1,123 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .container {
-  width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 40px;
 }
 
 .puzzles {
   background-color: gray;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 850px;
+  background-image: url("./assets//backrounds/bg-1.jpg");
+}
+.puzzles .control-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 30px;
+}
+.puzzles .control-panel .control-panel__select {
+  background-color: transparent;
+  padding: 7px;
+  border: 2px solid #c2a03c;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 120%;
+  color: white;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  transition: 0.3s linear;
+}
+.puzzles .control-panel .control-panel__select .control-panel__option {
+  background-color: transparent;
+  color: #c2a03c;
+  cursor: pointer;
+}
+.puzzles .control-panel .control-panel__select .control-panel__option:hover {
+  background-color: #c2a03c;
+  color: white;
+}
+.puzzles .control-panel .control-panel__btn {
+  padding: 5px;
+  height: 35px;
+  border: 2px solid #c2a03c;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 120%;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+.puzzles .control-panel .control-panel__btn:hover {
+  background-color: #c2a03c;
+  color: black;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+.puzzles .playground {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  max-height: 600px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.puzzles .playground .playground__item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0;
+  padding-right: 5px;
+  width: 25%;
+  height: 25%;
+  border-color: transparent;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 150px;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 120%;
+  color: black;
+  text-align: center;
+}
+.puzzles .bottm .bottm__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.puzzles .bottm .bottm__wrapper .bottm__link {
+  padding: 5px;
+  border: 2px solid #c2a03c;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 120%;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s linear;
+}
+.puzzles .bottm .bottm__wrapper .bottm__link:hover, .puzzles .bottm .bottm__wrapper .bottm__link :focus {
+  color: white;
+  outline: none;
+  background-color: #c2a03c;
+  color: black;
+  border-color: rgba(255, 255, 255, 0.8);
 }/*# sourceMappingURL=styles.css.map */

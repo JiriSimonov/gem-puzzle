@@ -11,4 +11,11 @@ const puzzesWrapper = createElement({tag: 'div', eClass: 'puzzles', parent: cont
 puzzesWrapper.appendChild(controlsPanel);
 export const playGround = createElement({tag: 'div', eClass: 'playground', parent: puzzesWrapper});
 puzzesWrapper.appendChild(bottm);
-export const puzzlesArr = createElementsArr({arrLength: +State.currentFrame * +State.currentFrame, parent: playGround, callback: (_item, index) => createElement({tag: 'button', eClass: 'pisya', inner: `${index + 1}`})})
+export const puzzlesArr = createElementsArr({
+    arrLength: +State.currentFrame * +State.currentFrame, 
+    parent: playGround, 
+    callback: (_item, index) => createElement({tag: 'button', eClass: 'playground__item', 
+    inner: `${index + 1}`, 
+    data: {'matrixId': `${index + 1}`},
+    bg: `${index + 1}`
+})});

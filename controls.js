@@ -20,7 +20,7 @@ setFrameSelect.addEventListener('change', () => {
     if (currentFrame !== State.currentFrame) {
         playGround.innerHTML = '';
         puzzlesArr.splice(0);
-        puzzlesArr.push(...createElementsArr({arrLength: +State.currentFrame * +State.currentFrame, parent: playGround, callback: (_item, index) => createElement({tag: 'button', eClass: 'pisya', inner: `${index + 1}`})}));
+        puzzlesArr.push(...createElementsArr({arrLength: +State.currentFrame * +State.currentFrame, parent: playGround, callback: (_item, index) => createElement({tag: 'button', eClass: 'playground__item', inner: `${index + 1}`, data: {'matrixId': `${index + 1}`}})}));
     }
 });
 

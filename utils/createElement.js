@@ -1,4 +1,4 @@
-export function createElement({tag, eClass, inner = '', parent = '', attr = '', data = ''}) {
+export function createElement({tag, eClass, inner = '', parent = '', attr = '', data = '', bg = ''}) {
     const elem = document.createElement(tag);
     elem.className = eClass;
     if (inner) elem.innerHTML = inner;
@@ -13,5 +13,6 @@ export function createElement({tag, eClass, inner = '', parent = '', attr = '', 
         }
     }
     if (parent) parent.appendChild(elem);
+    if (bg) elem.style.background = `url('./assets/gems/gem-${+bg}.png')`;
     return elem;
 }
