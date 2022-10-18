@@ -90,6 +90,7 @@ playGround.addEventListener('click', (event) => {
 
     if (isPossible) {
         switchBtns(blankPosition, btnPosition, matrix);
+        playSound();
         setPositionItems(matrix);
     }
 });
@@ -113,4 +114,8 @@ function switchBtns(posOne, posTwo, matrix) {
     const posNumber = matrix[posOne.y][posOne.x];
     matrix[posOne.y][posOne.x] = matrix[posTwo.y][posTwo.x];
     matrix[posTwo.y][posTwo.x] = posNumber; 
+}
+
+function playSound() {
+    const audio = createElement({tag: 'audio', eClass: 'audio', parent:body, inner: '<source src=\"./assets/audio/audio.mp3\" type=\"audio/mpeg\">', attr: {'autoplay': true}});
 }
