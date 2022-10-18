@@ -1,1 +1,17 @@
-/*# sourceMappingURL=styles.css.map */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.puzzles {
+  background-color: gray;
+  width: 1200px;
+  height: 600px;
+}/*# sourceMappingURL=styles.css.map */
