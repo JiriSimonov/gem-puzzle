@@ -52,6 +52,7 @@ body {
   align-items: center;
   gap: 25px;
   margin-top: 30px;
+  transition: all 0.3s linear;
 }
 .puzzles .control-panel .control-panel__select {
   background-color: transparent;
@@ -95,6 +96,15 @@ body {
   color: black;
   border-color: rgba(255, 255, 255, 0.8);
 }
+.puzzles .control-panel .control-panel__btn_music {
+  padding: 15px;
+  width: 26px;
+  height: 26px;
+  background-image: url("/jirisimonov-JSFE2022Q3/assets/icons/sound-on.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px;
+}
 .puzzles .playground {
   position: relative;
   margin: 0 auto;
@@ -128,6 +138,9 @@ body {
           user-select: none;
   cursor: pointer;
   transition: all 0.3s linear;
+}
+.puzzles .playground .playground__item:hover {
+  border-color: #c2a03c;
 }
 .puzzles .is-won .playground__item {
   border-color: #c2a03c;

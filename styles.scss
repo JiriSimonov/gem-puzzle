@@ -51,6 +51,7 @@ body {
         align-items: center;
         gap: 25px;
         margin-top: 30px;
+        transition: all .3s linear;
         .control-panel__select {
             background-color: transparent;
             padding: 7px;
@@ -91,6 +92,15 @@ body {
                 border-color: rgba(255,255,255, 0.8);
             }
         }
+        .control-panel__btn_music {
+            padding: 15px;
+            width: 26px;
+            height: 26px;
+            background-image: url('/jirisimonov-JSFE2022Q3/assets/icons/sound-on.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 24px;
+        }
     }
     .playground {
         position: relative;
@@ -121,6 +131,9 @@ body {
             user-select: none;
             cursor: pointer;
             transition: all .3s linear;
+            &:hover {
+                border-color: #c2a03c;
+            }
         }
     }
     .is-won {

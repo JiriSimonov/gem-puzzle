@@ -97,7 +97,7 @@ playGround.addEventListener('click', (event) => {
 
     if (isPossible) {
         switchBtns(blankPosition, btnPosition, matrix);
-        playSound();
+        if (State.isSoundOn === true) playSound();
         startTimer();
         statsMovesCounter.innerHTML = ++movesCounter.moves;
         setPositionItems(matrix);
@@ -135,6 +135,13 @@ function playSound() {
     }, 300);
 }
 
+export function playShuffleSound() {
+    const audio = createElement({tag: 'audio', eClass: 'audio', parent:body, inner: '<source src=\"./assets/audio/shuffle.mp3\" type=\"audio/mpeg\">', attr: {'autoplay': true}});
+    setTimeout(() => {
+        body.removeChild(audio);
+    }, 400);
+}
+
 export function generateWinArr(currentFrame) {
     const winArr = new Array(currentFrame * currentFrame).fill(0).map((_item, index) => index + 1);
     return winArr;
@@ -155,14 +162,18 @@ function addWon() {
     modal.classList.toggle('modal--visible');
 }
 
-function startTimer() {
+export function printTime(sec, min) {
+    statsTimerCounterSeconds.innerHTML = `${(sec < 10 ? sec.toString().padStart(2, '0') : sec)}`;
+    statsTimerCounter.innerHTML = `${(min < 10 ? min.toString().padStart(2, '0') : min)}`;
+}
+
+export function startTimer() {
     if (timer.time <= 0) {
         timerCounter = setInterval(function() {
             timer.time += 1/60;
-            let secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
-            let minutesValue = Math.floor(timer.time / 60);
-            statsTimerCounterSeconds.innerHTML = `${(secondsValue < 10 ? secondsValue.toString().padStart(2, '0') : secondsValue)}`;
-            statsTimerCounter.innerHTML = `${(minutesValue < 10 ? minutesValue.toString().padStart(2, '0') : minutesValue)}`;
+            const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
+            const minutesValue = Math.floor(timer.time / 60);
+            printTime(secondsValue, minutesValue);
         }, 1000/60);
     }
 }
