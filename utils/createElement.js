@@ -13,6 +13,6 @@ export function createElement({tag, eClass, inner = '', parent = '', attr = '', 
         }
     }
     if (parent) parent.appendChild(elem);
-    if (bg) elem.style.background = `url('./assets/gems/gem-${+bg}.png')`;
+    if (bg) elem.style.backgroundImage = `url('./assets/gems/gem-${+bg}.png')`;
     return elem;
 }

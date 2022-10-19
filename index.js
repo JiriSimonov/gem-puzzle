@@ -18,9 +18,7 @@ puzzlesWrapper.appendChild(bottm);
 body.appendChild(modal);
 
 let movesCounter = 0;
-let timer = 0;
-let minutes = 0;
-let seconds = 0;
+const timer = 0;
 let timerCounter;
 
 setNewBg.addEventListener('click', () => {
@@ -37,22 +35,25 @@ export const puzzlesArr = createElementsArr({
 })});
 
 puzzlesArr[puzzlesArr.length - 1].style.display = 'none';
-let matrix = getMatrix(puzzlesArr.map((item) => Number(item.dataset.matrixId)));
+export let matrix = getMatrix(puzzlesArr.map((item) => Number(item.dataset.matrixId)), +State.currentFrame);
 
-function getShuffledArr() {
+export function getShuffledArr() {
     const shuffledArr = shuffleArray(matrix.flat());
-    matrix = getMatrix(shuffledArr);
+    matrix = getMatrix(shuffledArr, +State.currentFrame);
     return setPositionItems(matrix);
 }
 
 getShuffledArr();
 
-function getMatrix(arr) {
-    const matrix = [[],[],[],[]];
+export function getMatrix(arr, currentFrame) {
+    let matrix = [];
+    for (let i = 0; i < currentFrame; i++) {
+        matrix.push([]);
+    }
     let y = 0;
     let x = 0;
     for (let i = 0; i < arr.length; i++) {
-        if (x >= 4) {
+        if (x >= currentFrame) {
             y++;
             x = 0;
         }
@@ -85,13 +86,13 @@ function shuffleArray(arr) {
         .sort((a, b) => a.sort - b.sort)
         .map(({value}) => value)
 }
-let blankNumber = +State.currentFrame * +State.currentFrame;
+export const blankNumber = {number: +State.currentFrame * +State.currentFrame};
 playGround.addEventListener('click', (event) => {
     const currentBtn = event.target.closest('.playground__item');
     if (!currentBtn) return;
     const btnNumber = +currentBtn.dataset.matrixId;
     const btnPosition = getBtnPositionByNumber(btnNumber, matrix);
-    const blankPosition = getBtnPositionByNumber(blankNumber, matrix);
+    const blankPosition = getBtnPositionByNumber(blankNumber.number, matrix);
     const isPossible = isPossibleForSwitch(btnPosition, blankPosition);
 
     if (isPossible) {
@@ -134,7 +135,7 @@ function playSound() {
     }, 300);
 }
 
-function generateWinArr(currentFrame) {
+export function generateWinArr(currentFrame) {
     const winArr = new Array(currentFrame * currentFrame).fill(0).map((_item, index) => index + 1);
     return winArr;
 }
