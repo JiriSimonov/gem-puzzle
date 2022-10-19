@@ -17,8 +17,8 @@ export const playGround = createElement({tag: 'div', eClass: 'playground', paren
 puzzlesWrapper.appendChild(bottm);
 body.appendChild(modal);
 
-let movesCounter = 0;
-const timer = 0;
+export const movesCounter = {moves: 0};
+export const timer = {time: 0};
 let timerCounter;
 
 setNewBg.addEventListener('click', () => {
@@ -99,7 +99,7 @@ playGround.addEventListener('click', (event) => {
         switchBtns(blankPosition, btnPosition, matrix);
         playSound();
         startTimer();
-        statsMovesCounter.innerHTML = ++movesCounter;
+        statsMovesCounter.innerHTML = ++movesCounter.moves;
         setPositionItems(matrix);
     }
 });
@@ -156,13 +156,17 @@ function addWon() {
 }
 
 function startTimer() {
-    if (timer <= 0) {
+    if (timer.time <= 0) {
         timerCounter = setInterval(function() {
-            timer += 1/60;
-            let secondsValue = Math.floor(timer) - Math.floor(timer / 60) * 60;
-            let minutesValue = Math.floor(timer / 60);
+            timer.time += 1/60;
+            let secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
+            let minutesValue = Math.floor(timer.time / 60);
             statsTimerCounterSeconds.innerHTML = `${(secondsValue < 10 ? secondsValue.toString().padStart(2, '0') : secondsValue)}`;
             statsTimerCounter.innerHTML = `${(minutesValue < 10 ? minutesValue.toString().padStart(2, '0') : minutesValue)}`;
         }, 1000/60);
     }
+}
+
+export function stopTimer() {
+    clearInterval(timerCounter);
 }

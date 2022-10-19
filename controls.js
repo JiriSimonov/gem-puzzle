@@ -1,8 +1,13 @@
 import { State } from './utils/state.js';
-import { container, puzzlesArr, playGround, matrix, getMatrix, getShuffledArr, generateWinArr, blankNumber } from './index.js';
+import { container, puzzlesArr, playGround,
+    matrix, getMatrix, getShuffledArr, generateWinArr,
+    blankNumber, stopTimer, timer} from './index.js';
 import { createElement } from './utils/createElement.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { rundomNum } from './utils/getRundomNum.js';
+import { statsMovesCounter,
+    statsTimerCounter, 
+    statsTimerCounterSeconds } from './stats.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];
 const btnsText = ['Start', 'Stop', 'Save', 'Results'];
@@ -36,6 +41,11 @@ setFrameSelect.addEventListener('change', (e) => {
         matrix.push(...getMatrix(newArr, +currentFrame));
         getShuffledArr();
         blankNumber.number = +currentFrame * +currentFrame;
+        statsMovesCounter.innerHTML = '0';
+        statsTimerCounter.innerHTML = '0';
+        statsTimerCounterSeconds.innerHTML = '0';
+        timer.time = 0;
+        stopTimer();
     }
 });
 
