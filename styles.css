@@ -123,6 +123,10 @@ body {
   line-height: 120%;
   color: black;
   text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   cursor: pointer;
   transition: all 0.3s linear;
 }
@@ -154,6 +158,10 @@ body {
   background-color: #c2a03c;
   color: black;
   border-color: rgba(255, 255, 255, 0.8);
+}
+
+.stats-panel {
+  display: flex;
 }
 
 .modal .modal__overlay {

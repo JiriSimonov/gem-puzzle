@@ -16,8 +16,8 @@ const btnArr = createElementsArr({arrLength: btnsText.length, parent:controlsPan
 
 setFrameSelect.addEventListener('change', () => {
     let currentFrame = setFrameSelect.value;
-    State.currentFrame = +currentFrame;
-    if (currentFrame !== State.currentFrame) {
+    if (+currentFrame != State.currentFrame) {
+        State.currentFrame = +currentFrame;
         playGround.innerHTML = '';
         puzzlesArr.splice(0);
         puzzlesArr.push(...createElementsArr({arrLength: +State.currentFrame * +State.currentFrame, parent: playGround, callback: (_item, index) => createElement({tag: 'button', eClass: 'playground__item', inner: `${index + 1}`, data: {'matrixId': `${index + 1}`}})}));

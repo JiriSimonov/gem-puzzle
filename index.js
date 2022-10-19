@@ -4,12 +4,14 @@ import controlsPanel from './controls.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { bottm } from './bottom-side.js';
 import { modal } from './modal.js';
+import { statsPanel } from './stats.js';
 
 const body = document.querySelector('body');
 export const container = createElement({tag: 'div', eClass: 'container', parent: body});
 const puzzlesWrapper = createElement({tag: 'div', eClass: 'puzzles', parent: container});
 const setNewBg = createElement({tag: 'button', eClass: 'btn', parent: puzzlesWrapper, inner: 'Switch background', attr: {'type' : 'button'}});
 puzzlesWrapper.appendChild(controlsPanel);
+puzzlesWrapper.appendChild(statsPanel);
 export const playGround = createElement({tag: 'div', eClass: 'playground', parent: puzzlesWrapper});
 puzzlesWrapper.appendChild(bottm);
 body.appendChild(modal);
@@ -125,7 +127,7 @@ function playSound() {
     const audio = createElement({tag: 'audio', eClass: 'audio', parent:body, inner: '<source src=\"./assets/audio/audio.mp3\" type=\"audio/mpeg\">', attr: {'autoplay': true}});
     setTimeout(() => {
         body.removeChild(audio);
-    }, 1000);
+    }, 300);
 }
 
 function generateWinArr(currentFrame) {

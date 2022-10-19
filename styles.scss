@@ -119,6 +119,7 @@ body {
             line-height: 120%;
             color: black;
             text-align: center;
+            user-select: none;
             cursor: pointer;
             transition: all .3s linear;
         }
@@ -156,6 +157,10 @@ body {
             }
         }
     }
+}
+
+.stats-panel {
+    display: flex;
 }
 
 .modal {
