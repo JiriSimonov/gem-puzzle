@@ -1,5 +1,6 @@
 import { State } from './utils/state.js';
 import { createElement } from './utils/createElement.js';
+import { rundomNum } from './utils/getRundomNum.js';
 import controlsPanel from './controls.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { bottm } from './bottom-side.js';
@@ -22,13 +23,8 @@ let minutes = 0;
 let seconds = 0;
 let timerCounter;
 
-function getRandomNum(min, max) {
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    return Math.round(rand);
-}
-
 setNewBg.addEventListener('click', () => {
-    puzzlesWrapper.style.background = `url('./assets/backrounds/bg-${getRandomNum(1, 7)}.jpg')`;
+    puzzlesWrapper.style.background = `url('./assets/backrounds/bg-${rundomNum(1, 7)}.jpg')`;
 });
 
 export const puzzlesArr = createElementsArr({
