@@ -160,7 +160,20 @@ body {
 }
 
 .stats-panel {
-    display: flex;
+    margin: 0 auto;
+    .stats-panel__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 5px;
+        border: 2px solid #c2a03c;
+        border-radius: 5px;;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 120%;
+        color: white;
+    }
 }
 
 .modal {

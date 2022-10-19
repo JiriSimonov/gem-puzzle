@@ -4,7 +4,7 @@ import controlsPanel from './controls.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { bottm } from './bottom-side.js';
 import { modal } from './modal.js';
-import { statsPanel } from './stats.js';
+import { statsPanel, statsMovesCounter, statsTimerCounter } from './stats.js';
 
 const body = document.querySelector('body');
 export const container = createElement({tag: 'div', eClass: 'container', parent: body});
@@ -15,6 +15,8 @@ puzzlesWrapper.appendChild(statsPanel);
 export const playGround = createElement({tag: 'div', eClass: 'playground', parent: puzzlesWrapper});
 puzzlesWrapper.appendChild(bottm);
 body.appendChild(modal);
+
+let movesCounter = 0;
 
 function getRandomNum(min, max) {
     let rand = min - 0.5 + Math.random() * (max - min + 1);
@@ -95,6 +97,7 @@ playGround.addEventListener('click', (event) => {
     if (isPossible) {
         switchBtns(blankPosition, btnPosition, matrix);
         playSound();
+        statsMovesCounter.innerHTML = ++movesCounter;
         setPositionItems(matrix);
     }
 });
