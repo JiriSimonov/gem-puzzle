@@ -37,8 +37,7 @@ setFrameSelect.addEventListener('change', (e) => {
         puzzlesArr[puzzlesArr.length - 1].style.display = 'none';
         generateWinArr(currentFrame);
         matrix.splice(0);
-        let newArr = puzzlesArr.map((item) => Number(item.dataset.matrixId));
-        matrix.push(...getMatrix(newArr, +currentFrame));
+        matrix.push(...getMatrix(puzzlesArr.map((item) => Number(item.dataset.matrixId)), +currentFrame));
         getShuffledArr();
         blankNumber.number = +currentFrame * +currentFrame;
         statsMovesCounter.innerHTML = '0';
