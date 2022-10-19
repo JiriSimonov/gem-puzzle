@@ -165,7 +165,7 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 20px;
+        gap: 5px;
         padding: 5px;
         border: 2px solid #c2a03c;
         border-radius: 5px;;
@@ -173,6 +173,9 @@ body {
         font-weight: 500;
         line-height: 120%;
         color: white;
+        .stats-panel__moves-counter {
+            margin-right: 5px;
+        }
     }
 }
 

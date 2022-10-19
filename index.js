@@ -4,7 +4,7 @@ import controlsPanel from './controls.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { bottm } from './bottom-side.js';
 import { modal } from './modal.js';
-import { statsPanel, statsMovesCounter, statsTimerCounter } from './stats.js';
+import { statsPanel, statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds } from './stats.js';
 
 const body = document.querySelector('body');
 export const container = createElement({tag: 'div', eClass: 'container', parent: body});
@@ -17,6 +17,10 @@ puzzlesWrapper.appendChild(bottm);
 body.appendChild(modal);
 
 let movesCounter = 0;
+let timer = 0;
+let minutes = 0;
+let seconds = 0;
+let timerCounter;
 
 function getRandomNum(min, max) {
     let rand = min - 0.5 + Math.random() * (max - min + 1);
@@ -97,6 +101,7 @@ playGround.addEventListener('click', (event) => {
     if (isPossible) {
         switchBtns(blankPosition, btnPosition, matrix);
         playSound();
+        startTimer();
         statsMovesCounter.innerHTML = ++movesCounter;
         setPositionItems(matrix);
     }
@@ -151,4 +156,16 @@ function isWon(matrix) {
 function addWon() {
     body.classList.toggle('no-scroll');
     modal.classList.toggle('modal--visible');
+}
+
+function startTimer() {
+    if (timer <= 0) {
+        timerCounter = setInterval(function() {
+            timer += 1/60;
+            let secondsValue = Math.floor(timer) - Math.floor(timer / 60) * 60;
+            let minutesValue = Math.floor(timer / 60);
+            statsTimerCounterSeconds.innerHTML = `${(secondsValue < 10 ? secondsValue.toString().padStart(2, '0') : secondsValue)}`;
+            statsTimerCounter.innerHTML = `${(minutesValue < 10 ? minutesValue.toString().padStart(2, '0') : minutesValue)}`;
+        }, 1000/60);
+    }
 }
