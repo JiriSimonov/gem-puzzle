@@ -163,12 +163,36 @@ function addWon() {
 }
 
 export function printTime(sec, min) {
-    statsTimerCounterSeconds.innerHTML = `${(sec < 10 ? sec.toString().padStart(2, '0') : sec)}`;
-    statsTimerCounter.innerHTML = `${(min < 10 ? min.toString().padStart(2, '0') : min)}`;
+    statsTimerCounterSeconds.textContent = `${(sec < 10 ? sec.toString().padStart(2, '0') : sec)}`;
+    statsTimerCounter.textContent = `${(min < 10 ? min.toString().padStart(2, '0') : min)}`;
+    State.currentTime.seconds = sec;
+    State.currentTime.minutes = min;
 }
 
 export function startTimer() {
     if (timer.time <= 0) {
+        timerCounter = setInterval(function() {
+            timer.time += 1/60;
+            const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
+            const minutesValue = Math.floor(timer.time / 60);
+            printTime(secondsValue, minutesValue);
+        }, 1000/60);
+    }
+    if (State.currentTime.seconds > 0 && State.isPlay === false) {
+        timer.time = State.currentTime.seconds + State.currentTime.minutes * 60;
+        timerCounter = setInterval(function() {
+            timer.time += 1/60;
+            const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
+            const minutesValue = Math.floor(timer.time / 60);
+            printTime(secondsValue, minutesValue);
+        }, 1000/60);
+    }
+}
+
+export function continueAfterSave() {
+    console.log('here we go');
+    if (State.isPlay === true) {
+        timer.time = State.currentTime.seconds + State.currentTime.minutes * 60;
         timerCounter = setInterval(function() {
             timer.time += 1/60;
             const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;

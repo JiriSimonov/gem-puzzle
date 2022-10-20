@@ -1,7 +1,7 @@
 import { State } from './utils/state.js';
-import { container, puzzlesArr, playGround,
+import { puzzlesArr, playGround,
     matrix, getMatrix, getShuffledArr, generateWinArr,
-    blankNumber, stopTimer, timer, startTimer, playShuffleSound, printTime} from './index.js';
+    blankNumber, stopTimer, timer, startTimer, playShuffleSound, continueAfterSave} from './index.js';
 import { createElement } from './utils/createElement.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { rundomNum } from './utils/getRundomNum.js';
@@ -10,7 +10,7 @@ import { statsMovesCounter,
     statsTimerCounterSeconds } from './stats.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];
-const btnsText = ['Start', 'Save', 'Results'];
+const btnsText = ['Restart', 'Save', 'Results'];
 const controlsPanel = createElement({tag: 'div', eClass: 'control-panel'});
 const setFrameSelect = createElement({tag: 'select', eClass: 'control-panel__select', parent: controlsPanel, attr: {'name': 'frame-select'}});
 let optionArr = createElementsArr({arrLength: optionsText.length, parent: setFrameSelect, callback: (item, index) => {
@@ -23,7 +23,6 @@ const btnArr = createElementsArr({arrLength: btnsText.length, parent:controlsPan
 const musicBtn = createElement({tag: 'button', eClass: 'control-panel__btn control-panel__btn_music', parent: controlsPanel});
 let startBtn = btnArr[0];
 let saveBtn = btnArr[1];
-saveBtn.classList.add('is-playing');
 let resultsBtn = btnArr[2];
 
 startBtn.addEventListener('click', () => {
@@ -32,18 +31,23 @@ startBtn.addEventListener('click', () => {
     statsMovesCounter.innerHTML = '0';
     statsTimerCounter.innerHTML = '0';
     statsTimerCounterSeconds.innerHTML = '0';
+    State.currentTime.minutes = 0;
+    State.currentTime.seconds = 0;
     timer.time = 0;
     stopTimer();
     startTimer();
 });
 
 saveBtn.addEventListener('click', () => {
-    if (saveBtn.classList.contains('is-playing')) {
+    console.log(State.isPlay)
+    if (State.isPlay === true) {
+        State.isPlay = false;
         stopTimer();
-        saveBtn.innerHTML = 'Save';
+        saveBtn.innerHTML = 'Continue';
     } else {
-        classList.add('is-playing');
-        classList.innerHTML = 'Continue';
+        State.isPlay = true;
+        saveBtn.innerHTML = 'Save';
+        continueAfterSave();
     } 
 });
 
