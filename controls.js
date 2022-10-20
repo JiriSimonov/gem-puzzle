@@ -1,13 +1,16 @@
 import { State } from './utils/state.js';
 import { puzzlesArr, playGround,
     matrix, getMatrix, getShuffledArr, generateWinArr,
-    blankNumber, stopTimer, timer, startTimer, playShuffleSound, continueAfterSave} from './index.js';
+    blankNumber, stopTimer, timer, startTimer,
+    playShuffleSound, 
+    movesCounter, setPositionItems} from './index.js';
 import { createElement } from './utils/createElement.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { rundomNum } from './utils/getRundomNum.js';
 import { statsMovesCounter,
     statsTimerCounter, 
     statsTimerCounterSeconds } from './stats.js';
+import { setStateToStorage, getStateFromStorage} from './utils/localStrage.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];
 const btnsText = ['Restart', 'Save', 'Results'];
@@ -33,22 +36,55 @@ startBtn.addEventListener('click', () => {
     statsTimerCounterSeconds.innerHTML = '0';
     State.currentTime.minutes = 0;
     State.currentTime.seconds = 0;
+    movesCounter.moves = 0;
     timer.time = 0;
     stopTimer();
     startTimer();
 });
 
+function isHasSavedGame() {
+    if (localStorage.getItem('State') == null) {
+    } else {
+        saveBtn.innerHTML = 'Continue';
+        State.isPlay = false;
+    }
+}
+
+isHasSavedGame();
 saveBtn.addEventListener('click', () => {
-    console.log(State.isPlay)
     if (State.isPlay === true) {
         State.isPlay = false;
         stopTimer();
+        setStateToStorage('State', State);
         saveBtn.innerHTML = 'Continue';
     } else {
+        const storageData = getStateFromStorage();
+        matrix.splice(0);
+        matrix.push(...storageData.currentMaxtrix); // перезаписал матрицу
+        State.currentFrame = storageData.currentFrame;
+        playGround.innerHTML = '';
+        puzzlesArr.splice(0);
+        puzzlesArr.push(...createElementsArr({arrLength: +State.currentFrame * +State.currentFrame, 
+            parent: playGround, 
+            callback: (_item, index) => createElement({tag: 'button', 
+            eClass: 'playground__item', inner: `${index + 1}`,
+            attr: {'style': `width: ${100 / +State.currentFrame}%; height: ${100 / +State.currentFrame}%`,}, 
+            data: {'matrixId': `${index + 1}`},
+            bg: `${rundomNum(1, 15)}`})})); 
+        puzzlesArr[puzzlesArr.length - 1].style.display = 'none';
+        blankNumber.number = +State.currentFrame * +State.currentFrame;
+        setPositionItems(matrix, puzzlesArr);
+        setFrameSelect.value = State.currentFrame;
         State.isPlay = true;
         saveBtn.innerHTML = 'Save';
-        continueAfterSave();
-    } 
+        movesCounter.moves = storageData.moves;
+        statsMovesCounter.innerHTML = movesCounter.moves;
+        State.currentTime.seconds =  storageData.currentTime.seconds;
+        State.currentTime.minutes =  storageData.currentTime.minutes;
+        timer.time = State.currentTime.seconds + State.currentTime.minutes * 60;
+        startTimer();
+        localStorage.removeItem('State');
+    }
 });
 
 musicBtn.addEventListener('click', () => {

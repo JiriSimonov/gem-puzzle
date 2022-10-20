@@ -6,6 +6,7 @@ import { createElementsArr } from './utils/createElementArr.js';
 import { bottm } from './bottom-side.js';
 import { modal } from './modal.js';
 import { statsPanel, statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds } from './stats.js';
+import { getStateFromStorage } from './utils/localStrage.js';
 
 const body = document.querySelector('body');
 export const container = createElement({tag: 'div', eClass: 'container', parent: body});
@@ -19,7 +20,6 @@ body.appendChild(modal);
 
 export const movesCounter = {moves: 0};
 export const timer = {time: 0};
-let timerCounter;
 
 setNewBg.addEventListener('click', () => {
     puzzlesWrapper.style.background = `url('./assets/backrounds/bg-${rundomNum(1, 7)}.jpg')`;
@@ -40,7 +40,7 @@ export let matrix = getMatrix(puzzlesArr.map((item) => Number(item.dataset.matri
 export function getShuffledArr() {
     const shuffledArr = shuffleArray(matrix.flat());
     matrix = getMatrix(shuffledArr, +State.currentFrame);
-    return setPositionItems(matrix);
+    return setPositionItems(matrix, puzzlesArr);
 }
 
 getShuffledArr();
@@ -70,11 +70,11 @@ function setNodeStyles(node, x, y) {
 
 
 
-function setPositionItems(matrix) {
+export function setPositionItems(matrix, arr) {
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
             const value = matrix[y][x];
-            const node = puzzlesArr[value - 1];
+            const node = arr[value - 1];
             setNodeStyles(node, x, y);
         }
     }
@@ -100,7 +100,9 @@ playGround.addEventListener('click', (event) => {
         if (State.isSoundOn === true) playSound();
         startTimer();
         statsMovesCounter.innerHTML = ++movesCounter.moves;
-        setPositionItems(matrix);
+        State.moves = movesCounter.moves;
+        setPositionItems(matrix, puzzlesArr);
+        State.currentMaxtrix = matrix;
     }
 });
 
@@ -170,38 +172,17 @@ export function printTime(sec, min) {
 }
 
 export function startTimer() {
-    if (timer.time <= 0) {
-        timerCounter = setInterval(function() {
-            timer.time += 1/60;
-            const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
-            const minutesValue = Math.floor(timer.time / 60);
-            printTime(secondsValue, minutesValue);
-        }, 1000/60);
-    }
-    if (State.currentTime.seconds > 0 && State.isPlay === false) {
-        timer.time = State.currentTime.seconds + State.currentTime.minutes * 60;
-        timerCounter = setInterval(function() {
-            timer.time += 1/60;
-            const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
-            const minutesValue = Math.floor(timer.time / 60);
-            printTime(secondsValue, minutesValue);
-        }, 1000/60);
-    }
-}
-
-export function continueAfterSave() {
-    console.log('here we go');
-    if (State.isPlay === true) {
-        timer.time = State.currentTime.seconds + State.currentTime.minutes * 60;
-        timerCounter = setInterval(function() {
-            timer.time += 1/60;
-            const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
-            const minutesValue = Math.floor(timer.time / 60);
-            printTime(secondsValue, minutesValue);
+    if (!State.isStartTimer) {
+        State.isStartTimer = setInterval(function() {
+        timer.time += 1/60;
+        const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
+        const minutesValue = Math.floor(timer.time / 60);
+        printTime(secondsValue, minutesValue);
         }, 1000/60);
     }
 }
 
 export function stopTimer() {
-    clearInterval(timerCounter);
+    clearInterval(State.isStartTimer);
+    State.isStartTimer = null;
 }

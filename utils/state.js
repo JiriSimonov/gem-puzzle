@@ -4,4 +4,6 @@
     currentMoves: 0,
     isSoundOn: true,
     isPlay: true,
+    isStartTimer: null,
+    currentMaxtrix: {},
 }
