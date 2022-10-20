@@ -4,9 +4,9 @@ import { rundomNum } from './utils/getRundomNum.js';
 import controlsPanel from './controls.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { bottm } from './bottom-side.js';
-import { modal } from './modal.js';
+import { modal, modalTime, modalTurns } from './modal.js';
 import { statsPanel, statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds } from './stats.js';
-import { getStateFromStorage } from './utils/localStrage.js';
+import { getStateFromStorage, setStateToStorage } from './utils/localStrage.js';
 
 const body = document.querySelector('body');
 export const container = createElement({tag: 'div', eClass: 'container', parent: body});
@@ -162,6 +162,9 @@ function isWon(matrix) {
 function addWon() {
     body.classList.toggle('no-scroll');
     modal.classList.toggle('modal--visible');
+    stopTimer();
+    modalTurns.innerHTML = `Moves: ${State.moves}`;
+    modalTime.innerHTML = `Time: ${State.currentTime.minutes} minutes and ${State.currentTime.seconds} seconds`;
 }
 
 export function printTime(sec, min) {
