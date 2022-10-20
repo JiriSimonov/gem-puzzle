@@ -137,6 +137,11 @@ body {
             }
         }
     }
+    .is-shuffle {
+        .playground__item {
+            pointer-events: none;
+        }
+    }
     .is-won {
         .playground__item {
             border-color: #c2a03c;

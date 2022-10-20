@@ -6,7 +6,6 @@ import { createElementsArr } from './utils/createElementArr.js';
 import { bottm } from './bottom-side.js';
 import { modal, modalTime, modalTurns } from './modal.js';
 import { statsPanel, statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds } from './stats.js';
-import { getStateFromStorage, setStateToStorage } from './utils/localStrage.js';
 
 const body = document.querySelector('body');
 export const container = createElement({tag: 'div', eClass: 'container', parent: body});
@@ -14,12 +13,34 @@ const puzzlesWrapper = createElement({tag: 'div', eClass: 'puzzles', parent: con
 const setNewBg = createElement({tag: 'button', eClass: 'btn', parent: puzzlesWrapper, inner: 'Switch background', attr: {'type' : 'button'}});
 puzzlesWrapper.appendChild(controlsPanel);
 puzzlesWrapper.appendChild(statsPanel);
-export const playGround = createElement({tag: 'div', eClass: 'playground', parent: puzzlesWrapper});
+export const playGround = createElement({tag: 'div', eClass: 'playground is-shuffle', parent: puzzlesWrapper});
 puzzlesWrapper.appendChild(bottm);
 body.appendChild(modal);
 
 export const movesCounter = {moves: 0};
 export const timer = {time: 0};
+export const blankNumber = {number: +State.currentFrame * +State.currentFrame};
+const maxShuffle = 100;
+let blockedPosition = null;
+let shuffleTimer;
+let shuffleCounter = 0;
+clearInterval(shuffleTimer);
+export function randomShuffle() {
+    playGround.classList.add('is-shuffle');
+    if (shuffleCounter === 0) {
+        shuffleTimer = setInterval(() => {
+            randomSwap(matrix);
+            setPositionItems(matrix, puzzlesArr);
+            ++shuffleCounter;
+            if (shuffleCounter >= maxShuffle) {
+                clearInterval(shuffleTimer);
+                shuffleCounter = 0;
+                playGround.classList.remove('is-shuffle');
+            }
+        }, 30);
+    }
+}
+randomShuffle();
 
 setNewBg.addEventListener('click', () => {
     puzzlesWrapper.style.background = `url('./assets/backrounds/bg-${rundomNum(1, 7)}.jpg')`;
@@ -37,13 +58,34 @@ export const puzzlesArr = createElementsArr({
 puzzlesArr[puzzlesArr.length - 1].style.display = 'none';
 export let matrix = getMatrix(puzzlesArr.map((item) => Number(item.dataset.matrixId)), +State.currentFrame);
 
-export function getShuffledArr() {
-    const shuffledArr = shuffleArray(matrix.flat());
-    matrix = getMatrix(shuffledArr, +State.currentFrame);
-    return setPositionItems(matrix, puzzlesArr);
+export function randomSwap(matrix) {
+    const blankPosition = getBtnPositionByNumber(blankNumber.number, matrix);
+    const validPositions = getValidPosition({
+        blankPosition,
+        matrix,
+        blockedPosition
+    });
+
+    const swapPositions = validPositions[
+        Math.floor(Math.random() * validPositions.length)
+    ];
+    switchBtns(blankPosition, swapPositions, matrix);
+    blockedPosition = blankPosition;
 }
 
-getShuffledArr();
+export function getValidPosition({blankPosition, matrix, blockedPosition}) {
+    const validPositions = [];
+    for (let y = 0; y < matrix.length; y++) {
+        for (let x = 0; x < matrix[y].length; x++) {
+            if (isPossibleForSwitch({x, y}, blankPosition)) {
+                if (blockedPosition === null ||!(blockedPosition.x === x && blockedPosition.y === y)) {
+                    validPositions.push({x,y});
+                }
+            }
+        }
+    }
+    return validPositions;
+}
 
 export function getMatrix(arr, currentFrame) {
     let matrix = [];
@@ -80,13 +122,6 @@ export function setPositionItems(matrix, arr) {
     }
 }
 
-function shuffleArray(arr) {
-    return arr
-        .map(value => ({value, sort: Math.random()}))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({value}) => value)
-}
-export const blankNumber = {number: +State.currentFrame * +State.currentFrame};
 playGround.addEventListener('click', (event) => {
     const currentBtn = event.target.closest('.playground__item');
     if (!currentBtn) return;

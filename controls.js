@@ -1,9 +1,9 @@
 import { State } from './utils/state.js';
 import { puzzlesArr, playGround,
-    matrix, getMatrix, getShuffledArr, generateWinArr,
+    matrix, getMatrix, generateWinArr,
     blankNumber, stopTimer, timer, startTimer,
     playShuffleSound, 
-    movesCounter, setPositionItems} from './index.js';
+    movesCounter, setPositionItems, randomShuffle} from './index.js';
 import { createElement } from './utils/createElement.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { rundomNum } from './utils/getRundomNum.js';
@@ -114,8 +114,8 @@ setFrameSelect.addEventListener('change', (e) => {
         puzzlesArr[puzzlesArr.length - 1].style.display = 'none';
         generateWinArr(currentFrame);
         matrix.splice(0);
+        randomShuffle();
         matrix.push(...getMatrix(puzzlesArr.map((item) => Number(item.dataset.matrixId)), +currentFrame));
-        getShuffledArr();
         blankNumber.number = +currentFrame * +currentFrame;
         statsMovesCounter.innerHTML = '0';
         statsTimerCounter.innerHTML = '0';

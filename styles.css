@@ -143,6 +143,9 @@ body {
 .puzzles .playground .playground__item:hover {
   border-color: #c2a03c;
 }
+.puzzles .is-shuffle .playground__item {
+  pointer-events: none;
+}
 .puzzles .is-won .playground__item {
   border-color: #c2a03c;
 }
