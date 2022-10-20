@@ -1,11 +1,13 @@
-import { State } from './utils/state.js';
+import { Score, State } from './utils/state.js';
 import { createElement } from './utils/createElement.js';
 import { rundomNum } from './utils/getRundomNum.js';
 import controlsPanel from './controls.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { bottm } from './bottom-side.js';
-import { modal, modalTime, modalTurns } from './modal.js';
+import { modal, modalScore} from './modal.js';
 import { statsPanel, statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds } from './stats.js';
+import { setStateToStorage } from './utils/localStrage.js';
+import { score } from './modal-score.js';
 
 const body = document.querySelector('body');
 export const container = createElement({tag: 'div', eClass: 'container', parent: body});
@@ -16,19 +18,22 @@ puzzlesWrapper.appendChild(statsPanel);
 export const playGround = createElement({tag: 'div', eClass: 'playground is-shuffle', parent: puzzlesWrapper});
 puzzlesWrapper.appendChild(bottm);
 body.appendChild(modal);
+body.appendChild(score);
 
 export const movesCounter = {moves: 0};
 export const timer = {time: 0};
 export const blankNumber = {number: +State.currentFrame * +State.currentFrame};
-const maxShuffle = 65;
+const maxShuffle = 50;
 let blockedPosition = null;
 let shuffleTimer;
 let shuffleCounter = 0;
 clearInterval(shuffleTimer);
+setStateToStorage('Score', Score);
 export function randomShuffle() {
     playGround.classList.add('is-shuffle');
     stopTimer();
     if (State.isSoundOn === true) playShuffleSound();
+    statsMovesCounter.innerHTML = '0';
     statsTimerCounterSeconds.innerHTML = '00';
     if (shuffleCounter === 0) {
         shuffleTimer = setInterval(() => {
@@ -210,10 +215,13 @@ function addWon() {
     body.classList.toggle('no-scroll');
     modal.classList.toggle('modal--visible');
     stopTimer();
-    modalTurns.innerHTML = `Moves: ${State.moves}`;
-    modalTime.innerHTML = `Time: ${State.currentTime.minutes} minutes and ${State.currentTime.seconds} seconds`;
+    //Hooray! You solved the puzzle in ##:## and N moves!
+    modalScore.innerHTML = `Hooray! You solved the puzzle in ${State.currentTime.minutes.toString().padStart(2, '0')}:${State.currentTime.seconds.toString().padStart(2, '0')} and ${State.moves} moves!`
+    stopTimer();
 }
 
+
+addWon();
 export function printTime(sec, min) {
     statsTimerCounterSeconds.textContent = `${(sec < 10 ? sec.toString().padStart(2, '0') : sec)}`;
     statsTimerCounter.textContent = `${(min < 10 ? min.toString().padStart(2, '0') : min)}`;

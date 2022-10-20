@@ -13,70 +13,60 @@ export const Score = {
         position: '',
         name: '',
         moves: '',
-        minutes: '',
         seconds: ''
     },
     second: {
         position: '',
         name: '',
         moves: '',
-        minutes: '',
         seconds: ''
     },
     thrird: {
         position: '',
         name: '',
         moves: '',
-        minutes: '',
         seconds: ''
     },
     fourth: {
         position: '',
         name: '',
         moves: '',
-        minutes: '',
         seconds: ''
     },
     fifth: {
         position: '',
         name: '',
         moves: '',
-        minutes: '',
-        seconds: ''
+        time: ''
     },
     sixth: {
         position: '',
         name: '',
         moves: '',
-        minutes: '',
-        seconds: ''
+        time: ''
     },
     seventh: {
         position: '',
         name: '',
         moves: '',
-        minutes: '',
-        seconds: ''
+        time: ''
     },
     eighth: {
         position: '',
         name: '',
         moves: '',
-        minutes: '',
-        seconds: ''
+        time: ''
     },
     ninth: {
         position: '',
         name: '',
         moves: '',
-        minutes: '',
-        seconds: ''
+        time: ''
     },
     tenth: {
         position: '',
         name: '',
         moves: '',
-        minutes: '',
-        seconds: ''
+        time: ''
     }
 }
