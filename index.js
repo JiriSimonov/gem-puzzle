@@ -20,13 +20,16 @@ body.appendChild(modal);
 export const movesCounter = {moves: 0};
 export const timer = {time: 0};
 export const blankNumber = {number: +State.currentFrame * +State.currentFrame};
-const maxShuffle = 100;
+const maxShuffle = 65;
 let blockedPosition = null;
 let shuffleTimer;
 let shuffleCounter = 0;
 clearInterval(shuffleTimer);
 export function randomShuffle() {
     playGround.classList.add('is-shuffle');
+    stopTimer();
+    if (State.isSoundOn === true) playShuffleSound();
+    statsTimerCounterSeconds.innerHTML = '00';
     if (shuffleCounter === 0) {
         shuffleTimer = setInterval(() => {
             randomSwap(matrix);
@@ -36,6 +39,15 @@ export function randomShuffle() {
                 clearInterval(shuffleTimer);
                 shuffleCounter = 0;
                 playGround.classList.remove('is-shuffle');
+                statsMovesCounter.innerHTML = '0';
+                statsTimerCounter.innerHTML = '0';
+                statsTimerCounterSeconds.innerHTML = '0';
+                State.currentTime.minutes = 0;
+                State.currentTime.seconds = 0;
+                movesCounter.moves = 0;
+                timer.time = 0;
+                stopTimer();
+                startTimer();
             }
         }, 30);
     }
@@ -176,7 +188,7 @@ export function playShuffleSound() {
     const audio = createElement({tag: 'audio', eClass: 'audio', parent:body, inner: '<source src=\"./assets/audio/shuffle.mp3\" type=\"audio/mpeg\">', attr: {'autoplay': true}});
     setTimeout(() => {
         body.removeChild(audio);
-    }, 400);
+    }, 2000);
 }
 
 export function generateWinArr(currentFrame) {

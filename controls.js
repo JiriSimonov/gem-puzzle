@@ -30,16 +30,7 @@ let resultsBtn = btnArr[2];
 
 startBtn.addEventListener('click', () => {
     if (State.isSoundOn === true) playShuffleSound();
-    getShuffledArr();
-    statsMovesCounter.innerHTML = '0';
-    statsTimerCounter.innerHTML = '0';
-    statsTimerCounterSeconds.innerHTML = '0';
-    State.currentTime.minutes = 0;
-    State.currentTime.seconds = 0;
-    movesCounter.moves = 0;
-    timer.time = 0;
-    stopTimer();
-    startTimer();
+    randomShuffle();
 });
 
 function isHasSavedGame() {

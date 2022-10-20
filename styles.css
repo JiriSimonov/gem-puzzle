@@ -116,6 +116,40 @@ body {
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.5);
 }
+.puzzles .playground:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: url("./assets/shuffle/top_metal.png");
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: all 0.3s linear;
+  z-index: 4;
+}
+.puzzles .playground:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: url("./assets/shuffle/top_glass.png");
+  background-repeat: no-repeat;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 120%;
+  color: #c2a03c;
+  opacity: 0;
+  transition: all 0.3s linear;
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+  z-index: 3;
+}
 .puzzles .playground .playground__item {
   position: absolute;
   left: 0;
@@ -142,6 +176,14 @@ body {
 }
 .puzzles .playground .playground__item:hover {
   border-color: #c2a03c;
+}
+.puzzles .is-shuffle:before {
+  display: initial;
+  opacity: 1;
+}
+.puzzles .is-shuffle:after {
+  display: initial;
+  opacity: 0.7;
 }
 .puzzles .is-shuffle .playground__item {
   pointer-events: none;
