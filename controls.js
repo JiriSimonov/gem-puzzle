@@ -10,7 +10,7 @@ import { rundomNum } from './utils/getRundomNum.js';
 import { statsMovesCounter,
     statsTimerCounter, 
     statsTimerCounterSeconds } from './stats.js';
-import { setStateToStorage, getStateFromStorage} from './utils/localStrage.js';
+import { setStateToStorage, getStateFromStorage, getScoreFromStorage} from './utils/localStrage.js';
 import { score, scoreList } from './modal-score.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];
@@ -30,9 +30,19 @@ let saveBtn = btnArr[1];
 let resultsBtn = btnArr[2];
 
 resultsBtn.addEventListener('click', () => {
- let test = getStateFromStorage();
- console.log(scoreList);
- score.classList.add('is--open');
+    score.classList.add('is--open');
+    if (getScoreFromStorage() !== null) {
+        let resultsData = getScoreFromStorage();
+        const results = Object.keys(resultsData);
+        let scoreItems = Array.from(scoreList.childNodes);
+        for (let i = 0; i < scoreItems.length; i++) {
+            if (resultsData[results[i]] === null) {
+                scoreItems[i].innerHTML = 'unknown';
+            } else {
+                scoreItems[i].innerHTML = resultsData[results[i]].result;
+            }
+        }
+    }
 });
 
 startBtn.addEventListener('click', () => {

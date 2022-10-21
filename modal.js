@@ -33,58 +33,22 @@ modalBtn.addEventListener('click', (e) => {
                 moves: State.moves,
                 result: `${modalInput.value} score: ${State.moves} moves, ${State.currentTime.minutes} minutes and  ${State.currentTime.seconds} seconds`
             }
-            const results = Object.keys(data);
-            for (let i = 0; i < results.length; i++) {
-                if (data[results[i]] === null) {
-                    data[results[i]] = newResult;
-                    console.log(data[results[i]]);
-                    setStateToStorage('Score', data);
-                    break;
-                }
-                if (data[results[i]].moves > newResult.moves) {
-                    data[results[i]] = newResult;
-                    setStateToStorage('Score', data);
-                    break;
-                }
-            }
+            data.push(newResult);
+            console.log(data);
+            data.sort((a,b) => a.moves - b.moves);
+            data.splice(10);
+            setStateToStorage('Score', data);
             modal.classList.toggle('modal--visible');
             body.classList.toggle('no-scroll');
             stopTimer();
         } else {
-            const Score = {
-                player1: null,
-                player2: null,
-                player3: null,
-                player4: null,
-                player5: null,
-                player6: null,
-                player7: null,
-                player8: null,
-                player9: null,
-                player10: null
-            }
+            const Score = [
+                {
+                    moves: State.moves,
+                    result: `${modalInput.value} score: ${State.moves} moves, ${State.currentTime.minutes} minutes and  ${State.currentTime.seconds} seconds`
+                }
+            ]
             setStateToStorage('Score', Score);
-            const data = getScoreFromStorage();
-            const newResult = {
-                moves: State.moves,
-                result: `${modalInput.value} score: ${State.moves} moves, ${State.currentTime.minutes} minutes and  ${State.currentTime.seconds} seconds`
-            }
-            const results = Object.keys(data);
-            for (let i = 0; i < results.length; i++) {
-                if (data[results[i]] === null) {
-                    data[results[i]] = newResult;
-                    console.log('null')
-                    console.log(data[results[i]]);
-                    setStateToStorage('Score', data);
-                    break;
-                }
-                if (data[results[i]].moves < newResult.moves) {
-                    data[results[i]] = newResult;
-                    console.log('menshe');
-                    setStateToStorage('Score', data);
-                    break;
-                }
-            }
             modal.classList.toggle('modal--visible');
             body.classList.toggle('no-scroll');
             stopTimer();

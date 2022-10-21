@@ -57,7 +57,6 @@ export function randomShuffle() {
     }
 }
 randomShuffle();
-
 setNewBg.addEventListener('click', () => {
     puzzlesWrapper.style.background = `url('./assets/backrounds/bg-${rundomNum(1, 7)}.jpg')`;
 });
@@ -236,7 +235,6 @@ export function startTimer() {
         }, 1000/60);
     }
 }
-
 export function stopTimer() {
     clearInterval(State.isStartTimer);
     State.isStartTimer = null;
