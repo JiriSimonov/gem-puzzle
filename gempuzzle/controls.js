@@ -97,10 +97,10 @@ saveBtn.addEventListener('click', () => {
 
 musicBtn.addEventListener('click', () => {
     if (State.isSoundOn === true) {
-        musicBtn.style.backgroundImage = 'url(/jirisimonov-JSFE2022Q3/assets/icons/sound-off.svg)';
+        musicBtn.style.backgroundImage = 'url(./assets/icons/sound-off.svg)';
         State.isSoundOn = false;
     } else {
-        musicBtn.style.backgroundImage = 'url(/jirisimonov-JSFE2022Q3/assets/icons/sound-on.svg)';
+        musicBtn.style.backgroundImage = 'url(./assets/icons/sound-on.svg)';
         State.isSoundOn = true;
     }
 });
