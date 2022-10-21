@@ -10,10 +10,6 @@
   font-weight: normal;
   font-style: normal;
 }
-html {
-  overflow: hidden;
-}
-
 body {
   margin: 0 auto;
   min-height: 100vh;
