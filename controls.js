@@ -11,6 +11,7 @@ import { statsMovesCounter,
     statsTimerCounter, 
     statsTimerCounterSeconds } from './stats.js';
 import { setStateToStorage, getStateFromStorage} from './utils/localStrage.js';
+import { score, scoreList } from './modal-score.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];
 const btnsText = ['Restart', 'Save', 'Results'];
@@ -27,6 +28,12 @@ const musicBtn = createElement({tag: 'button', eClass: 'control-panel__btn contr
 let startBtn = btnArr[0];
 let saveBtn = btnArr[1];
 let resultsBtn = btnArr[2];
+
+resultsBtn.addEventListener('click', () => {
+ let test = getStateFromStorage();
+ console.log(scoreList);
+ score.classList.add('is--open');
+});
 
 startBtn.addEventListener('click', () => {
     if (State.isSoundOn === true) playShuffleSound();

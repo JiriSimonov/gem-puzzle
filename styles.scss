@@ -393,3 +393,8 @@ body {
         }
     }
 }
+.is--open {
+    .score__overlay {
+        display: flex;
+    }
+}

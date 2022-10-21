@@ -1,4 +1,4 @@
-import { Score, State } from './utils/state.js';
+import { State } from './utils/state.js';
 import { createElement } from './utils/createElement.js';
 import { rundomNum } from './utils/getRundomNum.js';
 import controlsPanel from './controls.js';
@@ -28,7 +28,6 @@ let blockedPosition = null;
 let shuffleTimer;
 let shuffleCounter = 0;
 clearInterval(shuffleTimer);
-setStateToStorage('Score', Score);
 export function randomShuffle() {
     playGround.classList.add('is-shuffle');
     stopTimer();
@@ -220,8 +219,6 @@ function addWon() {
     stopTimer();
 }
 
-
-addWon();
 export function printTime(sec, min) {
     statsTimerCounterSeconds.textContent = `${(sec < 10 ? sec.toString().padStart(2, '0') : sec)}`;
     statsTimerCounter.textContent = `${(min < 10 ? min.toString().padStart(2, '0') : min)}`;

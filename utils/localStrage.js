@@ -10,6 +10,10 @@ export const getStateFromStorage = () => {
     };
 };
 
+export const getScoreFromStorage = () => {
+    if (localStorage.getItem('Score')) return JSON.parse(localStorage.getItem('Score'));
+};
+
 export const setStateToStorage = (name, value) => {
     localStorage.setItem(name, JSON.stringify(value));
 };

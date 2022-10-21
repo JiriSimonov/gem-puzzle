@@ -6,67 +6,6 @@
     isPlay: true,
     isStartTimer: null,
     currentMaxtrix: {},
+    userName: null
 }
 
-export const Score = {
-    first: {
-        position: '',
-        name: '',
-        moves: '',
-        seconds: ''
-    },
-    second: {
-        position: '',
-        name: '',
-        moves: '',
-        seconds: ''
-    },
-    thrird: {
-        position: '',
-        name: '',
-        moves: '',
-        seconds: ''
-    },
-    fourth: {
-        position: '',
-        name: '',
-        moves: '',
-        seconds: ''
-    },
-    fifth: {
-        position: '',
-        name: '',
-        moves: '',
-        time: ''
-    },
-    sixth: {
-        position: '',
-        name: '',
-        moves: '',
-        time: ''
-    },
-    seventh: {
-        position: '',
-        name: '',
-        moves: '',
-        time: ''
-    },
-    eighth: {
-        position: '',
-        name: '',
-        moves: '',
-        time: ''
-    },
-    ninth: {
-        position: '',
-        name: '',
-        moves: '',
-        time: ''
-    },
-    tenth: {
-        position: '',
-        name: '',
-        moves: '',
-        time: ''
-    }
-}

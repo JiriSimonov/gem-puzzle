@@ -391,4 +391,8 @@ body {
 }
 .score .score__content .score__list .score__item:not(:last-child) {
   margin-bottom: 8px;
+}
+
+.is--open .score__overlay {
+  display: flex;
 }/*# sourceMappingURL=styles.css.map */
