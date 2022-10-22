@@ -65,6 +65,7 @@ export const puzzlesArr = createElementsArr({
     arrLength: +State.currentFrame * +State.currentFrame, 
     parent: playGround, 
     callback: (_item, index) => createElement({tag: 'button', eClass: 'playground__item', 
+    attr: {'draggable': 'true'},
     inner: `${index + 1}`, 
     data: {'matrixId': `${index + 1}`},
     bg: `${index + 1}`
@@ -155,6 +156,45 @@ playGround.addEventListener('click', (event) => {
         State.currentMaxtrix = matrix;
     }
 });
+
+playGround.addEventListener('dragstart', (e) => {
+    e.preventDefault();
+    let target = e.target;
+    const currentBtn = target;
+    const btnNumber = +currentBtn.dataset.matrixId;
+    const btnPosition = getBtnPositionByNumber(btnNumber, matrix);
+    const blankPosition = getBtnPositionByNumber(blankNumber.number, matrix);
+    const isPossible = isPossibleForSwitch(btnPosition, blankPosition);
+    if (isPossible) {
+        switchBtns(blankPosition, btnPosition, matrix);
+        if (State.isSoundOn === true) playSound();
+        startTimer();
+        statsMovesCounter.innerHTML = ++movesCounter.moves;
+        State.moves = movesCounter.moves;
+        setPositionItems(matrix, puzzlesArr);
+        State.currentMaxtrix = matrix;
+    } 
+});
+
+playGround.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    let target = e.target;
+    const currentBtn = target;
+    const btnNumber = +currentBtn.dataset.matrixId;
+    const btnPosition = getBtnPositionByNumber(btnNumber, matrix);
+    const blankPosition = getBtnPositionByNumber(blankNumber.number, matrix);
+    const isPossible = isPossibleForSwitch(btnPosition, blankPosition);
+    if (isPossible) {
+        switchBtns(blankPosition, btnPosition, matrix);
+        if (State.isSoundOn === true) playSound();
+        startTimer();
+        statsMovesCounter.innerHTML = ++movesCounter.moves;
+        State.moves = movesCounter.moves;
+        setPositionItems(matrix, puzzlesArr);
+        State.currentMaxtrix = matrix;
+    } 
+});
+
 
 function getBtnPositionByNumber(number, matrix) {
     for (let y = 0; y < matrix.length; y++) {
