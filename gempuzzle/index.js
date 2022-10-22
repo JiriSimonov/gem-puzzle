@@ -157,23 +157,36 @@ playGround.addEventListener('click', (event) => {
     }
 });
 
-playGround.addEventListener('dragstart', (e) => {
-    e.preventDefault();
-    let target = e.target;
-    const currentBtn = target;
-    const btnNumber = +currentBtn.dataset.matrixId;
-    const btnPosition = getBtnPositionByNumber(btnNumber, matrix);
-    const blankPosition = getBtnPositionByNumber(blankNumber.number, matrix);
-    const isPossible = isPossibleForSwitch(btnPosition, blankPosition);
-    if (isPossible) {
-        switchBtns(blankPosition, btnPosition, matrix);
-        if (State.isSoundOn === true) playSound();
-        startTimer();
-        statsMovesCounter.innerHTML = ++movesCounter.moves;
-        State.moves = movesCounter.moves;
-        setPositionItems(matrix, puzzlesArr);
-        State.currentMaxtrix = matrix;
-    } 
+playGround.addEventListener('dragstart', ({ target }) => {
+     target.setAttribute('id', 'isDragged');
+});
+playGround.addEventListener('dragend', (event) => {
+    event.preventDefault();
+    event.target.removeAttribute('id');
+});
+
+playGround.addEventListener('dragover', (event) => {
+    event.preventDefault();
+});
+
+playGround.addEventListener('drop', (event) => {
+    const currentBtn = document.getElementById('isDragged');
+    if (event.target == playGround) {
+        event.preventDefault();
+        const btnNumber = +currentBtn.dataset.matrixId;
+        const btnPosition = getBtnPositionByNumber(btnNumber, matrix);
+        const blankPosition = getBtnPositionByNumber(blankNumber.number, matrix);
+        const isPossible = isPossibleForSwitch(btnPosition, blankPosition);
+        if (isPossible) {
+            switchBtns(blankPosition, btnPosition, matrix);
+            if (State.isSoundOn === true) playSound();
+            startTimer();
+            statsMovesCounter.innerHTML = ++movesCounter.moves;
+            State.moves = movesCounter.moves;
+            setPositionItems(matrix, puzzlesArr);
+            State.currentMaxtrix = matrix;
+        } 
+    }
 });
 
 playGround.addEventListener('touchstart', (e) => {
@@ -194,7 +207,6 @@ playGround.addEventListener('touchstart', (e) => {
         State.currentMaxtrix = matrix;
     } 
 });
-
 
 function getBtnPositionByNumber(number, matrix) {
     for (let y = 0; y < matrix.length; y++) {

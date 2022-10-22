@@ -10,10 +10,6 @@
   font-weight: normal;
   font-style: normal;
 }
-html {
-  overflow: hidden;
-}
-
 body {
   margin: 0 auto;
   min-height: 100vh;
@@ -27,7 +23,7 @@ body {
 
 .container {
   margin: 0 auto;
-  padding: 40px;
+  padding: 0 40px;
   width: 100%;
   max-width: 1600px;
 }
@@ -383,7 +379,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 450px;
-  height: 500px;
+  height: 550px;
   border: 4px solid #c2a03c;
   border-radius: 50px;
   background-color: white;
@@ -393,7 +389,8 @@ body {
   background-image: url("./assets/modal/score.gif");
   background-repeat: no-repeat;
   background-size: cover;
-  color: #a5008f;
+  background-position: center;
+  color: white;
   font-size: 18px;
   font-weight: 400;
   line-height: 120%;
@@ -407,6 +404,14 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: -1;
+}
+.score .score__content .score__wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .score .score__content .score__title {
   margin: 10px;
@@ -427,7 +432,7 @@ body {
 @media (max-width: 830px) {
   .container {
     padding: 10px;
-    max-width: 640px;
+    max-width: 600px;
   }
   .container .btn {
     top: 5px;
@@ -445,7 +450,7 @@ body {
 }
 @media (max-width: 510px) {
   .container {
-    padding: 10px;
+    padding: 0;
     width: 100%;
   }
   .puzzles .bottm .bottm__wrapper {
@@ -461,8 +466,14 @@ body {
     font-size: 32px;
   }
   .puzzles .control-panel {
-    gap: 10px;
+    gap: 7px;
     margin-top: 50px;
+  }
+  .puzzles .control-panel .control-panel__btn {
+    padding: 3px;
+  }
+  .puzzles .control-panel .control-panel__btn_music {
+    padding: 15px;
   }
   .stats-panel {
     margin-top: 5px;

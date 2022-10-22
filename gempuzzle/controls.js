@@ -36,7 +36,7 @@ resultsBtn.addEventListener('click', () => {
         const results = Object.keys(resultsData);
         let scoreItems = Array.from(scoreList.childNodes);
         for (let i = 0; i < scoreItems.length; i++) {
-            if (resultsData[results[i]] === null) {
+            if (resultsData[results[i]] === undefined) {
                 scoreItems[i].innerHTML = 'unknown';
             } else {
                 scoreItems[i].innerHTML = resultsData[results[i]].result;
