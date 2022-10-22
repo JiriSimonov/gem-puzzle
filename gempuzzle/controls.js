@@ -115,7 +115,7 @@ setFrameSelect.addEventListener('change', (e) => {
             parent: playGround, 
             callback: (_item, index) => createElement({tag: 'button', 
                 eClass: 'playground__item', inner: `${index + 1}`,
-                attr: {'style': `width: ${100 / currentFrame}%; height: ${100 / currentFrame}%`,}, 
+                attr: {'style': `width: ${100 / currentFrame}%; height: ${100 / currentFrame}%`, 'draggable': 'true'}, 
                 data: {'matrixId': `${index + 1}`},
                 bg: `${rundomNum(1, 15)}`})}));
                 
