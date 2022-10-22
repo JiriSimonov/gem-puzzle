@@ -173,7 +173,6 @@ playGround.addEventListener('drop', (event) => {
     const currentBtn = document.getElementById('isDragged');
     if (event.target == playGround) {
         event.preventDefault();
-        console.log('ya tut pri drope');
         const btnNumber = +currentBtn.dataset.matrixId;
         const btnPosition = getBtnPositionByNumber(btnNumber, matrix);
         const blankPosition = getBtnPositionByNumber(blankNumber.number, matrix);
@@ -189,6 +188,7 @@ playGround.addEventListener('drop', (event) => {
         } 
     }
 });
+
 playGround.addEventListener('touchstart', (e) => {
     e.preventDefault();
     let target = e.target;
@@ -207,7 +207,6 @@ playGround.addEventListener('touchstart', (e) => {
         State.currentMaxtrix = matrix;
     } 
 });
-
 
 function getBtnPositionByNumber(number, matrix) {
     for (let y = 0; y < matrix.length; y++) {
