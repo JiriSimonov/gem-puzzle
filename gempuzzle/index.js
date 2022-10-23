@@ -3,7 +3,7 @@ import { createElement } from './utils/createElement.js';
 import { rundomNum } from './utils/getRundomNum.js';
 import controlsPanel from './controls.js';
 import { createElementsArr } from './utils/createElementArr.js';
-import { bottm } from './bottom-side.js';
+import { footer } from './bottom-side.js';
 import { modal, modalScore} from './modal.js';
 import { statsPanel, statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds } from './stats.js';
 import { setStateToStorage } from './utils/localStrage.js';
@@ -16,7 +16,7 @@ const setNewBg = createElement({tag: 'button', eClass: 'btn', parent: puzzlesWra
 puzzlesWrapper.appendChild(controlsPanel);
 puzzlesWrapper.appendChild(statsPanel);
 export const playGround = createElement({tag: 'div', eClass: 'playground is-shuffle', parent: puzzlesWrapper});
-puzzlesWrapper.appendChild(bottm);
+body.appendChild(footer);
 body.appendChild(modal);
 body.appendChild(score);
 
@@ -58,7 +58,7 @@ export function randomShuffle() {
 }
 randomShuffle();
 setNewBg.addEventListener('click', () => {
-    puzzlesWrapper.style.background = `url('./assets/backrounds/bg-${rundomNum(1, 7)}.jpg')`;
+    body.style.backgroundImage = `url('./assets/backrounds/bg-${rundomNum(1, 7)}.jpg')`;
 });
 
 export const puzzlesArr = createElementsArr({
@@ -265,7 +265,6 @@ function addWon() {
     body.classList.toggle('no-scroll');
     modal.classList.toggle('modal--visible');
     stopTimer();
-    //Hooray! You solved the puzzle in ##:## and N moves!
     modalScore.innerHTML = `Hooray! You solved the puzzle in ${State.currentTime.minutes.toString().padStart(2, '0')}:${State.currentTime.seconds.toString().padStart(2, '0')} and ${State.moves} moves!`
     stopTimer();
 }

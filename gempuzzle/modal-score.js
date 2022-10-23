@@ -1,5 +1,6 @@
 import { createElement } from './utils/createElement.js';
 import { createElementsArr } from './utils/createElementArr.js';
+import { stopTimer, startTimer } from './index.js';
 
 
 const listText = ['', '', '', '', '', '', '', '', '', ''];
@@ -16,5 +17,6 @@ scoreOverlay.addEventListener('click', (e) => {
     let target = e.target;
     if (target != scoreItem) {
         score.classList.remove('is--open');
+        startTimer();
     }
 });

@@ -11,10 +11,16 @@
   font-style: normal;
 }
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 0 auto;
   min-height: 100vh;
   padding: 0;
   background-color: rgba(0, 0, 0, 0.9);
+  background-image: url("./assets//backrounds/bg-1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .no-scroll {
@@ -53,12 +59,12 @@ body {
   position: relative;
   background-color: gray;
   display: flex;
-  gap: 20px;
+  gap: 30px;
+  margin-top: 80px;
+  padding: 20px;
   flex-direction: column;
   justify-content: space-between;
-  background: url("./assets//backrounds/bg-1.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: transparent;
 }
 .puzzles .control-panel {
   display: flex;
@@ -123,20 +129,22 @@ body {
   position: relative;
   margin: 0 auto;
   width: 100%;
-  max-width: 900px;
+  max-width: 600px;
   height: 50%;
   padding: 20px;
+  border-radius: 10px;
+  outline: 2px solid #c2a03c;
   aspect-ratio: 1/1;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .puzzles .playground:before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -15px;
+  left: -15px;
+  bottom: -15px;
+  right: -15px;
   display: none;
-  width: 100%;
-  height: 100%;
   background: url("./assets/shuffle/top_metal.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -149,12 +157,15 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   display: none;
   width: 100%;
   height: 100%;
   background: url("./assets/shuffle/top_glass.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-position: center;
+  background-size: 104%;
   font-size: 20px;
   font-weight: 500;
   line-height: 120%;
@@ -173,6 +184,7 @@ body {
   padding: 0;
   width: 25%;
   height: 25%;
+  border-radius: 10px;
   border-color: transparent;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -192,7 +204,7 @@ body {
   transition: all 0.25s linear;
 }
 .puzzles .playground .playground__item:hover {
-  border-color: #c2a03c;
+  border-color: #a07c12;
 }
 .puzzles .is-shuffle:before {
   display: initial;
@@ -208,15 +220,27 @@ body {
 .puzzles .is-won .playground__item {
   border-color: #c2a03c;
 }
-.puzzles .bottm .bottm__wrapper {
+
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.footer .bottm {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 650px;
+}
+.footer .bottm .bottm__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 40px;
   height: 40px;
-  background-color: rgba(0, 0, 0, 0.5);
 }
-.puzzles .bottm .bottm__wrapper .bottm__link {
+.footer .bottm .bottm__wrapper .bottm__link {
   padding: 5px;
   border: 2px solid #c2a03c;
   border-radius: 5px;
@@ -227,7 +251,7 @@ body {
   text-decoration: none;
   transition: all 0.3s linear;
 }
-.puzzles .bottm .bottm__wrapper .bottm__link:hover, .puzzles .bottm .bottm__wrapper .bottm__link :focus {
+.footer .bottm .bottm__wrapper .bottm__link:hover, .footer .bottm .bottm__wrapper .bottm__link :focus {
   color: white;
   outline: none;
   background-color: #c2a03c;
@@ -255,6 +279,9 @@ body {
   margin-right: 5px;
 }
 
+.modal {
+  display: none;
+}
 .modal .modal__overlay {
   position: fixed;
   left: 0;
@@ -354,10 +381,16 @@ body {
   color: #c2a03c;
 }
 
+.modal--visible {
+  display: initial;
+}
 .modal--visible .modal__overlay {
   display: flex;
 }
 
+.score {
+  display: none;
+}
 .score .score__overlay {
   position: fixed;
   left: 0;
@@ -425,6 +458,9 @@ body {
   margin-bottom: 8px;
 }
 
+.is--open {
+  display: block;
+}
 .is--open .score__overlay {
   display: flex;
 }
@@ -484,5 +520,14 @@ body {
   }
   .modal .modal__content .modal__wrapper {
     padding: 190px 30px 200px 30px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .container .btn {
+    width: 40px;
+    height: 40px;
+  }
+  .puzzles .playground:after {
+    background-size: 110%;
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -30,6 +30,7 @@ let saveBtn = btnArr[1];
 let resultsBtn = btnArr[2];
 
 resultsBtn.addEventListener('click', () => {
+    stopTimer();
     score.classList.add('is--open');
     if (getScoreFromStorage() !== null) {
         let resultsData = getScoreFromStorage();
@@ -126,8 +127,8 @@ setFrameSelect.addEventListener('change', (e) => {
         matrix.push(...getMatrix(puzzlesArr.map((item) => Number(item.dataset.matrixId)), +currentFrame));
         blankNumber.number = +currentFrame * +currentFrame;
         statsMovesCounter.innerHTML = '0';
-        statsTimerCounter.innerHTML = '0';
-        statsTimerCounterSeconds.innerHTML = '0';
+        statsTimerCounter.innerHTML = '00';
+        statsTimerCounterSeconds.innerHTML = '00';
         timer.time = 0;
         stopTimer();
     }
