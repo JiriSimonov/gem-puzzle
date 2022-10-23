@@ -76,7 +76,7 @@ saveBtn.addEventListener('click', () => {
             callback: (_item, index) => createElement({
                 tag: 'button',
                 eClass: 'playground__item', inner: `${index + 1}`,
-                attr: { 'style': `width: ${100 / +State.currentFrame}%; height: ${100 / +State.currentFrame}%`},
+                attr: { 'style': `width: ${100 / +State.currentFrame}%; height: ${100 / +State.currentFrame}%` },
                 data: { 'matrixId': `${index + 1}` },
                 bg: `${rundomNum(1, 15)}`
             })

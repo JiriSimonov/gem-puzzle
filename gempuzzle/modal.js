@@ -53,6 +53,7 @@ modalOverlay.addEventListener('click', (e) => {
             stopTimer();
             timer.time = 0;
             startTimer();
+            randomShuffle();
         }
         modal.classList.remove('modal--visible');
         body.classList.remove('no-scroll');
@@ -75,6 +76,7 @@ modalBtn.addEventListener('click', (e) => {
             modal.classList.toggle('modal--visible');
             body.classList.toggle('no-scroll');
             stopTimer();
+            randomShuffle();
         } else {
             const Score = {
                 resultsFrame3: [],
@@ -93,6 +95,7 @@ modalBtn.addEventListener('click', (e) => {
             modal.classList.toggle('modal--visible');
             body.classList.toggle('no-scroll');
             stopTimer();
+            randomShuffle();
             timer.time = 0;
             startTimer();
         }
