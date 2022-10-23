@@ -4,11 +4,11 @@ import { startTimer, stopTimer, timer, playShuffleSound, randomShuffle } from '.
 import { getScoreFromStorage, setStateToStorage } from './utils/localStrage.js';
 
 const body = document.querySelector('body');
-export const modal = createElement({ tag: 'div', eClass: 'modal' });
-const modalOverlay = createElement({ tag: 'div', eClass: 'modal__overlay', parent: modal });
-const modalContent = createElement({ tag: 'div', eClass: 'modal__content', parent: modalOverlay });
-const modalWrapper = createElement({ tag: 'div', eClass: 'modal__wrapper', parent: modalContent });
-export const modalScore = createElement({ tag: 'div', eClass: 'modal__text', parent: modalWrapper, inner: 'Your score:' });
+export const modal = createElement({ eClass: 'modal' });
+const modalOverlay = createElement({ eClass: 'modal__overlay', parent: modal });
+const modalContent = createElement({ eClass: 'modal__content', parent: modalOverlay });
+const modalWrapper = createElement({ eClass: 'modal__wrapper', parent: modalContent });
+export const modalScore = createElement({ eClass: 'modal__text', parent: modalWrapper, inner: 'Your score:' });
 const modalForm = createElement({ tag: 'form', eClass: 'modal__form', parent: modalWrapper });
 const modalLabel = createElement({ tag: 'label', eClass: 'modal__label', parent: modalForm });
 const modalInput = createElement({

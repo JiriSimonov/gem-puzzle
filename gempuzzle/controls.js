@@ -19,7 +19,7 @@ import { score, scoreList } from './modal-score.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];
 const btnsText = ['Restart', 'Save', 'Results'];
-const controlsPanel = createElement({ tag: 'div', eClass: 'control-panel' });
+const controlsPanel = createElement({ eClass: 'control-panel' });
 const setFrameSelect = createElement({ tag: 'select', eClass: 'control-panel__select', parent: controlsPanel, attr: { 'name': 'frame-select' } });
 let optionArr = createElementsArr({
     arrLength: optionsText.length, parent: setFrameSelect, callback: (item, index) => {

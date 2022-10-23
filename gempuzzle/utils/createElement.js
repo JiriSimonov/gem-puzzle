@@ -1,4 +1,4 @@
-export function createElement({ tag, eClass, inner = '', parent = '', attr = '', data = '', bg = '' }) {
+export function createElement({ tag = 'div', eClass, inner = '', parent = '', attr = '', data = '', bg = '' }) {
     const elem = document.createElement(tag);
     elem.className = eClass;
     if (inner) elem.innerHTML = inner;
