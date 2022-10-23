@@ -6,6 +6,5 @@ export const State = {
     isPlay: true,
     isStartTimer: null,
     currentMaxtrix: {},
-    userName: null
 }
 

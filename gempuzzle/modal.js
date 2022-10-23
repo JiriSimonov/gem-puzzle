@@ -1,7 +1,7 @@
 import { createElement } from './utils/createElement.js';
 import { State } from './utils/state.js';
 import { startTimer, stopTimer, timer, playShuffleSound, randomShuffle } from './index.js';
-import { getScoreFromStorage, setStateToStorage } from './utils/localStrage.js';
+import { getDataFromStorage, setStateToStorage } from './utils/localStrage.js';
 
 const body = document.querySelector('body');
 export const modal = createElement({ eClass: 'modal' });
@@ -20,8 +20,8 @@ const modalBtn = createElement({ tag: 'button', eClass: 'modal__btn', parent: mo
 modalOverlay.addEventListener('click', (e) => {
     let target = e.target;
     if (target === modalOverlay) {
-        if (getScoreFromStorage()) {
-            const data = getScoreFromStorage();
+        if (getDataFromStorage('Score')) {
+            const data = getDataFromStorage('Score');
             const newResult = {
                 moves: State.moves,
                 result: `Unknown ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds}`
@@ -62,10 +62,8 @@ modalOverlay.addEventListener('click', (e) => {
 modalBtn.addEventListener('click', (e) => {
     e.preventDefault();
     if (modalInput.value != '') {
-        if (getScoreFromStorage()) {
-            const data = getScoreFromStorage();
-            console.log(data[`resultsFrame${State.currentFrame}`]); // работает!!!
-
+        if (getDataFromStorage('Score')) {
+            const data = getDataFromStorage('Score');
             const newResult = {
                 moves: State.moves,
                 result: `${modalInput.value} ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds}`

@@ -14,7 +14,7 @@ import {
     statsTimerCounter,
     statsTimerCounterSeconds
 } from './stats.js';
-import { setStateToStorage, getStateFromStorage, getScoreFromStorage } from './utils/localStrage.js';
+import { setStateToStorage, getDataFromStorage } from './utils/localStrage.js';
 import { score, scoreList } from './modal-score.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];
@@ -64,9 +64,9 @@ saveBtn.addEventListener('click', () => {
         setStateToStorage('State', State);
         saveBtn.innerHTML = 'Continue';
     } else {
-        const storageData = getStateFromStorage();
+        const storageData = getDataFromStorage('State');
         matrix.splice(0);
-        matrix.push(...storageData.currentMaxtrix); // перезаписал матрицу
+        matrix.push(...storageData.currentMaxtrix);
         State.currentFrame = storageData.currentFrame;
         playGround.innerHTML = '';
         puzzlesArr.splice(0);
@@ -76,7 +76,7 @@ saveBtn.addEventListener('click', () => {
             callback: (_item, index) => createElement({
                 tag: 'button',
                 eClass: 'playground__item', inner: `${index + 1}`,
-                attr: { 'style': `width: ${100 / +State.currentFrame}%; height: ${100 / +State.currentFrame}%`, },
+                attr: { 'style': `width: ${100 / +State.currentFrame}%; height: ${100 / +State.currentFrame}%`},
                 data: { 'matrixId': `${index + 1}` },
                 bg: `${rundomNum(1, 15)}`
             })
@@ -140,7 +140,7 @@ setFrameSelect.addEventListener('change', (e) => {
 });
 
 export function printScore(frameSize) {
-    let resultsData = getScoreFromStorage();
+    let resultsData = getDataFromStorage('Score');
     let data = resultsData[`resultsFrame${frameSize}`];
     let scoreItems = Array.from(scoreList.childNodes);
     for (let i = 0; i < scoreItems.length; i++) {
