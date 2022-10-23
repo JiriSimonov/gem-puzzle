@@ -24,7 +24,7 @@ modalOverlay.addEventListener('click', (e) => {
             const data = getDataFromStorage('Score');
             const newResult = {
                 moves: State.moves,
-                result: `Unknown ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds}`
+                result: `Unknown ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds.toString().padStart(2, '0')}`
             }
             data[`resultsFrame${State.currentFrame}`].push(newResult);
             data[`resultsFrame${State.currentFrame}`].sort((a, b) => a.moves - b.moves);
@@ -44,7 +44,7 @@ modalOverlay.addEventListener('click', (e) => {
             }
             const newResult = {
                 moves: State.moves,
-                result: `Unknown ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds}`
+                result: `Unknown ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds.toString().padStart(2, '0')}`
             }
             Score[`resultsFrame${State.currentFrame}`].push(newResult);
             setStateToStorage('Score', Score);
@@ -67,7 +67,7 @@ modalBtn.addEventListener('click', (e) => {
             const data = getDataFromStorage('Score');
             const newResult = {
                 moves: State.moves,
-                result: `${modalInput.value} ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds}`
+                result: `${modalInput.value} ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds.toString().padStart(2, '0')}`
             }
             data[`resultsFrame${State.currentFrame}`].push(newResult);
             data[`resultsFrame${State.currentFrame}`].sort((a, b) => a.moves - b.moves);
@@ -88,7 +88,7 @@ modalBtn.addEventListener('click', (e) => {
             }
             const newResult = {
                 moves: State.moves,
-                result: `${modalInput.value} ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds}`
+                result: `${modalInput.value} ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds.toString().padStart(2, '0')}`
             }
             Score[`resultsFrame${State.currentFrame}`].push(newResult);
             setStateToStorage('Score', Score);
