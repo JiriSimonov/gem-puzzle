@@ -32,18 +32,7 @@ let resultsBtn = btnArr[2];
 resultsBtn.addEventListener('click', () => {
     stopTimer();
     score.classList.add('is--open');
-    if (getScoreFromStorage() !== null) {
-        let resultsData = getScoreFromStorage();
-        const results = Object.keys(resultsData);
-        let scoreItems = Array.from(scoreList.childNodes);
-        for (let i = 0; i < scoreItems.length; i++) {
-            if (resultsData[results[i]] === undefined) {
-                scoreItems[i].innerHTML = 'unknown';
-            } else {
-                scoreItems[i].innerHTML = resultsData[results[i]].result;
-            }
-        }
-    }
+    printScore(State.currentFrame);
 });
 
 startBtn.addEventListener('click', () => {
@@ -133,5 +122,18 @@ setFrameSelect.addEventListener('change', (e) => {
         stopTimer();
     }
 });
+
+export function printScore(frameSize) {
+    let resultsData = getScoreFromStorage();
+    let data = resultsData[`resultsFrame${frameSize}`];
+    let scoreItems = Array.from(scoreList.childNodes);
+    for (let i = 0; i < scoreItems.length; i++) {
+        if (data[i] === undefined) {
+            scoreItems[i].innerHTML = 'unknown';
+        } else {
+            scoreItems[i].innerHTML = data[i].result;
+        }
+    }
+}
 
 export default controlsPanel;

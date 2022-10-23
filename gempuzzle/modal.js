@@ -22,30 +22,35 @@ modalOverlay.addEventListener('click', (e) => {
             const data = getScoreFromStorage();
             const newResult = {
                 moves: State.moves,
-                result: `Unknown score: ${State.moves} moves, ${State.currentTime.minutes} minutes and  ${State.currentTime.seconds} seconds`
+                result: `Unknown ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds}`
             }
-            data.push(newResult);
-            data.sort((a,b) => a.moves - b.moves);
-            data.splice(10);
+            data[`resultsFrame${State.currentFrame}`].push(newResult);
+            data[`resultsFrame${State.currentFrame}`].sort((a,b) => a.moves - b.moves);
+            data[`resultsFrame${State.currentFrame}`].splice(10);
             setStateToStorage('Score', data);
             stopTimer();
             if (State.isSoundOn === true) playShuffleSound();
             randomShuffle();
         } else {
-            const Score = [
-                {
-                    moves: State.moves,
-                    result: `Unknown score: ${State.moves} moves, ${State.currentTime.minutes} minutes and  ${State.currentTime.seconds} seconds`
-                }
-            ]
+            const Score = {
+                resultsFrame3: [],
+                resultsFrame4: [],
+                resultsFrame5: [],
+                resultsFrame6: [],
+                resultsFrame7: [],
+                resultsFrame8: [],
+            }
+            const newResult = {
+                moves: State.moves,
+                result: `Unknown ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds}`
+            }
+            Score[`resultsFrame${State.currentFrame}`].push(newResult);
             setStateToStorage('Score', Score);
             modal.classList.toggle('modal--visible');
             body.classList.toggle('no-scroll');
             stopTimer();
             timer.time = 0;
             startTimer();
-            if (State.isSoundOn === true) playShuffleSound();
-            randomShuffle();
         }
         modal.classList.remove('modal--visible');
         body.classList.remove('no-scroll');
@@ -57,24 +62,33 @@ modalBtn.addEventListener('click', (e) => {
     if (modalInput.value != '') {
         if (getScoreFromStorage()) {
             const data = getScoreFromStorage();
+            console.log(data[`resultsFrame${State.currentFrame}`]); // работает!!!
+
             const newResult = {
                 moves: State.moves,
-                result: `${modalInput.value} score: ${State.moves} moves, ${State.currentTime.minutes} minutes and  ${State.currentTime.seconds} seconds`
+                result: `${modalInput.value} ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds}`
             }
-            data.push(newResult);
-            data.sort((a,b) => a.moves - b.moves);
-            data.splice(10);
+            data[`resultsFrame${State.currentFrame}`].push(newResult);
+            data[`resultsFrame${State.currentFrame}`].sort((a,b) => a.moves - b.moves);
+            data[`resultsFrame${State.currentFrame}`].splice(10);
             setStateToStorage('Score', data);
             modal.classList.toggle('modal--visible');
             body.classList.toggle('no-scroll');
             stopTimer();
         } else {
-            const Score = [
-                {
-                    moves: State.moves,
-                    result: `${modalInput.value} score: ${State.moves} moves, ${State.currentTime.minutes} minutes and  ${State.currentTime.seconds} seconds`
-                }
-            ]
+            const Score = {
+                resultsFrame3: [],
+                resultsFrame4: [],
+                resultsFrame5: [],
+                resultsFrame6: [],
+                resultsFrame7: [],
+                resultsFrame8: [],
+            }
+            const newResult = {
+                moves: State.moves,
+                result: `${modalInput.value} ${State.moves} moves, time: ${State.currentTime.minutes}:${State.currentTime.seconds}`
+            }
+            Score[`resultsFrame${State.currentFrame}`].push(newResult);
             setStateToStorage('Score', Score);
             modal.classList.toggle('modal--visible');
             body.classList.toggle('no-scroll');
@@ -84,4 +98,3 @@ modalBtn.addEventListener('click', (e) => {
         }
     }
 });
-

@@ -12,11 +12,11 @@
 }
 
 body {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 0 auto;
-    min-height: 100vh;
     padding: 0;
     background-color: rgba(0, 0,0,.9);
     background-image: url('./assets//backrounds/bg-1.jpg');
@@ -33,26 +33,27 @@ body {
     padding: 0 40px;
     width: 100%;
     max-width: 1600px;
-    .btn {
-        position: absolute;
-        left: 20px;
-        top: 30px;
-        padding: 5px;
-        height: 35px;
-        border: 1px solid #977306;
-        border-radius: 5px;
-        background-color: transparent;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 120%;
-        color: white;
-        cursor: pointer;
-        transition: .3s linear;
-        &:hover {
-            background-color: #c2a03c;
-            color: black;
-            border-color: rgba(255,255,255, 0.8);
-        }
+}
+
+.btn {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    padding: 5px;
+    height: 35px;
+    border: 1px solid #977306;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 120%;
+    color: white;
+    cursor: pointer;
+    transition: .3s linear;
+    &:hover {
+        background-color: #c2a03c;
+        color: black;
+        border-color: rgba(255,255,255, 0.8);
     }
 }
 
@@ -194,7 +195,7 @@ body {
             text-align: center;
             user-select: none;
             cursor: pointer;
-            transition: all .25s linear;
+            transition: transform .25s linear;
             &:hover {
                 border-color: #a07c12;
             }
@@ -210,6 +211,7 @@ body {
             opacity: .7;
         }
         .playground__item {
+            filter: blur(4px);
             pointer-events: none;
         }
     }
@@ -220,7 +222,6 @@ body {
     }
 }
 .footer {
-    position: fixed;
     width: 100%;
     bottom: 0;
     margin-top: 20px;
@@ -393,7 +394,7 @@ body {
         justify-content: center;
         height: 100%;
         width: 100%;
-        background-color: rgba(0, 0, 0, .5);
+        background-color: rgba(0, 0, 0, .8);
         transition: all .3s linear;
         overflow: hidden;
         z-index: 10;
@@ -409,7 +410,6 @@ body {
         background-color: white;
         text-align: center;
         transition: all .3s linear;
-        overflow: hidden;
         background-image: url('./assets/modal/score.gif');
         background-repeat: no-repeat;
         background-size: cover;
@@ -434,6 +434,7 @@ body {
             top: 0;
             width: 100%;
             height: 100%;
+            border-radius: 46px;
             background-color: rgba(0, 0, 0, .3);
         }
         .score__title {
@@ -445,6 +446,30 @@ body {
             text-align: left;
             .score__item:not(:last-child) {
                 margin-bottom: 8px;
+            }
+        }
+    }
+    .score__panel {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        transform: translateX(-50%);
+        .score__btn {
+            padding: 5px;
+            border: 2px solid #c2a03c;
+            border-radius: 5px;
+            background-color: transparent;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 120%;
+            color: white;
+            &:hover {
+                background-color: #c2a03c;
+                color: black;
+                border-color: rgba(255,255,255, 0.8);
             }
         }
     }
@@ -460,21 +485,21 @@ body {
    .container {
     padding: 10px;
     max-width: 600px;
-    .btn {
-        top: 5px;
-        left: 5px; 
-        width: 52px;
-        height: 52px;
-        font-size: 0;
-        transform: translateX(0);
-        background-image: url('./assets/gems/gem-1.png');
-        background-size: cover;
-     }
    }
    .puzzles {
     padding-top: 20px;
 
    }
+   .btn {
+    top: 5px;
+    left: 5px; 
+    width: 52px;
+    height: 52px;
+    font-size: 0;
+    transform: translateX(0);
+    background-image: url('./assets/gems/gem-1.png');
+    background-size: cover;
+ }
 }
 
 @media (max-width: 510px) {

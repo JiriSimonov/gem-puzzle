@@ -12,7 +12,7 @@ import { score } from './modal-score.js';
 const body = document.querySelector('body');
 export const container = createElement({tag: 'div', eClass: 'container', parent: body});
 const puzzlesWrapper = createElement({tag: 'div', eClass: 'puzzles', parent: container});
-const setNewBg = createElement({tag: 'button', eClass: 'btn', parent: puzzlesWrapper, inner: 'Switch background', attr: {'type' : 'button'}});
+const setNewBg = createElement({tag: 'button', eClass: 'btn', parent: body, inner: 'Switch background', attr: {'type' : 'button'}});
 puzzlesWrapper.appendChild(controlsPanel);
 puzzlesWrapper.appendChild(statsPanel);
 export const playGround = createElement({tag: 'div', eClass: 'playground is-shuffle', parent: puzzlesWrapper});
