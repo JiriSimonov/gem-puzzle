@@ -32,6 +32,10 @@ scoreOverlay.addEventListener('click', (e) => {
 
 scoreBtn.forEach((e) => {
     e.addEventListener('click', (e) => {
+        scoreBtn.forEach((i) => {
+            i.classList.remove('is--selected');
+        })
+        e.target.classList.add('is--selected');
         let target = e.target.textContent;
         printScore(parseInt(target[0]));
     });

@@ -482,6 +482,11 @@ body {
   color: black;
   border-color: rgba(255, 255, 255, 0.8);
 }
+.score .score__panel .is--selected {
+  background-color: #c2a03c;
+  color: black;
+  border-color: rgba(255, 255, 255, 0.8);
+}
 
 .is--open {
   display: block;
