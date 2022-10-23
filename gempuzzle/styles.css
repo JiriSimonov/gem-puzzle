@@ -252,7 +252,8 @@ body {
   text-decoration: none;
   transition: all 0.3s linear;
 }
-.footer .bottm .bottm__wrapper .bottm__link:hover, .footer .bottm .bottm__wrapper .bottm__link :focus {
+.footer .bottm .bottm__wrapper .bottm__link:hover,
+.footer .bottm .bottm__wrapper .bottm__link :focus {
   color: white;
   outline: none;
   background-color: #c2a03c;
