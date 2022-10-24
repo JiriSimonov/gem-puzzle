@@ -60,6 +60,7 @@ isHasSavedGame();
 saveBtn.addEventListener('click', () => {
     if (State.isPlay === true) {
         State.isPlay = false;
+        State.currentMaxtrix = matrix;
         stopTimer();
         setStateToStorage('State', State);
         saveBtn.innerHTML = 'Continue';
@@ -140,6 +141,17 @@ setFrameSelect.addEventListener('change', (e) => {
 });
 
 export function printScore(frameSize) {
+    if (getDataFromStorage('Score') === null) {
+        const Score = {
+            resultsFrame3: [],
+            resultsFrame4: [],
+            resultsFrame5: [],
+            resultsFrame6: [],
+            resultsFrame7: [],
+            resultsFrame8: [],
+        }
+        setStateToStorage('Score', Score);
+    }
     let resultsData = getDataFromStorage('Score');
     let data = resultsData[`resultsFrame${frameSize}`];
     let scoreItems = Array.from(scoreList.childNodes);

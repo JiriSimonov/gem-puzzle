@@ -22,7 +22,7 @@ body.appendChild(score);
 export const movesCounter = { moves: 0 };
 export const timer = { time: 0 };
 export const blankNumber = { number: +State.currentFrame * +State.currentFrame };
-const maxShuffle = 50;
+const maxShuffle = 100;
 let blockedPosition = null;
 let shuffleTimer;
 let shuffleCounter = 0;
