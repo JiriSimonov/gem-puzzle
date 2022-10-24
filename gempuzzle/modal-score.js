@@ -17,7 +17,7 @@ const scoreItem = createElementsArr({
     callback: (_item, index) => createElement({ tag: 'li', eClass: 'score__item', parent: scoreList, inner: listText[index] })
 });
 const scorePanel = createElement({ eClass: 'score__panel', parent: scoreContent });
-const scoreBtn = createElementsArr({
+export const scoreBtn = createElementsArr({
     arrLength: btnText.length, parent: scorePanel,
     callback: (_item, index) => createElement({ tag: 'button', eClass: 'score__btn', parent: scorePanel, inner: btnText[index], attr: { 'type': 'button' } })
 });

@@ -219,6 +219,7 @@ function getBtnPositionByNumber(number, matrix) {
 }
 
 function isPossibleForSwitch(posOne, posTwo) {
+    if(posOne === null || posTwo === null) return;
     const diffX = Math.abs(posOne.x - posTwo.x);
     const diffY = Math.abs(posOne.y - posTwo.y);
     return (diffX === 1 || diffY === 1) && (posOne.x === posTwo.x || posOne.y === posTwo.y);

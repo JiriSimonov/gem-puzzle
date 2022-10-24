@@ -15,7 +15,7 @@ import {
     statsTimerCounterSeconds
 } from './stats.js';
 import { setStateToStorage, getDataFromStorage } from './utils/localStrage.js';
-import { score, scoreList } from './modal-score.js';
+import { score, scoreList, scoreBtn } from './modal-score.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];
 const btnsText = ['Restart', 'Save', 'Results'];
@@ -40,7 +40,14 @@ let resultsBtn = btnArr[2];
 resultsBtn.addEventListener('click', () => {
     stopTimer();
     score.classList.add('is--open');
-    printScore(State.currentFrame);
+    scoreBtn.forEach((e) => {
+        if (parseInt(e.textContent) == State.currentFrame) {
+            e.classList.add('is--selected');
+        } else {
+            e.classList.remove('is--selected');
+        }
+        printScore(State.currentFrame);
+    });
 });
 
 startBtn.addEventListener('click', () => {
