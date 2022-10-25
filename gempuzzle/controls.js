@@ -3,8 +3,7 @@ import {
     puzzlesArr, playGround,
     matrix, getMatrix, generateWinArr,
     blankNumber, stopTimer, timer, startTimer,
-    playShuffleSound,
-    movesCounter, setPositionItems, randomShuffle
+    movesCounter, setPositionItems, randomShuffle, resetGameState, printGameTimeAndSteps
 } from './index.js';
 import { createElement } from './utils/createElement.js';
 import { createElementsArr } from './utils/createElementArr.js';
@@ -142,10 +141,8 @@ setFrameSelect.addEventListener('change', (e) => {
         randomShuffle();
         matrix.push(...getMatrix(puzzlesArr.map((item) => Number(item.dataset.matrixId)), +currentFrame));
         blankNumber.number = +currentFrame * +currentFrame;
-        statsMovesCounter.innerHTML = '0';
-        statsTimerCounter.innerHTML = '00';
-        statsTimerCounterSeconds.innerHTML = '00';
-        timer.time = 0;
+        resetGameState(movesCounter, State, State);
+        printGameTimeAndSteps( statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds, timer);
         stopTimer();
     }
 });

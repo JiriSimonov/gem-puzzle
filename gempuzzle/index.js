@@ -34,8 +34,7 @@ export function randomShuffle() {
         shuffleSound.currentTime = 0;
         shuffleSound.play();
     }
-    statsMovesCounter.innerHTML = '0';
-    statsTimerCounterSeconds.innerHTML = '00';
+    printGameTimeAndSteps( statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds);
     if (shuffleCounter === 0) {
         shuffleTimer = setInterval(() => {
             randomSwap(matrix);
@@ -45,12 +44,8 @@ export function randomShuffle() {
                 clearInterval(shuffleTimer);
                 shuffleCounter = 0;
                 playGround.classList.remove('is-shuffle');
-                statsMovesCounter.innerHTML = '0';
-                statsTimerCounter.innerHTML = '0';
-                statsTimerCounterSeconds.innerHTML = '0';
-                State.currentTime.minutes = 0;
-                State.currentTime.seconds = 0;
-                movesCounter.moves = 0;
+                resetGameState(movesCounter, State, State);
+                printGameTimeAndSteps( statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds, timer);
                 timer.time = 0;
                 stopTimer();
                 startTimer();
@@ -58,6 +53,21 @@ export function randomShuffle() {
         }, 30);
     }
 }
+
+export function printGameTimeAndSteps(steps, minutes, seconds) {
+    let resetArr = [steps, minutes, seconds];
+    resetArr.forEach((e) => {
+        e.innerHTML = '00';
+    })
+}
+
+export function resetGameState (steps, minutes, seconds, timerCount = '') {
+    minutes.currentTime.minutes = 0;
+    seconds.currentTime.seconds = 0;
+    steps.moves = 0;
+    if(timerCount) timerCount.time = 0;
+}
+
 randomShuffle();
 setNewBg.addEventListener('click', () => {
     body.style.backgroundImage = `url('./assets/backrounds/bg-${rundomNum(1, 7)}.jpg')`;
