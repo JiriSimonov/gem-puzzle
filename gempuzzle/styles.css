@@ -49,6 +49,10 @@ body {
   color: white;
   cursor: pointer;
   transition: 0.3s linear;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .btn:hover {
   background-color: #c2a03c;
@@ -94,6 +98,10 @@ body {
   background-color: transparent;
   color: #c2a03c;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .puzzles .control-panel .control-panel__select .control-panel__option:hover {
   background-color: #c2a03c;
@@ -111,6 +119,10 @@ body {
   color: white;
   cursor: pointer;
   transition: 0.3s linear;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .puzzles .control-panel .control-panel__btn:hover {
   background-color: #c2a03c;
@@ -224,9 +236,9 @@ body {
 }
 
 .footer {
+  position: absolute;
   width: 100%;
   bottom: 0;
-  margin-top: 20px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .footer .bottm {
@@ -251,6 +263,10 @@ body {
   color: white;
   text-decoration: none;
   transition: all 0.3s linear;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .footer .bottm .bottm__wrapper .bottm__link:hover,
 .footer .bottm .bottm__wrapper .bottm__link :focus {
@@ -461,7 +477,7 @@ body {
 }
 .score .score__panel {
   position: absolute;
-  top: -60px;
+  top: -70px;
   left: 50%;
   display: flex;
   justify-content: space-around;
@@ -469,7 +485,7 @@ body {
   transform: translateX(-50%);
 }
 .score .score__panel .score__btn {
-  padding: 5px;
+  padding: 10px;
   border: 2px solid #c2a03c;
   border-radius: 5px;
   background-color: transparent;
@@ -477,6 +493,7 @@ body {
   font-weight: 500;
   line-height: 120%;
   color: white;
+  cursor: pointer;
 }
 .score .score__panel .score__btn:hover {
   background-color: #c2a03c;
@@ -502,7 +519,11 @@ body {
     max-width: 600px;
   }
   .puzzles {
+    margin-top: 0;
     padding-top: 20px;
+  }
+  .puzzles .control-panel {
+    margin-top: 0;
   }
   .btn {
     top: 5px;

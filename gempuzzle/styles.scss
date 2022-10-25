@@ -244,9 +244,9 @@ body {
 }
 
 .footer {
+    position: absolute;
     width: 100%;
     bottom: 0;
-    margin-top: 20px;
     background-color: rgba(0, 0, 0, .5);
 
     .bottm {
@@ -499,7 +499,7 @@ body {
 
     .score__panel {
         position: absolute;
-        top: -60px;
+        top: -70px;
         left: 50%;
         display: flex;
         justify-content: space-around;
@@ -507,7 +507,7 @@ body {
         transform: translateX(-50%);
 
         .score__btn {
-            padding: 5px;
+            padding: 10px;
             border: 2px solid #c2a03c;
             border-radius: 5px;
             background-color: transparent;
@@ -515,6 +515,7 @@ body {
             font-weight: 500;
             line-height: 120%;
             color: white;
+            cursor: pointer;
 
             &:hover {
                 background-color: #c2a03c;
@@ -546,7 +547,11 @@ body {
     }
 
     .puzzles {
+        margin-top: 0;
         padding-top: 20px;
+        .control-panel {
+            margin-top: 0;
+        }
 
     }
 

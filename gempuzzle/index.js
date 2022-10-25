@@ -1,7 +1,7 @@
 import { State } from './utils/state.js';
 import { createElement } from './utils/createElement.js';
 import { rundomNum } from './utils/getRundomNum.js';
-import controlsPanel from './controls.js';
+import {controlsPanel, shuffleSound, switchSound} from './controls.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { footer } from './bottom-side.js';
 import { modal, modalScore } from './modal.js';
@@ -30,7 +30,10 @@ clearInterval(shuffleTimer);
 export function randomShuffle() {
     playGround.classList.add('is-shuffle');
     stopTimer();
-    if (State.isSoundOn === true) playShuffleSound();
+    if (State.isSoundOn === true) {
+        shuffleSound.currentTime = 0;
+        shuffleSound.play();
+    }
     statsMovesCounter.innerHTML = '0';
     statsTimerCounterSeconds.innerHTML = '00';
     if (shuffleCounter === 0) {
@@ -149,7 +152,10 @@ playGround.addEventListener('click', (event) => {
 
     if (isPossible) {
         switchBtns(blankPosition, btnPosition, matrix);
-        if (State.isSoundOn === true) playSound();
+        if (State.isSoundOn === true) {
+            switchSound.currentTime = 0;
+            switchSound.play();
+        }
         startTimer();
         statsMovesCounter.innerHTML = ++movesCounter.moves;
         State.moves = movesCounter.moves;

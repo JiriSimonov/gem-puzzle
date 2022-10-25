@@ -19,7 +19,7 @@ import { score, scoreList, scoreBtn } from './modal-score.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];
 const btnsText = ['Restart', 'Save', 'Results'];
-const controlsPanel = createElement({ eClass: 'control-panel' });
+export const controlsPanel = createElement({ eClass: 'control-panel' });
 const setFrameSelect = createElement({ tag: 'select', eClass: 'control-panel__select', parent: controlsPanel, attr: { 'name': 'frame-select' } });
 let optionArr = createElementsArr({
     arrLength: optionsText.length, parent: setFrameSelect, callback: (item, index) => {
@@ -28,14 +28,14 @@ let optionArr = createElementsArr({
         return item;
     }
 });
-const btnArr = createElementsArr({
+let btnArr = createElementsArr({
     arrLength: btnsText.length, parent: controlsPanel,
     callback: (_item, index) => createElement({ tag: 'button', eClass: 'control-panel__btn', inner: btnsText[index], attr: { 'type': 'button', 'id': `${btnsText[index]}` } })
 });
+const [startBtn, saveBtn, resultsBtn] = btnArr;
 const musicBtn = createElement({ tag: 'button', eClass: 'control-panel__btn control-panel__btn_music', parent: controlsPanel });
-let startBtn = btnArr[0];
-let saveBtn = btnArr[1];
-let resultsBtn = btnArr[2];
+export const shuffleSound = new Audio('./assets/audio/shuffle.mp3');
+export const switchSound = new Audio('./assets/audio/audio.mp3');
 
 resultsBtn.addEventListener('click', () => {
     stopTimer();
@@ -51,7 +51,10 @@ resultsBtn.addEventListener('click', () => {
 });
 
 startBtn.addEventListener('click', () => {
-    if (State.isSoundOn === true) playShuffleSound();
+    if (State.isSoundOn === true) {
+        shuffleSound.currentTime = 0;
+        shuffleSound.play();
+    }
     randomShuffle();
 });
 
@@ -170,5 +173,3 @@ export function printScore(frameSize) {
         }
     }
 }
-
-export default controlsPanel;

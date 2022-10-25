@@ -7,4 +7,3 @@ export const State = {
     isStartTimer: null,
     currentMaxtrix: {},
 }
-
