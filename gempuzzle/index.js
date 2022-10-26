@@ -255,7 +255,6 @@ function switchBtns(posOne, posTwo, matrix) {
     matrix[posOne.y][posOne.x] = matrix[posTwo.y][posTwo.x];
     matrix[posTwo.y][posTwo.x] = posNumber;
     if (isWon(matrix) === true) {
-        console.log(dsfdsfdsf(State.currentFrame, State.currentTime.seconds));
         stopTimer();
         addWon();
     }
@@ -280,9 +279,9 @@ function isWon(matrix) {
 function addWon() {
     body.classList.toggle('no-scroll');
     modal.classList.toggle('modal--visible');
-    if (+State.currentTime.seconds < 30 && +State.currentTime.minutes < 1) {
+    if (getResultProportion(State.currentFrame, State.currentTime.minutes, State.currentTime.seconds) > 8) {
         modalContent.style.backgroundImage = "url('./assets/modal/modal-2.gif')";
-    } else if (+State.currentTime.minutes >= 1) {
+    } else if (getResultProportion(State.currentFrame, State.currentTime.minutes, State.currentTime.seconds) < 4) {
         modalContent.style.backgroundImage = "url('./assets/modal/modal-1.gif')";
     }
     modalScore.innerHTML = `Hooray! You solved the puzzle in ${State.currentTime.minutes.toString().padStart(2, '0')}:${State.currentTime.seconds.toString().padStart(2, '0')} and ${movesCounter.moves + 1} moves!`;
@@ -311,7 +310,7 @@ export function stopTimer() {
     State.isStartTimer = null;
 }
 
-// function dsfdsfdsf(currentFrame, sec) {
-//    return sec / currentFrame;
-// }
+function getResultProportion(currentFrame, min, sec) {
+   return (sec + min * 60) / currentFrame;
+}
 
