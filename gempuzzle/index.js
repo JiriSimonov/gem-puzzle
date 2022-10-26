@@ -26,7 +26,9 @@ const maxShuffle = 100;
 let blockedPosition = null;
 let shuffleTimer;
 let shuffleCounter = 0;
+
 clearInterval(shuffleTimer);
+
 export function randomShuffle() {
     playGround.classList.add('is-shuffle');
     controlsPanel.classList.add('disabled');
@@ -54,7 +56,6 @@ export function randomShuffle() {
         }, 30);
     }
 }
-
 
 export function printGameTimeAndSteps(steps, minutes, seconds) {
     let resetArr = [steps, minutes, seconds];
@@ -143,8 +144,6 @@ function setNodeStyles(node, x, y) {
     node.style.transform = `translate3D(${shiftPs * x}%, ${shiftPs * y}%, 0)`;
 }
 
-
-
 export function setPositionItems(matrix, arr) {
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
@@ -154,6 +153,52 @@ export function setPositionItems(matrix, arr) {
         }
     }
 }
+
+window.addEventListener('keydown', (e) => {
+    if (!e.key.includes('Arrow')) {
+        return;
+    }
+
+    const blankPosition = getBtnPositionByNumber(blankNumber.number, matrix);
+    const btnPosition = {
+        x: blankPosition.x,
+        y: blankPosition.y,
+    }
+
+    const direction = e.key.split('Arrow')[1].toLowerCase();
+    switch(direction) {
+        case 'up':
+            btnPosition.y -= 1;
+            break;
+        case 'down':
+            btnPosition.y += 1;
+            break;
+        case 'right': 
+            btnPosition.x += 1;
+            break;
+        case 'left':
+            btnPosition.x -= 1;
+            break;
+        default: 
+            return null;
+    }
+    console.log();
+
+    if(btnPosition.y >= matrix.length || btnPosition.y < 0 || btnPosition.x >= matrix.length || btnPosition.x < 0) {
+        return;
+    }
+
+    startTimer();
+    switchBtns(blankPosition, btnPosition, matrix);
+    if (State.isSoundOn === true) {
+        switchSound.currentTime = 0;
+        switchSound.play();
+    }
+    statsMovesCounter.innerHTML = ++movesCounter.moves;
+    State.moves = movesCounter.moves;
+    setPositionItems(matrix, puzzlesArr);
+    State.currentMaxtrix = matrix;
+});
 
 playGround.addEventListener('click', (event) => {
     const currentBtn = event.target.closest('.playground__item');
@@ -180,6 +225,7 @@ playGround.addEventListener('click', (event) => {
 playGround.addEventListener('dragstart', ({ target }) => {
     target.setAttribute('id', 'isDragged');
 });
+
 playGround.addEventListener('dragend', (event) => {
     event.preventDefault();
     event.target.removeAttribute('id');
@@ -279,9 +325,9 @@ function isWon(matrix) {
 function addWon() {
     body.classList.toggle('no-scroll');
     modal.classList.toggle('modal--visible');
-    if (getResultProportion(State.currentFrame, State.currentTime.minutes, State.currentTime.seconds) > 8) {
+    if (getResultProportion(State.currentFrame, State.currentTime.minutes, State.currentTime.seconds) < 8) {
         modalContent.style.backgroundImage = "url('./assets/modal/modal-2.gif')";
-    } else if (getResultProportion(State.currentFrame, State.currentTime.minutes, State.currentTime.seconds) < 4) {
+    } else if (getResultProportion(State.currentFrame, State.currentTime.minutes, State.currentTime.seconds) > 19) {
         modalContent.style.backgroundImage = "url('./assets/modal/modal-1.gif')";
     }
     modalScore.innerHTML = `Hooray! You solved the puzzle in ${State.currentTime.minutes.toString().padStart(2, '0')}:${State.currentTime.seconds.toString().padStart(2, '0')} and ${movesCounter.moves + 1} moves!`;
