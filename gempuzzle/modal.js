@@ -6,7 +6,7 @@ import { getDataFromStorage, setStateToStorage } from './utils/localStrage.js';
 const body = document.querySelector('body');
 export const modal = createElement({ eClass: 'modal' });
 const modalOverlay = createElement({ eClass: 'modal__overlay', parent: modal });
-const modalContent = createElement({ eClass: 'modal__content', parent: modalOverlay });
+export const modalContent = createElement({ eClass: 'modal__content', parent: modalOverlay });
 const modalWrapper = createElement({ eClass: 'modal__wrapper', parent: modalContent });
 export const modalScore = createElement({ eClass: 'modal__text', parent: modalWrapper, inner: 'Your score:' });
 const modalForm = createElement({ tag: 'form', eClass: 'modal__form', parent: modalWrapper });

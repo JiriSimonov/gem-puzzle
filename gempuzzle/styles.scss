@@ -53,10 +53,12 @@ body {
     transition: .3s linear;
     user-select: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: #c2a03c;
         color: black;
         border-color: rgba(255, 255, 255, 0.8);
+        outline: none;
     }
 }
 
@@ -98,9 +100,11 @@ body {
                 cursor: pointer;
                 user-select: none;
 
-                &:hover {
+                &:hover,
+                &:focus {
                     background-color: #c2a03c;
                     color: white;
+                    outline: none;
                 }
             }
         }
@@ -119,10 +123,12 @@ body {
             transition: .3s linear;
             user-select: none;
 
-            &:hover {
+            &:hover,
+            &:focus {
                 background-color: #c2a03c;
                 color: black;
                 border-color: rgba(255, 255, 255, 0.8);
+                outline: none;
             }
         }
 
@@ -245,8 +251,6 @@ body {
 
 .footer {
     width: 100%;
-    bottom: 0;
-    margin-top: 20px;
     background-color: rgba(0, 0, 0, .5);
 
     .bottm {
@@ -272,13 +276,15 @@ body {
                 text-decoration: none;
                 transition: all .3s linear;
                 user-select: none;
+
                 &:hover,
-                :focus {
+                &:focus {
                     color: white;
                     outline: none;
                     background-color: #c2a03c;
                     color: black;
                     border-color: rgba(255, 255, 255, 0.8);
+                    outline: none;
                 }
             }
         }
@@ -296,7 +302,7 @@ body {
         padding: 5px;
         border: 2px solid #c2a03c;
         border-radius: 5px;
-        ;
+        user-select: none;
         font-size: 16px;
         font-weight: 500;
         line-height: 120%;
@@ -306,6 +312,11 @@ body {
             margin-right: 5px;
         }
     }
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: .5;
 }
 
 .modal {
@@ -343,6 +354,7 @@ body {
         transition: all .3s linear;
         overflow: hidden;
         background-image: url('./assets/modal/modal.gif');
+        background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
 
@@ -499,7 +511,7 @@ body {
 
     .score__panel {
         position: absolute;
-        top: -60px;
+        top: -70px;
         left: 50%;
         display: flex;
         justify-content: space-around;
@@ -507,7 +519,7 @@ body {
         transform: translateX(-50%);
 
         .score__btn {
-            padding: 5px;
+            padding: 10px;
             border: 2px solid #c2a03c;
             border-radius: 5px;
             background-color: transparent;
@@ -515,11 +527,14 @@ body {
             font-weight: 500;
             line-height: 120%;
             color: white;
+            cursor: pointer;
 
-            &:hover {
+            &:hover,
+            &:focus {
                 background-color: #c2a03c;
                 color: black;
                 border-color: rgba(255, 255, 255, 0.8);
+                outline: none;
             }
         }
 
@@ -546,7 +561,12 @@ body {
     }
 
     .puzzles {
+        margin-top: 0;
         padding-top: 20px;
+
+        .control-panel {
+            margin-top: 0;
+        }
 
     }
 

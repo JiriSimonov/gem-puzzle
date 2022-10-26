@@ -3,8 +3,7 @@ import {
     puzzlesArr, playGround,
     matrix, getMatrix, generateWinArr,
     blankNumber, stopTimer, timer, startTimer,
-    playShuffleSound,
-    movesCounter, setPositionItems, randomShuffle
+    movesCounter, setPositionItems, randomShuffle, resetGameState, printGameTimeAndSteps
 } from './index.js';
 import { createElement } from './utils/createElement.js';
 import { createElementsArr } from './utils/createElementArr.js';
@@ -19,7 +18,7 @@ import { score, scoreList, scoreBtn } from './modal-score.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];
 const btnsText = ['Restart', 'Save', 'Results'];
-const controlsPanel = createElement({ eClass: 'control-panel' });
+export const controlsPanel = createElement({ eClass: 'control-panel' });
 const setFrameSelect = createElement({ tag: 'select', eClass: 'control-panel__select', parent: controlsPanel, attr: { 'name': 'frame-select' } });
 let optionArr = createElementsArr({
     arrLength: optionsText.length, parent: setFrameSelect, callback: (item, index) => {
@@ -28,14 +27,14 @@ let optionArr = createElementsArr({
         return item;
     }
 });
-const btnArr = createElementsArr({
+let btnArr = createElementsArr({
     arrLength: btnsText.length, parent: controlsPanel,
     callback: (_item, index) => createElement({ tag: 'button', eClass: 'control-panel__btn', inner: btnsText[index], attr: { 'type': 'button', 'id': `${btnsText[index]}` } })
 });
+const [startBtn, saveBtn, resultsBtn] = btnArr;
 const musicBtn = createElement({ tag: 'button', eClass: 'control-panel__btn control-panel__btn_music', parent: controlsPanel });
-let startBtn = btnArr[0];
-let saveBtn = btnArr[1];
-let resultsBtn = btnArr[2];
+export const shuffleSound = new Audio('./assets/audio/shuffle.mp3');
+export const switchSound = new Audio('./assets/audio/audio.mp3');
 
 resultsBtn.addEventListener('click', () => {
     stopTimer();
@@ -51,7 +50,10 @@ resultsBtn.addEventListener('click', () => {
 });
 
 startBtn.addEventListener('click', () => {
-    if (State.isSoundOn === true) playShuffleSound();
+    if (State.isSoundOn === true) {
+        shuffleSound.currentTime = 0;
+        shuffleSound.play();
+    }
     randomShuffle();
 });
 
@@ -84,7 +86,7 @@ saveBtn.addEventListener('click', () => {
             callback: (_item, index) => createElement({
                 tag: 'button',
                 eClass: 'playground__item', inner: `${index + 1}`,
-                attr: { 'style': `width: ${100 / +State.currentFrame}%; height: ${100 / +State.currentFrame}%` },
+                attr: { 'style': `width: ${100 / +State.currentFrame}%; height: ${100 / +State.currentFrame}%`, 'draggable': 'true', 'tabindex': '-1' },
                 data: { 'matrixId': `${index + 1}` },
                 bg: `${rundomNum(1, 15)}`
             })
@@ -127,7 +129,7 @@ setFrameSelect.addEventListener('change', (e) => {
             callback: (_item, index) => createElement({
                 tag: 'button',
                 eClass: 'playground__item', inner: `${index + 1}`,
-                attr: { 'style': `width: ${100 / currentFrame}%; height: ${100 / currentFrame}%`, 'draggable': 'true' },
+                attr: { 'style': `width: ${100 / currentFrame}%; height: ${100 / currentFrame}%`, 'draggable': 'true', 'tabindex': '-1' },
                 data: { 'matrixId': `${index + 1}` },
                 bg: `${rundomNum(1, 15)}`
             })
@@ -139,10 +141,8 @@ setFrameSelect.addEventListener('change', (e) => {
         randomShuffle();
         matrix.push(...getMatrix(puzzlesArr.map((item) => Number(item.dataset.matrixId)), +currentFrame));
         blankNumber.number = +currentFrame * +currentFrame;
-        statsMovesCounter.innerHTML = '0';
-        statsTimerCounter.innerHTML = '00';
-        statsTimerCounterSeconds.innerHTML = '00';
-        timer.time = 0;
+        resetGameState(movesCounter, State, State);
+        printGameTimeAndSteps(statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds, timer);
         stopTimer();
     }
 });
@@ -170,5 +170,3 @@ export function printScore(frameSize) {
         }
     }
 }
-
-export default controlsPanel;
