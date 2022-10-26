@@ -94,14 +94,6 @@ body {
             appearance: none;
             transition: .3s linear;
 
-            &:hover,
-            &:focus {
-                background-color: #c2a03c;
-                color: black;
-                border-color: #fff;
-                outline: none;
-            }
-
             .control-panel__option {
                 background-color: transparent;
                 color: #c2a03c;

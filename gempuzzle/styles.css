@@ -95,12 +95,6 @@ body {
           appearance: none;
   transition: 0.3s linear;
 }
-.puzzles .control-panel .control-panel__select:hover, .puzzles .control-panel .control-panel__select:focus {
-  background-color: #c2a03c;
-  color: black;
-  border-color: #fff;
-  outline: none;
-}
 .puzzles .control-panel .control-panel__select .control-panel__option {
   background-color: transparent;
   color: #c2a03c;
