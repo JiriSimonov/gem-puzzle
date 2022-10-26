@@ -1,10 +1,10 @@
 import { State } from './utils/state.js';
 import { createElement } from './utils/createElement.js';
 import { rundomNum } from './utils/getRundomNum.js';
-import {controlsPanel, shuffleSound, switchSound} from './controls.js';
+import { controlsPanel, switchSound } from './controls.js';
 import { createElementsArr } from './utils/createElementArr.js';
 import { footer } from './bottom-side.js';
-import { modal, modalScore } from './modal.js';
+import { modal, modalContent, modalScore } from './modal.js';
 import { statsPanel, statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds } from './stats.js';
 import { score } from './modal-score.js';
 
@@ -29,12 +29,11 @@ let shuffleCounter = 0;
 clearInterval(shuffleTimer);
 export function randomShuffle() {
     playGround.classList.add('is-shuffle');
+    controlsPanel.classList.add('disabled');
+    statsPanel.classList.add('disabled');
     stopTimer();
-    if (State.isSoundOn === true) {
-        shuffleSound.currentTime = 0;
-        shuffleSound.play();
-    }
-    printGameTimeAndSteps( statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds);
+    if (State.isSoundOn === true) playShuffleSound();
+    printGameTimeAndSteps(statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds);
     if (shuffleCounter === 0) {
         shuffleTimer = setInterval(() => {
             randomSwap(matrix);
@@ -44,8 +43,10 @@ export function randomShuffle() {
                 clearInterval(shuffleTimer);
                 shuffleCounter = 0;
                 playGround.classList.remove('is-shuffle');
+                controlsPanel.classList.remove('disabled');
+                statsPanel.classList.remove('disabled');
                 resetGameState(movesCounter, State, State);
-                printGameTimeAndSteps( statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds, timer);
+                printGameTimeAndSteps(statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds, timer, State);
                 timer.time = 0;
                 stopTimer();
                 startTimer();
@@ -54,6 +55,7 @@ export function randomShuffle() {
     }
 }
 
+
 export function printGameTimeAndSteps(steps, minutes, seconds) {
     let resetArr = [steps, minutes, seconds];
     resetArr.forEach((e) => {
@@ -61,11 +63,12 @@ export function printGameTimeAndSteps(steps, minutes, seconds) {
     })
 }
 
-export function resetGameState (steps, minutes, seconds, timerCount = '') {
+export function resetGameState(steps, minutes, seconds, timerCount = '', stateSteps = '') {
     minutes.currentTime.minutes = 0;
     seconds.currentTime.seconds = 0;
     steps.moves = 0;
-    if(timerCount) timerCount.time = 0;
+    if (stateSteps) stateSteps.currentMoves = 0;
+    if (timerCount) timerCount.time = 0;
 }
 
 randomShuffle();
@@ -161,12 +164,12 @@ playGround.addEventListener('click', (event) => {
     const isPossible = isPossibleForSwitch(btnPosition, blankPosition);
 
     if (isPossible) {
+        startTimer();
         switchBtns(blankPosition, btnPosition, matrix);
         if (State.isSoundOn === true) {
             switchSound.currentTime = 0;
             switchSound.play();
         }
-        startTimer();
         statsMovesCounter.innerHTML = ++movesCounter.moves;
         State.moves = movesCounter.moves;
         setPositionItems(matrix, puzzlesArr);
@@ -196,7 +199,10 @@ playGround.addEventListener('drop', (event) => {
         const isPossible = isPossibleForSwitch(btnPosition, blankPosition);
         if (isPossible) {
             switchBtns(blankPosition, btnPosition, matrix);
-            if (State.isSoundOn === true) playSound();
+            if (State.isSoundOn === true) {
+                switchSound.currentTime = 0;
+                switchSound.play();
+            };
             startTimer();
             statsMovesCounter.innerHTML = ++movesCounter.moves;
             State.moves = movesCounter.moves;
@@ -216,7 +222,10 @@ playGround.addEventListener('touchstart', (e) => {
     const isPossible = isPossibleForSwitch(btnPosition, blankPosition);
     if (isPossible) {
         switchBtns(blankPosition, btnPosition, matrix);
-        if (State.isSoundOn === true) playSound();
+        if (State.isSoundOn === true) {
+            switchSound.currentTime = 0;
+            switchSound.play();
+        };
         startTimer();
         statsMovesCounter.innerHTML = ++movesCounter.moves;
         State.moves = movesCounter.moves;
@@ -235,7 +244,7 @@ function getBtnPositionByNumber(number, matrix) {
 }
 
 function isPossibleForSwitch(posOne, posTwo) {
-    if(posOne === null || posTwo === null) return;
+    if (posOne === null || posTwo === null) return;
     const diffX = Math.abs(posOne.x - posTwo.x);
     const diffY = Math.abs(posOne.y - posTwo.y);
     return (diffX === 1 || diffY === 1) && (posOne.x === posTwo.x || posOne.y === posTwo.y);
@@ -245,16 +254,11 @@ function switchBtns(posOne, posTwo, matrix) {
     const posNumber = matrix[posOne.y][posOne.x];
     matrix[posOne.y][posOne.x] = matrix[posTwo.y][posTwo.x];
     matrix[posTwo.y][posTwo.x] = posNumber;
-    if (isWon(matrix)) {
+    if (isWon(matrix) === true) {
+        console.log(dsfdsfdsf(State.currentFrame, State.currentTime.seconds));
+        stopTimer();
         addWon();
     }
-}
-
-function playSound() {
-    const audio = createElement({ tag: 'audio', eClass: 'audio', parent: body, inner: '<source src=\"./assets/audio/audio.mp3\" type=\"audio/mpeg\">', attr: { 'autoplay': true } });
-    setTimeout(() => {
-        body.removeChild(audio);
-    }, 300);
 }
 
 export function playShuffleSound() {
@@ -265,43 +269,40 @@ export function playShuffleSound() {
 }
 
 export function generateWinArr(currentFrame) {
-    const winArr = new Array(currentFrame * currentFrame).fill(0).map((_item, index) => index + 1);
-    return winArr;
+    let newArr = new Array(currentFrame * currentFrame).fill(0).map((_item, index) => index + 1).join('');
+    return newArr;
 }
+
 function isWon(matrix) {
-    const flatMatrix = matrix.flat();
-    let winArr = generateWinArr(State.currentFrame);
-    for (let i = 0; i < winArr.length; i++) {
-        if (flatMatrix[i] !== winArr[i]) {
-            return false;
-        }
-    }
-    return true;
+    return matrix.flat().join('') === generateWinArr(State.currentFrame);
 }
 
 function addWon() {
     body.classList.toggle('no-scroll');
     modal.classList.toggle('modal--visible');
-    stopTimer();
-    modalScore.innerHTML = `Hooray! You solved the puzzle in ${State.currentTime.minutes.toString().padStart(2, '0')}:${State.currentTime.seconds.toString().padStart(2, '0')} and ${State.moves} moves!`
-    stopTimer();
+    if (+State.currentTime.seconds < 30 && +State.currentTime.minutes < 1) {
+        modalContent.style.backgroundImage = "url('./assets/modal/modal-2.gif')";
+    } else if (+State.currentTime.minutes >= 1) {
+        modalContent.style.backgroundImage = "url('./assets/modal/modal-1.gif')";
+    }
+    modalScore.innerHTML = `Hooray! You solved the puzzle in ${State.currentTime.minutes.toString().padStart(2, '0')}:${State.currentTime.seconds.toString().padStart(2, '0')} and ${movesCounter.moves + 1} moves!`;
 }
 
 export function printTime(sec, min) {
     statsTimerCounterSeconds.textContent = `${(sec < 10 ? sec.toString().padStart(2, '0') : sec)}`;
     statsTimerCounter.textContent = `${(min < 10 ? min.toString().padStart(2, '0') : min)}`;
-    State.currentTime.seconds = sec;
     State.currentTime.minutes = min;
+    State.currentTime.seconds = sec;
 }
 
 export function startTimer() {
     if (!State.isStartTimer) {
         State.isStartTimer = setInterval(function () {
-            timer.time += 1 / 60;
-            const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
+            timer.time += 1;
             const minutesValue = Math.floor(timer.time / 60);
+            const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
             printTime(secondsValue, minutesValue);
-        }, 1000 / 60);
+        }, 1000);
     }
 }
 
@@ -309,3 +310,8 @@ export function stopTimer() {
     clearInterval(State.isStartTimer);
     State.isStartTimer = null;
 }
+
+// function dsfdsfdsf(currentFrame, sec) {
+//    return sec / currentFrame;
+// }
+

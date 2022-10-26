@@ -272,6 +272,7 @@ body {
                 text-decoration: none;
                 transition: all .3s linear;
                 user-select: none;
+
                 &:hover,
                 :focus {
                     color: white;
@@ -296,7 +297,7 @@ body {
         padding: 5px;
         border: 2px solid #c2a03c;
         border-radius: 5px;
-        ;
+        user-select: none;
         font-size: 16px;
         font-weight: 500;
         line-height: 120%;
@@ -306,6 +307,11 @@ body {
             margin-right: 5px;
         }
     }
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: .5;
 }
 
 .modal {
@@ -343,6 +349,7 @@ body {
         transition: all .3s linear;
         overflow: hidden;
         background-image: url('./assets/modal/modal.gif');
+        background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
 
@@ -541,6 +548,10 @@ body {
 }
 
 @media (max-width: 830px) {
+    .body {
+        max-height: 1000px;
+    }
+
     .container {
         padding: 10px;
         max-width: 600px;
@@ -549,6 +560,7 @@ body {
     .puzzles {
         margin-top: 0;
         padding-top: 20px;
+
         .control-panel {
             margin-top: 0;
         }

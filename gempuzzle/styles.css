@@ -288,6 +288,10 @@ body {
   padding: 5px;
   border: 2px solid #c2a03c;
   border-radius: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   font-size: 16px;
   font-weight: 500;
   line-height: 120%;
@@ -295,6 +299,11 @@ body {
 }
 .stats-panel .stats-panel__wrapper .stats-panel__moves-counter {
   margin-right: 5px;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .modal {
@@ -331,6 +340,7 @@ body {
   transition: all 0.3s linear;
   overflow: hidden;
   background-image: url("./assets/modal/modal.gif");
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -514,6 +524,9 @@ body {
 }
 
 @media (max-width: 830px) {
+  .body {
+    max-height: 1000px;
+  }
   .container {
     padding: 10px;
     max-width: 600px;
