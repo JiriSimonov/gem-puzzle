@@ -311,6 +311,6 @@ export function stopTimer() {
 }
 
 function getResultProportion(currentFrame, min, sec) {
-   return (sec + min * 60) / currentFrame;
+    return (sec + min * 60) / currentFrame;
 }
 

@@ -86,7 +86,7 @@ saveBtn.addEventListener('click', () => {
             callback: (_item, index) => createElement({
                 tag: 'button',
                 eClass: 'playground__item', inner: `${index + 1}`,
-                attr: { 'style': `width: ${100 / +State.currentFrame}%; height: ${100 / +State.currentFrame}%`, 'draggable': 'true', 'tabindex': '-1'},
+                attr: { 'style': `width: ${100 / +State.currentFrame}%; height: ${100 / +State.currentFrame}%`, 'draggable': 'true', 'tabindex': '-1' },
                 data: { 'matrixId': `${index + 1}` },
                 bg: `${rundomNum(1, 15)}`
             })
@@ -129,7 +129,7 @@ setFrameSelect.addEventListener('change', (e) => {
             callback: (_item, index) => createElement({
                 tag: 'button',
                 eClass: 'playground__item', inner: `${index + 1}`,
-                attr: { 'style': `width: ${100 / currentFrame}%; height: ${100 / currentFrame}%`, 'draggable': 'true', 'tabindex': '-1'},
+                attr: { 'style': `width: ${100 / currentFrame}%; height: ${100 / currentFrame}%`, 'draggable': 'true', 'tabindex': '-1' },
                 data: { 'matrixId': `${index + 1}` },
                 bg: `${rundomNum(1, 15)}`
             })
@@ -142,7 +142,7 @@ setFrameSelect.addEventListener('change', (e) => {
         matrix.push(...getMatrix(puzzlesArr.map((item) => Number(item.dataset.matrixId)), +currentFrame));
         blankNumber.number = +currentFrame * +currentFrame;
         resetGameState(movesCounter, State, State);
-        printGameTimeAndSteps( statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds, timer);
+        printGameTimeAndSteps(statsMovesCounter, statsTimerCounter, statsTimerCounterSeconds, timer);
         stopTimer();
     }
 });
