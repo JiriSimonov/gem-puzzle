@@ -250,9 +250,7 @@ body {
 }
 
 .footer {
-    position: absolute;
     width: 100%;
-    bottom: 0;
     background-color: rgba(0, 0, 0, .5);
 
     .bottm {
@@ -557,10 +555,6 @@ body {
 }
 
 @media (max-width: 830px) {
-    .body {
-        max-height: 1000px;
-    }
-
     .container {
         padding: 10px;
         max-width: 600px;

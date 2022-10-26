@@ -15,9 +15,9 @@ const setNewBg = createElement({ eClass: 'btn', parent: body, inner: 'Switch bac
 puzzlesWrapper.appendChild(controlsPanel);
 puzzlesWrapper.appendChild(statsPanel);
 export const playGround = createElement({ eClass: 'playground is-shuffle', parent: puzzlesWrapper });
-body.appendChild(footer);
 body.appendChild(modal);
 body.appendChild(score);
+body.appendChild(footer);
 
 export const movesCounter = { moves: 0 };
 export const timer = { time: 0 };
