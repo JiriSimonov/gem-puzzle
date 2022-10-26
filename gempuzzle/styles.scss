@@ -53,10 +53,12 @@ body {
     transition: .3s linear;
     user-select: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: #c2a03c;
         color: black;
         border-color: rgba(255, 255, 255, 0.8);
+        outline: none;
     }
 }
 
@@ -91,6 +93,13 @@ body {
             cursor: pointer;
             appearance: none;
             transition: .3s linear;
+            &:hover,
+            &:focus {
+                background-color: #c2a03c;
+                color: black;
+                border-color: #fff;
+                outline: none;
+            }
 
             .control-panel__option {
                 background-color: transparent;
@@ -98,9 +107,11 @@ body {
                 cursor: pointer;
                 user-select: none;
 
-                &:hover {
+                &:hover,
+                &:focus {
                     background-color: #c2a03c;
                     color: white;
+                    outline: none;
                 }
             }
         }
@@ -119,10 +130,12 @@ body {
             transition: .3s linear;
             user-select: none;
 
-            &:hover {
+            &:hover,
+            &:focus {
                 background-color: #c2a03c;
                 color: black;
                 border-color: rgba(255, 255, 255, 0.8);
+                outline: none;
             }
         }
 
@@ -274,12 +287,13 @@ body {
                 user-select: none;
 
                 &:hover,
-                :focus {
+                &:focus {
                     color: white;
                     outline: none;
                     background-color: #c2a03c;
                     color: black;
                     border-color: rgba(255, 255, 255, 0.8);
+                    outline: none;
                 }
             }
         }
@@ -524,10 +538,12 @@ body {
             color: white;
             cursor: pointer;
 
-            &:hover {
+            &:hover,
+            &:focus {
                 background-color: #c2a03c;
                 color: black;
                 border-color: rgba(255, 255, 255, 0.8);
+                outline: none;
             }
         }
 

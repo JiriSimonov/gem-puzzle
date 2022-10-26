@@ -54,10 +54,11 @@ body {
       -ms-user-select: none;
           user-select: none;
 }
-.btn:hover {
+.btn:hover, .btn:focus {
   background-color: #c2a03c;
   color: black;
   border-color: rgba(255, 255, 255, 0.8);
+  outline: none;
 }
 
 .puzzles {
@@ -94,6 +95,12 @@ body {
           appearance: none;
   transition: 0.3s linear;
 }
+.puzzles .control-panel .control-panel__select:hover, .puzzles .control-panel .control-panel__select:focus {
+  background-color: #c2a03c;
+  color: black;
+  border-color: #fff;
+  outline: none;
+}
 .puzzles .control-panel .control-panel__select .control-panel__option {
   background-color: transparent;
   color: #c2a03c;
@@ -103,9 +110,10 @@ body {
       -ms-user-select: none;
           user-select: none;
 }
-.puzzles .control-panel .control-panel__select .control-panel__option:hover {
+.puzzles .control-panel .control-panel__select .control-panel__option:hover, .puzzles .control-panel .control-panel__select .control-panel__option:focus {
   background-color: #c2a03c;
   color: white;
+  outline: none;
 }
 .puzzles .control-panel .control-panel__btn {
   padding: 5px;
@@ -124,10 +132,11 @@ body {
       -ms-user-select: none;
           user-select: none;
 }
-.puzzles .control-panel .control-panel__btn:hover {
+.puzzles .control-panel .control-panel__btn:hover, .puzzles .control-panel .control-panel__btn:focus {
   background-color: #c2a03c;
   color: black;
   border-color: rgba(255, 255, 255, 0.8);
+  outline: none;
 }
 .puzzles .control-panel .control-panel__btn_music {
   padding: 15px;
@@ -268,13 +277,13 @@ body {
       -ms-user-select: none;
           user-select: none;
 }
-.footer .bottm .bottm__wrapper .bottm__link:hover,
-.footer .bottm .bottm__wrapper .bottm__link :focus {
+.footer .bottm .bottm__wrapper .bottm__link:hover, .footer .bottm .bottm__wrapper .bottm__link:focus {
   color: white;
   outline: none;
   background-color: #c2a03c;
   color: black;
   border-color: rgba(255, 255, 255, 0.8);
+  outline: none;
 }
 
 .stats-panel {
@@ -505,10 +514,11 @@ body {
   color: white;
   cursor: pointer;
 }
-.score .score__panel .score__btn:hover {
+.score .score__panel .score__btn:hover, .score .score__panel .score__btn:focus {
   background-color: #c2a03c;
   color: black;
   border-color: rgba(255, 255, 255, 0.8);
+  outline: none;
 }
 .score .score__panel .is--selected {
   background-color: #c2a03c;
