@@ -6,7 +6,7 @@ export const FOOTER_INFO = {
 export const STATE = {
     lang: 'RU',
     score: 0,
-    current: 0,
+    currentStep: 0,
     solution: undefined,
     volume: 50,
     currentTime: undefined,

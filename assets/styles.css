@@ -59,4 +59,10 @@
 .game .game__wrapper .game__section:last-child {
   border-top-right-radius: 13px;
   border-bottom-right-radius: 13px;
+}
+
+.questions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }/*# sourceMappingURL=styles.css.map */
