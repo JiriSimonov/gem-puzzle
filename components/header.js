@@ -8,7 +8,7 @@ export function createHeader(score) {
     const container = createElement({eClass: 'container', parent: header});
     const headerWrapper = createElement({
       eClass: "header__wrapper",
-      parent: header,
+      parent: container,
     });
     const headerLogo = createElement({
       eClass: "header__logo",
