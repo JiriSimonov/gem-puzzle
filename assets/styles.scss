@@ -6,8 +6,8 @@
 
 .container {
     width: 100%;
-    max-width: 1400px;
-    padding: 0 50px;
+    max-width: 1700px;
+    padding: 0 100px;
     margin: 0 auto;
 }
 
@@ -32,5 +32,33 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+}
+
+.game {
+    margin-top: 35px;
+    .game__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 45px;
+        .game__section {
+            flex: auto;
+            padding: 18px;
+            background-color: #c16b89;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: auto;
+            text-align: center;
+            user-select: none;
+            &:nth-child(1) {
+                border-top-left-radius: 13px;
+                border-bottom-left-radius: 13px;
+            }
+            &:last-child {
+                border-top-right-radius: 13px;
+                border-bottom-right-radius: 13px;
+            }
+        }
     }
 }

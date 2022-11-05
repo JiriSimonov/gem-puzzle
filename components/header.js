@@ -11,7 +11,9 @@ export function createHeader(score) {
       parent: container,
     });
     const headerLogo = createElement({
+      tag: 'a',
       eClass: "header__logo",
+      attr: {'href': '/'},
       parent: headerWrapper,
     });
     const headerLink = createElement({
