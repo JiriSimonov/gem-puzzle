@@ -5,6 +5,7 @@ export function createHeader(score) {
         tag: "header",
         eClass: "header" 
     });
+    const container = createElement({eClass: 'container', parent: header});
     const headerWrapper = createElement({
       eClass: "header__wrapper",
       parent: header,
