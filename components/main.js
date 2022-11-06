@@ -2,6 +2,7 @@ import BIRDS_DATA from "../data/data.js";
 import { STATE } from "../data/globals.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
+import { getRundomNum } from "../utils/getRundomNum.js";
 import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
 
@@ -21,6 +22,7 @@ const questionsLabels = createElements({
 });
 
 createInputs(questionsLabels);
+createSpans(questionsLabels);
 
 function createInputs(arr) {
     for (let i = 0; i < arr.length; i++) {
@@ -32,6 +34,14 @@ function createInputs(arr) {
     }
 }
 
+function createSpans(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        arr[i].appendChild(createElement({        
+        tag: "span",
+        eClass: "questions__checkbox",
+        parent: questionsWrapper,}));
+    }
+}
 
 export function createMain(wrapper, btn) {
     const main = createElement({tag: 'main', eClass: 'main'});
@@ -41,3 +51,10 @@ export function createMain(wrapper, btn) {
     container.appendChild(btn);
     return main;
 }
+
+function createQuestion() {
+    STATE.currentAnswer = getRundomNum(1, BIRDS_DATA.length);
+}
+
+createQuestion();
+console.log(STATE.currentAnswer);

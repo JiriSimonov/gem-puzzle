@@ -7,6 +7,7 @@ export const STATE = {
     lang: 'RU',
     score: 0,
     currentStep: 0,
+    currentAnswer: 0,
     solution: undefined,
     volume: 50,
     currentTime: undefined,

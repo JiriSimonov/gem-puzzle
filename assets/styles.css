@@ -1,11 +1,21 @@
 @import url(./vars.scss);
 .body {
-  background-color: #E7DADA;
+  margin: 0;
+  padding: 0;
+  background-color: #e7dada;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+  cursor: url("./images/mouse-pointer.svg") 50 50;
 }
 
 .container {
   width: 100%;
-  max-width: 1700px;
+  max-width: 1500px;
   padding: 0 100px;
   margin: 0 auto;
 }
@@ -61,8 +71,196 @@
   border-bottom-right-radius: 13px;
 }
 
+.audio {
+  margin-bottom: 45px;
+  padding: 22px 65px;
+  height: 252px;
+  border-radius: 13px;
+  background-color: #EDE7E7;
+  background-image: url("./images/unknown.png");
+  background-repeat: no-repeat;
+  background-position: 65px center;
+}
+.audio .audio__wrapper {
+  margin-left: auto;
+  max-width: 1250px;
+}
+.audio .audio__wrapper .audio__btn {
+  margin: 0;
+  padding: 20px;
+  width: 92px;
+  height: 92px;
+  border: 3px solid #a73962;
+  border-radius: 50%;
+  background-color: transparent;
+  background-image: url("./images/play.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
 .questions {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 50px;
+  margin-bottom: 45px;
+}
+.questions .questions__wrapper {
+  padding: 25px 28px;
+  background-color: #ede7e7;
+}
+.questions .questions__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  border-radius: 13px;
+}
+.questions .questions__wrapper .questions__label {
+  position: relative;
+  padding: 21px 0;
+  width: 100%;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: auto;
+  color: #000;
+  cursor: pointer;
+}
+.questions .questions__wrapper .questions__label:not(:last-child) {
+  border-bottom: 3px solid #b09e9e;
+}
+.questions .questions__wrapper .questions__label .questions__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.questions .questions__wrapper .questions__label .questions__checkbox {
+  position: absolute;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background-color: #b09e9e;
+  transition: background 0.3s linear;
+}
+.questions .questions__wrapper .questions__label .questions__input:checked + .questions__checkbox {
+  background-color: #a73962;
+}
+.questions .questions__wrapper .questions__label .questions__input:hover + .questions__checkbox {
+  border-color: #a73962;
+}
+.questions .questions__wrapper .questions__label .questions__input:checked:hover + .questions__checkbox {
+  border-color: white;
+}
+.questions .questions__wrapper .questions__label .questions__input:focus + .questions__checkbox {
+  border-color: #a73962;
+}
+.questions .questions__wrapper .questions__label .questions__input:checked:focus + .questions__checkbox {
+  border-color: white;
+}
+.questions .questions__container {
+  padding: 25px 28px;
+  width: 50%;
+  border-radius: 13px;
+  background-color: #ede7e7;
+}
+
+.game__btn {
+  margin-bottom: 80px;
+  padding: 19px 0;
+  width: 100%;
+  border: 2px solid #cfc1c1;
+  border-radius: 13px;
+  background-color: #cfc1c1;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: auto;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+.game__btn:hover, .game__btn:focus {
+  color: white;
+  background-color: #a73962;
+}
+
+.footer {
+  position: relative;
+  margin-top: auto;
+  padding: 20px;
+  background-color: #c16b89;
+}
+.footer .footer__link,
+.footer .footer__copyright {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: auto;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s linear;
+}
+.footer .footer__link:hover, .footer .footer__link:focus,
+.footer .footer__copyright:hover,
+.footer .footer__copyright:focus {
+  color: #e7dada;
+}
+
+.swan {
+  position: absolute;
+  top: -60px;
+  right: 0;
+  width: 94px;
+  height: 65px;
+  background-image: url("./images/swan.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-animation: swan-roaming 40s infinite linear;
+          animation: swan-roaming 40s infinite linear;
+}
+
+@-webkit-keyframes swan-roaming {
+  0% {
+    right: 0;
+    transform: scaleX(1);
+  }
+  49% {
+    right: 100%;
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+  51% {
+    right: calc(100% - 94px);
+    transform: scaleX(-1);
+  }
+  100% {
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes swan-roaming {
+  0% {
+    right: 0;
+    transform: scaleX(1);
+  }
+  49% {
+    right: 100%;
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+  51% {
+    right: calc(100% - 94px);
+    transform: scaleX(-1);
+  }
+  100% {
+    transform: scaleX(-1);
+  }
 }/*# sourceMappingURL=styles.css.map */

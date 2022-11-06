@@ -21,5 +21,6 @@ export function createFooter() {
       }),
   });
   const copyright = createElement({eClass: 'footer__copyright', parent: footerWrapper, inner: '2022'});
+  const swan = createElement({eClass: 'swan', parent: footer});
   return footer;
 }
