@@ -1,11 +1,11 @@
 import BIRDS_DATA from "../data/data.js";
 import { STATE } from "../data/globals.js";
+import { mainSections } from "../index.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
 import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
-
 
 export const questionsWrapper = createElement({eClass: 'questions__wrapper'});
 const questionsContainer = createElement({ eClass: 'questions__container'});
@@ -72,6 +72,7 @@ function createQuestion() {
 }
 
 createQuestion();
+
 
 inputs.forEach((e) => {
     e.addEventListener('click', (e) => {

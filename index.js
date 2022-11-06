@@ -1,6 +1,6 @@
 import { createElement } from "./utils/createElement.js";
 import { createElements } from "./utils/createElements.js";
-import { MAIN__SECTIONS } from "./data/globals.js";
+import { MAIN__SECTIONS, STATE } from "./data/globals.js";
 import { createHeader } from "./components/header.js";
 import { createFooter } from "./components/footer.js";
 import { createMain } from "./components/main.js";
@@ -14,7 +14,7 @@ const headerScore = createElement({
 });
 
 const gameWrapper = createElement({ eClass: "game__wrapper" });
-const mainSections = createElements({
+export const mainSections = createElements({
   arrLength: MAIN__SECTIONS.length,
   parent: gameWrapper,
   callback: (_item, index) =>
@@ -38,8 +38,24 @@ const questionsArr = createElements({
       parent: questionsWrapper,
     }),
 });
-const questionsBtn = createElement({ tag: 'button', eClass: 'game__btn', inner: 'Следующий уровень'});
+
+const questionsBtn = createElement({ tag: 'button', eClass: 'game__btn', inner: 'Следующий уровень', attr: {'disabled': true}});
 
 app.appendChild(createHeader(headerScore));
 app.appendChild(createMain(gameWrapper, questionsBtn));
 app.appendChild(createFooter());
+
+setActiveSection(mainSections, STATE.currentStep);
+
+function setActiveSection(arr, num) {
+  for (let i = 0; i < arr.length; i++) {
+      if(i === num) {
+          arr[i].classList.add('active');
+          console.log(arr[i]);
+        } else {
+          arr[i].classList.remove('active');
+          console.log(num);
+          console.log(arr[i]);
+      }
+  }
+}
