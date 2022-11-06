@@ -179,6 +179,24 @@ h6 {
         border-color: white;
       }
     }
+    .true {
+      //background-color: green;
+      .questions__input:checked + .questions__checkbox {
+        display: none;
+      }
+      .questions__input + .questions__checkbox {
+        display: none;
+      }
+    }
+    .false {
+      //background-color: red;
+      .questions__input:checked + .questions__checkbox {
+        display: none;
+      }
+      .questions__input + .questions__checkbox {
+        display: none;
+      }
+    }
   }
   .questions__container {
     padding: 25px 28px;
@@ -238,6 +256,10 @@ h6 {
   &:focus {
     color: white;
     background-color: #a73962;
+  }
+  &:disabled {
+    background-color: #A73962;
+    pointer-events: none;
   }
 }
 

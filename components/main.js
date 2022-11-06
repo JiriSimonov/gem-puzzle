@@ -1,16 +1,31 @@
 import BIRDS_DATA from "../data/data.js";
-import { STATE } from "../data/globals.js";
-import { mainSections, questionsBtn } from "../index.js";
+import { STATE, MAIN__SECTIONS } from "../data/globals.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
 import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
 
+const gameWrapper = createElement({ eClass: "game__wrapper" });
+export const mainSections = createElements({
+  arrLength: MAIN__SECTIONS.length,
+  parent: gameWrapper,
+  callback: (_item, index) =>
+    createElement({
+      eClass: "game__section",
+      inner: `${MAIN__SECTIONS[index]}`,
+      parent: gameWrapper,
+    }),
+});
 export const questionsWrapper = createElement({eClass: 'questions__wrapper'});
 const questionsContainer = createElement({ eClass: 'questions__container'});
 const questionsDescription = createElement({ eClass: 'questions__descr'});
-
+export const questionsBtn = createElement({
+    tag: "button",
+    eClass: "game__btn",
+    inner: "Следующий уровень",
+    attr: { disabled: true },
+  });
 const questionsLabels = createElements({
     arrLength: BIRDS_DATA.length,
     parent: questionsWrapper,
@@ -26,6 +41,7 @@ const questionsLabels = createElements({
 
 const inputs = createInputs(questionsLabels);
 createSpans(questionsLabels);
+createQuestion();
 
 function createInputs(arr) {
     const newArr = [];
@@ -59,12 +75,11 @@ function createDescription(wrapper, number) {
     const descrText = createElement({tag: 'p', eClass: 'descr__text', inner: `${BIRDS_DATA[STATE.currentStep][number - 1].description}`, parent: wrapper});
 }
 
-export function createMain(wrapper, btn) {
+export function createMain() {
     const main = createElement({tag: 'main', eClass: 'main'});
     const game = createElement({tag: 'section', eClass: 'game', parent: main});
     const container = createElement({eClass: 'container', parent: game});
-    container.append(wrapper, createAudio(), createQuestions(questionsWrapper, questionsContainer, questionsDescription));
-    container.appendChild(btn);
+    container.append(gameWrapper, createAudio(), createQuestions(questionsWrapper, questionsContainer, questionsDescription), questionsBtn);
     return main;
 }
 
@@ -72,16 +87,66 @@ function createQuestion() {
     STATE.currentAnswer = getRundomNum(1, BIRDS_DATA.length);
 }
 
-createQuestion();
-
 inputs.forEach((e) => {
-    e.addEventListener('click', (e) => {
-        const currentNum = e.target.value;
+    e.addEventListener('click', (event) => {
+        const currentNum = event.target.value;
         questionsContainer.innerHTML = '';
         createDescription(questionsContainer, currentNum);
         if (STATE.currentAnswer === +currentNum) {
-            STATE.currentStep++;
+            event.target.closest('.questions__label').classList.add('true');
             questionsBtn.removeAttribute('disabled');
+        } else {
+            event.target.closest('.questions__label').classList.add('false');
         }
     });    
 });
+
+questionsBtn.addEventListener('click', (e) => {
+    STATE.currentStep++;
+    setActiveSection(mainSections, STATE.currentStep);
+    createQuestion();
+    questionsWrapper.innerHTML = '';
+    questionsContainer.innerHTML = '';
+    questionsLabels.splice(0);
+    questionsLabels.push(...createElements({
+        arrLength: BIRDS_DATA.length,
+        parent: questionsWrapper,
+        callback: (_item, index) =>
+        createElement({
+            tag: "label",
+            eClass: "questions__label",
+            data: { 'birdId': `${index + 1}` },
+            inner: `${BIRDS_DATA[STATE.currentStep][index].name}`,
+            parent: questionsWrapper,
+        }),
+    }));
+    inputs.splice(0);
+    inputs.push(...createInputs(questionsLabels));
+    createSpans(questionsLabels);
+    questionsBtn.setAttribute('disabled', true);
+    inputs.forEach((e) => {
+        e.addEventListener('click', (event) => {
+            const currentNum = event.target.value;
+            questionsContainer.innerHTML = '';
+            createDescription(questionsContainer, currentNum);
+            if (STATE.currentAnswer === +currentNum) {
+                event.target.closest('.questions__label').classList.add('true');
+                questionsBtn.removeAttribute('disabled');
+            } else {
+                event.target.closest('.questions__label').classList.add('false');
+            }
+        });    
+    });
+});
+
+setActiveSection(mainSections, STATE.currentStep);
+
+function setActiveSection(arr, num) {
+  for (let i = 0; i < arr.length; i++) {
+    if (i === num) {
+      arr[i].classList.add("active");
+    } else {
+      arr[i].classList.remove("active");
+    }
+  }
+}
