@@ -1,5 +1,15 @@
 @import url(./vars.scss);
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
 .body {
   margin: 0;
   padding: 0;
@@ -114,7 +124,7 @@
   margin-bottom: 45px;
 
   .questions__wrapper {
-    padding: 25px 28px;
+    padding: 0 28px;
     background-color: #ede7e7;
   }
 
@@ -175,6 +185,39 @@
     width: 50%;
     border-radius: 13px;
     background-color: #ede7e7;
+    height: 379px;
+
+    .descr__text {
+      font-size: 24px;
+      font-weight: 400;
+      color: #000;
+      text-align: center;
+    }
+    .descr__container {
+      display: flex;
+      gap: 25px;
+      .descr__img {
+        max-width: 261px;
+        max-height: 202px;
+        border-radius: 15px;
+      }
+      .descr__content {
+        display: flex;
+        flex-direction: column;
+        .descr__title {
+          margin-bottom: 19px;
+          font-size: 32px;
+          font-weight: 400;
+          color: #000;
+        }
+        .descr__suptitle {
+          margin-bottom: 29px;
+          font-size: 24px;
+          font-weight: 400;
+          color: #000;
+        }
+      }
+    }
   }
 }
 

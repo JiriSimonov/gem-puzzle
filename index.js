@@ -39,7 +39,12 @@ const questionsArr = createElements({
     }),
 });
 
-const questionsBtn = createElement({ tag: 'button', eClass: 'game__btn', inner: 'Следующий уровень', attr: {'disabled': true}});
+export const questionsBtn = createElement({
+  tag: "button",
+  eClass: "game__btn",
+  inner: "Следующий уровень",
+  attr: { disabled: true },
+});
 
 app.appendChild(createHeader(headerScore));
 app.appendChild(createMain(gameWrapper, questionsBtn));
@@ -49,13 +54,12 @@ setActiveSection(mainSections, STATE.currentStep);
 
 function setActiveSection(arr, num) {
   for (let i = 0; i < arr.length; i++) {
-      if(i === num) {
-          arr[i].classList.add('active');
-          console.log(arr[i]);
-        } else {
-          arr[i].classList.remove('active');
-          console.log(num);
-          console.log(arr[i]);
-      }
+    if (i === num) {
+      arr[i].classList.add("active");
+    } else {
+      arr[i].classList.remove("active");
+    }
   }
 }
+
+

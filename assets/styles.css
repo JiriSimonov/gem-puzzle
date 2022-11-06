@@ -1,4 +1,14 @@
 @import url(./vars.scss);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
 .body {
   margin: 0;
   padding: 0;
@@ -112,7 +122,7 @@
   margin-bottom: 45px;
 }
 .questions .questions__wrapper {
-  padding: 25px 28px;
+  padding: 0 28px;
   background-color: #ede7e7;
 }
 .questions .questions__wrapper {
@@ -172,6 +182,38 @@
   width: 50%;
   border-radius: 13px;
   background-color: #ede7e7;
+  height: 379px;
+}
+.questions .questions__container .descr__text {
+  font-size: 24px;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+}
+.questions .questions__container .descr__container {
+  display: flex;
+  gap: 25px;
+}
+.questions .questions__container .descr__container .descr__img {
+  max-width: 261px;
+  max-height: 202px;
+  border-radius: 15px;
+}
+.questions .questions__container .descr__container .descr__content {
+  display: flex;
+  flex-direction: column;
+}
+.questions .questions__container .descr__container .descr__content .descr__title {
+  margin-bottom: 19px;
+  font-size: 32px;
+  font-weight: 400;
+  color: #000;
+}
+.questions .questions__container .descr__container .descr__content .descr__suptitle {
+  margin-bottom: 29px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #000;
 }
 
 .game__btn {

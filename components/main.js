@@ -1,6 +1,6 @@
 import BIRDS_DATA from "../data/data.js";
 import { STATE } from "../data/globals.js";
-import { mainSections } from "../index.js";
+import { mainSections, questionsBtn } from "../index.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
@@ -53,9 +53,10 @@ function createSpans(arr) {
 function createDescription(wrapper, number) {
     const descrContainer = createElement({eClass: 'descr__container', parent: wrapper});
     const descrImg = createElement({tag: 'img', eClass: 'descr__img', attr: {'src': `${BIRDS_DATA[STATE.currentStep][number - 1].image}`}, parent: descrContainer});
-    const descrTitle = createElement({tag: 'h2', eClass: 'descr__title', inner: `${BIRDS_DATA[STATE.currentStep][number - 1].name}`, parent: descrContainer});
-    const descrSubTitle = createElement({tag: 'h3', eClass: 'descr__suptitle', inner: `${BIRDS_DATA[STATE.currentStep][number - 1].species}`, parent: descrContainer});
-    const descrText = createElement({tag: 'p', eClass: 'descr__text', inner: `${BIRDS_DATA[STATE.currentStep][number - 1].description}`, parent: descrContainer});
+    const descrContent = createElement({eClass: 'descr__content', parent: descrContainer});
+    const descrTitle = createElement({tag: 'h2', eClass: 'descr__title', inner: `${BIRDS_DATA[STATE.currentStep][number - 1].name}`, parent: descrContent});
+    const descrSubTitle = createElement({tag: 'h3', eClass: 'descr__suptitle', inner: `${BIRDS_DATA[STATE.currentStep][number - 1].species}`, parent: descrContent});
+    const descrText = createElement({tag: 'p', eClass: 'descr__text', inner: `${BIRDS_DATA[STATE.currentStep][number - 1].description}`, parent: wrapper});
 }
 
 export function createMain(wrapper, btn) {
@@ -73,14 +74,14 @@ function createQuestion() {
 
 createQuestion();
 
-
 inputs.forEach((e) => {
     e.addEventListener('click', (e) => {
         const currentNum = e.target.value;
         questionsContainer.innerHTML = '';
         createDescription(questionsContainer, currentNum);
         if (STATE.currentAnswer === +currentNum) {
-            alert('правильный ответ')
+            STATE.currentStep++;
+            questionsBtn.removeAttribute('disabled');
         }
     });    
 });
