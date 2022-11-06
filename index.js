@@ -7,13 +7,10 @@ import { createMain } from "./components/main.js";
 import BIRDS_DATA from "./data/data.js";
 
 export const app = document.getElementById("app");
-
-const headerScore = createElement({
+export const headerScore = createElement({
   eClass: "header__score",
   inner: "Счёт: 0",
 });
-
-
 const questionsWrapper = createElement({ eClass: "questions__wrapper" });
 const questionsArr = createElements({
   arrLength: BIRDS_DATA.length,

@@ -43,6 +43,11 @@ h6 {
   background-repeat: no-repeat;
   background-position: center;
 }
+.header .header__wrapper .header__score {
+  font-size: 32px;
+  font-weight: 400;
+  color: #000;
+}
 
 .footer .footer__wrapper {
   display: flex;

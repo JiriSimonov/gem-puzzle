@@ -1,5 +1,6 @@
 import BIRDS_DATA from "../data/data.js";
 import { STATE, MAIN__SECTIONS } from "../data/globals.js";
+import { headerScore } from "../index.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
@@ -38,10 +39,12 @@ const questionsLabels = createElements({
         parent: questionsWrapper,
     }),
 });
-
 const inputs = createInputs(questionsLabels);
+let clicks = 0;
+
 createSpans(questionsLabels);
 createQuestion();
+setActiveSection(mainSections, STATE.currentStep);
 
 function createInputs(arr) {
     const newArr = [];
@@ -89,10 +92,21 @@ function createQuestion() {
 
 inputs.forEach((e) => {
     e.addEventListener('click', (event) => {
+        if (STATE.isGetAnswer === false) clicks++;
         const currentNum = event.target.value;
         questionsContainer.innerHTML = '';
         createDescription(questionsContainer, currentNum);
         if (STATE.currentAnswer === +currentNum) {
+            if (STATE.isGetAnswer === false) {
+                STATE.isGetAnswer = true;
+                clicks--;
+                STATE.score =  STATE.score + (BIRDS_DATA.length - 1 - clicks);
+                clicks = 0;
+                printScore(STATE.score);
+                inputs.forEach((e) => {
+                    e.parentNode.classList.add('false');
+                })
+            }
             event.target.closest('.questions__label').classList.add('true');
             questionsBtn.removeAttribute('disabled');
         } else {
@@ -126,10 +140,21 @@ questionsBtn.addEventListener('click', (e) => {
     questionsBtn.setAttribute('disabled', true);
     inputs.forEach((e) => {
         e.addEventListener('click', (event) => {
+            if (STATE.isGetAnswer === false) clicks++;
             const currentNum = event.target.value;
             questionsContainer.innerHTML = '';
             createDescription(questionsContainer, currentNum);
             if (STATE.currentAnswer === +currentNum) {
+                if (STATE.isGetAnswer === false) {
+                    STATE.isGetAnswer = true;
+                    clicks--;
+                    STATE.score =  STATE.score + (BIRDS_DATA.length - 1 - clicks);
+                    clicks = 0;
+                    printScore(STATE.score);
+                    inputs.forEach((e) => {
+                        e.parentNode.classList.add('false');
+                    })
+                }
                 event.target.closest('.questions__label').classList.add('true');
                 questionsBtn.removeAttribute('disabled');
             } else {
@@ -137,9 +162,8 @@ questionsBtn.addEventListener('click', (e) => {
             }
         });    
     });
+    STATE.isGetAnswer = false;
 });
-
-setActiveSection(mainSections, STATE.currentStep);
 
 function setActiveSection(arr, num) {
   for (let i = 0; i < arr.length; i++) {
@@ -149,4 +173,8 @@ function setActiveSection(arr, num) {
       arr[i].classList.remove("active");
     }
   }
+}
+
+function printScore(num) {
+    headerScore.innerHTML = `Счёт: ${num}`;
 }

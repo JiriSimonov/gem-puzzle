@@ -11,4 +11,5 @@ export const STATE = {
     solution: undefined,
     volume: 50,
     currentTime: undefined,
+    isGetAnswer: false,
 };
