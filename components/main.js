@@ -7,7 +7,10 @@ import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
 
 
-const questionsWrapper = createElement({eClass: 'questions__wrapper'});
+export const questionsWrapper = createElement({eClass: 'questions__wrapper'});
+const questionsContainer = createElement({ eClass: 'questions__container'});
+const questionsDescription = createElement({ eClass: 'questions__descr'});
+
 const questionsLabels = createElements({
     arrLength: BIRDS_DATA.length,
     parent: questionsWrapper,
@@ -15,23 +18,27 @@ const questionsLabels = createElements({
       createElement({
         tag: "label",
         eClass: "questions__label",
-        attr: { 'type': 'checkbox' },
+        data: { 'birdId': `${index + 1}` },
         inner: `${BIRDS_DATA[STATE.currentStep][index].name}`,
         parent: questionsWrapper,
     }),
 });
 
-createInputs(questionsLabels);
+const inputs = createInputs(questionsLabels);
 createSpans(questionsLabels);
 
 function createInputs(arr) {
+    const newArr = [];
     for (let i = 0; i < arr.length; i++) {
-        arr[i].appendChild(createElement({        
-        tag: "input",
-        eClass: "questions__input",
-        attr: { 'type': 'checkbox' },
-        parent: questionsWrapper,}));
+        const newInput = (createElement({        
+            tag: "input",
+            eClass: "questions__input",
+            attr: { 'type': 'checkbox', 'value': `${i + 1}`},
+            parent: questionsWrapper,}));
+            arr[i].appendChild(newInput);
+            newArr.push(newInput);
     }
+    return newArr;
 }
 
 function createSpans(arr) {
@@ -43,11 +50,19 @@ function createSpans(arr) {
     }
 }
 
+function createDescription(wrapper, number) {
+    const descrContainer = createElement({eClass: 'descr__container', parent: wrapper});
+    const descrImg = createElement({tag: 'img', eClass: 'descr__img', attr: {'src': `${BIRDS_DATA[STATE.currentStep][number - 1].image}`}, parent: descrContainer});
+    const descrTitle = createElement({tag: 'h2', eClass: 'descr__title', inner: `${BIRDS_DATA[STATE.currentStep][number - 1].name}`, parent: descrContainer});
+    const descrSubTitle = createElement({tag: 'h3', eClass: 'descr__suptitle', inner: `${BIRDS_DATA[STATE.currentStep][number - 1].species}`, parent: descrContainer});
+    const descrText = createElement({tag: 'p', eClass: 'descr__text', inner: `${BIRDS_DATA[STATE.currentStep][number - 1].description}`, parent: descrContainer});
+}
+
 export function createMain(wrapper, btn) {
     const main = createElement({tag: 'main', eClass: 'main'});
     const game = createElement({tag: 'section', eClass: 'game', parent: main});
     const container = createElement({eClass: 'container', parent: game});
-    container.append(wrapper, createAudio(), createQuestions(questionsWrapper));
+    container.append(wrapper, createAudio(), createQuestions(questionsWrapper, questionsContainer, questionsDescription));
     container.appendChild(btn);
     return main;
 }
@@ -57,4 +72,14 @@ function createQuestion() {
 }
 
 createQuestion();
-console.log(STATE.currentAnswer);
+
+inputs.forEach((e) => {
+    e.addEventListener('click', (e) => {
+        const currentNum = e.target.value;
+        questionsContainer.innerHTML = '';
+        createDescription(questionsContainer, currentNum);
+        if (STATE.currentAnswer === +currentNum) {
+            alert('правильный ответ')
+        }
+    });    
+});
