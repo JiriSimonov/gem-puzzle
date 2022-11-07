@@ -127,7 +127,6 @@ function createQuestion() {
 
 inputs.forEach((e) => {
   e.addEventListener("click", (event) => {
-    if (STATE.isGetAnswer === false) clicks++;
     const currentNum = event.target.value;
     questionsContainer.innerHTML = "";
     createDescription(questionsContainer, currentNum);
@@ -145,8 +144,11 @@ inputs.forEach((e) => {
       event.target.closest(".questions__label").classList.add("true");
       event.target.closest(".questions__label").classList.remove("false");
       questionsBtn.removeAttribute("disabled");
-    } else {
-      event.target.closest(".questions__label").classList.add("false");
+    } else {;
+      if (STATE.isGetAnswer === false && e.closest(".questions__label").classList.contains('false') === false) {
+        clicks++;
+        event.target.closest(".questions__label").classList.add("false");
+      }
     }
   });
 });
@@ -178,7 +180,6 @@ questionsBtn.addEventListener("click", (e) => {
   questionsBtn.setAttribute("disabled", true);
   inputs.forEach((e) => {
     e.addEventListener("click", (event) => {
-      if (STATE.isGetAnswer === false) clicks++;
       const currentNum = event.target.value;
       questionsContainer.innerHTML = "";
       createDescription(questionsContainer, currentNum);
@@ -194,9 +195,13 @@ questionsBtn.addEventListener("click", (e) => {
           });
         }
         event.target.closest(".questions__label").classList.add("true");
+        event.target.closest(".questions__label").classList.remove("false");
         questionsBtn.removeAttribute("disabled");
-      } else {
-        event.target.closest(".questions__label").classList.add("false");
+      } else {;
+        if (STATE.isGetAnswer === false && e.closest(".questions__label").classList.contains('false') === false) {
+          clicks++;
+          event.target.closest(".questions__label").classList.add("false");
+        }
       }
     });
   });
