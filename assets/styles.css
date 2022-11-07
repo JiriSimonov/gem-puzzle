@@ -96,7 +96,7 @@ h6 {
   padding: 22px 65px;
   height: 252px;
   border-radius: 13px;
-  background-color: #EDE7E7;
+  background-color: #ede7e7;
   background-image: url("./images/unknown.png");
   background-repeat: no-repeat;
   background-position: 65px center;
@@ -182,16 +182,25 @@ h6 {
 .questions .questions__wrapper .questions__label .questions__input:checked:focus + .questions__checkbox {
   border-color: white;
 }
+.questions .questions__wrapper .true {
+  color: #1fb12e;
+}
 .questions .questions__wrapper .true .questions__input:checked + .questions__checkbox {
   display: none;
 }
 .questions .questions__wrapper .true .questions__input + .questions__checkbox {
   display: none;
 }
+.questions .questions__wrapper .false {
+  color: #e11244;
+}
 .questions .questions__wrapper .false .questions__input:checked + .questions__checkbox {
   display: none;
 }
 .questions .questions__wrapper .false .questions__input + .questions__checkbox {
+  display: none;
+}
+.questions .questions__descr {
   display: none;
 }
 .questions .questions__container {
@@ -252,7 +261,7 @@ h6 {
   background-color: #a73962;
 }
 .game__btn:disabled {
-  background-color: #A73962;
+  background-color: #a73962;
   pointer-events: none;
 }
 

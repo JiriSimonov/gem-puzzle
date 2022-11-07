@@ -4,7 +4,7 @@ import { FOOTER_INFO } from "../data/globals.js";
 
 export function createFooter() {
   const footer = createElement({ tag: "footer", eClass: "footer" });
-  const container = createElement({eClass: 'container', parent: footer});
+  const container = createElement({ eClass: "container", parent: footer });
   const footerWrapper = createElement({
     eClass: "footer__wrapper",
     parent: container,
@@ -20,7 +20,11 @@ export function createFooter() {
         inner: `${FOOTER_INFO.text[index]}`,
       }),
   });
-  const copyright = createElement({eClass: 'footer__copyright', parent: footerWrapper, inner: '2022'});
-  const swan = createElement({eClass: 'swan', parent: footer});
+  const copyright = createElement({
+    eClass: "footer__copyright",
+    parent: footerWrapper,
+    inner: "2022",
+  });
+  const swan = createElement({ eClass: "swan", parent: footer });
   return footer;
 }
