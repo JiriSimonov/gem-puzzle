@@ -1,6 +1,6 @@
 import BIRDS_DATA from "../data/data.js";
 import { STATE, MAIN_SECTIONS } from "../data/globals.js";
-import { headerScore } from "../index.js";
+import { headerScore } from "../router.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";

@@ -1,14 +1,44 @@
-import { createElement } from "./utils/createElement.js";
-import { createHeader } from "./components/header.js";
-import { createFooter } from "./components/footer.js";
-import { createMain } from "./components/main.js";
+// app.appendChild(createHeader(headerScore));
+// app.appendChild(createMain());
+// app.appendChild(createFooter());
 
-export const app = document.getElementById("app");
-export const headerScore = createElement({
-  eClass: "header__score",
-  inner: "Счёт: 0",
-});
+import { createRouter } from './router.js';
 
-app.appendChild(createHeader(headerScore));
-app.appendChild(createMain());
-app.appendChild(createFooter());
+function createLinks() {
+    const links = [
+        document.createElement('a'),
+        document.createElement('a'),
+        document.createElement('a'),
+    ];
+    links[0].href = `#${"start" /* AppRoute.Start */}`;
+    links[0].textContent = 'Start';
+    links[1].href = `#${"quiz" /* AppRoute.Quiz */}`;
+    links[1].textContent = 'Quiz';
+    links[2].href = `#${"results" /* AppRoute.Results */}`;
+    links[2].textContent = 'Result';
+    return links;
+}
+class App {
+    constructor() {
+        this.appId = 'app';
+    }
+    start() {
+        const root = document.querySelector(`#${this.appId}`);
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('wrapper');
+        createLinks().forEach((link) => {
+            root.appendChild(link);
+        });
+        root.appendChild(wrapper);
+        if (root) {
+            this.router = createRouter(wrapper);
+        }
+    }
+    destroyApp() {
+        const root = document.querySelector(`#${this.appId}`);
+        root.innerHTML = '';
+        this.router.destroy();
+    }
+}
+const app = new App();
+app.start();

@@ -16,13 +16,6 @@ export function createHeader(score) {
     attr: { href: "/" },
     parent: headerWrapper,
   });
-  const headerLink = createElement({
-    tag: "a",
-    eClass: "header__link",
-    inner: "На главную",
-    parent: headerWrapper,
-    attr: { href: "/" },
-  });
   headerWrapper.appendChild(score);
   return header;
 }
