@@ -14,6 +14,17 @@ h6 {
   margin: 0;
   padding: 0;
   background-color: #e7dada;
+  transition: .3s linear;
+}
+
+.dark {
+  background-color: #110D3E;
+  .swan {
+    background-image: url('./images/swan_light.png');
+  }
+  .header .header__wrapper .controls .header__score{
+    color: white;
+  }
 }
 
 #app {
@@ -44,10 +55,53 @@ h6 {
       background-repeat: no-repeat;
       background-position: center;
     }
-    .header__score {
-      font-size: 32px;
-      font-weight: 400;
-      color: #000;
+    .controls {
+      display: flex;
+      gap: 60px;
+      margin-left: auto;
+      .controls__input {
+        position: relative;
+        display: inline-block;
+        width: 87px;
+        height: 50px;
+        margin: 0;
+        vertical-align: top;
+        background: #C16B89;
+        border: 1px solid #C16B89;
+        border-radius: 30px;
+        outline: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+        &:after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 2px;
+          display: inline-block;
+          width: 41px;
+          height: 41px;
+          background-color: #E7DADA;
+          border-radius: 50%;
+          transform: translate(0, -50%);
+          background-image: url('./images/sun.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+          transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+        }
+        &:checked:after {
+          transform: translate(calc(100% - 2px), -50%);
+          background-color: #110D3E;
+          background-image: url('./images/moon.svg');
+        }
+      }
+      .header__score {
+        font-size: 32px;
+        font-weight: 400;
+        color: #000;
+      }
     }
   }
 }
@@ -349,6 +403,7 @@ h6 {
   background-repeat: no-repeat;
   background-size: cover;
   animation: swan-roaming 40s infinite linear;
+  transition: .3s linear;
 }
 
 @keyframes swan-roaming {

@@ -73,7 +73,7 @@ export function createRouter(routerOutlet) {
         component: () =>
           __awaiter(this, void 0, void 0, function* () {
             const { default: createPage } = yield import(
-              "./components/start-pageю.js"
+              "./components/start-page.js"
             );
             return createPage();
           }),

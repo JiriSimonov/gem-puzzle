@@ -22,4 +22,5 @@ export const STATE = {
   currentTime: undefined,
   isGetAnswer: false,
   isStartTimer: null,
+  theme: 'light',
 };

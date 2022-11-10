@@ -4,6 +4,7 @@ export function createQuestions(wrapper, container, descriotion) {
   const questions = createElement({ eClass: "questions" });
   questions.append(wrapper);
   questions.append(container);
+  container.innerHTML = '';
   questions.append(descriotion);
   const questionsDescr = createElement({
     eClass: "questions__text",

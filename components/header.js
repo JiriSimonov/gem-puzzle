@@ -1,6 +1,6 @@
 import { createElement } from "../utils/createElement.js";
 
-export function createHeader(score) {
+export function createHeader(score = '') {
   const header = createElement({
     tag: "header",
     eClass: "header",
@@ -16,6 +16,32 @@ export function createHeader(score) {
     attr: { href: "/" },
     parent: headerWrapper,
   });
-  headerWrapper.appendChild(score);
+  const controls = createElement({
+    eClass: 'controls',
+    parent: headerWrapper,
+  });
+  const changeLang = createElement({
+    tag: 'input',
+    eClass: 'controls__input',
+    attr: {'type': 'checkbox'},
+    parent: controls,
+  });
+  const changeBg = createElement({
+    tag: 'input',
+    eClass: 'controls__input',
+    attr: {'type': 'checkbox', 'id': 'toggle-theme'},
+    parent: controls,
+  });
+  changeBg.addEventListener('click', (e) => {
+    document.body.classList.toggle('dark');
+    console.log('click');
+  });
+  const changeBgLabel = createElement({
+    tag: 'label',
+    eClass: 'controls__label',
+    attr: {'for': 'toggle-theme'},
+    parent: controls,
+  });
+  if(score) controls.appendChild(score);
   return header;
 }
