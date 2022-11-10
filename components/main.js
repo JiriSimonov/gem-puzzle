@@ -4,6 +4,7 @@ import { headerScore } from "../index.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
+import { startTimer, stopTimer, timer} from "../utils/timer.js";
 import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
 
@@ -62,8 +63,6 @@ function handleInputClick(input, parentNode) {
   questionsContainer.innerHTML = "";
   console.log(questionsContainer.closest('questions__descr'));
   createDescription(questionsContainer, currentNum);
-  //console.log(descrContainer);
-  //descrContent.append(createAudio(audioQBtn, audioQProgress, audioQCurrentTime, audioQFullTime));
   if (STATE.currentAnswer === +currentNum) {
     if (STATE.isGetAnswer === false) {
       STATE.isGetAnswer = true;
@@ -124,7 +123,6 @@ const audioBtn = createElement({
     eClass: "audio__time",
     inner: `${BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration}`,
   });
-export const timer = { time: 0 };
 let clicks = 0;
 setActiveSection(mainSections, STATE.currentStep);
 
@@ -206,36 +204,6 @@ export function createMain() {
 function createQuestion() {
   STATE.currentAnswer = getRundomNum(1, BIRDS_DATA.length);
 }
-// inputs.forEach((e) => {
-//   e.addEventListener("click", (event) => {
-//     const currentNum = event.target.value;
-//     questionsContainer.innerHTML = "";
-//     console.log(questionsContainer.closest('questions__descr'));
-//     createDescription(questionsContainer, currentNum);
-//     //console.log(descrContainer);
-//     //descrContent.append(createAudio(audioQBtn, audioQProgress, audioQCurrentTime, audioQFullTime));
-//     if (STATE.currentAnswer === +currentNum) {
-//       if (STATE.isGetAnswer === false) {
-//         STATE.isGetAnswer = true;
-//         clicks--;
-//         STATE.score = STATE.score + (BIRDS_DATA.length - 1 - clicks);
-//         clicks = 0;
-//         printScore(STATE.score);
-//         inputs.forEach((e) => {
-//           e.parentNode.classList.add("false");
-//         });
-//       }
-//       event.target.closest(".questions__label").classList.add("true");
-//       event.target.closest(".questions__label").classList.remove("false");
-//       questionsBtn.removeAttribute("disabled");
-//     } else {;
-//       if (STATE.isGetAnswer === false && e.closest(".questions__label").classList.contains('false') === false) {
-//         clicks++;
-//         event.target.closest(".questions__label").classList.add("false");
-//       }
-//     }
-//   });
-// });
 
 questionsBtn.addEventListener("click", (e) => {
   STATE.currentStep++;
@@ -317,7 +285,7 @@ audioBtn.addEventListener('click', (e) => {
         audioBtn.classList.toggle('is-play');
         player.play();
         audioProgress.setAttribute('max', Math.floor(player.duration));
-        STATE.isStartTimer = startTimer(audioCurrentTime, STATE.isStartTimer)
+        STATE.isStartTimer = startTimer(audioCurrentTime, STATE.isStartTimer, audioProgress);
     } else {
         audioBtn.classList.toggle('is-play');
         player.pause();
@@ -331,23 +299,6 @@ player.addEventListener('ended', () => {
     timer.time = 0;
 });
 
-export function printTime(elem, sec, min) {
-    elem.textContent = `${(min < 10 ? min.toString().padStart(2, '0') : min)}:${(sec < 10 ? sec.toString().padStart(2, '0') : sec)}`;
-}
-
-export function startTimer(elem, isAlreadyStarted) {
-    if (!isAlreadyStarted) {
-        return setInterval(function () {
-            timer.time += 1;
-            audioProgress.value = timer.time;
-            const minutesValue = Math.floor(timer.time / 60);
-            const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
-            printTime(elem = elem, secondsValue, minutesValue);
-        }, 1000);
-    }
-    return isAlreadyStarted;
-}
-
 audioProgress.addEventListener('input', (e) => {
     stopTimer();
     player.currentTime = +audioProgress.value;
@@ -356,10 +307,5 @@ audioProgress.addEventListener('input', (e) => {
     audioBtn.classList.add('is-play');
     player.play();
     audioProgress.setAttribute('max', Math.floor(player.duration));
-    STATE.isStartTimer = startTimer(audioCurrentTime, STATE.isStartTimer);
+    STATE.isStartTimer = startTimer(audioCurrentTime, STATE.isStartTimer, audioProgress);
 });
-
-export function stopTimer() {
-    clearInterval(STATE.isStartTimer);
-    STATE.isStartTimer = null;
-}
