@@ -12,20 +12,20 @@ h6 {
   margin: 0;
   padding: 0;
   background-color: #e7dada;
-  transition: .2s linear;
+  transition: 0.2s linear;
 }
 
 .dark {
-  background-color: #110D3E;
+  background-color: #110d3e;
   .swan {
-    background-image: url('./images/swan_light.png');
+    background-image: url("./images/swan_light.png");
   }
-  .header .header__wrapper .controls .header__score{
+  .header .header__wrapper .controls .header__score {
     color: white;
   }
   .start-page {
     .main {
-      background-image: url('./images/wing-dark.png');
+      background-image: url("./images/wing-dark.png");
       background-size: 900px 992px;
     }
   }
@@ -43,10 +43,20 @@ h6 {
   .main {
     width: 100%;
     height: 955px;
-    background-image: url('./images/wing-light.png');
+    background-image: url("./images/wing-light.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 717px 955px;
+  }
+}
+
+.header {
+  .game__wrapper {
+    .game__section {
+      &:hover {
+        color: white;
+      }
+    }
   }
 }
 
@@ -55,12 +65,10 @@ h6 {
     margin: 45px 0;
     padding: 75px 50px;
     border-radius: 13px;
-    background: 
-    url('./images/results/ice-tea.png') 1% 40px,
-    url('./images/results/music.png') 97% 40px;
-    ;
+    background: url("./images/results/ice-tea.png") 1% 40px,
+      url("./images/results/music.png") 97% 40px;
     background-repeat: no-repeat;
-    background-color: #EDE7E7;
+    background-color: #ede7e7;
     text-align: center;
   }
   .main__title {
@@ -81,7 +89,7 @@ h6 {
     font-size: 24px;
     font-weight: 700;
     color: #000;
-    background-color: #C16B89;
+    background-color: #c16b89;
   }
   .results__bold {
     font-weight: 700;
@@ -120,8 +128,8 @@ h6 {
         height: 50px;
         margin: 0;
         vertical-align: top;
-        background: #C16B89;
-        border: 1px solid #C16B89;
+        background: #c16b89;
+        border: 1px solid #c16b89;
         border-radius: 30px;
         outline: none;
         cursor: pointer;
@@ -137,18 +145,18 @@ h6 {
           display: inline-block;
           width: 41px;
           height: 41px;
-          background-color: #E7DADA;
+          background-color: #e7dada;
           border-radius: 50%;
           transform: translate(0, -50%);
-          background-image: url('./images/sun.svg');
+          background-image: url("./images/sun.svg");
           background-repeat: no-repeat;
           background-position: center;
           transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
         }
         &:checked:after {
           transform: translate(calc(100% - 2px), -50%);
-          background-color: #110D3E;
-          background-image: url('./images/moon.svg');
+          background-color: #110d3e;
+          background-image: url("./images/moon.svg");
         }
       }
       .header__score {
@@ -192,7 +200,7 @@ h6 {
     text-align: center;
     text-decoration: none;
     user-select: none;
-    transition: all .3s linear;
+    transition: all 0.3s linear;
     &:nth-child(1) {
       border-top-left-radius: 13px;
       border-bottom-left-radius: 13px;
@@ -247,18 +255,18 @@ h6 {
           width: 1121px;
           height: 5px;
           border: none;
-          background-color: #C16B89;
+          background-color: #c16b89;
           -webkit-appearance: none;
           -moz-appearance: none;
           appearance: none;
-        
+
           &::-webkit-slider-thumb {
             width: 29px;
             height: 29px;
             border-radius: 50%;
-            background-color: #7F7171;
+            background-color: #7f7171;
             margin-top: 1px;
-            transition: .5s linear;
+            transition: 0.5s linear;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
@@ -460,7 +468,7 @@ h6 {
   background-repeat: no-repeat;
   background-size: cover;
   animation: swan-roaming 40s infinite linear;
-  transition: .3s linear;
+  transition: 0.3s linear;
 }
 
 @keyframes swan-roaming {

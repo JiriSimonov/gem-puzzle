@@ -16,7 +16,7 @@ h6 {
 }
 
 .dark {
-  background-color: #110D3E;
+  background-color: #110d3e;
 }
 .dark .swan {
   background-image: url("./images/swan_light.png");
@@ -46,13 +46,17 @@ h6 {
   background-size: 717px 955px;
 }
 
+.header .game__wrapper .game__section:hover {
+  color: white;
+}
+
 .results-page .main__wrapper {
   margin: 45px 0;
   padding: 75px 50px;
   border-radius: 13px;
   background: url("./images/results/ice-tea.png") 1% 40px, url("./images/results/music.png") 97% 40px;
   background-repeat: no-repeat;
-  background-color: #EDE7E7;
+  background-color: #ede7e7;
   text-align: center;
 }
 .results-page .main__title {
@@ -73,7 +77,7 @@ h6 {
   font-size: 24px;
   font-weight: 700;
   color: #000;
-  background-color: #C16B89;
+  background-color: #c16b89;
 }
 .results-page .results__bold {
   font-weight: 700;
@@ -112,8 +116,8 @@ h6 {
   height: 50px;
   margin: 0;
   vertical-align: top;
-  background: #C16B89;
-  border: 1px solid #C16B89;
+  background: #c16b89;
+  border: 1px solid #c16b89;
   border-radius: 30px;
   outline: none;
   cursor: pointer;
@@ -130,7 +134,7 @@ h6 {
   display: inline-block;
   width: 41px;
   height: 41px;
-  background-color: #E7DADA;
+  background-color: #e7dada;
   border-radius: 50%;
   transform: translate(0, -50%);
   background-image: url("./images/sun.svg");
@@ -140,7 +144,7 @@ h6 {
 }
 .header .header__wrapper .controls .controls__input:checked:after {
   transform: translate(calc(100% - 2px), -50%);
-  background-color: #110D3E;
+  background-color: #110d3e;
   background-image: url("./images/moon.svg");
 }
 .header .header__wrapper .controls .header__score {
@@ -239,7 +243,7 @@ h6 {
   width: 1121px;
   height: 5px;
   border: none;
-  background-color: #C16B89;
+  background-color: #c16b89;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -248,7 +252,7 @@ h6 {
   width: 29px;
   height: 29px;
   border-radius: 50%;
-  background-color: #7F7171;
+  background-color: #7f7171;
   margin-top: 1px;
   -webkit-transition: 0.5s linear;
   transition: 0.5s linear;
