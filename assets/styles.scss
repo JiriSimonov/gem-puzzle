@@ -50,6 +50,41 @@ h6 {
   }
 }
 
+.results-page {
+  .main__wrapper {
+    margin: 45px 0;
+    padding: 75px 50px;
+    border-radius: 13px;
+    background: 
+    url('./images/results/ice-tea.png') 1% 40px,
+    url('./images/results/music.png') 97% 40px;
+    ;
+    background-repeat: no-repeat;
+    background-color: #EDE7E7;
+    text-align: center;
+  }
+  .main__title {
+    font-size: 64px;
+    font-weight: 400;
+    color: #000;
+  }
+  .main__descr {
+    font-size: 36px;
+    font-weight: 400;
+    color: #000;
+  }
+  .main__btn {
+    width: 100%;
+    padding: 21px 10px;
+    border: none;
+    border-radius: 13px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    background-color: #C16B89;
+  }
+}
+
 .container {
   width: 100%;
   max-width: 1690px;

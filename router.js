@@ -93,14 +93,9 @@ export function createRouter(routerOutlet) {
         component: () =>
           __awaiter(this, void 0, void 0, function* () {
             const { default: createPage } = yield import(
-              "./components/results-page.js"
+              "./components/results-page.js"  
             );
-            return createPage([
-              { name: "test", score: 100 },
-              { name: "test1", score: 110 },
-              { name: "test2", score: 120 },
-              { name: "test3", score: 130 },
-            ]);
+            return createPage();
           }),
       },
     ],
