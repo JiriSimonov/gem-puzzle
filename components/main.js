@@ -4,6 +4,7 @@ import { headerScore } from "../index.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
+import { setActiveSection } from "../utils/setActiveItem.js";
 import { startTimer, stopTimer, timer} from "../utils/timer.js";
 import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
@@ -262,16 +263,6 @@ questionsBtn.addEventListener("click", (e) => {
   });
   STATE.isGetAnswer = false;
 });
-
-function setActiveSection(arr, num) {
-  for (let i = 0; i < arr.length; i++) {
-    if (i === num) {
-      arr[i].classList.add("active");
-    } else {
-      arr[i].classList.remove("active");
-    }
-  }
-}
 
 function printScore(num) {
   headerScore.innerHTML = `Счёт: ${num}`;
