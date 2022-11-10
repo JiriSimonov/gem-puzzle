@@ -5,7 +5,7 @@ export const MAIN_SECTIONS = [
   "Певчие птицы",
   "Хищные птицы",
   "Морские птицы",
-]; 
+];
 
 export const FOOTER_INFO = {
   text: ["GitHub", "RSSchool"],

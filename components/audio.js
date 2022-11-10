@@ -8,16 +8,16 @@ export function createAudio(btn, input, current, max) {
   });
   audioWrapper.appendChild(btn);
   const audioControls = createElement({
-    eClass: 'audio__controls',
+    eClass: "audio__controls",
     parent: audioWrapper,
   });
   const audioProgressBar = createElement({
-    eClass: 'audio__container',
+    eClass: "audio__container",
     parent: audioControls,
   });
-  audioProgressBar.appendChild(input)
+  audioProgressBar.appendChild(input);
   const audioTimePanel = createElement({
-    eClass: 'audio__timeline',
+    eClass: "audio__timeline",
     parent: audioControls,
   });
   audioTimePanel.append(current, max);
