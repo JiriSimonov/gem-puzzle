@@ -62,7 +62,6 @@ const questionsLabels = createElements({
 function handleInputClick(input, parentNode) {
   const currentNum = input.value;
   questionsContainer.innerHTML = "";
-  console.log(questionsContainer.closest('questions__descr'));
   createDescription(questionsContainer, currentNum);
   if (STATE.currentAnswer === +currentNum) {
     if (STATE.isGetAnswer === false) {
@@ -88,7 +87,7 @@ function handleInputClick(input, parentNode) {
 createQuestion();
 const player = new Audio(BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].audio);
 player.setAttribute('preload', 'metadata');
-console.log(player);
+
 /* audio */
 const audioBtn = createElement({
     tag: "button",
@@ -126,33 +125,6 @@ const audioBtn = createElement({
   });
 let clicks = 0;
 setActiveSection(mainSections, STATE.currentStep);
-
-function createInputs(arr) {
-  const newArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    const newInput = createElement({
-      tag: "input",
-      eClass: "questions__input",
-      attr: { type: "checkbox", value: `${i + 1}` },
-      parent: questionsWrapper,
-    });
-    arr[i].appendChild(newInput);
-    newArr.push(newInput);
-  }
-  return newArr;
-}
-
-function createSpans(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    arr[i].appendChild(
-      createElement({
-        tag: "span",
-        eClass: "questions__checkbox",
-        parent: questionsWrapper,
-      })
-    );
-  }
-}
 
 function createDescription(wrapper, number) {
   const descrContainer = createElement({
@@ -213,54 +185,36 @@ questionsBtn.addEventListener("click", (e) => {
   questionsWrapper.innerHTML = "";
   questionsContainer.innerHTML = "";
   questionsLabels.splice(0);
+  inputs.splice(0);
   questionsLabels.push(
-    ...createElements({
-      arrLength: BIRDS_DATA.length,
+    ...createElements({  arrLength: BIRDS_DATA.length,
       parent: questionsWrapper,
-      callback: (_item, index) =>
-        createElement({
+      callback: (_item, index) => {
+        const label = createElement({
           tag: "label",
           eClass: "questions__label",
           inner: `${BIRDS_DATA[STATE.currentStep][index].name}`,
           parent: questionsWrapper,
-        }),
-    })
+        });
+        const input = createElement({
+          tag: "input",
+          eClass: "questions__input",
+          attr: { type: "checkbox", value: `${index + 1}` },
+          parent: label,
+        });
+        input.addEventListener("click", () => {
+          handleInputClick(input, label);
+        });
+        const span = createElement({
+          tag: "span",
+          eClass: "questions__checkbox",
+          parent: label,
+        });
+        inputs.push(input);
+        return label;
+      }})
   );
-  inputs.splice(0);
-  console.log(inputs, 'до пуша');
-  console.log(inputs.length, 'до пуша');
-  inputs.push(...createInputs(questionsLabels));
-  console.log(inputs, 'после пуша');
-  createSpans(questionsLabels);
   questionsBtn.setAttribute("disabled", true);
-  inputs.forEach((e) => {
-    e.addEventListener("click", (event) => {
-      const currentNum = event.target.value;
-      questionsContainer.innerHTML = "";
-      createDescription(questionsContainer, currentNum);  
-      console.log(questionsDescription);
-      if (STATE.currentAnswer === +currentNum) {
-        if (STATE.isGetAnswer === false) {
-          STATE.isGetAnswer = true;
-          clicks--;
-          STATE.score = STATE.score + (BIRDS_DATA.length - 1 - clicks);
-          clicks = 0;
-          printScore(STATE.score);
-          inputs.forEach((e) => {
-            e.parentNode.classList.add("false");
-          });
-        }
-        event.target.closest(".questions__label").classList.add("true");
-        event.target.closest(".questions__label").classList.remove("false");
-        questionsBtn.removeAttribute("disabled");
-      } else {;
-        if (STATE.isGetAnswer === false && e.closest(".questions__label").classList.contains('false') === false) {
-          clicks++;
-          event.target.closest(".questions__label").classList.add("false");
-        }
-      }
-    });
-  });
   STATE.isGetAnswer = false;
 });
 
