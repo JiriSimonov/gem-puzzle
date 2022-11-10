@@ -185,7 +185,12 @@ function createQuestion() {
 
 questionsBtn.addEventListener("click", (e) => {
   STATE.currentStep++;
-  setActiveSection(mainSections, STATE.currentStep);
+  if (STATE.currentStep === BIRDS_DATA.length) {
+    window.location.hash = '#results';
+    STATE.currentStep = 0;
+    STATE.isGetAnswer = false;
+  } else {
+    setActiveSection(mainSections, STATE.currentStep);
   createQuestion();
   questionsWrapper.innerHTML = "";
   questionsContainer.innerHTML = "";
@@ -223,6 +228,7 @@ questionsBtn.addEventListener("click", (e) => {
   );
   questionsBtn.setAttribute("disabled", true);
   STATE.isGetAnswer = false;
+  }
 });
 
 function printScore(num) {

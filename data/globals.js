@@ -12,6 +12,17 @@ export const FOOTER_INFO = {
   link: ["https://github.com/JiriSimonov", "https://rs.school/js/"],
 };
 
+export const HEADER_LINKS = [
+  {
+    text: "Home",
+    link: "#start",
+  },
+  {
+    text: "Quiz",
+    link: "#quiz",
+  },
+];
+
 export const STATE = {
   lang: "RU",
   score: 0,
@@ -22,5 +33,5 @@ export const STATE = {
   currentTime: undefined,
   isGetAnswer: false,
   isStartTimer: null,
-  theme: 'light',
+  theme: true,
 };

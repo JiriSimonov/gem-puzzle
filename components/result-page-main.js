@@ -1,3 +1,4 @@
+import { STATE } from "../data/globals.js";
 import { createElement } from "../utils/createElement.js";
 
 export function createMainResults() {
@@ -22,7 +23,7 @@ export function createMainResults() {
   const mainDescr = createElement({
     tag: 'p',
     eClass: 'main__descr',
-    inner: 'Вы прошли викторину и набрали 20 из 30 возможных баллов :)',
+    inner: `Вы прошли викторину и набрали <span class='results__bold'>${STATE.score}</span> из <span class='results__bold'>30</span> возможных баллов :)`,
     parent: mainWrapper,
   });
   const mainBtn = createElement({

@@ -83,6 +83,9 @@ h6 {
     color: #000;
     background-color: #C16B89;
   }
+  .results__bold {
+    font-weight: 700;
+  }
 }
 
 .container {
@@ -97,6 +100,7 @@ h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 40px;
     padding-top: 30px;
     .header__logo {
       width: 363px;
@@ -166,33 +170,36 @@ h6 {
 
 .game {
   margin-top: 35px;
-  .game__wrapper {
+  &__wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 45px;
-    .game__section {
-      flex: auto;
-      padding: 18px;
-      background-color: #c16b89;
-      font-size: 24px;
-      font-weight: 400;
-      line-height: auto;
-      text-align: center;
-      user-select: none;
-      &:nth-child(1) {
-        border-top-left-radius: 13px;
-        border-bottom-left-radius: 13px;
-      }
-      &:last-child {
-        border-top-right-radius: 13px;
-        border-bottom-right-radius: 13px;
-      }
-    }
     .active {
       background-color: #a73962;
       color: white;
       font-weight: 700;
+    }
+  }
+  &__section {
+    flex: auto;
+    padding: 18px;
+    background-color: #c16b89;
+    font-size: 24px;
+    font-weight: 400;
+    color: #000;
+    line-height: auto;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    transition: all .3s linear;
+    &:nth-child(1) {
+      border-top-left-radius: 13px;
+      border-bottom-left-radius: 13px;
+    }
+    &:last-child {
+      border-top-right-radius: 13px;
+      border-bottom-right-radius: 13px;
     }
   }
 }

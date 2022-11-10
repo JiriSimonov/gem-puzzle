@@ -75,6 +75,9 @@ h6 {
   color: #000;
   background-color: #C16B89;
 }
+.results-page .results__bold {
+  font-weight: 700;
+}
 
 .container {
   width: 100%;
@@ -87,6 +90,7 @@ h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
   padding-top: 30px;
 }
 .header .header__wrapper .header__logo {
@@ -154,37 +158,40 @@ h6 {
 .game {
   margin-top: 35px;
 }
-.game .game__wrapper {
+.game__wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 45px;
 }
-.game .game__wrapper .game__section {
+.game__wrapper .active {
+  background-color: #a73962;
+  color: white;
+  font-weight: 700;
+}
+.game__section {
   flex: auto;
   padding: 18px;
   background-color: #c16b89;
   font-size: 24px;
   font-weight: 400;
+  color: #000;
   line-height: auto;
   text-align: center;
+  text-decoration: none;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  transition: all 0.3s linear;
 }
-.game .game__wrapper .game__section:nth-child(1) {
+.game__section:nth-child(1) {
   border-top-left-radius: 13px;
   border-bottom-left-radius: 13px;
 }
-.game .game__wrapper .game__section:last-child {
+.game__section:last-child {
   border-top-right-radius: 13px;
   border-bottom-right-radius: 13px;
-}
-.game .game__wrapper .active {
-  background-color: #a73962;
-  color: white;
-  font-weight: 700;
 }
 
 .audio {
