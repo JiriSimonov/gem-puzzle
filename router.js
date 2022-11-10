@@ -4,41 +4,10 @@ export const headerScore = createElement({
   eClass: "header__score",
   inner: "Счёт: 0",
 });
-
-var __awaiter =
-  (this && this.__awaiter) ||
-  function (thisArg, _arguments, P, generator) {
-    function adopt(value) {
-      return value instanceof P
-        ? value
-        : new P(function (resolve) {
-            resolve(value);
-          });
-    }
-    return new (P || (P = Promise))(function (resolve, reject) {
-      function fulfilled(value) {
-        try {
-          step(generator.next(value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function rejected(value) {
-        try {
-          step(generator["throw"](value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function step(result) {
-        result.done
-          ? resolve(result.value)
-          : adopt(result.value).then(fulfilled, rejected);
-      }
-      step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-  };
 export class Router {
+  routes;
+  onHashChange;
+  defaultComponent;
   constructor(routes, onHashChange, defaultComponent) {
     this.routes = routes;
     this.onHashChange = onHashChange;
@@ -50,12 +19,10 @@ export class Router {
     const path = window.location.hash.slice(1);
     const route = this.routes.find((r) => r.name === path);
     this.onHashChange(
-      route !== null && route !== void 0
-        ? route
-        : {
-            name: "default" /* AppRoute.Default */,
-            component: this.defaultComponent,
-          }
+      route ?? {
+        name: "default" /* AppRoute.Default */,
+        component: this.defaultComponent,
+      }
     );
   }
   destroy() {
@@ -70,33 +37,30 @@ export function createRouter(routerOutlet) {
     [
       {
         name: "start" /* AppRoute.Start */,
-        component: () =>
-          __awaiter(this, void 0, void 0, function* () {
-            const { default: createPage } = yield import(
-              "./components/start-page.js"
-            );
-            return createPage();
-          }),
+        component: async () => {
+          const { default: createPage } = await import(
+            "./components/start-page.js"
+          );
+          return createPage();
+        },
       },
       {
         name: "quiz" /* AppRoute.Quiz */,
-        component: () =>
-          __awaiter(this, void 0, void 0, function* () {
-            const { default: createPage } = yield import(
-              "./components/quiz-page.js"
-            );
-            return createPage(headerScore);
-          }),
+        component: async () => {
+          const { default: createPage } = await import(
+            "./components/quiz-page.js"
+          );
+          return createPage(headerScore);
+        },
       },
       {
         name: "results" /* AppRoute.Results */,
-        component: () =>
-          __awaiter(this, void 0, void 0, function* () {
-            const { default: createPage } = yield import(
-              "./components/results-page.js"  
-            );
-            return createPage();
-          }),
+        component: async () => {
+          const { default: createPage } = await import(
+            "./components/results-page.js"
+          );
+          return createPage();
+        },
       },
     ],
     (route) => {
@@ -107,10 +71,11 @@ export function createRouter(routerOutlet) {
         });
       }
     },
-    () =>
-      __awaiter(this, void 0, void 0, function* () {
-        const { default: createPage } = yield import("./components/start-page");
-        return createPage();
-      })
+    async () => {
+      const { default: createPage } = await import(
+        "./components/start-page.js"
+      );
+      return createPage();
+    }
   );
 }
