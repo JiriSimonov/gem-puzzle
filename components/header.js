@@ -34,7 +34,6 @@ export function createHeader(score = '') {
   });
   changeBg.addEventListener('click', (e) => {
     document.body.classList.toggle('dark');
-    console.log('click');
   });
   const changeBgLabel = createElement({
     tag: 'label',

@@ -1,5 +1,3 @@
-@import url(./vars.scss);
-
 h1,
 h2,
 h3,
@@ -14,7 +12,7 @@ h6 {
   margin: 0;
   padding: 0;
   background-color: #e7dada;
-  transition: .3s linear;
+  transition: .2s linear;
 }
 
 .dark {
@@ -25,6 +23,12 @@ h6 {
   .header .header__wrapper .controls .header__score{
     color: white;
   }
+  .start-page {
+    .main {
+      background-image: url('./images/wing-dark.png');
+      background-size: 900px 992px;
+    }
+  }
 }
 
 #app {
@@ -33,6 +37,17 @@ h6 {
   height: 100%;
   min-height: 100vh;
   cursor: url("./images/mouse-pointer.svg") 50 50;
+}
+
+.start-page {
+  .main {
+    width: 100%;
+    height: 955px;
+    background-image: url('./images/wing-light.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 717px 955px;
+  }
 }
 
 .container {
