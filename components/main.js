@@ -1,5 +1,5 @@
 import BIRDS_DATA from "../data/data.js";
-import { STATE, MAIN__SECTIONS } from "../data/globals.js";
+import { STATE, MAIN_SECTIONS } from "../data/globals.js";
 import { headerScore } from "../index.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
@@ -11,12 +11,12 @@ import { createQuestions } from "./questions.js";
 
 const gameWrapper = createElement({ eClass: "game__wrapper" });
 export const mainSections = createElements({
-  arrLength: MAIN__SECTIONS.length,
+  arrLength: MAIN_SECTIONS.length,
   parent: gameWrapper,
   callback: (_item, index) =>
     createElement({
       eClass: "game__section",
-      inner: `${MAIN__SECTIONS[index]}`,
+      inner: `${MAIN_SECTIONS[index]}`,
       parent: gameWrapper,
     }),
 });

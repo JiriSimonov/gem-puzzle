@@ -1,4 +1,4 @@
-export const MAIN__SECTIONS = [
+export const MAIN_SECTIONS = [
   "Разминка",
   "Воробьиные",
   "Лесные птицы",
