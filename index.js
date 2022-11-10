@@ -1,6 +1,5 @@
 import { createElement } from "./utils/createElement.js";
 import { createElements } from "./utils/createElements.js";
-import { STATE } from "./data/globals.js";
 import { createHeader } from "./components/header.js";
 import { createFooter } from "./components/footer.js";
 import { createMain } from "./components/main.js";

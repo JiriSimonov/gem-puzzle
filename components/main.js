@@ -27,23 +27,105 @@ export const questionsBtn = createElement({
   inner: "Следующий уровень",
   attr: { disabled: true },
 });
+const inputs = [];
 const questionsLabels = createElements({
   arrLength: BIRDS_DATA.length,
   parent: questionsWrapper,
-  callback: (_item, index) =>
-    createElement({
+  callback: (_item, index) => {
+    const label = createElement({
       tag: "label",
       eClass: "questions__label",
-      data: { birdId: `${index + 1}` },
       inner: `${BIRDS_DATA[STATE.currentStep][index].name}`,
       parent: questionsWrapper,
-    }),
+    });
+    const input = createElement({
+      tag: "input",
+      eClass: "questions__input",
+      attr: { type: "checkbox", value: `${index + 1}` },
+      parent: label,
+    });
+    input.addEventListener("click", () => {
+      handleInputClick(input, label);
+    });
+    const span = createElement({
+      tag: "span",
+      eClass: "questions__checkbox",
+      parent: label,
+    });
+    inputs.push(input);
+    return label;
+  }
 });
-const inputs = createInputs(questionsLabels);
-let clicks = 0;
 
-createSpans(questionsLabels);
+function handleInputClick(input, parentNode) {
+  const currentNum = input.value;
+  questionsContainer.innerHTML = "";
+  console.log(questionsContainer.closest('questions__descr'));
+  createDescription(questionsContainer, currentNum);
+  //console.log(descrContainer);
+  //descrContent.append(createAudio(audioQBtn, audioQProgress, audioQCurrentTime, audioQFullTime));
+  if (STATE.currentAnswer === +currentNum) {
+    if (STATE.isGetAnswer === false) {
+      STATE.isGetAnswer = true;
+      clicks--;
+      STATE.score = STATE.score + (BIRDS_DATA.length - 1 - clicks);
+      clicks = 0;
+      printScore(STATE.score);
+      inputs.forEach((e) => {
+        e.parentNode.classList.add("false");
+      });
+    }
+    parentNode.classList.add("true");
+    parentNode.classList.remove("false");
+    questionsBtn.removeAttribute("disabled");
+  } else {;
+    if (STATE.isGetAnswer === false && parentNode.classList.contains('false') === false) {
+      clicks++;
+      parentNode.classList.add("false");
+    }
+  }
+}
 createQuestion();
+const player = new Audio(BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].audio);
+player.setAttribute('preload', 'metadata');
+console.log(player);
+/* audio */
+const audioBtn = createElement({
+    tag: "button",
+    eClass: "audio__btn",
+  });
+  const audioProgress = createElement({
+    tag: 'input',
+    eClass: 'audio__progress',
+    attr: {'type': 'range', 'min': 0, 'max': ``, 'value': '0', 'step': '0.1'},
+  });
+  const audioCurrentTime = createElement({
+    eClass: "audio__time",
+    inner: "00:00",
+  });
+  const audioFullTime = createElement({
+    eClass: "audio__time",
+    inner: `${BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration}`,
+  });
+  const audioQBtn = createElement({
+    tag: "button",
+    eClass: "audio__btn",
+  });
+  const audioQProgress = createElement({
+    tag: 'input',
+    eClass: 'audio__progress',
+    attr: {'type': 'range', 'min': 0, 'max': ``, 'value': '0', 'step': '0.1'},
+  });
+  const audioQCurrentTime = createElement({
+    eClass: "audio__time",
+    inner: "00:00",
+  });
+  const audioQFullTime = createElement({
+    eClass: "audio__time",
+    inner: `${BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration}`,
+  });
+export const timer = { time: 0 };
+let clicks = 0;
 setActiveSection(mainSections, STATE.currentStep);
 
 function createInputs(arr) {
@@ -114,7 +196,7 @@ export function createMain() {
   const container = createElement({ eClass: "container", parent: game });
   container.append(
     gameWrapper,
-    createAudio(),
+    createAudio(audioBtn, audioProgress, audioCurrentTime, audioFullTime),
     createQuestions(questionsWrapper, questionsContainer, questionsDescription),
     questionsBtn
   );
@@ -124,34 +206,36 @@ export function createMain() {
 function createQuestion() {
   STATE.currentAnswer = getRundomNum(1, BIRDS_DATA.length);
 }
-
-inputs.forEach((e) => {
-  e.addEventListener("click", (event) => {
-    const currentNum = event.target.value;
-    questionsContainer.innerHTML = "";
-    createDescription(questionsContainer, currentNum);
-    if (STATE.currentAnswer === +currentNum) {
-      if (STATE.isGetAnswer === false) {
-        STATE.isGetAnswer = true;
-        clicks--;
-        STATE.score = STATE.score + (BIRDS_DATA.length - 1 - clicks);
-        clicks = 0;
-        printScore(STATE.score);
-        inputs.forEach((e) => {
-          e.parentNode.classList.add("false");
-        });
-      }
-      event.target.closest(".questions__label").classList.add("true");
-      event.target.closest(".questions__label").classList.remove("false");
-      questionsBtn.removeAttribute("disabled");
-    } else {;
-      if (STATE.isGetAnswer === false && e.closest(".questions__label").classList.contains('false') === false) {
-        clicks++;
-        event.target.closest(".questions__label").classList.add("false");
-      }
-    }
-  });
-});
+// inputs.forEach((e) => {
+//   e.addEventListener("click", (event) => {
+//     const currentNum = event.target.value;
+//     questionsContainer.innerHTML = "";
+//     console.log(questionsContainer.closest('questions__descr'));
+//     createDescription(questionsContainer, currentNum);
+//     //console.log(descrContainer);
+//     //descrContent.append(createAudio(audioQBtn, audioQProgress, audioQCurrentTime, audioQFullTime));
+//     if (STATE.currentAnswer === +currentNum) {
+//       if (STATE.isGetAnswer === false) {
+//         STATE.isGetAnswer = true;
+//         clicks--;
+//         STATE.score = STATE.score + (BIRDS_DATA.length - 1 - clicks);
+//         clicks = 0;
+//         printScore(STATE.score);
+//         inputs.forEach((e) => {
+//           e.parentNode.classList.add("false");
+//         });
+//       }
+//       event.target.closest(".questions__label").classList.add("true");
+//       event.target.closest(".questions__label").classList.remove("false");
+//       questionsBtn.removeAttribute("disabled");
+//     } else {;
+//       if (STATE.isGetAnswer === false && e.closest(".questions__label").classList.contains('false') === false) {
+//         clicks++;
+//         event.target.closest(".questions__label").classList.add("false");
+//       }
+//     }
+//   });
+// });
 
 questionsBtn.addEventListener("click", (e) => {
   STATE.currentStep++;
@@ -168,21 +252,24 @@ questionsBtn.addEventListener("click", (e) => {
         createElement({
           tag: "label",
           eClass: "questions__label",
-          data: { birdId: `${index + 1}` },
           inner: `${BIRDS_DATA[STATE.currentStep][index].name}`,
           parent: questionsWrapper,
         }),
     })
   );
   inputs.splice(0);
+  console.log(inputs, 'до пуша');
+  console.log(inputs.length, 'до пуша');
   inputs.push(...createInputs(questionsLabels));
+  console.log(inputs, 'после пуша');
   createSpans(questionsLabels);
   questionsBtn.setAttribute("disabled", true);
   inputs.forEach((e) => {
     e.addEventListener("click", (event) => {
       const currentNum = event.target.value;
       questionsContainer.innerHTML = "";
-      createDescription(questionsContainer, currentNum);
+      createDescription(questionsContainer, currentNum);  
+      console.log(questionsDescription);
       if (STATE.currentAnswer === +currentNum) {
         if (STATE.isGetAnswer === false) {
           STATE.isGetAnswer = true;
@@ -220,4 +307,59 @@ function setActiveSection(arr, num) {
 
 function printScore(num) {
   headerScore.innerHTML = `Счёт: ${num}`;
+}
+
+audioBtn.addEventListener('click', (e) => {
+    if (audioCurrentTime.textContent === audioFullTime.textContent) {
+        audioCurrentTime.textContent = '00:00';
+    }
+    if (audioBtn.classList.contains('is-play') === false) {
+        audioBtn.classList.toggle('is-play');
+        player.play();
+        audioProgress.setAttribute('max', Math.floor(player.duration));
+        STATE.isStartTimer = startTimer(audioCurrentTime, STATE.isStartTimer)
+    } else {
+        audioBtn.classList.toggle('is-play');
+        player.pause();
+        stopTimer();
+    }
+});
+
+player.addEventListener('ended', () => {
+    stopTimer();
+    audioBtn.classList.toggle('is-play');
+    timer.time = 0;
+});
+
+export function printTime(elem, sec, min) {
+    elem.textContent = `${(min < 10 ? min.toString().padStart(2, '0') : min)}:${(sec < 10 ? sec.toString().padStart(2, '0') : sec)}`;
+}
+
+export function startTimer(elem, isAlreadyStarted) {
+    if (!isAlreadyStarted) {
+        return setInterval(function () {
+            timer.time += 1;
+            audioProgress.value = timer.time;
+            const minutesValue = Math.floor(timer.time / 60);
+            const secondsValue = Math.floor(timer.time) - Math.floor(timer.time / 60) * 60;
+            printTime(elem = elem, secondsValue, minutesValue);
+        }, 1000);
+    }
+    return isAlreadyStarted;
+}
+
+audioProgress.addEventListener('input', (e) => {
+    stopTimer();
+    player.currentTime = +audioProgress.value;
+    console.log(audioProgress.value);
+    timer.time = +audioProgress.value;
+    audioBtn.classList.add('is-play');
+    player.play();
+    audioProgress.setAttribute('max', Math.floor(player.duration));
+    STATE.isStartTimer = startTimer(audioCurrentTime, STATE.isStartTimer);
+});
+
+export function stopTimer() {
+    clearInterval(STATE.isStartTimer);
+    STATE.isStartTimer = null;
 }

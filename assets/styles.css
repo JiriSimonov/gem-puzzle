@@ -25,8 +25,8 @@ h6 {
 
 .container {
   width: 100%;
-  max-width: 1500px;
-  padding: 0 100px;
+  max-width: 1690px;
+  padding: 0 105px;
   margin: 0 auto;
 }
 
@@ -93,8 +93,8 @@ h6 {
 
 .audio {
   margin-bottom: 45px;
-  padding: 22px 65px;
-  height: 252px;
+  margin-left: auto;
+  padding: 72px 65px;
   border-radius: 13px;
   background-color: #ede7e7;
   background-image: url("./images/unknown.png");
@@ -102,6 +102,9 @@ h6 {
   background-position: 65px center;
 }
 .audio .audio__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 37px;
   margin-left: auto;
   max-width: 1250px;
 }
@@ -115,8 +118,50 @@ h6 {
   background-color: transparent;
   background-image: url("./images/play.svg");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 28px center;
   cursor: pointer;
+}
+.audio .audio__wrapper .is-play {
+  background-image: url("./images/stop.svg");
+  background-repeat: no-repeat;
+  background-position: 28px center;
+}
+.audio .audio__wrapper .audio__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  padding-top: 38px;
+}
+.audio .audio__wrapper .audio__controls .audio__container .audio__progress {
+  width: 1121px;
+  height: 5px;
+  border: none;
+  background-color: #C16B89;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.audio .audio__wrapper .audio__controls .audio__container .audio__progress::-webkit-slider-thumb {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background-color: #7F7171;
+  margin-top: 1px;
+  -webkit-transition: 0.5s linear;
+  transition: 0.5s linear;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.audio .audio__wrapper .audio__controls .audio__timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.audio .audio__wrapper .audio__controls .audio__timeline .audio__time {
+  font-size: 24px;
+  font-weight: 400;
+  color: #000;
 }
 
 .questions {
