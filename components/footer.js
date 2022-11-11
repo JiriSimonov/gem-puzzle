@@ -25,6 +25,6 @@ export function createFooter() {
     parent: footerWrapper,
     inner: "2022",
   });
-  const swan = createElement({ eClass: "swan", parent: footer });
+  const swan = createElement({ eClass: "swan", parent: footerWrapper });
   return footer;
 }

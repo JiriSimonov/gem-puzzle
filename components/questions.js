@@ -1,6 +1,6 @@
 import { createElement } from "../utils/createElement.js";
 
-export function createQuestions(wrapper, container, descriotion) {
+export function createQuestions(wrapper = '', container = '', descriotion = '') {
   const questions = createElement({ eClass: "questions" });
   questions.append(wrapper);
   questions.append(container);

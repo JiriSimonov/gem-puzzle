@@ -15,35 +15,31 @@ h6 {
   transition: 0.2s linear;
 }
 
+.container {
+  max-width: 1680px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
 .dark {
   background-color: #110d3e;
 }
 .dark .swan {
-  background-image: url("./images/swan_light.png");
+  background-image: url("../images/swan_light.png");
 }
 .dark .header .header__wrapper .controls .header__score {
   color: white;
 }
 .dark .start-page .main {
-  background-image: url("./images/wing-dark.png");
-  background-size: 900px 992px;
-}
-
-#app {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 100vh;
-  cursor: url("./images/mouse-pointer.svg") 50 50;
+  background-image: url("../images/start/wing-dark.png");
 }
 
 .start-page .main {
   width: 100%;
   height: 955px;
-  background-image: url("./images/wing-light.png");
+  background-image: url("../images/start/wing-light.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 717px 955px;
 }
 
 .header .game__wrapper .game__section:hover {
@@ -54,7 +50,7 @@ h6 {
   margin: 45px 0;
   padding: 75px 50px;
   border-radius: 13px;
-  background: url("./images/results/ice-tea.png") 1% 40px, url("./images/results/music.png") 97% 40px;
+  background: url("../images/results/ice-tea.png") 1% 40px, url("../images/results/music.png") 97% 40px;
   background-repeat: no-repeat;
   background-color: #ede7e7;
   text-align: center;
@@ -89,13 +85,6 @@ h6 {
   font-weight: 700;
 }
 
-.container {
-  width: 100%;
-  max-width: 1690px;
-  padding: 0 105px;
-  margin: 0 auto;
-}
-
 .header .header__wrapper {
   display: flex;
   justify-content: space-between;
@@ -106,7 +95,7 @@ h6 {
 .header .header__wrapper .header__logo {
   width: 363px;
   height: 45px;
-  background-image: url(./images/logo.svg);
+  background-image: url("../images/icons/logo.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -143,7 +132,7 @@ h6 {
   background-color: #e7dada;
   border-radius: 50%;
   transform: translate(0, -50%);
-  background-image: url("./images/sun.svg");
+  background-image: url("../images/icons/sun.svg");
   background-repeat: no-repeat;
   background-position: center;
   transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
@@ -151,18 +140,12 @@ h6 {
 .header .header__wrapper .controls .controls__input:checked:after {
   transform: translate(calc(100% - 2px), -50%);
   background-color: #110d3e;
-  background-image: url("./images/moon.svg");
+  background-image: url("../images/icons/moon.svg");
 }
 .header .header__wrapper .controls .header__score {
   font-size: 32px;
   font-weight: 400;
   color: #000;
-}
-
-.footer .footer__wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .game {
@@ -210,7 +193,7 @@ h6 {
   padding: 72px 65px;
   border-radius: 13px;
   background-color: #ede7e7;
-  background-image: url("./images/unknown.png");
+  background-image: url("../images/unknown.png");
   background-repeat: no-repeat;
   background-position: 65px center;
 }
@@ -229,13 +212,13 @@ h6 {
   border: 3px solid #a73962;
   border-radius: 50%;
   background-color: transparent;
-  background-image: url("./images/play.svg");
+  background-image: url("../images/icons/play.svg");
   background-repeat: no-repeat;
   background-position: 28px center;
   cursor: pointer;
 }
 .audio .audio__wrapper .is-play {
-  background-image: url("./images/stop.svg");
+  background-image: url("../images/icons/stop.svg");
   background-repeat: no-repeat;
   background-position: 28px center;
 }
@@ -438,11 +421,16 @@ h6 {
 .footer {
   position: relative;
   margin-top: auto;
-  padding: 20px;
   background-color: #c16b89;
 }
-.footer .footer__link,
-.footer .footer__copyright {
+.footer .footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.footer .footer__wrapper .footer__link,
+.footer .footer__wrapper .footer__copyright {
   font-size: 24px;
   font-weight: 500;
   line-height: auto;
@@ -451,9 +439,9 @@ h6 {
   text-decoration: none;
   transition: color 0.3s linear;
 }
-.footer .footer__link:hover, .footer .footer__link:focus,
-.footer .footer__copyright:hover,
-.footer .footer__copyright:focus {
+.footer .footer__wrapper .footer__link:hover, .footer .footer__wrapper .footer__link:focus,
+.footer .footer__wrapper .footer__copyright:hover,
+.footer .footer__wrapper .footer__copyright:focus {
   color: #e7dada;
 }
 
@@ -463,7 +451,7 @@ h6 {
   right: 0;
   width: 94px;
   height: 65px;
-  background-image: url("./images/swan.png");
+  background-image: url("../images/swan.png");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-animation: swan-roaming 40s infinite linear;
