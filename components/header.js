@@ -1,7 +1,7 @@
-import { HEADER_LINKS } from "../data/globals.js";
+import { HEADER_LINKS, STATE } from "../data/globals.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
-import { setActiveSection } from "../utils/setActiveItem.js";
+
 export function createHeader(score = "") {
   const header = createElement({
     tag: "header",
@@ -33,9 +33,6 @@ export function createHeader(score = "") {
     attr: { type: "checkbox", id: "toggle-theme" },
     parent: controls,
   });
-  changeBg.addEventListener("click", (e) => {
-    document.body.classList.toggle("dark");
-  });
   const changeBgLabel = createElement({
     tag: "label",
     eClass: "controls__label",
@@ -65,7 +62,11 @@ export function createHeader(score = "") {
       return link;
     }
   });
+  changeBg.addEventListener("click", (e) => {
+    STATE.theme = !STATE.theme;
+    document.body.classList.toggle("dark");
+  });
+  if (STATE.theme === false) changeBg.checked = true;
   if (score) controls.appendChild(score);
-
   return header;
 }
