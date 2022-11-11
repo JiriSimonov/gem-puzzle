@@ -179,7 +179,7 @@ export function createMain() {
   return main;
 }
 
-function createQuestion() {
+export function createQuestion() {
   STATE.currentAnswer = getRundomNum(1, BIRDS_DATA.length);
 }
 
@@ -191,12 +191,12 @@ questionsBtn.addEventListener("click", (e) => {
     STATE.isGetAnswer = false;
   } else {
     setActiveSection(mainSections, STATE.currentStep);
-  createQuestion();
-  questionsWrapper.innerHTML = "";
-  questionsContainer.innerHTML = "";
-  questionsLabels.splice(0);
-  inputs.splice(0);
-  questionsLabels.push(
+    createQuestion();
+    questionsWrapper.innerHTML = "";
+    questionsContainer.innerHTML = "";
+    questionsLabels.splice(0);
+    inputs.splice(0);
+    questionsLabels.push(
     ...createElements({
       arrLength: BIRDS_DATA.length,
       parent: questionsWrapper,
@@ -225,9 +225,10 @@ questionsBtn.addEventListener("click", (e) => {
         return label;
       },
     })
-  );
-  questionsBtn.setAttribute("disabled", true);
-  STATE.isGetAnswer = false;
+    );
+    questionsBtn.setAttribute("disabled", true);
+    STATE.isGetAnswer = false;
+    STATE.score = 0;
   }
 });
 

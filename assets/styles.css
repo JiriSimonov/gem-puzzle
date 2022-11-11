@@ -78,6 +78,12 @@ h6 {
   font-weight: 700;
   color: #000;
   background-color: #c16b89;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+.results-page .main__btn:hover, .results-page .main__btn:focus {
+  color: white;
+  background-color: #a73962;
 }
 .results-page .results__bold {
   font-weight: 700;
@@ -269,6 +275,10 @@ h6 {
   font-size: 24px;
   font-weight: 400;
   color: #000;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .questions {
@@ -298,6 +308,10 @@ h6 {
   line-height: auto;
   color: #000;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .questions .questions__wrapper .questions__label:not(:last-child) {
   border-bottom: 3px solid #b09e9e;
@@ -407,6 +421,10 @@ h6 {
   color: black;
   cursor: pointer;
   transition: 0.3s linear;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .game__btn:hover, .game__btn:focus {
   color: white;

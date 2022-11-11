@@ -21,6 +21,10 @@ export const HEADER_LINKS = [
     text: "Quiz",
     link: "#quiz",
   },
+  {
+    text: "Gallery",
+    link: "#gallery",
+  },
 ];
 
 export const STATE = {

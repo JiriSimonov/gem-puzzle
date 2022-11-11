@@ -32,5 +32,11 @@ export function createMainResults() {
     inner: 'Сыграть еще',
     parent: mainWrapper,
   });
+  mainBtn.addEventListener('click', () => {
+    STATE.score = 0; // вынести в функцию
+    STATE.currentStep = 0;
+    console.log(STATE);
+    window.location.hash = '#quiz';
+  });
   return main;
 }

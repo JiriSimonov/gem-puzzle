@@ -54,6 +54,15 @@ export function createRouter(routerOutlet) {
         },
       },
       {
+        name: "gallery" /* AppRoute.Results */,
+        component: async () => {
+          const { default: createPage } = await import(
+            "./components/gallery-page.js"
+          );
+          return createPage();
+        },
+      },
+      {
         name: "results" /* AppRoute.Results */,
         component: async () => {
           const { default: createPage } = await import(
