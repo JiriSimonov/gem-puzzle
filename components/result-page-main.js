@@ -7,36 +7,36 @@ export function createMainResults() {
     eClass: "main",
   });
   const container = createElement({
-    eClass: 'container',
+    eClass: "container",
     parent: main,
   });
   const mainWrapper = createElement({
-    eClass: 'main__wrapper',
+    eClass: "main__wrapper",
     parent: container,
   });
   const mainTitle = createElement({
-    tag: 'h2',
-    eClass: 'main__title',
-    inner: 'Поздравляем!',
+    tag: "h2",
+    eClass: "main__title",
+    inner: "Поздравляем!",
     parent: mainWrapper,
   });
   const mainDescr = createElement({
-    tag: 'p',
-    eClass: 'main__descr',
+    tag: "p",
+    eClass: "main__descr",
     inner: `Вы прошли викторину и набрали <span class='results__bold'>${STATE.score}</span> из <span class='results__bold'>30</span> возможных баллов :)`,
     parent: mainWrapper,
   });
   const mainBtn = createElement({
-    tag: 'button',
-    eClass: 'main__btn',
-    inner: 'Сыграть еще',
+    tag: "button",
+    eClass: "main__btn",
+    inner: "Сыграть еще",
     parent: mainWrapper,
   });
-  mainBtn.addEventListener('click', () => {
+  mainBtn.addEventListener("click", () => {
     STATE.score = 0;
     STATE.currentStep = 0;
     STATE.isGameEnd = true;
-    window.location.hash = '#quiz';
+    window.location.hash = "#quiz";
   });
   return main;
 }

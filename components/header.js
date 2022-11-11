@@ -24,7 +24,7 @@ export function createHeader(score = "") {
   const changeLang = createElement({
     tag: "input",
     eClass: "controls__input",
-    attr: { type: "checkbox", name: 'toggle-lang' },
+    attr: { type: "checkbox", name: "toggle-lang" },
     parent: controls,
   });
   const changeLangLabel = createElement({
@@ -61,12 +61,12 @@ export function createHeader(score = "") {
         parent: headerNavWrapper,
       });
       if (window.location.hash === link.hash) {
-        link.classList.add('active');
+        link.classList.add("active");
       } else {
-        link.classList.remove('active');
+        link.classList.remove("active");
       }
       return link;
-    }
+    },
   });
   changeBg.addEventListener("click", (e) => {
     STATE.theme = !STATE.theme;
