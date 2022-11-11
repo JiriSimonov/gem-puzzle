@@ -23,12 +23,15 @@ h6 {
 
 .dark {
   background-color: #110d3e;
+
   .swan {
     background-image: url("../images/swan_light.png");
   }
+
   .header .header__wrapper .controls .header__score {
     color: white;
   }
+
   .start-page {
     .main {
       background-image: url("../images/start/wing-dark.png");
@@ -67,16 +70,19 @@ h6 {
     background-color: #ede7e7;
     text-align: center;
   }
+
   .main__title {
     font-size: 64px;
     font-weight: 400;
     color: #000;
   }
+
   .main__descr {
     font-size: 36px;
     font-weight: 400;
     color: #000;
   }
+
   .main__btn {
     width: 100%;
     padding: 21px 10px;
@@ -88,12 +94,14 @@ h6 {
     background-color: #c16b89;
     cursor: pointer;
     transition: .3s linear;
+
     &:hover,
     &:focus {
       color: white;
       background-color: #a73962;
     }
   }
+
   .results__bold {
     font-weight: 700;
   }
@@ -107,6 +115,7 @@ h6 {
     align-items: center;
     margin-bottom: 40px;
     padding-top: 30px;
+
     .header__logo {
       width: 363px;
       height: 45px;
@@ -114,14 +123,17 @@ h6 {
       background-repeat: no-repeat;
       background-position: center;
     }
+
     .controls {
       display: flex;
       align-items: center;
       gap: 60px;
       margin-left: auto;
+
       .controls__label {
         display: none;
       }
+
       .controls__input {
         position: relative;
         display: inline-block;
@@ -138,6 +150,7 @@ h6 {
         -moz-appearance: none;
         appearance: none;
         transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+
         &:after {
           content: "";
           position: absolute;
@@ -154,12 +167,14 @@ h6 {
           background-position: center;
           transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
         }
+
         &:checked:after {
           transform: translate(calc(100% - 2px), -50%);
           background-color: #110d3e;
           background-image: url("../images/icons/moon.svg");
         }
       }
+
       .header__score {
         font-size: 32px;
         font-weight: 400;
@@ -171,17 +186,20 @@ h6 {
 
 .game {
   margin-top: 35px;
+
   &__wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 45px;
+
     .active {
       background-color: #a73962;
       color: white;
       font-weight: 700;
     }
   }
+
   &__section {
     flex: auto;
     padding: 18px;
@@ -194,10 +212,12 @@ h6 {
     text-decoration: none;
     user-select: none;
     transition: all 0.3s linear;
+
     &:nth-child(1) {
       border-top-left-radius: 13px;
       border-bottom-left-radius: 13px;
     }
+
     &:last-child {
       border-top-right-radius: 13px;
       border-bottom-right-radius: 13px;
@@ -214,12 +234,14 @@ h6 {
   background-image: url("../images/unknown.png");
   background-repeat: no-repeat;
   background-position: 65px center;
+
   .audio__wrapper {
     display: flex;
     align-items: center;
     gap: 37px;
     margin-left: auto;
     max-width: 1250px;
+
     .audio__btn {
       margin: 0;
       padding: 20px;
@@ -233,16 +255,19 @@ h6 {
       background-position: 28px center;
       cursor: pointer;
     }
+
     .is-play {
       background-image: url("../images/icons/stop.svg");
       background-repeat: no-repeat;
       background-position: 28px center;
     }
+
     .audio__controls {
       display: flex;
       flex-direction: column;
       gap: 19px;
       padding-top: 38px;
+
       .audio__container {
         .audio__progress {
           width: 1121px;
@@ -266,15 +291,17 @@ h6 {
           }
         }
       }
+
       .audio__timeline {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         .audio__time {
           font-size: 24px;
           font-weight: 400;
           color: #000;
-          user-select: none;  
+          user-select: none;
         }
       }
     }
@@ -299,6 +326,7 @@ h6 {
     align-items: flex-start;
     width: 50%;
     border-radius: 13px;
+
     .questions__label {
       position: relative;
       padding: 21px 0;
@@ -309,9 +337,11 @@ h6 {
       color: #000;
       cursor: pointer;
       user-select: none;
+
       &:not(:last-child) {
         border-bottom: 3px solid #b09e9e;
       }
+
       .questions__input {
         position: absolute;
         width: 1px;
@@ -319,6 +349,7 @@ h6 {
         overflow: hidden;
         clip: rect(0 0 0 0);
       }
+
       .questions__checkbox {
         position: absolute;
         right: 0;
@@ -329,44 +360,57 @@ h6 {
         background-color: #b09e9e;
         transition: background 0.3s linear;
       }
-      .questions__input:checked + .questions__checkbox {
+
+      .questions__input:checked+.questions__checkbox {
         background-color: #a73962;
       }
-      .questions__input:hover + .questions__checkbox {
+
+      .questions__input:hover+.questions__checkbox {
         border-color: #a73962;
       }
-      .questions__input:checked:hover + .questions__checkbox {
+
+      .questions__input:checked:hover+.questions__checkbox {
         border-color: white;
       }
-      .questions__input:focus + .questions__checkbox {
+
+      .questions__input:focus+.questions__checkbox {
         border-color: #a73962;
       }
-      .questions__input:checked:focus + .questions__checkbox {
+
+      .questions__input:checked:focus+.questions__checkbox {
         border-color: white;
       }
     }
+
     .true {
       color: #1fb12e;
-      .questions__input:checked + .questions__checkbox {
+
+      .questions__input:checked+.questions__checkbox {
         display: none;
       }
-      .questions__input + .questions__checkbox {
+
+      .questions__input+.questions__checkbox {
         display: none;
       }
     }
+
     .false {
       color: #e11244;
-      .questions__input:checked + .questions__checkbox {
+
+      .questions__input:checked+.questions__checkbox {
         display: none;
       }
-      .questions__input + .questions__checkbox {
+
+      .questions__input+.questions__checkbox {
         display: none;
       }
     }
   }
+
   .questions__descr {
     display: none;
   }
+
   .questions__container {
     padding: 25px 28px;
     width: 50%;
@@ -380,23 +424,28 @@ h6 {
       color: #000;
       text-align: center;
     }
+
     .descr__container {
       display: flex;
       gap: 25px;
+
       .descr__img {
         max-width: 261px;
         max-height: 202px;
         border-radius: 15px;
       }
+
       .descr__content {
         display: flex;
         flex-direction: column;
+
         .descr__title {
           margin-bottom: 19px;
           font-size: 32px;
           font-weight: 400;
           color: #000;
         }
+
         .descr__suptitle {
           margin-bottom: 29px;
           font-size: 24px;
@@ -422,11 +471,13 @@ h6 {
   cursor: pointer;
   transition: 0.3s linear;
   user-select: none;
+
   &:hover,
   &:focus {
     color: white;
     background-color: #a73962;
   }
+
   &:disabled {
     background-color: #a73962;
     pointer-events: none;
@@ -437,11 +488,13 @@ h6 {
   position: relative;
   margin-top: auto;
   background-color: #c16b89;
+
   .footer__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+
     .footer__link,
     .footer__copyright {
       font-size: 24px;
@@ -451,6 +504,7 @@ h6 {
       color: black;
       text-decoration: none;
       transition: color 0.3s linear;
+
       &:hover,
       &:focus {
         color: #e7dada;
