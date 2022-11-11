@@ -176,9 +176,52 @@ export function createMain() {
     createQuestions(questionsWrapper, questionsContainer, questionsDescription),
     questionsBtn
   );
+  if (STATE.isGameEnd === true) {
+    STATE.isGameEnd = false;
+    createQuestion();
+    questionsWrapper.innerHTML = "";
+    questionsContainer.innerHTML = "";
+    questionsLabels.splice(0);
+    inputs.splice(0);
+    questionsLabels.push(
+    ...createElements({
+      arrLength: BIRDS_DATA.length,
+      parent: questionsWrapper,
+      callback: (_item, index) => {
+        const label = createElement({
+          tag: "label",
+          eClass: "questions__label",
+          inner: `${BIRDS_DATA[STATE.currentStep][index].name}`,
+          parent: questionsWrapper,
+        });
+        const input = createElement({
+          tag: "input",
+          eClass: "questions__input",
+          attr: { type: "checkbox", value: `${index + 1}` },
+          parent: label,
+        });
+        input.addEventListener("click", () => {
+          handleInputClick(input, label);
+        });
+        const span = createElement({
+          tag: "span",
+          eClass: "questions__checkbox",
+          parent: label,
+        });
+        inputs.push(input);
+        return label;
+      },
+    })
+    );
+    questionsBtn.setAttribute("disabled", true);
+    STATE.isGetAnswer = false;
+    STATE.score = 0;
+    STATE.currentStep = 0;
+    printScore(STATE.score);
+    setActiveSection(mainSections, STATE.currentStep);
+  }
   return main;
 }
-
 export function createQuestion() {
   STATE.currentAnswer = getRundomNum(1, BIRDS_DATA.length);
 }
@@ -187,6 +230,7 @@ questionsBtn.addEventListener("click", (e) => {
   STATE.currentStep++;
   if (STATE.currentStep === BIRDS_DATA.length) {
     window.location.hash = '#results';
+    STATE.isGameEnd = true;
     STATE.currentStep = 0;
     STATE.isGetAnswer = false;
   } else {

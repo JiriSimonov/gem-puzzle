@@ -33,9 +33,9 @@ export function createMainResults() {
     parent: mainWrapper,
   });
   mainBtn.addEventListener('click', () => {
-    STATE.score = 0; // вынести в функцию
+    STATE.score = 0;
     STATE.currentStep = 0;
-    console.log(STATE);
+    STATE.isGameEnd = true;
     window.location.hash = '#quiz';
   });
   return main;

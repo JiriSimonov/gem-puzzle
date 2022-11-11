@@ -37,5 +37,6 @@ export const STATE = {
   currentTime: undefined,
   isGetAnswer: false,
   isStartTimer: null,
+  isGameEnd: false,
   theme: true,
 };
