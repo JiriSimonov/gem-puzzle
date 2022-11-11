@@ -101,8 +101,12 @@ h6 {
 }
 .header .header__wrapper .controls {
   display: flex;
+  align-items: center;
   gap: 60px;
   margin-left: auto;
+}
+.header .header__wrapper .controls .controls__label {
+  display: none;
 }
 .header .header__wrapper .controls .controls__input {
   position: relative;

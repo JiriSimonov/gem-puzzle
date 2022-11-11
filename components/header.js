@@ -24,7 +24,13 @@ export function createHeader(score = "") {
   const changeLang = createElement({
     tag: "input",
     eClass: "controls__input",
-    attr: { type: "checkbox" },
+    attr: { type: "checkbox", name: 'toggle-lang' },
+    parent: controls,
+  });
+  const changeLangLabel = createElement({
+    tag: "label",
+    eClass: "controls__label",
+    attr: { for: "toggle-lang" },
     parent: controls,
   });
   const changeBg = createElement({

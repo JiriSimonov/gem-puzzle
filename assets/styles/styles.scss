@@ -116,8 +116,12 @@ h6 {
     }
     .controls {
       display: flex;
+      align-items: center;
       gap: 60px;
       margin-left: auto;
+      .controls__label {
+        display: none;
+      }
       .controls__input {
         position: relative;
         display: inline-block;
