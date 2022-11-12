@@ -321,7 +321,6 @@ h6 {
 .questions {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   gap: 50px;
   margin-bottom: 45px;
 
@@ -426,7 +425,6 @@ h6 {
     width: 50%;
     border-radius: 13px;
     background-color: #F5EFEF;
-    height: 379px;
 
     .descr__text {
       font-size: 24px;
