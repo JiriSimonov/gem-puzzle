@@ -203,7 +203,10 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin-bottom: 45px;
+    border-radius: 13px;
+    background-color: #c16b89;
 
     .active {
       background-color: #a73962;
@@ -215,7 +218,7 @@ h6 {
   &__section {
     flex: auto;
     padding: 18px;
-    background-color: #c16b89;
+    border-radius: 13px;
     font-size: 24px;
     font-weight: 400;
     color: #000;
@@ -224,16 +227,6 @@ h6 {
     text-decoration: none;
     user-select: none;
     transition: all 0.3s linear;
-
-    &:nth-child(1) {
-      border-top-left-radius: 13px;
-      border-bottom-left-radius: 13px;
-    }
-
-    &:last-child {
-      border-top-right-radius: 13px;
-      border-bottom-right-radius: 13px;
-    }
   }
 }
 
