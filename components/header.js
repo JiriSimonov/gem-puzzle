@@ -23,13 +23,13 @@ export function createHeader(score = "") {
   });
   const changeLang = createElement({
     tag: "input",
-    eClass: "controls__input",
+    eClass: "controls__input controls__input_lang",
     attr: { type: "checkbox", name: "toggle-lang" },
     parent: controls,
   });
   const changeLangLabel = createElement({
     tag: "label",
-    eClass: "controls__label",
+    eClass: "controls__label controls__label_lang",
     attr: { for: "toggle-lang" },
     parent: controls,
   });

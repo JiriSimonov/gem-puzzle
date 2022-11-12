@@ -72,6 +72,7 @@ function handleInputClick(input, parentNode) {
       STATE.score = STATE.score + (BIRDS_DATA.length - 1 - clicks);
       clicks = 0;
       printScore(STATE.score);
+      audioImg.src = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].image;
       inputs.forEach((e) => {
         e.parentNode.classList.add("false");
       });
@@ -96,6 +97,11 @@ const player = new Audio(
 player.setAttribute("preload", "metadata");
 
 /* audio */
+const audioImg = createElement({
+  tag: 'img',
+  eClass: 'audio__img',
+  attr: {'src': 'assets/images/unknown.png'},
+});
 const audioBtn = createElement({
   tag: "button",
   eClass: "audio__btn",
@@ -172,7 +178,7 @@ export function createMain() {
   const container = createElement({ eClass: "container", parent: game });
   container.append(
     gameWrapper,
-    createAudio(audioBtn, audioProgress, audioCurrentTime, audioFullTime),
+    createAudio(audioBtn, audioProgress, audioCurrentTime, audioFullTime, audioImg),
     createQuestions(questionsWrapper, questionsContainer, questionsDescription),
     questionsBtn
   );
@@ -205,6 +211,7 @@ questionsBtn.addEventListener("click", (e) => {
     clearQuestions();
     STATE.isGetAnswer = false;
     STATE.score = 0;
+    audioImg.src = 'assets/images/unknown.png';
   }
 });
 

@@ -67,7 +67,7 @@ h6 {
     background: url("../images/results/ice-tea.png") 1% 40px,
       url("../images/results/music.png") 97% 40px;
     background-repeat: no-repeat;
-    background-color: #ede7e7;
+    background-color: #F5EFEF;
     text-align: center;
   }
 
@@ -176,9 +176,21 @@ h6 {
       }
 
       .header__score {
+        position: relative;
         font-size: 32px;
         font-weight: 400;
         color: #000;
+        &::after {
+          content: '';
+          position: absolute;
+          left: -70px;
+          top: 50%;
+          width: 83px;
+          height: 83px;
+          background-image: url('../images/feather.png');
+          background-repeat: no-repeat;
+          transform: translateY(-50%);
+        }
       }
     }
   }
@@ -226,14 +238,19 @@ h6 {
 }
 
 .audio {
+  display: flex;
+  align-items: center;
   margin-bottom: 45px;
   margin-left: auto;
   padding: 72px 65px;
   border-radius: 13px;
-  background-color: #ede7e7;
-  background-image: url("../images/unknown.png");
-  background-repeat: no-repeat;
-  background-position: 65px center;
+  background-color: #F5EFEF;
+
+  .audio__img {
+    width: 208px;
+    height: 208px;
+    border-radius: 50%;
+  }
 
   .audio__wrapper {
     display: flex;
@@ -317,7 +334,7 @@ h6 {
 
   .questions__wrapper {
     padding: 0 28px;
-    background-color: #ede7e7;
+    background-color: #F5EFEF;
   }
 
   .questions__wrapper {
@@ -415,7 +432,7 @@ h6 {
     padding: 25px 28px;
     width: 50%;
     border-radius: 13px;
-    background-color: #ede7e7;
+    background-color: #F5EFEF;
     height: 379px;
 
     .descr__text {

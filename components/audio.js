@@ -1,7 +1,8 @@
 import { createElement } from "../utils/createElement.js";
 
-export function createAudio(btn, input, current, max) {
+export function createAudio(btn, input, current, max, img = '') {
   const audio = createElement({ eClass: "audio" });
+  if (img) audio.appendChild(img);
   const audioWrapper = createElement({
     eClass: "audio__wrapper",
     parent: audio,

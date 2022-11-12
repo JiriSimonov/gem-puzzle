@@ -52,7 +52,7 @@ h6 {
   border-radius: 13px;
   background: url("../images/results/ice-tea.png") 1% 40px, url("../images/results/music.png") 97% 40px;
   background-repeat: no-repeat;
-  background-color: #ede7e7;
+  background-color: #F5EFEF;
   text-align: center;
 }
 .results-page .main__title {
@@ -147,9 +147,21 @@ h6 {
   background-image: url("../images/icons/moon.svg");
 }
 .header .header__wrapper .controls .header__score {
+  position: relative;
   font-size: 32px;
   font-weight: 400;
   color: #000;
+}
+.header .header__wrapper .controls .header__score::after {
+  content: "";
+  position: absolute;
+  left: -70px;
+  top: 50%;
+  width: 83px;
+  height: 83px;
+  background-image: url("../images/feather.png");
+  background-repeat: no-repeat;
+  transform: translateY(-50%);
 }
 
 .game {
@@ -192,14 +204,18 @@ h6 {
 }
 
 .audio {
+  display: flex;
+  align-items: center;
   margin-bottom: 45px;
   margin-left: auto;
   padding: 72px 65px;
   border-radius: 13px;
-  background-color: #ede7e7;
-  background-image: url("../images/unknown.png");
-  background-repeat: no-repeat;
-  background-position: 65px center;
+  background-color: #F5EFEF;
+}
+.audio .audio__img {
+  width: 208px;
+  height: 208px;
+  border-radius: 50%;
 }
 .audio .audio__wrapper {
   display: flex;
@@ -277,7 +293,7 @@ h6 {
 }
 .questions .questions__wrapper {
   padding: 0 28px;
-  background-color: #ede7e7;
+  background-color: #F5EFEF;
 }
 .questions .questions__wrapper {
   display: flex;
@@ -360,7 +376,7 @@ h6 {
   padding: 25px 28px;
   width: 50%;
   border-radius: 13px;
-  background-color: #ede7e7;
+  background-color: #F5EFEF;
   height: 379px;
 }
 .questions .questions__container .descr__text {
