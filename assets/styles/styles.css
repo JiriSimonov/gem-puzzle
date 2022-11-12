@@ -15,6 +15,15 @@ h6 {
   transition: 0.2s linear;
 }
 
+.start-page,
+.quiz-page,
+.results-page,
+.gallery-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .container {
   max-width: 1680px;
   padding: 0 10px;
@@ -42,6 +51,16 @@ h6 {
   background-position: center;
 }
 
+.header .game__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 13px;
+  margin: 0 auto;
+  background-color: #c16b89;
+  max-width: 1680px;
+}
 .header .game__wrapper .game__section:hover {
   color: white;
 }
@@ -244,7 +263,7 @@ h6 {
   padding-top: 38px;
 }
 .audio .audio__wrapper .audio__controls .audio__container .audio__progress {
-  width: 1121px;
+  width: 100%;
   height: 5px;
   border: none;
   background-color: #c16b89;
@@ -408,9 +427,9 @@ h6 {
   margin-bottom: 80px;
   padding: 19px 0;
   width: 100%;
-  border: 2px solid #cfc1c1;
+  border: none;
   border-radius: 13px;
-  background-color: #cfc1c1;
+  background-color: #c16b89;
   font-size: 24px;
   font-weight: 400;
   line-height: auto;
@@ -427,7 +446,7 @@ h6 {
   background-color: #a73962;
 }
 .game__btn:disabled {
-  background-color: #a73962;
+  background-color: #cfc1c1;
   pointer-events: none;
 }
 
@@ -441,6 +460,10 @@ h6 {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .footer .footer__wrapper .footer__link,
 .footer .footer__wrapper .footer__copyright {
@@ -456,6 +479,10 @@ h6 {
 .footer .footer__wrapper .footer__copyright:hover,
 .footer .footer__wrapper .footer__copyright:focus {
   color: #e7dada;
+}
+.footer .footer__wrapper .footer__link .footer__copyright,
+.footer .footer__wrapper .footer__copyright .footer__copyright {
+  pointer-events: none;
 }
 
 .swan {

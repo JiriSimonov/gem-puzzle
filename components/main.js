@@ -73,6 +73,7 @@ function handleInputClick(input, parentNode) {
       clicks = 0;
       printScore(STATE.score);
       audioImg.src = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].image;
+      audioTitle.textContent = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].name;
       inputs.forEach((e) => {
         e.parentNode.classList.add("false");
       });
@@ -94,9 +95,15 @@ createQuestion();
 const player = new Audio(
   BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].audio
 );
+console.log(player);
 player.setAttribute("preload", "metadata");
 
 /* audio */
+const audioTitle = createElement({
+  tag: 'h2',
+  eClass: 'descr__title',
+  inner: '***',
+});
 const audioImg = createElement({
   tag: 'img',
   eClass: 'audio__img',
@@ -178,7 +185,7 @@ export function createMain() {
   const container = createElement({ eClass: "container", parent: game });
   container.append(
     gameWrapper,
-    createAudio(audioBtn, audioProgress, audioCurrentTime, audioFullTime, audioImg),
+    createAudio(audioBtn, audioProgress, audioCurrentTime, audioFullTime, audioImg, audioTitle),
     createQuestions(questionsWrapper, questionsContainer, questionsDescription),
     questionsBtn
   );
@@ -211,7 +218,15 @@ questionsBtn.addEventListener("click", (e) => {
     clearQuestions();
     STATE.isGetAnswer = false;
     STATE.score = 0;
-    audioImg.src = 'assets/images/unknown.png';
+    audioImg.src = 'assets/images/unknown.png'; // вынести в функцию
+    audioTitle.textContent = '***';
+    stopTimer();
+    player.src = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].audio;
+    player.currentTime = 0;
+    audioFullTime.textContent = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration;
+    audioCurrentTime.textContent = '00:00';
+    audioBtn.className = 'audio__btn';
+    audioProgress.value = 0;
   }
 });
 
@@ -261,6 +276,7 @@ audioProgress.addEventListener("input", (e) => {
 });
 
 function clearQuestions() {
+  audioImg.src = 'assets/images/unknown.png';
   questionsWrapper.innerHTML = "";
   questionsContainer.innerHTML = "";
   questionsLabels.splice(0);

@@ -46,7 +46,7 @@ export function createHeader(score = "") {
     parent: controls,
   });
   const headerNavWrapper = createElement({
-    eClass: "container game__wrapper",
+    eClass: "game__wrapper",
     parent: header,
   });
   const headerLinks = createElements({
