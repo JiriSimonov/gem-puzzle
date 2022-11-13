@@ -95,7 +95,7 @@ createQuestion();
 const player = new Audio(
   BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].audio
 );
-console.log(player);
+
 player.setAttribute("preload", "metadata");
 
 /* audio */
@@ -191,13 +191,13 @@ export function createMain() {
   );
   if (STATE.isGameEnd === true) {
     STATE.isGameEnd = false;
-    createQuestion();
     clearQuestions();
+    createQuestion();
     STATE.isGetAnswer = false;
     STATE.score = 0;
     STATE.currentStep = 0;
-    printScore(STATE.score);
     setActiveSection(mainSections, STATE.currentStep);
+    printScore(STATE.score);
   }
   return main;
 }
@@ -207,6 +207,7 @@ export function createQuestion() {
 
 questionsBtn.addEventListener("click", (e) => {
   STATE.currentStep++;
+  stopTimer();  
   if (STATE.currentStep === BIRDS_DATA.length) {
     window.location.hash = "#results";
     STATE.isGameEnd = true;
@@ -277,6 +278,9 @@ audioProgress.addEventListener("input", (e) => {
 
 function clearQuestions() {
   audioImg.src = 'assets/images/unknown.png';
+  audioTitle.textContent = '***';
+  questionsBtn.textContent = 'Следующий уровень';
+  if (STATE.currentStep + 1 === BIRDS_DATA.length) questionsBtn.textContent = 'Узнать результат!';
   questionsWrapper.innerHTML = "";
   questionsContainer.innerHTML = "";
   questionsLabels.splice(0);
