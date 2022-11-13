@@ -1,9 +1,9 @@
 import { createElement } from "../utils/createElement.js";
 
-export function createAudio(btn, input, current, max, img = '', title = '') {
+export function createAudio(btn, input, current, max, img = "", title = "") {
   const audio = createElement({ eClass: "audio" });
   const answerContainer = createElement({
-    eClass: 'audio__answer-container',
+    eClass: "audio__answer-container",
     parent: audio,
   });
   if (title) answerContainer.appendChild(title);

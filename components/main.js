@@ -72,8 +72,7 @@ function handleInputClick(input, parentNode) {
       STATE.score = STATE.score + (BIRDS_DATA.length - 1 - clicks);
       clicks = 0;
       printScore(STATE.score);
-      audioImg.src = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].image;
-      audioTitle.textContent = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].name;
+      showAnswer(true);
       inputs.forEach((e) => {
         e.parentNode.classList.add("false");
       });
@@ -100,14 +99,14 @@ player.setAttribute("preload", "metadata");
 
 /* audio */
 const audioTitle = createElement({
-  tag: 'h2',
-  eClass: 'descr__title',
-  inner: '***',
+  tag: "h2",
+  eClass: "descr__title",
+  inner: "***",
 });
 const audioImg = createElement({
-  tag: 'img',
-  eClass: 'audio__img',
-  attr: {'src': 'assets/images/unknown.png'},
+  tag: "img",
+  eClass: "audio__img",
+  attr: { src: "assets/images/unknown.png" },
 });
 const audioBtn = createElement({
   tag: "button",
@@ -185,7 +184,14 @@ export function createMain() {
   const container = createElement({ eClass: "container", parent: game });
   container.append(
     gameWrapper,
-    createAudio(audioBtn, audioProgress, audioCurrentTime, audioFullTime, audioImg, audioTitle),
+    createAudio(
+      audioBtn,
+      audioProgress,
+      audioCurrentTime,
+      audioFullTime,
+      audioImg,
+      audioTitle
+    ),
     createQuestions(questionsWrapper, questionsContainer, questionsDescription),
     questionsBtn
   );
@@ -207,7 +213,7 @@ export function createQuestion() {
 
 questionsBtn.addEventListener("click", (e) => {
   STATE.currentStep++;
-  stopTimer();  
+  stopTimer();
   if (STATE.currentStep === BIRDS_DATA.length) {
     window.location.hash = "#results";
     STATE.isGameEnd = true;
@@ -219,14 +225,14 @@ questionsBtn.addEventListener("click", (e) => {
     clearQuestions();
     STATE.isGetAnswer = false;
     STATE.score = 0;
-    audioImg.src = 'assets/images/unknown.png'; // вынести в функцию
-    audioTitle.textContent = '***';
+    showAnswer(false);
     stopTimer();
     player.src = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].audio;
     player.currentTime = 0;
-    audioFullTime.textContent = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration;
-    audioCurrentTime.textContent = '00:00';
-    audioBtn.className = 'audio__btn';
+    audioFullTime.textContent =
+      BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration;
+    audioCurrentTime.textContent = "00:00";
+    audioBtn.className = "audio__btn";
     audioProgress.value = 0;
   }
 });
@@ -277,11 +283,13 @@ audioProgress.addEventListener("input", (e) => {
 });
 
 function clearQuestions() {
-  audioImg.src = 'assets/images/unknown.png';
-  audioTitle.textContent = '***';
-  questionsBtn.textContent = 'Следующий уровень';
-  if (STATE.currentStep + 1 === BIRDS_DATA.length) questionsBtn.textContent = 'Узнать результат!';
-  questionsWrapper.innerHTML = "";
+  showAnswer(false);
+  if (STATE.currentStep + 1 === BIRDS_DATA.length) {
+    questionsBtn.textContent = "Узнать результат!";
+  } else {
+    questionsBtn.textContent = "Следующий уровень";
+  }
+  questionsWrapper.innerHTML = ""; // вынести в функцию
   questionsContainer.innerHTML = "";
   questionsLabels.splice(0);
   inputs.splice(0);
@@ -316,4 +324,16 @@ function clearQuestions() {
     })
   );
   questionsBtn.setAttribute("disabled", true);
+}
+
+function showAnswer(boolean) {
+  if (boolean) {
+    audioImg.src =
+    BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].image;
+  audioTitle.textContent =
+    BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].name;
+  } else {
+    audioImg.src = "assets/images/unknown.png";
+    audioTitle.textContent = "***";
+  }
 }
