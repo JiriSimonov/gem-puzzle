@@ -29,6 +29,14 @@ export const questionsBtn = createElement({
   inner: "Следующий уровень",
   attr: { disabled: true },
 });
+const questionsDescr = createElement({
+  eClass: "questions__text",
+  inner: "Послушайте плеер.",
+});
+const questionsSecondDescr = createElement({
+  eClass: "questions__text",
+  inner: "Выберите птицу из списка.",
+});
 let clicks = 0;
 setActiveSection(mainSections, STATE.currentStep);
 const inputs = [];
@@ -221,8 +229,9 @@ questionsBtn.addEventListener("click", (e) => {
     STATE.isGetAnswer = false;
   } else {
     setActiveSection(mainSections, STATE.currentStep);
-    createQuestion();
     clearQuestions();
+    createQuestion();
+    questionsContainer.append(questionsDescr, questionsSecondDescr);
     STATE.isGetAnswer = false;
     STATE.score = 0;
     showAnswer(false);

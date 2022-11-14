@@ -33,6 +33,10 @@ h6 {
 .dark {
   background-color: #110d3e;
 
+  .header .header__wrapper .controls .header__lang {
+    color: white;
+  }
+
   .swan {
     background-image: url("../images/swan_light.png");
   }
@@ -268,8 +272,10 @@ h6 {
     margin-bottom: 45px;
     border-radius: 13px;
     background-color: #c16b89;
+    overflow: hidden;
 
     .active {
+      border-radius: 0;
       background-color: #a73962;
       color: white;
       font-weight: 700;
@@ -498,7 +504,8 @@ h6 {
     border-radius: 13px;
     background-color: #F5EFEF;
 
-    .descr__text {
+    .descr__text,
+    .questions__text {
       font-size: 24px;
       font-weight: 400;
       color: #000;

@@ -4,14 +4,13 @@ export function createQuestions(wrapper = '', container = '', descriotion = '') 
   const questions = createElement({ eClass: "questions" });
   questions.append(wrapper);
   questions.append(container);
-  container.innerHTML = '';
   questions.append(descriotion);
   const questionsDescr = createElement({
     eClass: "questions__text",
     inner: "Послушайте плеер.",
     parent: container,
   });
-  const questionsScondDescr = createElement({
+  const questionsSecondDescr = createElement({
     eClass: "questions__text",
     inner: "Выберите птицу из списка.",
     parent: container,
