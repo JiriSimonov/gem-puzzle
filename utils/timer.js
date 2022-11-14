@@ -26,3 +26,4 @@ export function printTime(elem, sec, min) {
     sec < 10 ? sec.toString().padStart(2, "0") : sec
   }`;
 }
+ 

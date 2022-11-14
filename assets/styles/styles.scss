@@ -147,6 +147,50 @@ h6 {
       gap: 60px;
       margin-left: auto;
 
+      .header__lang-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 30px;
+        background-color: transparent;
+      }
+
+      .header__lang {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: auto;
+        color: #000;
+        cursor: pointer;
+        user-select: none;
+        transition: background .3s linear;
+      }
+      
+      .header__lang_ru {        
+        padding: 7px 19px 7px 22px;
+        border: 2px solid #c16b89;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-right: none;
+        background-color: #C16B89;
+      }
+      .header__lang_en {        
+        padding: 7px 22px 7px 19px;
+        border: 2px solid #c16b89;
+        border-left: none;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        background-color: transparent;
+      }
+      
+      .lang {
+        .header__lang_ru {        
+          background-color: transparent;
+        }
+        .header__lang_en {        
+          background-color: #C16B89;
+        }
+      }
+
       .controls__label {
         display: none;
       }
@@ -308,7 +352,7 @@ h6 {
 
       .audio__container {
         .audio__progress {
-          width: 100%;
+          width: 1121px;
           height: 5px;
           border: none;
           background-color: #c16b89;
