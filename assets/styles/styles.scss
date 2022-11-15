@@ -697,13 +697,39 @@ h6 {
   margin-bottom: 80px;
 
   &__label {
-
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #C16B89;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #a73962;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: .3s linear;
+    }
     .pagination__input {
-      margin: 0;
-      border: 2px solid #C16B89;
-      width: 20px;
-      height: 20px;
-      background-color: transparent;
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+    }
+  }
+  .active {
+    &::after {
+      opacity: 1;
     }
   }
 
@@ -780,6 +806,7 @@ h6 {
       font-size: 24px;
       font-weight: 400;
       line-height: auto;
+      color: white;
       transition: .3s linear;
 
       &::placeholder {
@@ -805,7 +832,7 @@ h6 {
   background-image: url("../images/swan.png");
   background-repeat: no-repeat;
   background-size: cover;
-  animation: swan-roaming 40s infinite linear;
+  animation: swan-roaming 60s infinite ease-in-out;
   transition: 0.3s linear;
 }
 

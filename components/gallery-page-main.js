@@ -4,6 +4,7 @@ import BIRDS_DATA from "../data/data.js";
 import { STATE } from "../data/globals.js";
 
 export function createMainGallery() {
+    const inputs = [];
     const main = createElement({
         tag: "main",
         eClass: "main",
@@ -114,12 +115,19 @@ export function createMainGallery() {
             attr: { type: "radio", value: index, name: 'pagination' },
             parent: label,
           });
-          input.addEventListener("click", () => {
-            printGallery(galleryItems, input.value);
-          });
+          inputs.push(input);
           return label;
         },
       });
+    inputs.forEach((e) => {
+        e.addEventListener("click", () => {
+            inputs.forEach((e) => {
+                e.parentNode.classList.remove('active');
+            })
+            e.parentNode.classList.add('active');
+            printGallery(galleryItems, e.value);
+          });
+    })
     return main;
 }
 
@@ -131,7 +139,6 @@ function printGallery(arr, num) {
         title.textContent = path.name;
         subtitle.textContent = path.species;
         img.src = path.image;
-        console.log(BIRDS_DATA[num - 1][i]);
     }
 }
 
