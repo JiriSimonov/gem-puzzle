@@ -8,7 +8,7 @@ export const MAIN_SECTIONS = [
 ];
 
 export const FOOTER_INFO = {
-  text: ["GitHub", "RSSchool"],
+  text: ["@JiriSimonov", "RSSchool 2022"],
   link: ["https://github.com/JiriSimonov", "https://rs.school/js/"],
 };
 

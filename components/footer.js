@@ -20,11 +20,6 @@ export function createFooter() {
         inner: `${FOOTER_INFO.text[index]}`,
       }),
   });
-  const copyright = createElement({
-    eClass: "footer__copyright",
-    parent: footerWrapper,
-    inner: "2022",
-  });
   const swan = createElement({ eClass: "swan", parent: footerWrapper });
   return footer;
 }

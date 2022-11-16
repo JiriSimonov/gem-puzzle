@@ -46,19 +46,47 @@ h6 {
   }
 
   .start-page {
+    background-image: url("../images/start/wing-dark.png");
     .main {
-      background-image: url("../images/start/wing-dark.png");
+      .title {
+        color: white;
+      }
     }
   }
 }
 
 .start-page {
+  background-image: url("../images/start/wing-light.png");
+  background-repeat: no-repeat;
+  background-position: center;
   .main {
-    width: 100%;
-    height: 955px;
-    background-image: url("../images/start/wing-light.png");
-    background-repeat: no-repeat;
-    background-position: center;
+    .title {
+      margin: 40px 0;
+      font-size: 48px;
+      font-weight: 500;
+      line-height: auto;
+      color: #000;
+    }
+    .link {
+      display: block;
+      padding: 10px;
+      width: 200px;
+      border: 2px solid #C16B89;
+      border-radius: 13px;
+      background-color: #C16B89;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: auto;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      transition: .3s linear;
+      &:hover,
+      &:focus {
+        outline: none;
+        background-color: #a73962;
+      }
+    }
   }
 }
 

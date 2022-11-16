@@ -42,16 +42,43 @@ h6 {
 .dark .header .header__wrapper .controls .header__score {
   color: white;
 }
-.dark .start-page .main {
+.dark .start-page {
   background-image: url("../images/start/wing-dark.png");
 }
+.dark .start-page .main .title {
+  color: white;
+}
 
-.start-page .main {
-  width: 100%;
-  height: 955px;
+.start-page {
   background-image: url("../images/start/wing-light.png");
   background-repeat: no-repeat;
   background-position: center;
+}
+.start-page .main .title {
+  margin: 40px 0;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: auto;
+  color: #000;
+}
+.start-page .main .link {
+  display: block;
+  padding: 10px;
+  width: 200px;
+  border: 2px solid #C16B89;
+  border-radius: 13px;
+  background-color: #C16B89;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: auto;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s linear;
+}
+.start-page .main .link:hover, .start-page .main .link:focus {
+  outline: none;
+  background-color: #a73962;
 }
 
 .header .game__wrapper {
