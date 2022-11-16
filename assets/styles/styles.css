@@ -588,6 +588,10 @@ h6 {
   background-color: #C16B89;
   border-radius: 13px;
   text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .gallery__item::before {
   content: "";

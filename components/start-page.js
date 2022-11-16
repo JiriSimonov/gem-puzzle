@@ -1,6 +1,6 @@
 import { createElement } from "../utils/createElement.js";
 import { createFooter } from "./footer.js";
-import { createHeader } from "./header.js";
+import { createHeader } from "../header.js";
 
 export default function createStartPage() {
   const el = document.createElement("div");
@@ -18,7 +18,7 @@ export default function createStartPage() {
   const mainTitle = createElement({
     tag: 'h1',
     eClass: 'title',
-    inner: 'Welcome to the quiz',
+    inner: 'Have fun...',
     parent: container,
   });
   const mainLink = createElement({

@@ -657,6 +657,7 @@ h6 {
     background-color: #C16B89;
     border-radius: 13px;
     text-align: center;
+    user-select: none;
     &::before {
       content: '';
       position: absolute;

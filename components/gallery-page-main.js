@@ -55,44 +55,9 @@ export function createMainGallery() {
                 inner: "Узнать больше",
                 parent: tooltip,
             });
-            const modal = createElement({
-                eClass: "modal",
-                parent: galleryItem,
-            });
-            const modalOverlay = createElement({
-                eClass: "modal__overlay",
-                parent: modal,
-            });
-            modalOverlay.addEventListener("click", (e) => {
-                let target = e.target;
-                if (target === modalOverlay) {
-                    modalOverlay.classList.toggle("modal__overlay--visible"); // вынести в функцию
-                    modalContent.classList.toggle("modal__content--visible");
-                }
-            });
-            const modalContent = createElement({
-                eClass: "modal__content",
-                parent: modalOverlay,
-            });
-            const modalText = createElement({
-                tag: "p",
-                eClass: "modal__text",
-                inner: path.description,
-                parent: modalContent,
-            });
-            const modalBtn = createElement({
-                tag: "button",
-                eClass: "modal__btn",
-                inner: "Закрыть",
-                parent: modalContent,
-            });
-            modalBtn.addEventListener("click", (e) => {
-                modalOverlay.classList.toggle("modal__overlay--visible"); // вынести в функцию
-                modalContent.classList.toggle("modal__content--visible");
-            });
+            printModal(STATE.galleryStep, index , galleryItem);
             tooltipBtn.addEventListener("click", (e) => {
-                modalOverlay.classList.toggle("modal__overlay--visible");
-                modalContent.classList.toggle("modal__content--visible");
+              showModal(tooltip.nextSibling.children[0], tooltip.nextSibling.children[0].children[0]);
             });
             return galleryItem;
         },
@@ -117,7 +82,7 @@ export function createMainGallery() {
                 parent: label,
             });
             if (+input.value === STATE.currentStep)
-                input.parentNode.classList.add("active");
+            input.parentNode.classList.add("active");
             inputs.push(input);
             return label;
         },
@@ -135,11 +100,58 @@ export function createMainGallery() {
 }
 
 function printGallery(arr, num) {
+    STATE.galleryStep = +num;
     for (let i = 0; i < arr.length; i++) {
         const path = BIRDS_DATA[num][i];
         const [img, title, subtitle] = arr[i].childNodes;
         title.textContent = path.name;
         subtitle.textContent = path.species;
         img.src = path.image;
+        arr[i].lastChild.remove();
+        printModal(STATE.galleryStep, i, arr[i]);
     }
 }
+
+function showModal(...elems) {
+    elems.forEach((el) => {
+        el.classList.toggle(`${el.classList[0]}--visible`); 
+    });
+}
+
+function printModal(state, num, parent) {
+        let modalPath = BIRDS_DATA[state][num];
+        const modal = createElement({
+            eClass: "modal",
+            parent: parent,
+        });
+
+        const modalOverlay = createElement({
+            eClass: "modal__overlay",
+            parent: modal,
+        });
+        modalOverlay.addEventListener("click", (e) => {
+            let target = e.target;
+            if (target === modalOverlay) {
+                showModal(modalContent, modalOverlay);
+            }
+        });
+        const modalContent = createElement({
+            eClass: "modal__content",
+            parent: modalOverlay,
+        });
+        const modalText = createElement({
+            tag: "p",
+            eClass: "modal__text",
+            inner: modalPath.description,
+            parent: modalContent,
+        });
+        const modalBtn = createElement({
+            tag: "button",
+            eClass: "modal__btn",
+            inner: "Закрыть",
+            parent: modalContent,
+        });
+        modalBtn.addEventListener("click", (e) => {
+            showModal(modalContent, modalOverlay);
+        });
+    }

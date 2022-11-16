@@ -39,4 +39,5 @@ export const STATE = {
   isStartTimer: null,
   isGameEnd: false,
   theme: true,
+  galleryStep: 0,
 };

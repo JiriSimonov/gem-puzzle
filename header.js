@@ -1,6 +1,6 @@
-import { HEADER_LINKS, STATE } from "../data/globals.js";
-import { createElement } from "../utils/createElement.js";
-import { createElements } from "../utils/createElements.js";
+import { HEADER_LINKS, STATE } from "./data/globals.js";
+import { createElement } from "./utils/createElement.js";
+import { createElements } from "./utils/createElements.js";
 
 export function createHeader(score = "") {
   const header = createElement({

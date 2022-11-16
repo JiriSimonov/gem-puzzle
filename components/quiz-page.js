@@ -1,5 +1,5 @@
 import { createFooter } from "./footer.js";
-import { createHeader } from "./header.js";
+import { createHeader } from "../header.js";
 import { createMain } from "./main.js";
 
 export default function createQuizPage(score) {
