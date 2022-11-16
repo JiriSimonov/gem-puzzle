@@ -88,6 +88,23 @@ h6 {
       }
     }
   }
+  .footer {
+    .container {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: -220px;
+        right: 28%;
+        width: 200px;
+        height: 150px;
+        background-image: url('../images/start/rose.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0;
+      }
+    }
+  }
 }
 
 .header {
@@ -354,9 +371,13 @@ h6 {
     }
 
     .audio__img {
-      width: 208px;
-      height: 208px;
+      width: 250px;
+      height: 250px;
       border-radius: 50%;
+      background-image: url('../images/unknown.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
     }
   }
 
@@ -545,6 +566,7 @@ h6 {
       font-weight: 400;
       color: #000;
       text-align: center;
+      user-select: none;
     }
 
     .descr__container {

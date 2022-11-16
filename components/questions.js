@@ -5,6 +5,7 @@ export function createQuestions(wrapper = '', container = '', descriotion = '') 
   questions.append(wrapper);
   questions.append(container);
   questions.append(descriotion);
+  container.innerHTML = '';
   const questionsDescr = createElement({
     eClass: "questions__text",
     inner: "Послушайте плеер.",

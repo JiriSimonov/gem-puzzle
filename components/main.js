@@ -112,9 +112,7 @@ const audioTitle = createElement({
   inner: "***",
 });
 const audioImg = createElement({
-  tag: "img",
   eClass: "audio__img",
-  attr: { src: "assets/images/unknown.png" },
 });
 const audioBtn = createElement({
   tag: "button",
@@ -336,13 +334,15 @@ function clearQuestions() {
 }
 
 function showAnswer(boolean) {
-  if (boolean) {
-    audioImg.src =
-    BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].image;
-  audioTitle.textContent =
-    BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].name;
+  if (boolean) {  
+    audioImg.style.backgroundImage = `url(${
+      BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].image
+    })`;
+    console.log(audioImg);
+    audioTitle.textContent =
+      BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].name;
   } else {
-    audioImg.src = "assets/images/unknown.png";
+    audioImg.style.backgroundImage = `url("assets/images/unknown.png")`;
     audioTitle.textContent = "***";
   }
 }

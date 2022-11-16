@@ -80,6 +80,21 @@ h6 {
   outline: none;
   background-color: #a73962;
 }
+.start-page .footer .container {
+  position: relative;
+}
+.start-page .footer .container::after {
+  content: "";
+  position: absolute;
+  top: -220px;
+  right: 28%;
+  width: 200px;
+  height: 150px;
+  background-image: url("../images/start/rose.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+}
 
 .header .game__wrapper {
   display: flex;
@@ -314,9 +329,13 @@ h6 {
   color: #000;
 }
 .audio .audio__answer-container .audio__img {
-  width: 208px;
-  height: 208px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
+  background-image: url("../images/unknown.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .audio .audio__wrapper {
   display: flex;
@@ -482,6 +501,10 @@ h6 {
   font-weight: 400;
   color: #000;
   text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .questions .questions__container .descr__container {
   display: flex;
