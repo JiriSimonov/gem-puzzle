@@ -106,7 +106,7 @@ export function createMainGallery() {
 function printGallery(arr, num) {
     STATE.galleryStep = +num;
     for (let i = 0; i < arr.length; i++) {
-        const path = BIRDS_DATA[num][i];
+        const path = getDataFromStorage('lang') == 'EN' ? BIRD_DATA_EN[num][i] : BIRDS_DATA[num][i];
         const [img, title, subtitle] = arr[i].childNodes;
         title.textContent = path.name;
         subtitle.textContent = path.species;

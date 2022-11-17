@@ -338,10 +338,15 @@ h6 {
   font-weight: 500;
   line-height: auto;
   color: #000;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .audio .audio__answer-container .audio__img {
   width: 250px;
   height: 250px;
+  border: 2px solid #C16B89;
   border-radius: 50%;
   background-image: url("../images/unknown.png");
   background-repeat: no-repeat;
@@ -525,6 +530,10 @@ h6 {
   max-width: 261px;
   max-height: 202px;
   border-radius: 15px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .questions .questions__container .descr__container .descr__content {
   display: flex;
@@ -535,12 +544,20 @@ h6 {
   font-size: 32px;
   font-weight: 400;
   color: #000;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .questions .questions__container .descr__container .descr__content .descr__suptitle {
   margin-bottom: 29px;
   font-size: 24px;
   font-weight: 400;
   color: #000;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .game__btn {

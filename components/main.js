@@ -38,7 +38,7 @@ export const questionsBtn = createElement({
 });
 const questionsDescr = createElement({
   eClass: "questions__text",
-  inner: currentlang == 'EN' ? "Next level": "Listen to the player",
+  inner: currentlang == 'EN' ? "Listen to the player": "Прослушайте пение птички",
 });
 const questionsSecondDescr = createElement({
   eClass: "questions__text",
@@ -228,27 +228,28 @@ export function createQuestion() {
 
 questionsBtn.addEventListener("click", (e) => {
   STATE.currentStep++;
-  stopTimer();
   if (STATE.currentStep === BIRDS_DATA.length) {
     window.location.hash = "#results";
     STATE.isGameEnd = true;
     STATE.currentStep = 0;
     STATE.isGetAnswer = false;
   } else {
+    stopTimer();
     setActiveSection(mainSections, STATE.currentStep);
     clearQuestions();
     createQuestion();
     questionsContainer.append(questionsDescr, questionsSecondDescr);
     STATE.isGetAnswer = false;
     showAnswer(false);
-    stopTimer();
     player.src = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].audio;
+    timer.time = 0;
     player.currentTime = 0;
+    audioProgress.value = player.currentTime;
     audioFullTime.textContent =
       BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration;
     audioCurrentTime.textContent = "00:00";
     audioBtn.className = "audio__btn";
-    audioProgress.value = 0;
+    console.trace(STATE.isStartTimer);
   }
 });
 
@@ -263,10 +264,12 @@ function printScore(num, lang = getDataFromStorage('lang')) {
 audioBtn.addEventListener("click", (e) => {
   if (audioCurrentTime.textContent === audioFullTime.textContent) {
     audioCurrentTime.textContent = "00:00";
+    stopTimer();
   }
   if (audioBtn.classList.contains("is-play") === false) {
     audioBtn.classList.toggle("is-play");
     player.play();
+    audioProgress.value = player.currentTime;
     audioProgress.setAttribute("max", Math.floor(player.duration));
     STATE.isStartTimer = startTimer(
       audioCurrentTime,
@@ -284,6 +287,7 @@ player.addEventListener("ended", () => {
   stopTimer();
   audioBtn.classList.toggle("is-play");
   timer.time = 0;
+  stopTimer();
 });
 
 audioProgress.addEventListener("input", (e) => {
@@ -327,7 +331,7 @@ function clearQuestions() {
         const label = createElement({
           tag: "label",
           eClass: "questions__label",
-          inner: `${BIRDS_DATA[STATE.currentStep][index].name}`,
+          inner: `${lang[STATE.currentStep][index].name}`,
           parent: questionsWrapper,
         });
         const input = createElement({
