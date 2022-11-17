@@ -95,10 +95,8 @@ export function createHeader(score = "", lang = getDataFromStorage("lang")) {
     document.body.classList.remove("dark");
   }
   if (getDataFromStorage('lang') === 'EN') {
-    console.log(getDataFromStorage('lang'));    
     enLang.classList.add('lang');
-  } else {
-    console.log(getDataFromStorage('lang'));      
+  } else {    
     ruLang.classList.add('lang');
   }
   if (score) controls.appendChild(score);

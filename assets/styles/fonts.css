@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../../assets/fonts/Roboto-Regulat.woff");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../../assets/fonts/Roboto-Bold.woff");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "DancingScript";
+  src: url("../../assets/fonts/DancingScript-Bold.woff");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}/*# sourceMappingURL=fonts.css.map */
