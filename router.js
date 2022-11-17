@@ -1,8 +1,9 @@
 import { createElement } from "./utils/createElement.js";
-
+import { getDataFromStorage } from "./utils/local-storage.js";
+const lang = getDataFromStorage('lang');
 export const headerScore = createElement({
   eClass: "header__score",
-  inner: "Счёт: 0",
+  inner: lang == 'EN' ? 'Score: 0' : 'Счёт: 0',
 });
 export class Router {
   routes;

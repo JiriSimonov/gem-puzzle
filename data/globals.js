@@ -1,12 +1,24 @@
 import { getDataFromStorage, setStateToStorage } from "../utils/local-storage.js";
 
 export const MAIN_SECTIONS = [
-  "Разминка",
-  "Воробьиные",
-  "Лесные птицы",
-  "Певчие птицы",
-  "Хищные птицы",
-  "Морские птицы",
+  {
+    title: ["Разминка",
+      "Воробьиные",
+      "Лесные птицы",
+      "Певчие птицы",
+      "Хищные птицы",
+      "Морские птицы"]
+  },
+  {
+    title: [
+      "Warm-up",
+      "Sparrows",
+      "Forest Birds",
+      "Singing Birds",
+      "Predator birds",
+      "Sea Birds"
+    ]
+  }
 ];
 
 export const FOOTER_INFO = {
@@ -15,21 +27,26 @@ export const FOOTER_INFO = {
 };
 
 export const HEADER_LINKS = [
+
   {
-    text: "Home",
+    text: "Главная",
+    textEn: "Home",
     link: "#start",
   },
   {
-    text: "Quiz",
+    text: "Викторина",
+    textEn: "Quiz",
     link: "#quiz",
   },
   {
-    text: "Gallery",
+    text: "Галерея",
+    textEn: "Gallery",
     link: "#gallery",
-  },
+  }
+
 ];
 
-if (getDataFromStorage('lang') === 'EN' || getDataFromStorage('lang') === 'RU' ) {
+if (getDataFromStorage('lang') === 'EN' || getDataFromStorage('lang') === 'RU') {
   getDataFromStorage('lang');
 } else {
   setStateToStorage('lang', 'RU');

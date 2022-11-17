@@ -1,6 +1,8 @@
 import { STATE } from "../data/globals.js";
 import { createElement } from "../utils/createElement.js";
+import { getDataFromStorage } from "../utils/local-storage.js";
 
+const lang = getDataFromStorage('lang');
 export function createMainResults() {
   const main = createElement({
     tag: "main",
@@ -17,19 +19,19 @@ export function createMainResults() {
   const mainTitle = createElement({
     tag: "h2",
     eClass: "main__title",
-    inner: "Поздравляем!",
+    inner: lang == 'EN' ? 'Congratulations!' : "Поздравляем!",
     parent: mainWrapper,
   });
   const mainDescr = createElement({
     tag: "p",
     eClass: "main__descr",
-    inner: `Вы прошли викторину и набрали <span class='results__bold'>${STATE.score}</span> из <span class='results__bold'>30</span> возможных баллов :)`,
+    inner: lang == 'EN' ? `You passed the quiz and scored <span class='results__bold'>${STATE.score}</span> out of <span class='results__bold'>30</span> possible scores :)` : `Вы прошли викторину и набрали <span class='results__bold'>${STATE.score}</span> из <span class='results__bold'>30</span> возможных баллов :)`,
     parent: mainWrapper,
   });
   const mainBtn = createElement({
     tag: "button",
     eClass: "main__btn",
-    inner: "Сыграть еще",
+    inner: lang == 'EN' ? 'Play again' :"Сыграть еще",
     parent: mainWrapper,
   });
   mainBtn.addEventListener("click", () => {

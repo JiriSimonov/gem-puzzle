@@ -1,24 +1,28 @@
 import BIRDS_DATA from "../data/data.js";
+import BIRD_DATA_EN from "../data/dataEn.js";
 import { STATE, MAIN_SECTIONS } from "../data/globals.js";
 import { headerScore } from "../router.js";
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
+import { getDataFromStorage } from "../utils/local-storage.js";
 import { setActiveSection } from "../utils/setActiveItem.js";
 import { startTimer, stopTimer, timer } from "../utils/timer.js";
 import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
 
+const lang = getDataFromStorage('lang') == 'EN' ? BIRD_DATA_EN : BIRDS_DATA;
+const currentlang = getDataFromStorage('lang') == 'EN' ? "EN" : "RU";
 const gameWrapper = createElement({ eClass: "game__wrapper" });
 export const mainSections = createElements({
-  arrLength: MAIN_SECTIONS.length,
+  arrLength: BIRDS_DATA.length,
   parent: gameWrapper,
   callback: (_item, index) =>
-    createElement({
-      eClass: "game__section",
-      inner: `${MAIN_SECTIONS[index]}`,
-      parent: gameWrapper,
-    }),
+  createElement({
+    eClass: "game__section",
+    inner: currentlang === 'EN' ? MAIN_SECTIONS[1].title[index] : MAIN_SECTIONS[0].title[index],
+    parent: gameWrapper,
+  }),
 });
 export const questionsWrapper = createElement({ eClass: "questions__wrapper" });
 const questionsContainer = createElement({ eClass: "questions__container" });
@@ -29,16 +33,16 @@ const incorrectAnswer = new Audio('./assets/audio/incorrect-answer.mp3');
 export const questionsBtn = createElement({
   tag: "button",
   eClass: "game__btn",
-  inner: "Следующий уровень",
+  inner: currentlang == 'EN' ? "Next level": "Следующий уровень",
   attr: { disabled: true },
 });
 const questionsDescr = createElement({
   eClass: "questions__text",
-  inner: "Послушайте плеер.",
+  inner: currentlang == 'EN' ? "Next level": "Listen to the player",
 });
 const questionsSecondDescr = createElement({
   eClass: "questions__text",
-  inner: "Выберите птицу из списка.",
+  inner: currentlang == 'EN' ? "Select a bird from the list": "Выберите птицу из списка",
 });
 let clicks = 0;
 setActiveSection(mainSections, STATE.currentStep);
@@ -50,7 +54,7 @@ const questionsLabels = createElements({
     const label = createElement({
       tag: "label",
       eClass: "questions__label",
-      inner: `${BIRDS_DATA[STATE.currentStep][index].name}`,
+      inner: `${lang[STATE.currentStep][index].name}`,
       parent: questionsWrapper,
     });
     const input = createElement({
@@ -172,19 +176,19 @@ function createDescription(wrapper, number) {
   const descrTitle = createElement({
     tag: "h2",
     eClass: "descr__title",
-    inner: `${BIRDS_DATA[STATE.currentStep][number - 1].name}`,
+    inner: `${lang[STATE.currentStep][number - 1].name}`,
     parent: descrContent,
   });
   const descrSubTitle = createElement({
     tag: "h3",
     eClass: "descr__suptitle",
-    inner: `${BIRDS_DATA[STATE.currentStep][number - 1].species}`,
+    inner: `${lang[STATE.currentStep][number - 1].species}`,
     parent: descrContent,
   });
   const descrText = createElement({
     tag: "p",
     eClass: "descr__text",
-    inner: `${BIRDS_DATA[STATE.currentStep][number - 1].description}`,
+    inner: `${lang[STATE.currentStep][number - 1].description}`,
     parent: wrapper,
   });
 }
@@ -248,8 +252,12 @@ questionsBtn.addEventListener("click", (e) => {
   }
 });
 
-function printScore(num) {
-  headerScore.innerHTML = `Счёт: ${num}`;
+function printScore(num, lang = getDataFromStorage('lang')) {
+  if (lang == 'RU') {
+    headerScore.innerHTML = `Счёт: ${num}`;
+  } else {
+    headerScore.innerHTML = `Score: ${num}`;
+  }
 }
 
 audioBtn.addEventListener("click", (e) => {
@@ -294,10 +302,18 @@ audioProgress.addEventListener("input", (e) => {
 
 function clearQuestions() {
   showAnswer(false);
-  if (STATE.currentStep + 1 === BIRDS_DATA.length) {
-    questionsBtn.textContent = "Узнать результат!";
+  if (currentlang == 'RU') {
+    if (STATE.currentStep + 1 === BIRDS_DATA.length) {
+      questionsBtn.textContent = "Узнать результат!";
+    } else {
+      questionsBtn.textContent = "Следующий уровень";
+    }
   } else {
-    questionsBtn.textContent = "Следующий уровень";
+    if (STATE.currentStep + 1 === BIRDS_DATA.length) {
+      questionsBtn.textContent = "Show results!";
+    } else {
+      questionsBtn.textContent = "Next level";
+    }
   }
   questionsWrapper.innerHTML = ""; // вынести в функцию
   questionsContainer.innerHTML = "";
@@ -343,7 +359,7 @@ function showAnswer(boolean) {
     })`;
     correctAnswer.play();
     audioTitle.textContent =
-      BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].name;
+      lang[STATE.currentStep][STATE.currentAnswer - 1].name;
   } else {
     audioImg.style.backgroundImage = `url("assets/images/unknown.png")`;
     audioTitle.textContent = "***";

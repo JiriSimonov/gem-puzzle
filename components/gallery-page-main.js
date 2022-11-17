@@ -1,9 +1,12 @@
 import { createElement } from "../utils/createElement.js";
 import { createElements } from "../utils/createElements.js";
 import BIRDS_DATA from "../data/data.js";
+import BIRD_DATA_EN from "../data/dataEn.js";
 import { STATE } from "../data/globals.js";
+import { getDataFromStorage } from "../utils/local-storage.js";
 
 export function createMainGallery() {
+    const lang = getDataFromStorage('lang') == 'EN' ? BIRD_DATA_EN : BIRDS_DATA;
     const inputs = [];
     const main = createElement({
         tag: "main",
@@ -21,7 +24,7 @@ export function createMainGallery() {
         arrLength: BIRDS_DATA.length,
         parent: gallery,
         callback: (_item, index) => {
-            const path = BIRDS_DATA[STATE.currentStep][index];
+            const path = lang[STATE.currentStep][index];
             const galleryItem = createElement({
                 eClass: "gallery__item",
                 parent: gallery,
@@ -55,9 +58,9 @@ export function createMainGallery() {
                 inner: "Узнать больше",
                 parent: tooltip,
             });
-            printModal(STATE.galleryStep, index , galleryItem);
+            printModal(STATE.galleryStep, index, galleryItem);
             tooltipBtn.addEventListener("click", (e) => {
-              showModal(tooltip.nextSibling.children[0], tooltip.nextSibling.children[0].children[0]);
+                showModal(tooltip.nextSibling.children[0], tooltip.nextSibling.children[0].children[0]);
             });
             return galleryItem;
         },
@@ -82,7 +85,7 @@ export function createMainGallery() {
                 parent: label,
             });
             if (+input.value === STATE.currentStep)
-            input.parentNode.classList.add("active");
+                input.parentNode.classList.add("active");
             inputs.push(input);
             return label;
         },
@@ -114,44 +117,44 @@ function printGallery(arr, num) {
 
 function showModal(...elems) {
     elems.forEach((el) => {
-        el.classList.toggle(`${el.classList[0]}--visible`); 
+        el.classList.toggle(`${el.classList[0]}--visible`);
     });
 }
 
 function printModal(state, num, parent) {
-        let modalPath = BIRDS_DATA[state][num];
-        const modal = createElement({
-            eClass: "modal",
-            parent: parent,
-        });
-
-        const modalOverlay = createElement({
-            eClass: "modal__overlay",
-            parent: modal,
-        });
-        modalOverlay.addEventListener("click", (e) => {
-            let target = e.target;
-            if (target === modalOverlay) {
-                showModal(modalContent, modalOverlay);
-            }
-        });
-        const modalContent = createElement({
-            eClass: "modal__content",
-            parent: modalOverlay,
-        });
-        const modalText = createElement({
-            tag: "p",
-            eClass: "modal__text",
-            inner: modalPath.description,
-            parent: modalContent,
-        });
-        const modalBtn = createElement({
-            tag: "button",
-            eClass: "modal__btn",
-            inner: "Закрыть",
-            parent: modalContent,
-        });
-        modalBtn.addEventListener("click", (e) => {
+    const lang = getDataFromStorage('lang') == 'EN' ? BIRD_DATA_EN : BIRDS_DATA;
+    let modalPath = lang[state][num];
+    const modal = createElement({
+        eClass: "modal",
+        parent: parent,
+    });
+    const modalOverlay = createElement({
+        eClass: "modal__overlay",
+        parent: modal,
+    });
+    modalOverlay.addEventListener("click", (e) => {
+        let target = e.target;
+        if (target === modalOverlay) {
             showModal(modalContent, modalOverlay);
-        });
-    }
+        }
+    });
+    const modalContent = createElement({
+        eClass: "modal__content",
+        parent: modalOverlay,
+    });
+    const modalText = createElement({
+        tag: "p",
+        eClass: "modal__text",
+        inner: modalPath.description,
+        parent: modalContent,
+    });
+    const modalBtn = createElement({
+        tag: "button",
+        eClass: "modal__btn",
+        inner: "Закрыть",
+        parent: modalContent,
+    });
+    modalBtn.addEventListener("click", (e) => {
+        showModal(modalContent, modalOverlay);
+    });
+}

@@ -3,7 +3,7 @@ import { createElement } from "./utils/createElement.js";
 import { createElements } from "./utils/createElements.js";
 import { getDataFromStorage, setStateToStorage } from "./utils/local-storage.js";
 
-export function createHeader(score = "") {
+export function createHeader(score = "", lang = getDataFromStorage("lang")) {
   const header = createElement({
     tag: "header",
     eClass: "header",
@@ -35,6 +35,7 @@ export function createHeader(score = "") {
     setStateToStorage('lang', 'RU');
     ruLang.classList.add('lang');
     enLang.classList.remove('lang');
+    location.reload();
   });
   const enLang = createElement({
     eClass: 'header__lang header__lang_en',
@@ -45,6 +46,7 @@ export function createHeader(score = "") {
     setStateToStorage('lang', 'EN');
     enLang.classList.add('lang');
     ruLang.classList.remove('lang');
+    location.reload();
   })
   const changeBg = createElement({
     tag: "input",
@@ -69,8 +71,8 @@ export function createHeader(score = "") {
       const link = createElement({
         tag: "a",
         eClass: "header__link game__section",
-        inner: `${HEADER_LINKS[index].text}`,
-        attr: { href: HEADER_LINKS[index].link },
+        inner: lang === 'EN' ? HEADER_LINKS[index].textEn : HEADER_LINKS[index].text,
+        attr: { href: HEADER_LINKS[index].link},
         parent: headerNavWrapper,
       });
       if (window.location.hash === link.hash) {
