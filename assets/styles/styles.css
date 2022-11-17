@@ -9,6 +9,10 @@ h6 {
   padding: 0;
 }
 
+* {
+  cursor: url("../images/cursor/mouse-black.png"), auto;
+}
+
 .body {
   margin: 0;
   padding: 0;
@@ -36,8 +40,20 @@ h6 {
 .dark {
   background-color: #110d3e;
 }
+.dark * {
+  cursor: url("../images/cursor/mouse.png"), auto;
+}
+.dark *:hover {
+  cursor: url("../images/cursor/mouse.png"), auto;
+}
+.dark .header .header__wrapper .controls .controls__input:hover {
+  cursor: url("../images/cursor/mouse.png"), auto;
+}
 .dark .header .header__wrapper .controls .header__lang {
   color: white;
+}
+.dark .header .header__wrapper .controls .header__lang:hover {
+  cursor: url("../images/cursor/mouse.png"), auto;
 }
 .dark .swan {
   background-image: url("../images/swan_light.png");
@@ -152,7 +168,7 @@ h6 {
   font-weight: 700;
   color: #000;
   background-color: #c16b89;
-  cursor: pointer;
+  cursor: url("../images/cursor/mouse-black.png"), auto;
   transition: 0.3s linear;
 }
 .results-page .main__btn:hover, .results-page .main__btn:focus {
@@ -195,7 +211,7 @@ h6 {
   font-weight: 400;
   line-height: auto;
   color: #000;
-  cursor: pointer;
+  cursor: url("../images/cursor/mouse-black.png"), auto;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -235,7 +251,7 @@ h6 {
   border: 1px solid #c16b89;
   border-radius: 30px;
   outline: none;
-  cursor: pointer;
+  cursor: url("../images/cursor/mouse-black.png"), auto;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -369,7 +385,7 @@ h6 {
   background-image: url("../images/icons/play.svg");
   background-repeat: no-repeat;
   background-position: 28px center;
-  cursor: pointer;
+  cursor: url("../images/cursor/mouse-black.png"), auto;
 }
 .audio .audio__wrapper .is-play {
   background-image: url("../images/icons/stop.svg");
@@ -443,7 +459,7 @@ h6 {
   font-weight: 400;
   line-height: auto;
   color: #000;
-  cursor: pointer;
+  cursor: url("../images/cursor/mouse-black.png"), auto;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -571,7 +587,7 @@ h6 {
   font-weight: 400;
   line-height: auto;
   color: black;
-  cursor: pointer;
+  cursor: url("../images/cursor/mouse-black.png"), auto;
   transition: 0.3s linear;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -696,7 +712,7 @@ h6 {
   line-height: auto;
   color: white;
   background-color: #C16B89;
-  cursor: pointer;
+  cursor: url("../images/cursor/mouse-black.png"), auto;
 }
 
 .pagination {
@@ -712,7 +728,7 @@ h6 {
   height: 20px;
   border: 2px solid #C16B89;
   border-radius: 50%;
-  cursor: pointer;
+  cursor: url("../images/cursor/mouse-black.png"), auto;
 }
 .pagination__label:hover::after {
   opacity: 1;
@@ -790,7 +806,7 @@ h6 {
   font-weight: 400;
   line-height: auto;
   color: white;
-  cursor: pointer;
+  cursor: url("../images/cursor/mouse-black.png"), auto;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
