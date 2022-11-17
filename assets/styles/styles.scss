@@ -22,6 +22,7 @@ h6 {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .container {
@@ -62,6 +63,7 @@ h6 {
   background-position: center;
 
   .main {
+    user-select: none;
     .title {
       margin: 40px 0;
       font-size: 48px;
@@ -142,6 +144,7 @@ h6 {
     background-repeat: no-repeat;
     background-color: #F5EFEF;
     text-align: center;
+    user-select: none;
   }
 
   .main__title {
@@ -227,9 +230,8 @@ h6 {
         border-top-left-radius: 30px;
         border-bottom-left-radius: 30px;
         border-right: none;
-        background-color: #C16B89;
+        background-color: transparent;
       }
-
       .header__lang_en {
         padding: 7px 22px 7px 19px;
         border: 2px solid #c16b89;
@@ -240,13 +242,7 @@ h6 {
       }
 
       .lang {
-        .header__lang_ru {
-          background-color: transparent;
-        }
-
-        .header__lang_en {
-          background-color: #C16B89;
-        }
+        background-color: #c16b89;
       }
 
       .controls__label {
@@ -535,11 +531,11 @@ h6 {
       color: #1fb12e;
 
       .questions__input:checked+.questions__checkbox {
-        display: none;
+        background-color: #1fb12e;
       }
 
       .questions__input+.questions__checkbox {
-        display: none;
+        background-color: #1fb12e;
       }
     }
 
@@ -547,11 +543,11 @@ h6 {
       color: #e11244;
 
       .questions__input:checked+.questions__checkbox {
-        display: none;
+        background-color: #e11244;
       }
 
       .questions__input+.questions__checkbox {
-        display: none;
+        background-color: #e11244;
       }
     }
   }
@@ -887,22 +883,6 @@ h6 {
   }
 }
 
-.modal--is-open {
-
-  .modal__overlay {
-    opacity: 1;
-    visibility: visible;
-    transition: all .3s linear;
-  }
-
-  .modal__content {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transition: all .3s linear;
-  }
-}
-
 .swan {
   position: absolute;
   top: -60px;
@@ -939,4 +919,40 @@ h6 {
   100% {
     transform: scaleX(-1);
   }
+}
+
+@media (max-width: 850px) {
+  .gallery__item {
+    width: 35%;
+  }
+
+  .header {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 750px) {
+  .start-page {
+    background-size: contain;
+  }
+
+
+  .header .header__wrapper .header__logo  {
+    width: 170px;
+    height: 30px;
+    background-size: contain;
+  }
+  .game__section {
+    padding: 7px;
+    font-size: 18px;
+  }
+
+  .footer .footer__wrapper {
+    padding: 10px;
+    .footer__link {
+      font-size: 18px;
+    }
+  }
+
+  /* gallery */
 }

@@ -22,6 +22,7 @@ h6 {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .container {
@@ -53,6 +54,12 @@ h6 {
   background-image: url("../images/start/wing-light.png");
   background-repeat: no-repeat;
   background-position: center;
+}
+.start-page .main {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .start-page .main .title {
   margin: 40px 0;
@@ -118,6 +125,10 @@ h6 {
   background-repeat: no-repeat;
   background-color: #F5EFEF;
   text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .results-page .main__title {
   font-size: 64px;
@@ -194,7 +205,7 @@ h6 {
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   border-right: none;
-  background-color: #C16B89;
+  background-color: transparent;
 }
 .header .header__wrapper .controls .header__lang_en {
   padding: 7px 22px 7px 19px;
@@ -204,11 +215,8 @@ h6 {
   border-bottom-right-radius: 30px;
   background-color: transparent;
 }
-.header .header__wrapper .controls .lang .header__lang_ru {
-  background-color: transparent;
-}
-.header .header__wrapper .controls .lang .header__lang_en {
-  background-color: #C16B89;
+.header .header__wrapper .controls .lang {
+  background-color: #c16b89;
 }
 .header .header__wrapper .controls .controls__label {
   display: none;
@@ -472,19 +480,19 @@ h6 {
   color: #1fb12e;
 }
 .questions .questions__wrapper .true .questions__input:checked + .questions__checkbox {
-  display: none;
+  background-color: #1fb12e;
 }
 .questions .questions__wrapper .true .questions__input + .questions__checkbox {
-  display: none;
+  background-color: #1fb12e;
 }
 .questions .questions__wrapper .false {
   color: #e11244;
 }
 .questions .questions__wrapper .false .questions__input:checked + .questions__checkbox {
-  display: none;
+  background-color: #e11244;
 }
 .questions .questions__wrapper .false .questions__input + .questions__checkbox {
-  display: none;
+  background-color: #e11244;
 }
 .questions .questions__descr {
   display: none;
@@ -808,18 +816,6 @@ h6 {
   border-color: #4B9200;
 }
 
-.modal--is-open .modal__overlay {
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.3s linear;
-}
-.modal--is-open .modal__content {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.3s linear;
-}
-
 .swan {
   position: absolute;
   top: -60px;
@@ -874,4 +870,33 @@ h6 {
   100% {
     transform: scaleX(-1);
   }
+}
+@media (max-width: 850px) {
+  .gallery__item {
+    width: 35%;
+  }
+  .header {
+    padding: 0 10px;
+  }
+}
+@media (max-width: 750px) {
+  .start-page {
+    background-size: contain;
+  }
+  .header .header__wrapper .header__logo {
+    width: 170px;
+    height: 30px;
+    background-size: contain;
+  }
+  .game__section {
+    padding: 7px;
+    font-size: 18px;
+  }
+  .footer .footer__wrapper {
+    padding: 10px;
+  }
+  .footer .footer__wrapper .footer__link {
+    font-size: 18px;
+  }
+  /* gallery */
 }/*# sourceMappingURL=styles.css.map */

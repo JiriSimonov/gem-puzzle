@@ -1,6 +1,7 @@
 import { HEADER_LINKS, STATE } from "./data/globals.js";
 import { createElement } from "./utils/createElement.js";
 import { createElements } from "./utils/createElements.js";
+import { getDataFromStorage, setStateToStorage } from "./utils/local-storage.js";
 
 export function createHeader(score = "") {
   const header = createElement({
@@ -30,11 +31,21 @@ export function createHeader(score = "") {
     parent: changeLang,
     inner: 'RU',
   });
+  ruLang.addEventListener('click', () => {
+    setStateToStorage('lang', 'RU');
+    ruLang.classList.add('lang');
+    enLang.classList.remove('lang');
+  });
   const enLang = createElement({
     eClass: 'header__lang header__lang_en',
     parent: changeLang,
     inner: 'EN',
   });
+  enLang.addEventListener('click', () => {    
+    setStateToStorage('lang', 'EN');
+    enLang.classList.add('lang');
+    ruLang.classList.remove('lang');
+  })
   const changeBg = createElement({
     tag: "input",
     eClass: "controls__input",
@@ -72,12 +83,22 @@ export function createHeader(score = "") {
   });
   changeBg.addEventListener("click", (e) => {
     STATE.theme = !STATE.theme;
+    setStateToStorage('theme', STATE.theme);
     document.body.classList.toggle("dark");
   });
-  changeLang.addEventListener('click', (e) => {
-    changeLang.classList.toggle('lang');
-  });
-  if (STATE.theme === false) changeBg.checked = true;
+  if (getDataFromStorage('theme') === false) {
+    changeBg.checked = true;
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
+  if (getDataFromStorage('lang') === 'EN') {
+    console.log(getDataFromStorage('lang'));    
+    enLang.classList.add('lang');
+  } else {
+    console.log(getDataFromStorage('lang'));      
+    ruLang.classList.add('lang');
+  }
   if (score) controls.appendChild(score);
   return header;
 }

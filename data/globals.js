@@ -1,3 +1,5 @@
+import { getDataFromStorage, setStateToStorage } from "../utils/local-storage.js";
+
 export const MAIN_SECTIONS = [
   "Разминка",
   "Воробьиные",
@@ -27,8 +29,14 @@ export const HEADER_LINKS = [
   },
 ];
 
+if (getDataFromStorage('lang') === 'EN' || getDataFromStorage('lang') === 'RU' ) {
+  getDataFromStorage('lang');
+} else {
+  setStateToStorage('lang', 'RU');
+}
+
 export const STATE = {
-  lang: "RU",
+  lang: getDataFromStorage('lang'),
   score: 0,
   currentStep: 0,
   currentAnswer: 0,
@@ -38,6 +46,6 @@ export const STATE = {
   isGetAnswer: false,
   isStartTimer: null,
   isGameEnd: false,
-  theme: true,
+  theme: getDataFromStorage('theme') ?? true,
   galleryStep: 0,
 };
