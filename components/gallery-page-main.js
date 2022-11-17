@@ -5,6 +5,7 @@ import BIRD_DATA_EN from "../data/dataEn.js";
 import { STATE } from "../data/globals.js";
 import { getDataFromStorage } from "../utils/local-storage.js";
 
+const curentLang = getDataFromStorage('lang');
 export function createMainGallery() {
     const lang = getDataFromStorage('lang') == 'EN' ? BIRD_DATA_EN : BIRDS_DATA;
     const inputs = [];
@@ -55,7 +56,7 @@ export function createMainGallery() {
                 tag: "button",
                 eClass: "tooltip__btn",
                 attr: { id: `${index + 1}` },
-                inner: "Узнать больше",
+                inner: curentLang == 'EN' ? 'Learn more' : "Узнать больше",
                 parent: tooltip,
             });
             printModal(STATE.galleryStep, index, galleryItem);
@@ -151,7 +152,7 @@ function printModal(state, num, parent) {
     const modalBtn = createElement({
         tag: "button",
         eClass: "modal__btn",
-        inner: "Закрыть",
+        inner: curentLang == 'EN' ? 'Close' : "Закрыть",
         parent: modalContent,
     });
     modalBtn.addEventListener("click", (e) => {
