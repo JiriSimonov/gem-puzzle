@@ -55,9 +55,9 @@ export function createMainGallery() {
                 inner: "Узнать больше",
                 parent: tooltip,
             });
-            const modal = printModal(STATE.galleryStep, index, galleryItem);
+            printModal(STATE.galleryStep, index , galleryItem);
             tooltipBtn.addEventListener("click", (e) => {
-                showModal(modal);
+              showModal(tooltip.nextSibling.children[0], tooltip.nextSibling.children[0].children[0]);
             });
             return galleryItem;
         },
@@ -82,7 +82,7 @@ export function createMainGallery() {
                 parent: label,
             });
             if (+input.value === STATE.currentStep)
-                input.parentNode.classList.add("active");
+            input.parentNode.classList.add("active");
             inputs.push(input);
             return label;
         },
@@ -112,45 +112,46 @@ function printGallery(arr, num) {
     }
 }
 
-function showModal(elem) {
-    elem.classList.toggle('modal--is-open');
+function showModal(...elems) {
+    elems.forEach((el) => {
+        el.classList.toggle(`${el.classList[0]}--visible`); 
+    });
 }
 
 function printModal(state, num, parent) {
-    let modalPath = BIRDS_DATA[state][num];
-    const modal = createElement({
-        eClass: "modal",
-        parent: parent,
-    });
+        let modalPath = BIRDS_DATA[state][num];
+        const modal = createElement({
+            eClass: "modal",
+            parent: parent,
+        });
 
-    const modalOverlay = createElement({
-        eClass: "modal__overlay",
-        parent: modal,
-    });
-    modalOverlay.addEventListener("click", (e) => {
-        let target = e.target;
-        if (target === modalOverlay) {
-            showModal(modal);
-        }
-    });
-    const modalContent = createElement({
-        eClass: "modal__content",
-        parent: modalOverlay,
-    });
-    const modalText = createElement({
-        tag: "p",
-        eClass: "modal__text",
-        inner: modalPath.description,
-        parent: modalContent,
-    });
-    const modalBtn = createElement({
-        tag: "button",
-        eClass: "modal__btn",
-        inner: "Закрыть",
-        parent: modalContent,
-    });
-    modalBtn.addEventListener("click", (e) => {
-        showModal(modal);
-    });
-    return modal;
-}
+        const modalOverlay = createElement({
+            eClass: "modal__overlay",
+            parent: modal,
+        });
+        modalOverlay.addEventListener("click", (e) => {
+            let target = e.target;
+            if (target === modalOverlay) {
+                showModal(modalContent, modalOverlay);
+            }
+        });
+        const modalContent = createElement({
+            eClass: "modal__content",
+            parent: modalOverlay,
+        });
+        const modalText = createElement({
+            tag: "p",
+            eClass: "modal__text",
+            inner: modalPath.description,
+            parent: modalContent,
+        });
+        const modalBtn = createElement({
+            tag: "button",
+            eClass: "modal__btn",
+            inner: "Закрыть",
+            parent: modalContent,
+        });
+        modalBtn.addEventListener("click", (e) => {
+            showModal(modalContent, modalOverlay);
+        });
+    }

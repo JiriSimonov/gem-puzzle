@@ -23,6 +23,9 @@ export const mainSections = createElements({
 export const questionsWrapper = createElement({ eClass: "questions__wrapper" });
 const questionsContainer = createElement({ eClass: "questions__container" });
 const questionsDescription = createElement({ eClass: "questions__descr" });
+const correctAnswer = new Audio('./assets/audio/correct-answer.mp3');
+const incorrectAnswer = new Audio('./assets/audio/incorrect-answer.mp3');
+
 export const questionsBtn = createElement({
   tag: "button",
   eClass: "game__btn",
@@ -77,9 +80,9 @@ function handleInputClick(input, parentNode) {
     if (STATE.isGetAnswer === false) {
       STATE.isGetAnswer = true;
       clicks--;
-      STATE.score = STATE.score + (BIRDS_DATA.length - 1 - clicks);
-      clicks = 0;
+      STATE.score = STATE.score + ((BIRDS_DATA.length - 2) - clicks);
       printScore(STATE.score);
+      clicks = 0;
       showAnswer(true);
       inputs.forEach((e) => {
         e.parentNode.classList.add("false");
@@ -95,6 +98,8 @@ function handleInputClick(input, parentNode) {
     ) {
       clicks++;
       parentNode.classList.add("false");
+      incorrectAnswer.currentTime = 0;
+      incorrectAnswer.play();
     }
   }
 }
@@ -231,7 +236,6 @@ questionsBtn.addEventListener("click", (e) => {
     createQuestion();
     questionsContainer.append(questionsDescr, questionsSecondDescr);
     STATE.isGetAnswer = false;
-    STATE.score = 0;
     showAnswer(false);
     stopTimer();
     player.src = BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].audio;
@@ -277,7 +281,6 @@ player.addEventListener("ended", () => {
 audioProgress.addEventListener("input", (e) => {
   stopTimer();
   player.currentTime = +audioProgress.value;
-  console.log(audioProgress.value);
   timer.time = +audioProgress.value;
   audioBtn.classList.add("is-play");
   player.play();
@@ -338,7 +341,7 @@ function showAnswer(boolean) {
     audioImg.style.backgroundImage = `url(${
       BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].image
     })`;
-    console.log(audioImg);
+    correctAnswer.play();
     audioTitle.textContent =
       BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].name;
   } else {

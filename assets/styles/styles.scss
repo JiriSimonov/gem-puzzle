@@ -832,7 +832,17 @@ h6 {
     transition: all .3s linear;
     overflow: hidden;
   }
-
+  .modal__overlay--visible {
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s linear;
+  }
+  .modal__content--visible {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s linear;
+  }
   .modal__btn {
     padding: 10px 39px;
     border: 1px solid #a73962;
