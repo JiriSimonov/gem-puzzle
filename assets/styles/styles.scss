@@ -47,6 +47,7 @@ h6 {
 
   .start-page {
     background-image: url("../images/start/wing-dark.png");
+
     .main {
       .title {
         color: white;
@@ -59,6 +60,7 @@ h6 {
   background-image: url("../images/start/wing-light.png");
   background-repeat: no-repeat;
   background-position: center;
+
   .main {
     .title {
       margin: 40px 0;
@@ -67,6 +69,7 @@ h6 {
       line-height: auto;
       color: #000;
     }
+
     .link {
       display: block;
       padding: 10px;
@@ -81,6 +84,7 @@ h6 {
       text-align: center;
       text-decoration: none;
       transition: .3s linear;
+
       &:hover,
       &:focus {
         outline: none;
@@ -88,9 +92,11 @@ h6 {
       }
     }
   }
+
   .footer {
     .container {
       position: relative;
+
       &::after {
         content: '';
         position: absolute;
@@ -680,6 +686,7 @@ h6 {
     border-radius: 13px;
     text-align: center;
     user-select: none;
+
     &::before {
       content: '';
       position: absolute;
@@ -688,15 +695,17 @@ h6 {
       width: 100%;
       height: 100%;
       border-radius: 13px;
-      background-color: rgba(0,0,0,0.5);
+      background-color: rgba(0, 0, 0, 0.5);
       z-index: 2;
       opacity: 0;
       transition: .3s linear;
     }
+
     &:hover {
       &::before {
         opacity: 1;
       }
+
       .tooltip {
         display: block;
         opacity: 1;
@@ -726,6 +735,7 @@ h6 {
     opacity: 0;
     z-index: 3;
     transition: .3s linear;
+
     &__btn {
       padding: 20px;
       border: none;
@@ -754,11 +764,13 @@ h6 {
     border: 2px solid #C16B89;
     border-radius: 50%;
     cursor: pointer;
+
     &:hover {
       &::after {
         opacity: 1;
       }
     }
+
     &::after {
       content: '';
       position: absolute;
@@ -772,12 +784,14 @@ h6 {
       opacity: 0;
       transition: .3s linear;
     }
+
     .pagination__input {
       opacity: 0;
       width: 1px;
       height: 1px;
     }
   }
+
   .active {
     &::after {
       opacity: 1;
@@ -819,60 +833,65 @@ h6 {
     overflow: hidden;
   }
 
-  .modal__overlay--visible {
+  .modal__btn {
+    padding: 10px 39px;
+    border: 1px solid #a73962;
+    border-radius: 13px;
+    background-color: #a73962;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: auto;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transition: all .3s linear;
+
+    &:hover,
+    &:focus {
+      color: white;
+      border-color: #C16B89;
+      background-color: #C16B89;
+    }
+  }
+
+  .modal__text {
+    text-align: center;
+    margin-top: 7px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: auto;
+    color: white;
+    transition: .3s linear;
+
+    &::placeholder {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      color: rgba(87, 87, 89, .5);
+    }
+
+    &:focus {
+      border-color: #4B9200;
+    }
+  }
+}
+
+.modal--is-open {
+
+  .modal__overlay {
     opacity: 1;
     visibility: visible;
     transition: all .3s linear;
   }
-  .modal__content--visible {
+
+  .modal__content {
     display: block;
     opacity: 1;
     visibility: visible;
     transition: all .3s linear;
   }
-    .modal__btn {
-      padding: 10px 39px;
-      border: 1px solid #a73962;
-      border-radius: 13px;
-      background-color: #a73962;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: auto;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-      transition: all .3s linear;
-
-      &:hover,
-      &:focus {
-        color: white;
-        border-color: #C16B89;
-        background-color: #C16B89;
-      }
-    }
-
-    .modal__text {
-      text-align: center;
-      margin-top: 7px;
-      font-size: 24px;
-      font-weight: 400;
-      line-height: auto;
-      color: white;
-      transition: .3s linear;
-
-      &::placeholder {
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 140%;
-        color: rgba(87, 87, 89, .5);
-      }
-
-      &:focus {
-        border-color: #4B9200;
-      }
-    }
-  }
+}
 
 .swan {
   position: absolute;
