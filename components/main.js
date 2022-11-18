@@ -7,7 +7,7 @@ import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
 import { getDataFromStorage } from "../utils/local-storage.js";
 import { setActiveSection } from "../utils/setActiveItem.js";
-import { startTimer, stopTimer, timer } from "../utils/timer.js";
+import { startTimer, stopTimer, startQTimer , stopQTimer, timer } from "../utils/timer.js";
 import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
 
@@ -86,6 +86,11 @@ function handleInputClick(input, parentNode) {
       clicks--;
       STATE.score = STATE.score + ((BIRDS_DATA.length - 2) - clicks);
       printScore(STATE.score);
+      player.pause();
+      stopTimer();
+      if (audioBtn.classList.contains('is-play') === true) {
+        audioBtn.classList.toggle("is-play");
+      }
       clicks = 0;
       showAnswer(true);
       inputs.forEach((e) => {
@@ -112,7 +117,7 @@ const player = new Audio(
   BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].audio
 );
 
-player.setAttribute("preload", "metadata");
+const qPlayer = new Audio();
 
 /* audio */
 const audioTitle = createElement({
@@ -140,22 +145,10 @@ const audioFullTime = createElement({
   eClass: "audio__time",
   inner: `${BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration}`,
 });
-const audioQBtn = createElement({
-  tag: "button",
-  eClass: "audio__btn",
-});
-const audioQProgress = createElement({
+const audioVolume = createElement({
   tag: "input",
-  eClass: "audio__progress",
-  attr: { type: "range", min: 0, max: ``, value: "0", step: "0.1" },
-});
-const audioQCurrentTime = createElement({
-  eClass: "audio__time",
-  inner: "00:00",
-});
-const audioQFullTime = createElement({
-  eClass: "audio__time",
-  inner: `${BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration}`,
+  eClass: "audio__volume",
+  attr: { type: "range", min: 0, max: 100, value: 50, step: 5 },
 });
 
 function createDescription(wrapper, number) {
@@ -185,11 +178,102 @@ function createDescription(wrapper, number) {
     inner: `${lang[STATE.currentStep][number - 1].species}`,
     parent: descrContent,
   });
+  const audio = createElement({
+    eClass: "audio",
+    parent: descrContent,
+  });
+  const audioWrapper = createElement({
+    eClass: "audio__wrapper",
+    parent: audio,
+  });
+  const audioQBtn = createElement({
+    tag: "button",
+    eClass: "audio__btn",
+    parent: audioWrapper,
+  });
+  const audioControls = createElement({
+    eClass: "audio__controls",
+    parent: audioWrapper,
+  });
+  const audioQProgress = createElement({
+    tag: "input",
+    eClass: "audio__progress",
+    attr: { type: "range", min: 0, max: ``, value: "0", step: "0.1" },
+    parent: audioControls,
+  });
+  const audioTimePanel = createElement({
+    eClass: "audio__timeline",
+    parent: audioControls,
+  });
+  const audioQCurrentTime = createElement({
+    eClass: "audio__time",
+    inner: "00:00",
+    parent: audioTimePanel,
+  });
+  const audioQFullTime = createElement({
+    eClass: "audio__time",
+    inner: `${BIRDS_DATA[STATE.currentStep][number - 1].duration}`,
+    parent: audioTimePanel,
+  });
+  const audioQVolume = createElement({
+    tag: "input",
+    eClass: "audio__volume",
+    attr: { type: "range", min: 0, max: 100, value: 50, step: 5 },
+    parent: audioControls,
+  });
   const descrText = createElement({
     tag: "p",
     eClass: "descr__text",
     inner: `${lang[STATE.currentStep][number - 1].description}`,
     parent: wrapper,
+  });
+  stopQTimer();
+  timer.qtime = 0;
+  qPlayer.src = BIRDS_DATA[STATE.currentStep][number - 1].audio;
+  qPlayer.currentTime = 0;
+  audioQBtn.addEventListener('click', () => {
+    if (audioQCurrentTime.textContent === audioQFullTime.textContent) {
+      audioQCurrentTime.textContent = "00:00";
+      stopQTimer();
+    }
+    if (audioQBtn.classList.contains("is-play") === false) {
+      audioQBtn.classList.toggle("is-play");
+      qPlayer.play();
+      audioQProgress.value = qPlayer.currentTime;
+      audioQProgress.setAttribute("max", Math.floor(qPlayer.duration));
+      STATE.isStartQTimer = startTimer(
+        audioQCurrentTime,
+        STATE.isStartQTimer,
+        audioQProgress
+      );
+    } else {
+      audioQBtn.classList.toggle("is-play");
+      qPlayer.pause();
+      stopQTimer();
+    }
+  });
+  qPlayer.addEventListener("ended", () => {
+    stopQTimer();
+    audioQBtn.classList.toggle("is-play");
+    timer.qtime = 0;
+  });
+  
+  audioQProgress.addEventListener("input", (e) => {
+    stopQTimer();
+    qPlayer.currentTime = +audioQProgress.value;
+    timer.qtime = +audioQProgress.value;
+    audioQBtn.classList.add("is-play");
+    qPlayer.play();
+    audioQProgress.setAttribute("max", Math.floor(qPlayer.duration));
+    STATE.isStartQTimer = startQTimer(
+      audioQCurrentTime,
+      STATE.isStartQTimer,
+      audioQProgress,
+    );
+  });
+  
+  audioQVolume.addEventListener('input', () => {
+    qPlayer.volume = audioQVolume.value / 100;
   });
 }
 
@@ -204,6 +288,7 @@ export function createMain() {
       audioProgress,
       audioCurrentTime,
       audioFullTime,
+      audioVolume,
       audioImg,
       audioTitle
     ),
@@ -234,7 +319,6 @@ questionsBtn.addEventListener("click", (e) => {
     STATE.currentStep = 0;
     STATE.isGetAnswer = false;
   } else {
-    stopTimer();
     setActiveSection(mainSections, STATE.currentStep);
     clearQuestions();
     createQuestion();
@@ -249,7 +333,7 @@ questionsBtn.addEventListener("click", (e) => {
       BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration;
     audioCurrentTime.textContent = "00:00";
     audioBtn.className = "audio__btn";
-    console.trace(STATE.isStartTimer);
+    stopTimer();
   }
 });
 
@@ -287,7 +371,6 @@ player.addEventListener("ended", () => {
   stopTimer();
   audioBtn.classList.toggle("is-play");
   timer.time = 0;
-  stopTimer();
 });
 
 audioProgress.addEventListener("input", (e) => {
@@ -302,6 +385,11 @@ audioProgress.addEventListener("input", (e) => {
     STATE.isStartTimer,
     audioProgress
   );
+});
+
+audioVolume.addEventListener('input', () => {
+  player.volume = audioVolume.value / 100;
+  STATE.volume = player.volume;
 });
 
 function clearQuestions() {

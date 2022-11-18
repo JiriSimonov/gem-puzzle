@@ -4,6 +4,7 @@ import BIRDS_DATA from "../data/data.js";
 import BIRD_DATA_EN from "../data/dataEn.js";
 import { STATE } from "../data/globals.js";
 import { getDataFromStorage } from "../utils/local-storage.js";
+import { startGTimer, stopGTimer, timer } from "../utils/timer.js";
 
 const curentLang = getDataFromStorage('lang');
 export function createMainGallery() {
@@ -137,17 +138,30 @@ function printModal(state, num, parent) {
         let target = e.target;
         if (target === modalOverlay) {
             showModal(modalContent, modalOverlay);
+            gPlayer.pause();
+            gPlayer.currentTime = 0;
+            timer.gtime = 0;
+            stopGTimer();
+            if (audioGBtn.classList.contains("is-play") === true) {
+                audioGBtn.classList.toggle('is-play');
+            }
+            audioGCurrentTime.textContent = "00:00";
+            audioGProgress.value = gPlayer.currentTime;
         }
     });
     const modalContent = createElement({
         eClass: "modal__content",
         parent: modalOverlay,
     });
+    const modalInfo = createElement({
+        eClass: "modal__info",
+        parent: modalContent,
+    });
     const modalText = createElement({
         tag: "p",
         eClass: "modal__text",
         inner: modalPath.description,
-        parent: modalContent,
+        parent: modalInfo,
     });
     const modalBtn = createElement({
         tag: "button",
@@ -155,7 +169,108 @@ function printModal(state, num, parent) {
         inner: curentLang == 'EN' ? 'Close' : "Закрыть",
         parent: modalContent,
     });
-    modalBtn.addEventListener("click", (e) => {
+    modalBtn.addEventListener('click', () => {
         showModal(modalContent, modalOverlay);
+        gPlayer.pause();
+        gPlayer.currentTime = 0;
+        timer.gtime = 0;
+        stopGTimer();
+        if (audioGBtn.classList.contains("is-play") === true) {
+            audioGBtn.classList.toggle('is-play');
+        }
+        audioGCurrentTime.textContent = "00:00";
+        audioGProgress.value = gPlayer.currentTime;
+    });
+    const gPlayer = new Audio();
+    const audio = createElement({
+        eClass: "audio",
+        parent: modalInfo,
+    });
+    const audioWrapper = createElement({
+        eClass: "audio__wrapper",
+        parent: audio,
+    });
+    const audioGBtn = createElement({
+        tag: "button",
+        eClass: "audio__btn",
+        parent: audioWrapper,
+    });
+    const audioControls = createElement({
+        eClass: "audio__controls",
+        parent: audioWrapper,
+    });
+    const audioGProgress = createElement({
+        tag: "input",
+        eClass: "audio__progress",
+        attr: { type: "range", min: 0, max: ``, value: "0", step: "0.1" },
+        parent: audioControls,
+    });
+    const audioTimePanel = createElement({
+        eClass: "audio__timeline",
+        parent: audioControls,
+    });
+    const audioGCurrentTime = createElement({
+        eClass: "audio__time",
+        inner: "00:00",
+        parent: audioTimePanel,
+    });
+    const audioGFullTime = createElement({
+        eClass: "audio__time",
+        inner: `${BIRDS_DATA[state][num].duration}`,
+        parent: audioTimePanel,
+    });
+    const audioGVolume = createElement({
+        tag: "input",
+        eClass: "audio__volume",
+        attr: { type: "range", min: 0, max: 100, value: 50, step: 5 },
+        parent: audioControls,
+    });
+    stopGTimer();
+    timer.gtime = 0;
+    gPlayer.src = BIRDS_DATA[state][num].audio;
+    gPlayer.currentTime = 0;
+    audioGBtn.addEventListener('click', () => {
+        if (audioGCurrentTime.textContent === audioGFullTime.textContent) {
+            audioGCurrentTime.textContent = "00:00";
+            stopGTimer();
+        }
+        if (audioGBtn.classList.contains("is-play") === false) {
+            audioGBtn.classList.toggle("is-play");
+            gPlayer.play();
+            audioGProgress.value = gPlayer.currentTime;
+            audioGProgress.setAttribute("max", Math.floor(gPlayer.duration));
+            STATE.isStartGTimer = startGTimer(
+                audioGCurrentTime,
+                STATE.isStartGTimer,
+                audioGProgress
+            );
+        } else {
+            audioGBtn.classList.toggle("is-play");
+            gPlayer.pause();
+            stopGTimer();
+        }
+    });
+    gPlayer.addEventListener("ended", () => {
+        stopGTimer();
+        audioGBtn.classList.toggle("is-play");
+        timer.gtime = 0;
+    });
+
+    audioGProgress.addEventListener("input", (e) => {
+        stopGTimer();
+        gPlayer.currentTime = +audioGProgress.value;
+        timer.gtime = +audioGProgress.value;
+        audioGBtn.classList.add("is-play");
+        gPlayer.play();
+        audioGProgress.setAttribute("max", Math.floor(gPlayer.duration));
+        STATE.isStartGTimer = startGTimer(
+            audioGCurrentTime,
+            STATE.isStartGTimer,
+            audioGProgress,
+        );
+    });
+
+    audioGVolume.addEventListener('input', () => {
+        gPlayer.volume = audioGVolume.value / 100;
     });
 }

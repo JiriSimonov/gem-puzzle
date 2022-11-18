@@ -1,6 +1,6 @@
 import { createElement } from "../utils/createElement.js";
 
-export function createAudio(btn, input, current, max, img = "", title = "") {
+export function createAudio(btn, input, current, max, volume, img = "", title = "") {
   const audio = createElement({ eClass: "audio" });
   const answerContainer = createElement({
     eClass: "audio__answer-container",
@@ -27,5 +27,6 @@ export function createAudio(btn, input, current, max, img = "", title = "") {
     parent: audioControls,
   });
   audioTimePanel.append(current, max);
+  audioControls.append(volume);
   return audio;
 }

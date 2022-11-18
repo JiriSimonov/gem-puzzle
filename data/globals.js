@@ -62,6 +62,8 @@ export const STATE = {
   currentTime: undefined,
   isGetAnswer: false,
   isStartTimer: null,
+  isStartQTimer: null,
+  isStartGTimer: null,
   isGameEnd: false,
   theme: getDataFromStorage('theme') ?? true,
   galleryStep: 0,
