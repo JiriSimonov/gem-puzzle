@@ -1,5 +1,5 @@
 import { createFooter } from "./footer.js";
-import { createHeader } from "../song-bird/header.js";
+import { createHeader } from "../header.js";
 import { createMainResults } from "./result-page-main.js";
 
 export default function createResultPage(props) {

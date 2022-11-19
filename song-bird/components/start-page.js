@@ -1,6 +1,6 @@
 import { createElement } from "../utils/createElement.js";
 import { createFooter } from "./footer.js";
-import { createHeader } from "../song-bird/header.js";
+import { createHeader } from "../header.js";
 import { getDataFromStorage } from "../utils/local-storage.js";
 
 const startPageText = {

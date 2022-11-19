@@ -76,7 +76,7 @@ const modalLink = createElement({
 const modalImg = createElement({
   tag: 'img',
   eClass: 'modal__img',
-  attr: {'src': '../assets/images/modal.png'},
+  attr: {'src': './assets/images/modal.png'},
   parent: modalInfo,
 });
 modalOverlay.addEventListener("click", (e) => {
