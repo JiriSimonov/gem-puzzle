@@ -334,6 +334,9 @@ questionsBtn.addEventListener("click", (e) => {
     audioCurrentTime.textContent = "00:00";
     audioBtn.className = "audio__btn";
     stopTimer();
+    qPlayer.pause();
+    qPlayer.currentTime = 0;
+    stopQTimer();
   }
 });
 
