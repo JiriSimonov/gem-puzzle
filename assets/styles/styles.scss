@@ -337,9 +337,8 @@ h6 {
   margin-top: 20px;
 
   &__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     flex-wrap: wrap;
     margin-bottom: 20px;
     border-radius: 13px;
@@ -738,7 +737,16 @@ h6 {
     padding: 20px;
     user-select: none;
 
+    .footer__link--bg {
+      width: 100px;
+      height: 40px;
+      background-image: url('../images/rs_school_js.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
     .footer__link,
+    .footer__year,
     .footer__copyright {
       font-size: 24px;
       font-weight: 500;
@@ -756,14 +764,19 @@ h6 {
       .footer__copyright {
         pointer-events: none;
       }
+
+
+      .footer__link:last-child {
+        font-size: 20px;
+      }
     }
   }
 }
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
   gap: 30px;
   transition: opacity .2s linear;
   margin-top: 20px;
@@ -772,7 +785,6 @@ h6 {
   &__item {
     position: relative;
     padding: 5px;
-    width: 20%;
     background-color: #C16B89;
     border-radius: 13px;
     text-align: center;
@@ -1079,9 +1091,6 @@ h6 {
 }
 
 @media (max-width: 850px) {
-  .gallery__item {
-    width: 35%;
-  }
 
   .header {
     padding: 0 10px;
@@ -1089,10 +1098,8 @@ h6 {
 }
 
 @media (max-width: 1400px) {
-  .gallery {
-    .gallery__item {
-      width: 25%;
-    }
+  .game__wrapper {
+    grid-template-columns: repeat(3, 1fr);
   }
   .start-page {
     background-size: 400px;
@@ -1104,13 +1111,17 @@ h6 {
 
 
 @media (max-width: 1001px) {
-
   .header {
      padding: 0 10px;
      .header__wrapper {
       margin-bottom: 20px;
+      flex-direction: column;
       .controls {
-        gap: 30px;
+        justify-content: space-between;
+        gap: 0;
+        margin-top: 20px;
+        margin-left: 0;
+        width: 100%;
         .header__score {
           font-size: 24px;
           &::after {
@@ -1143,7 +1154,8 @@ h6 {
     align-items: center;
     margin-bottom: 20px;
     .questions__wrapper {
-      width: 90%;
+      padding: 0 15px;
+      width: 80%;
     }
 
     .questions__container {
@@ -1160,11 +1172,6 @@ h6 {
     }
   }
 
-  .game__wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .audio .audio__answer-container .audio__img {
     width: 150px;
     height: 150px;
@@ -1173,15 +1180,27 @@ h6 {
 
 @media (max-width: 750px) {
 
+  .results-page .main__wrapper {
+    padding: 30px;
+    background: #F5EFEF;
+  }
+
+  .results-page {
+    .main__title {
+      font-size: 48px;
+    }
+    .main__descr {
+      font-size: 28px;
+    }
+  }
+
   .audio {
     padding: 20px 40px;
     margin-bottom: 0;
   }
 
   .gallery {
-    .gallery__item {
-      width: 50%;
-    }
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .gallery__title {
@@ -1197,7 +1216,7 @@ h6 {
     }
   }
   .header .header__wrapper .header__logo  {
-    width: 170px;
+    width: 200px;
     height: 30px;
     background-size: contain;
   }
@@ -1221,6 +1240,14 @@ h6 {
   .audio .audio__wrapper .audio__controls .audio__timeline .audio__time {
     font-size: 16px;
   }
+
+  .audio .audio__wrapper .audio__controls .audio__container .audio__progress {
+    &::-webkit-slider-thumb {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
   .audio .audio__wrapper .audio__btn {
     padding: 20px;
     background-position: center;
@@ -1245,6 +1272,90 @@ h6 {
   .modal {
     .modal__text {
       text-align: left;
+    }
+  }
+
+  .questions {
+    gap: 20px;
+    .questions__container {
+      padding: 20px;
+      text-align: center;
+    }
+  }
+  .questions .questions__container .descr__container .descr__img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .questions .questions__container .descr__container .descr__content .descr__title {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  .questions .questions__container .descr__container .descr__content .descr__suptitle {
+    font-size: 18px;
+  }
+
+  .questions .questions__container .descr__text, .questions .questions__container .questions__text {
+    margin: 5px 0 0 0; 
+    font-size: 16px;
+  }
+
+  .questions .questions__container .descr__text, .questions .questions__container .questions__text:first-child {
+    margin-top: 20px;
+  }
+
+  .questions .questions__container .descr__container {
+    display: initial;
+  }
+
+  .questions .questions__wrapper .questions__label {
+    font-size: 16px;
+    padding: 10px 0;
+    .questions__checkbox {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .game__btn {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 501px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .game__wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .game {
+    .audio {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  .header .header__wrapper .controls {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .results-page {
+    .main__title {
+      font-size: 36px;
+    }
+    .main__descr {
+      font-size: 20px;
+    }
+
+    .main__btn {
+      font-size: 18px;
+      padding: 10px;
     }
   }
 }

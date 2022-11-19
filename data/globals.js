@@ -22,8 +22,8 @@ export const MAIN_SECTIONS = [
 ];
 
 export const FOOTER_INFO = {
-  text: ["@JiriSimonov", "RSSchool 2022"],
-  link: ["https://github.com/JiriSimonov", "https://rs.school/js/"],
+  text: ["@JiriSimonov"],
+  link: ["https://github.com/JiriSimonov"],
 };
 
 export const HEADER_LINKS = [

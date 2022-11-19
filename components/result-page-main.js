@@ -34,6 +34,11 @@ export function createMainResults() {
     inner: lang == 'EN' ? 'Play again' :"Сыграть еще",
     parent: mainWrapper,
   });
+
+  if(STATE.score === 30) {
+    mainBtn.style.display = 'none';
+  }
+  
   mainBtn.addEventListener("click", () => {
     STATE.score = 0;
     STATE.currentStep = 0;

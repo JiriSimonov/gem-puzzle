@@ -256,6 +256,8 @@ function createDescription(wrapper, number) {
     stopQTimer();
     audioQBtn.classList.toggle("is-play");
     timer.qtime = 0;
+    audioQProgress.value = 0;
+    audioQCurrentTime.textContent = "00:00";
   });
   
   audioQProgress.addEventListener("input", (e) => {
@@ -374,6 +376,8 @@ player.addEventListener("ended", () => {
   stopTimer();
   audioBtn.classList.toggle("is-play");
   timer.time = 0;
+  audioCurrentTime.textContent = "00:00";
+  audioProgress.value = 0;
 });
 
 audioProgress.addEventListener("input", (e) => {

@@ -254,6 +254,8 @@ function printModal(state, num, parent) {
         stopGTimer();
         audioGBtn.classList.toggle("is-play");
         timer.gtime = 0;
+        audioGProgress.value = 0;
+        audioGCurrentTime.textContent = "00:00";
     });
 
     audioGProgress.addEventListener("input", (e) => {
