@@ -1,4 +1,4 @@
-import { createHeader } from "../header.js";
+import { createHeader } from "../song-bird/header.js";
 import { createMainGallery } from "./gallery-page-main.js";
 import { createFooter } from "./footer.js";
 

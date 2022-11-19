@@ -1,4 +1,4 @@
-import { STATE } from "../data/globals.js";
+import { STATE } from "../song-bird/data/globals.js";
 
 export const timer = { time: 0, qtime: 0, gtime: 0 };
 
