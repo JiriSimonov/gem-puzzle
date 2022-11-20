@@ -21,7 +21,7 @@ export class Router {
     const route = this.routes.find((r) => r.name === path);
     this.onHashChange(
       route ?? {
-        name: "default" /* AppRoute.Default */,
+        name: "default",
         component: this.defaultComponent,
       }
     );
@@ -37,7 +37,7 @@ export function createRouter(routerOutlet) {
   return new Router(
     [
       {
-        name: "start" /* AppRoute.Start */,
+        name: "start",
         component: async () => {
           const { default: createPage } = await import(
             "./components/start-page.js"
@@ -46,7 +46,7 @@ export function createRouter(routerOutlet) {
         },
       },
       {
-        name: "quiz" /* AppRoute.Quiz */,
+        name: "quiz",
         component: async () => {
           const { default: createPage } = await import(
             "./components/quiz-page.js"
@@ -55,7 +55,7 @@ export function createRouter(routerOutlet) {
         },
       },
       {
-        name: "gallery" /* AppRoute.Results */,
+        name: "gallery",
         component: async () => {
           const { default: createPage } = await import(
             "./components/gallery-page.js"
@@ -64,7 +64,7 @@ export function createRouter(routerOutlet) {
         },
       },
       {
-        name: "results" /* AppRoute.Results */,
+        name: "results",
         component: async () => {
           const { default: createPage } = await import(
             "./components/results-page.js"

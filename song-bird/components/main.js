@@ -7,7 +7,7 @@ import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
 import { getDataFromStorage } from "../utils/local-storage.js";
 import { setActiveSection } from "../utils/setActiveItem.js";
-import { startTimer, stopTimer, startQTimer , stopQTimer, timer } from "../utils/timer.js";
+import { startTimer, stopTimer, startQTimer , stopQTimer, timer, qtimer, printTime } from "../utils/timer.js";
 import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
 
@@ -116,10 +116,10 @@ createQuestion();
 const player = new Audio(
   BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].audio
 );
-
 const qPlayer = new Audio();
+qPlayer.setAttribute('preload', 'metadata');
+player.setAttribute('preload', 'metadata');
 
-/* audio */
 const audioTitle = createElement({
   tag: "h2",
   eClass: "descr__title",
@@ -228,7 +228,7 @@ function createDescription(wrapper, number) {
     parent: wrapper,
   });
   stopQTimer();
-  timer.qtime = 0;
+  qtimer.qtime = 0;
   qPlayer.src = BIRDS_DATA[STATE.currentStep][number - 1].audio;
   qPlayer.currentTime = 0;
   audioQBtn.addEventListener('click', () => {
@@ -240,13 +240,13 @@ function createDescription(wrapper, number) {
       audioQBtn.classList.toggle("is-play");
       qPlayer.play();
       audioQProgress.value = qPlayer.currentTime;
-      audioQProgress.setAttribute("max", Math.floor(qPlayer.duration));
-      STATE.isStartQTimer = startTimer(
+      audioQProgress.setAttribute("max", Math.ceil(qPlayer.duration));
+      STATE.isStartQTimer = startQTimer(
         audioQCurrentTime,
         STATE.isStartQTimer,
         audioQProgress
       );
-    } else {
+    } else {  
       audioQBtn.classList.toggle("is-play");
       qPlayer.pause();
       stopQTimer();
@@ -255,7 +255,7 @@ function createDescription(wrapper, number) {
   qPlayer.addEventListener("ended", () => {
     stopQTimer();
     audioQBtn.classList.toggle("is-play");
-    timer.qtime = 0;
+    qtimer.qtime = 0;
     audioQProgress.value = 0;
     audioQCurrentTime.textContent = "00:00";
   });
@@ -263,10 +263,10 @@ function createDescription(wrapper, number) {
   audioQProgress.addEventListener("input", (e) => {
     stopQTimer();
     qPlayer.currentTime = +audioQProgress.value;
-    timer.qtime = +audioQProgress.value;
+    qtimer.qtime = +audioQProgress.value;
     audioQBtn.classList.add("is-play");
     qPlayer.play();
-    audioQProgress.setAttribute("max", Math.floor(qPlayer.duration));
+    audioQProgress.setAttribute("max", Math.ceil(qPlayer.duration));
     STATE.isStartQTimer = startQTimer(
       audioQCurrentTime,
       STATE.isStartQTimer,
@@ -359,7 +359,7 @@ audioBtn.addEventListener("click", (e) => {
     audioBtn.classList.toggle("is-play");
     player.play();
     audioProgress.value = player.currentTime;
-    audioProgress.setAttribute("max", Math.floor(player.duration));
+    audioProgress.setAttribute("max", Math.ceil(player.duration));
     STATE.isStartTimer = startTimer(
       audioCurrentTime,
       STATE.isStartTimer,
@@ -386,7 +386,7 @@ audioProgress.addEventListener("input", (e) => {
   timer.time = +audioProgress.value;
   audioBtn.classList.add("is-play");
   player.play();
-  audioProgress.setAttribute("max", Math.floor(player.duration));
+  audioProgress.setAttribute("max", Math.ceil(player.duration));
   STATE.isStartTimer = startTimer(
     audioCurrentTime,
     STATE.isStartTimer,
