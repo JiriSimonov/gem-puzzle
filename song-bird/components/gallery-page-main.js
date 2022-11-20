@@ -4,7 +4,7 @@ import BIRDS_DATA from "../data/data.js";
 import BIRD_DATA_EN from "../data/dataEn.js";
 import { STATE } from "../data/globals.js";
 import { getDataFromStorage } from "../utils/local-storage.js";
-import { printTime, startGTimer, stopGTimer, timer } from "../utils/timer.js";
+import { startGTimer, stopGTimer, timer } from "../utils/timer.js";
 
 const curentLang = getDataFromStorage('lang');
 export function createMainGallery() {
@@ -202,16 +202,11 @@ function printModal(state, num, parent) {
         eClass: "audio__controls",
         parent: audioWrapper,
     });
-    const audioGLabel = createElement({
-        tag: 'label',
-        eClass: "audio__label",
-        parent: audioControls,
-    });
     const audioGProgress = createElement({
         tag: "input",
         eClass: "audio__progress",
         attr: { type: "range", min: 0, max: ``, value: "0", step: "0.1" },
-        parent: audioGLabel,
+        parent: audioControls,
     });
     const audioTimePanel = createElement({
         eClass: "audio__timeline",
@@ -237,28 +232,27 @@ function printModal(state, num, parent) {
     timer.gtime = 0;
     gPlayer.src = BIRDS_DATA[state][num].audio;
     gPlayer.currentTime = 0;
-    audioGBtn.addEventListener('click', (e) => {
-        if (e.target === audioGBtn) {
-            if (audioGBtn.classList.contains("is-play") === false) {
-                audioGBtn.classList.toggle("is-play");
-                gPlayer.play();
-                audioGProgress.value = gPlayer.currentTime;
-                audioGProgress.setAttribute("max", Math.floor(gPlayer.duration));
-                STATE.isStartGTimer = startGTimer(
-                    audioGCurrentTime,
-                    STATE.isStartGTimer,
-                    audioGProgress
-                );
-            } else {
-                audioGBtn.classList.toggle("is-play");
-                gPlayer.pause();
-                stopGTimer();
-            }
+    audioGBtn.addEventListener('click', () => {
+        if (audioGCurrentTime.textContent === audioGFullTime.textContent) {
+            audioGCurrentTime.textContent = "00:00";
+            stopGTimer();
+        }
+        if (audioGBtn.classList.contains("is-play") === false) {
+            audioGBtn.classList.toggle("is-play");
+            gPlayer.play();
+            audioGProgress.value = gPlayer.currentTime;
+            audioGProgress.setAttribute("max", Math.floor(gPlayer.duration));
+            STATE.isStartGTimer = startGTimer(
+                audioGCurrentTime,
+                STATE.isStartGTimer,
+                audioGProgress
+            );
         } else {
-            return;
+            audioGBtn.classList.toggle("is-play");
+            gPlayer.pause();
+            stopGTimer();
         }
     });
-    
     gPlayer.addEventListener("ended", () => {
         stopGTimer();
         audioGBtn.classList.toggle("is-play");
@@ -268,11 +262,17 @@ function printModal(state, num, parent) {
     });
 
     audioGProgress.addEventListener("input", (e) => {
-            gPlayer.currentTime = +audioGProgress.value;
-            timer.gtime = +audioGProgress.value;
-            const minutesValue = Math.floor(gPlayer.currentTime / 60) ;
-            const secondsValue = Math.floor(Math.floor(gPlayer.currentTime) - Math.floor(gPlayer.currentTime / 60) * 60);
-            printTime(audioGCurrentTime, secondsValue, minutesValue);
+        stopGTimer();
+        gPlayer.currentTime = +audioGProgress.value;
+        timer.gtime = +audioGProgress.value;
+        audioGBtn.classList.add("is-play");
+        gPlayer.play();
+        audioGProgress.setAttribute("max", Math.floor(gPlayer.duration));
+        STATE.isStartGTimer = startGTimer(
+            audioGCurrentTime,
+            STATE.isStartGTimer,
+            audioGProgress,
+        );
     });
 
     audioGVolume.addEventListener('input', () => {
