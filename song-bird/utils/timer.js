@@ -1,6 +1,7 @@
 import { STATE } from "../data/globals.js";
 
 export const timer = { time: 0, qtime: 0, gtime: 0 };
+export const qtimer = {qtime: 0};
 
 export function startTimer(elem, isAlreadyStarted, player) {
   if (!isAlreadyStarted) {
@@ -18,10 +19,10 @@ export function startTimer(elem, isAlreadyStarted, player) {
 export function startQTimer(elem, isAlreadyStarted, player) {
   if (!isAlreadyStarted) {
     return setInterval(function () {
-      timer.qtime += 1/60;
-      player.value = timer.qtime;
-      const minutesValue = Math.floor(timer.qtime / 60) ;
-      const secondsValue = Math.floor(Math.floor(timer.qtime) - Math.floor(timer.qtime / 60) * 60);
+      qtimer.qtime += 1/60;
+      player.value = qtimer.qtime;
+      const minutesValue = Math.floor(qtimer.qtime / 60) ;
+      const secondsValue = Math.floor(Math.floor(qtimer.qtime) - Math.floor(qtimer.qtime / 60) * 60);
       printQTime((elem = elem), secondsValue, minutesValue);
     }, 1000/60);
   }
