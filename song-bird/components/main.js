@@ -7,7 +7,7 @@ import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
 import { getDataFromStorage } from "../utils/local-storage.js";
 import { setActiveSection } from "../utils/setActiveItem.js";
-import { startTimer, stopTimer, startQTimer , stopQTimer, timer, qtimer, printTime, printQTime } from "../utils/timer.js";
+import { startTimer, stopTimer, startQTimer , stopQTimer, timer, qtimer, printTime } from "../utils/timer.js";
 import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
 
@@ -261,11 +261,17 @@ function createDescription(wrapper, number) {
   });
   
   audioQProgress.addEventListener("input", (e) => {
+    stopQTimer();
     qPlayer.currentTime = +audioQProgress.value;
     qtimer.qtime = +audioQProgress.value;
-    const minutesValue = Math.floor(qPlayer.currentTime / 60) ;
-    const secondsValue = Math.floor(Math.floor(qPlayer.currentTime) - Math.floor(qPlayer.currentTime / 60) * 60);
-    printQTime(audioQCurrentTime, secondsValue, minutesValue);
+    audioQBtn.classList.add("is-play");
+    qPlayer.play();
+    audioQProgress.setAttribute("max", Math.ceil(qPlayer.duration));
+    STATE.isStartQTimer = startQTimer(
+      audioQCurrentTime,
+      STATE.isStartQTimer,
+      audioQProgress,
+    );
   });
   
   audioQVolume.addEventListener('input', () => {
@@ -375,11 +381,17 @@ player.addEventListener("ended", () => {
 });
 
 audioProgress.addEventListener("input", (e) => {
+  stopTimer();
   player.currentTime = +audioProgress.value;
-  timer.qtime = +audioProgress.value;
-  const minutesValue = Math.floor(player.currentTime / 60) ;
-  const secondsValue = Math.floor(Math.floor(player.currentTime) - Math.floor(player.currentTime / 60) * 60);
-  printQTime(audioCurrentTime, secondsValue, minutesValue);
+  timer.time = +audioProgress.value;
+  audioBtn.classList.add("is-play");
+  player.play();
+  audioProgress.setAttribute("max", Math.ceil(player.duration));
+  STATE.isStartTimer = startTimer(
+    audioCurrentTime,
+    STATE.isStartTimer,
+    audioProgress
+  );
 });
 
 audioVolume.addEventListener('input', () => {
