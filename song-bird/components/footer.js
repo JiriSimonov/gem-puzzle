@@ -68,7 +68,7 @@ const modalText = createElement({
 const modalLink = createElement({
   tag: "a",
   eClass: "modal__link",
-  inner: lang == 'EN' ? `Link to design's author` : '🍒Ссылка на автора дизайна🍒',
+  inner: lang == 'EN' ? `🍒Link to design's author🍒` : '🍒Ссылка на автора дизайна🍒',
   attr: {'href': '', 'target': '_blank'},
   parent: modalInfo,
 });
@@ -83,10 +83,16 @@ modalOverlay.addEventListener("click", (e) => {
   let target = e.target;
   if (target === modalOverlay) {
     modal.classList.toggle('is-open');
+    document.body.classList.remove('no-scroll');
   }
 });
-  swan.addEventListener('click', () => {
-    modal.classList.toggle('is-open');
+swan.addEventListener('click', () => {
+  modal.classList.toggle('is-open');
+  document.body.classList.add('no-scroll');
   });
   return footer;
 }
+
+
+
+

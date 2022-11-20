@@ -22,6 +22,10 @@ h6 {
   transition: 0.2s linear;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .start-page,
 .quiz-page,
 .results-page,
@@ -37,8 +41,10 @@ h6 {
   padding: 0 10px;
   margin: 0 auto;
 }
+
 .dark {
   background-color: #110d3e;
+
   * {
     cursor: url('../images/cursor/mouse.png'), auto;
   }
@@ -46,6 +52,7 @@ h6 {
   *:hover {
     cursor: url('../images/cursor/mouse.png'), auto;
   }
+
   .header .header__wrapper .controls .controls__input:hover {
     cursor: url('../images/cursor/mouse.png'), auto;
   }
@@ -53,9 +60,11 @@ h6 {
   .header .header__wrapper .controls .header__lang {
     color: white;
   }
+
   .header .header__wrapper .controls .header__lang:hover {
     cursor: url('../images/cursor/mouse.png'), auto;
   }
+
   .swan {
     background-image: url("../images/swan_light.png");
   }
@@ -83,6 +92,7 @@ h6 {
 
   .main {
     user-select: none;
+
     .title {
       margin: 40px 0;
       font-family: 'Dancing Script', cursive;
@@ -205,7 +215,8 @@ h6 {
 
 
 .header {
-  padding: 0 10px; 
+  padding: 0 10px;
+
   .header__wrapper {
     display: flex;
     justify-content: space-between;
@@ -253,6 +264,7 @@ h6 {
         border-right: none;
         background-color: transparent;
       }
+
       .header__lang_en {
         padding: 7px 22px 7px 19px;
         border: 2px solid #c16b89;
@@ -474,6 +486,7 @@ h6 {
           background-size: contain;
         }
       }
+
       .audio__progress {
         width: 100%;
         height: 5px;
@@ -523,6 +536,7 @@ h6 {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         .audio__time {
           font-size: 24px;
           font-weight: 400;
@@ -656,17 +670,21 @@ h6 {
       display: flex;
       gap: 25px;
       width: 100%;
+
       .audio {
         margin: 0;
         padding: 0;
+
         .audio__wrapper {
           justify-content: space-between;
           width: 100%;
+
           .audio__controls {
             width: 100%;
           }
         }
       }
+
       .descr__img {
         max-width: 261px;
         max-height: 202px;
@@ -678,6 +696,7 @@ h6 {
         display: flex;
         flex-direction: column;
         width: 100%;
+
         .descr__title {
           margin-bottom: 19px;
           font-size: 32px;
@@ -934,11 +953,13 @@ h6 {
     transition: all .3s linear;
     overflow: hidden;
   }
+
   .modal__overlay--visible {
     opacity: 1;
     visibility: visible;
     transition: all .3s linear;
   }
+
   .modal__content--visible {
     display: block;
     opacity: 1;
@@ -962,11 +983,13 @@ h6 {
     background-position: 28px center;
     cursor: url('../images/cursor/mouse-black.png'), auto;
   }
+
   .is-play {
     background-image: url("../images/icons/stop.svg");
     background-repeat: no-repeat;
     background-position: 28px center;
   }
+
   .modal__btn {
     padding: 10px 39px;
     border: 1px solid #a73962;
@@ -996,6 +1019,7 @@ h6 {
     line-height: auto;
     color: white;
     transition: .3s linear;
+    user-select: none;
 
     &::placeholder {
       font-size: 16px;
@@ -1017,6 +1041,7 @@ h6 {
     visibility: visible;
     transition: all .3s linear;
   }
+
   .modal__content {
     display: block;
     text-align: center;
@@ -1024,12 +1049,14 @@ h6 {
     visibility: visible;
     transition: all .3s linear;
     max-width: 800px;
+
     .modal__info {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
+
     .modal__link {
       font-size: 24px;
       font-weight: 400;
@@ -1037,6 +1064,8 @@ h6 {
       color: white;
       text-decoration: none;
       transition: .3s linear;
+      user-select: none;
+
       &:hover {
         color: #000;
       }
@@ -1060,6 +1089,7 @@ h6 {
   background-size: cover;
   animation: swan-roaming 60s infinite ease-in-out;
   transition: 0.3s linear;
+
   &:hover {
     background-image: url("../images/swan_light.png");
   }
@@ -1101,40 +1131,46 @@ h6 {
   .game__wrapper {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .start-page {
     background-size: 400px;
   }
+
   .questions .questions__container .descr__container {
     display: initial;
   }
 }
 
-
 @media (max-width: 1001px) {
   .header {
-     padding: 0 10px;
-     .header__wrapper {
+    padding: 0 10px;
+
+    .header__wrapper {
       margin-bottom: 20px;
       flex-direction: column;
+
       .controls {
         justify-content: space-between;
         gap: 0;
         margin-top: 20px;
         margin-left: 0;
         width: 100%;
+
         .header__score {
           font-size: 24px;
+
           &::after {
             display: none;
           }
         }
       }
-     }
+    }
 
   }
 
   .game {
     margin-top: 20px;
+
     .audio {
       margin-bottom: 20px;
       padding: 20px;
@@ -1153,6 +1189,7 @@ h6 {
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+
     .questions__wrapper {
       padding: 0 15px;
       width: 80%;
@@ -1160,6 +1197,7 @@ h6 {
 
     .questions__container {
       width: 90%;
+
       .descr__container {
         display: flex;
       }
@@ -1189,6 +1227,7 @@ h6 {
     .main__title {
       font-size: 48px;
     }
+
     .main__descr {
       font-size: 28px;
     }
@@ -1206,6 +1245,7 @@ h6 {
   .gallery__title {
     font-size: 18px;
   }
+
   .gallery__subtitle {
     font-size: 16px;
   }
@@ -1215,20 +1255,24 @@ h6 {
       font-size: 18px;
     }
   }
-  .header .header__wrapper .header__logo  {
+
+  .header .header__wrapper .header__logo {
     width: 200px;
     height: 30px;
     background-size: contain;
   }
+
   .game__section {
-    padding: 7px;
+    padding: 15px;
     font-size: 18px;
   }
 
   .footer .footer__wrapper {
     padding: 10px;
+
     .footer__link {
       font-size: 18px;
+      user-select: none;
     }
   }
 }
@@ -1236,7 +1280,12 @@ h6 {
 @media (max-width: 600px) {
   .audio {
     padding: 20px;
+
+    .audio__wrapper {
+      align-items: flex-start;
+    }
   }
+
   .audio .audio__wrapper .audio__controls .audio__timeline .audio__time {
     font-size: 16px;
   }
@@ -1253,15 +1302,18 @@ h6 {
     background-position: center;
     background-size: 20px;
   }
+
   .audio .audio__wrapper .audio__controls .audio__volume::before {
     top: 50%;
     width: 20px;
     height: 20px;
     transform: translateY(-50%);
   }
+
   .audio .audio__wrapper .audio__controls {
     padding-top: 0;
   }
+
   .audio .audio__wrapper .audio__controls .audio__progress {
     &::-webkit-slider-thumb {
       width: 20px;
@@ -1277,11 +1329,13 @@ h6 {
 
   .questions {
     gap: 20px;
+
     .questions__container {
       padding: 20px;
       text-align: center;
     }
   }
+
   .questions .questions__container .descr__container .descr__img {
     display: block;
     margin: 0 auto;
@@ -1296,12 +1350,14 @@ h6 {
     font-size: 18px;
   }
 
-  .questions .questions__container .descr__text, .questions .questions__container .questions__text {
-    margin: 5px 0 0 0; 
+  .questions .questions__container .descr__text,
+  .questions .questions__container .questions__text {
+    margin: 5px 0 0 0;
     font-size: 16px;
   }
 
-  .questions .questions__container .descr__text, .questions .questions__container .questions__text:first-child {
+  .questions .questions__container .descr__text,
+  .questions .questions__container .questions__text:first-child {
     margin-top: 20px;
   }
 
@@ -1312,6 +1368,7 @@ h6 {
   .questions .questions__wrapper .questions__label {
     font-size: 16px;
     padding: 10px 0;
+
     .questions__checkbox {
       width: 15px;
       height: 15px;
@@ -1349,6 +1406,7 @@ h6 {
     .main__title {
       font-size: 36px;
     }
+
     .main__descr {
       font-size: 20px;
     }

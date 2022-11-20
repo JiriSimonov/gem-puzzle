@@ -21,6 +21,10 @@ h6 {
   transition: 0.2s linear;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .start-page,
 .quiz-page,
 .results-page,
@@ -933,6 +937,10 @@ h6 {
   line-height: auto;
   color: white;
   transition: 0.3s linear;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .modal .modal__text::-moz-placeholder {
   font-size: 16px;
@@ -985,6 +993,10 @@ h6 {
   color: white;
   text-decoration: none;
   transition: 0.3s linear;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .is-open .modal__content .modal__link:hover {
   color: #000;
@@ -1158,7 +1170,7 @@ h6 {
     background-size: contain;
   }
   .game__section {
-    padding: 7px;
+    padding: 15px;
     font-size: 18px;
   }
   .footer .footer__wrapper {
@@ -1166,11 +1178,18 @@ h6 {
   }
   .footer .footer__wrapper .footer__link {
     font-size: 18px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
   }
 }
 @media (max-width: 600px) {
   .audio {
     padding: 20px;
+  }
+  .audio .audio__wrapper {
+    align-items: flex-start;
   }
   .audio .audio__wrapper .audio__controls .audio__timeline .audio__time {
     font-size: 16px;
@@ -1218,11 +1237,13 @@ h6 {
   .questions .questions__container .descr__container .descr__content .descr__suptitle {
     font-size: 18px;
   }
-  .questions .questions__container .descr__text, .questions .questions__container .questions__text {
+  .questions .questions__container .descr__text,
+.questions .questions__container .questions__text {
     margin: 5px 0 0 0;
     font-size: 16px;
   }
-  .questions .questions__container .descr__text, .questions .questions__container .questions__text:first-child {
+  .questions .questions__container .descr__text,
+.questions .questions__container .questions__text:first-child {
     margin-top: 20px;
   }
   .questions .questions__container .descr__container {

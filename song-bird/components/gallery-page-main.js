@@ -63,6 +63,7 @@ export function createMainGallery() {
             printModal(STATE.galleryStep, index, galleryItem);
             tooltipBtn.addEventListener("click", (e) => {
                 showModal(tooltip.nextSibling.children[0], tooltip.nextSibling.children[0].children[0]);
+                document.body.classList.add('no-scroll');
             });
             return galleryItem;
         },
@@ -147,6 +148,7 @@ function printModal(state, num, parent) {
             }
             audioGCurrentTime.textContent = "00:00";
             audioGProgress.value = gPlayer.currentTime;
+            document.body.classList.remove('no-scroll');
         }
     });
     const modalContent = createElement({
@@ -180,6 +182,7 @@ function printModal(state, num, parent) {
         }
         audioGCurrentTime.textContent = "00:00";
         audioGProgress.value = gPlayer.currentTime;
+        document.body.classList.remove('no-scroll');
     });
     const gPlayer = new Audio();
     const audio = createElement({
