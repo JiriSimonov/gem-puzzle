@@ -143,7 +143,7 @@ const audioCurrentTime = createElement({
 });
 const audioFullTime = createElement({
   eClass: "audio__time",
-  inner: `00:00`,
+  inner: `${BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration}`,
 });
 const audioVolume = createElement({
   tag: "input",
@@ -212,7 +212,7 @@ function createDescription(wrapper, number) {
   });
   const audioQFullTime = createElement({
     eClass: "audio__time",
-    inner: `00:00`,
+    inner: `${BIRDS_DATA[STATE.currentStep][number - 1].duration}`,
     parent: audioTimePanel,
   });
   const audioQVolume = createElement({
@@ -239,13 +239,8 @@ function createDescription(wrapper, number) {
     if (audioQBtn.classList.contains("is-play") === false) {
       audioQBtn.classList.toggle("is-play");
       qPlayer.play();
-      qPlayer.onloadedmetadata = () => {
-        const minutes = Math.floor(qPlayer.duration / 60) ;
-        const seconds = Math.floor(Math.floor(qPlayer.duration) - Math.floor(qPlayer.duration / 60));
-        printTime(audioQFullTime, seconds, minutes);
-      };
       audioQProgress.value = qPlayer.currentTime;
-      audioQProgress.setAttribute("max", Math.floor(qPlayer.duration));
+      audioQProgress.setAttribute("max", Math.ceil(qPlayer.duration));
       STATE.isStartQTimer = startQTimer(
         audioQCurrentTime,
         STATE.isStartQTimer,
@@ -271,7 +266,7 @@ function createDescription(wrapper, number) {
     qtimer.qtime = +audioQProgress.value;
     audioQBtn.classList.add("is-play");
     qPlayer.play();
-    audioQProgress.setAttribute("max", Math.floor(qPlayer.duration));
+    audioQProgress.setAttribute("max", Math.ceil(qPlayer.duration));
     STATE.isStartQTimer = startQTimer(
       audioQCurrentTime,
       STATE.isStartQTimer,
@@ -363,13 +358,8 @@ audioBtn.addEventListener("click", (e) => {
   if (audioBtn.classList.contains("is-play") === false) {
     audioBtn.classList.toggle("is-play");
     player.play();
-    player.onloadedmetadata = () => {
-      const minutes = Math.floor(player.duration / 60) ;
-      const seconds = Math.floor(Math.floor(player.duration) - Math.floor(player.duration / 60));
-      printTime(audioFullTime, seconds, minutes);
-    };
     audioProgress.value = player.currentTime;
-    audioProgress.setAttribute("max", Math.floor(player.duration));
+    audioProgress.setAttribute("max", Math.ceil(player.duration));
     STATE.isStartTimer = startTimer(
       audioCurrentTime,
       STATE.isStartTimer,
@@ -396,7 +386,7 @@ audioProgress.addEventListener("input", (e) => {
   timer.time = +audioProgress.value;
   audioBtn.classList.add("is-play");
   player.play();
-  audioProgress.setAttribute("max", Math.floor(player.duration));
+  audioProgress.setAttribute("max", Math.ceil(player.duration));
   STATE.isStartTimer = startTimer(
     audioCurrentTime,
     STATE.isStartTimer,
