@@ -7,7 +7,7 @@ import { createElements } from "../utils/createElements.js";
 import { getRundomNum } from "../utils/getRundomNum.js";
 import { getDataFromStorage } from "../utils/local-storage.js";
 import { setActiveSection } from "../utils/setActiveItem.js";
-import { startTimer, stopTimer, startQTimer , stopQTimer, timer, qtimer, printTime } from "../utils/timer.js";
+import { startTimer, stopTimer, startQTimer , stopQTimer, timer, qtimer, printTime, printQTime } from "../utils/timer.js";
 import { createAudio } from "./audio.js";
 import { createQuestions } from "./questions.js";
 
@@ -131,11 +131,12 @@ const audioImg = createElement({
 const audioBtn = createElement({
   tag: "button",
   eClass: "audio__btn",
+  attr: {'disabled': true}
 });
 const audioProgress = createElement({
   tag: "input",
   eClass: "audio__progress",
-  attr: { type: "range", min: 0, max: ``, value: "0", step: "0.1" },
+  attr: { type: "range", min: 0, max: ``, value: "0", step: "0.1", 'disabled': true },
 });
 const audioCurrentTime = createElement({
   eClass: "audio__time",
@@ -143,12 +144,52 @@ const audioCurrentTime = createElement({
 });
 const audioFullTime = createElement({
   eClass: "audio__time",
-  inner: `${BIRDS_DATA[STATE.currentStep][STATE.currentAnswer - 1].duration}`,
+  inner: '00:00',
 });
 const audioVolume = createElement({
   tag: "input",
   eClass: "audio__volume",
   attr: { type: "range", min: 0, max: 100, value: 50, step: 5 },
+});
+
+player.onloadedmetadata = (e) => {
+  const time = player.duration;
+  const min = Math.floor(time / 60)
+  const sec = Math.floor(Math.floor(time) - Math.floor(min) * 60)
+  printTime(audioFullTime, sec, min);
+  audioBtn.removeAttribute('disabled');
+  audioProgress.removeAttribute('disabled');
+  audioProgress.addEventListener("input", (e) => {
+    const time = player.duration;
+    const min = Math.floor(time / 60);
+    const sec = Math.floor(Math.floor(time) - Math.floor(min) * 60);
+    audioProgress.setAttribute('max', time);
+    printTime(audioFullTime, sec, min);
+    audioBtn.removeAttribute('disabled');
+    audioProgress.removeAttribute('disabled');
+    audioProgress.addEventListener("input", (e) => {
+      let currentTime = Math.floor(player.currentTime);
+      let cmin = Math.floor(currentTime / 60);
+      let csec = Math.floor(Math.floor(currentTime) - Math.floor(currentTime / 60) * 60);
+      player.currentTime = +audioProgress.value;
+      timer.time = +audioProgress.value;
+      printTime(audioCurrentTime, csec, cmin);
+    });
+  });
+}
+
+player.addEventListener("ended", () => {
+  stopTimer();
+  audioBtn.classList.toggle("is-play");
+  timer.time = 0;
+  audioCurrentTime.textContent = "00:00";
+  audioProgress.value = 0;
+});
+
+
+audioVolume.addEventListener('input', () => {
+  player.volume = audioVolume.value / 100;
+  STATE.volume = player.volume;
 });
 
 function createDescription(wrapper, number) {
@@ -198,7 +239,7 @@ function createDescription(wrapper, number) {
   const audioQProgress = createElement({
     tag: "input",
     eClass: "audio__progress",
-    attr: { type: "range", min: 0, max: ``, value: "0", step: "0.1" },
+    attr: { type: "range", min: 0, max: ``, value: "0", step: "0.1", 'disabled': true },
     parent: audioControls,
   });
   const audioTimePanel = createElement({
@@ -212,7 +253,7 @@ function createDescription(wrapper, number) {
   });
   const audioQFullTime = createElement({
     eClass: "audio__time",
-    inner: `${BIRDS_DATA[STATE.currentStep][number - 1].duration}`,
+    inner: '00:00',
     parent: audioTimePanel,
   });
   const audioQVolume = createElement({
@@ -227,20 +268,34 @@ function createDescription(wrapper, number) {
     inner: `${lang[STATE.currentStep][number - 1].description}`,
     parent: wrapper,
   });
+  audioQBtn.setAttribute('disabled', true);
+  qPlayer.onloadedmetadata = (e) => {
+    const time = qPlayer.duration;
+    const min = Math.floor(time / 60);
+    const sec = Math.floor(Math.floor(time) - Math.floor(min) * 60);
+    audioQProgress.setAttribute('max', time);
+    printQTime(audioQFullTime, sec, min);
+    audioQBtn.removeAttribute('disabled');
+    audioQProgress.removeAttribute('disabled');
+    audioQProgress.addEventListener("input", (e) => {
+      let currentTime = Math.floor(qPlayer.currentTime);
+      let cmin = Math.floor(currentTime / 60);
+      let csec = Math.floor(Math.floor(currentTime) - Math.floor(currentTime / 60) * 60);
+      qPlayer.currentTime = +audioQProgress.value;
+      qtimer.qtime = +audioQProgress.value;
+      printQTime(audioQCurrentTime, csec, cmin);
+    });
+  }
   stopQTimer();
   qtimer.qtime = 0;
   qPlayer.src = BIRDS_DATA[STATE.currentStep][number - 1].audio;
   qPlayer.currentTime = 0;
   audioQBtn.addEventListener('click', () => {
-    if (audioQCurrentTime.textContent === audioQFullTime.textContent) {
-      audioQCurrentTime.textContent = "00:00";
-      stopQTimer();
-    }
     if (audioQBtn.classList.contains("is-play") === false) {
       audioQBtn.classList.toggle("is-play");
       qPlayer.play();
-      audioQProgress.value = qPlayer.currentTime;
-      audioQProgress.setAttribute("max", Math.ceil(qPlayer.duration));
+      audioQProgress.value = Math.floor(qPlayer.currentTime);
+      audioQProgress.setAttribute("max", Math.floor(qPlayer.duration));
       STATE.isStartQTimer = startQTimer(
         audioQCurrentTime,
         STATE.isStartQTimer,
@@ -248,32 +303,16 @@ function createDescription(wrapper, number) {
       );
     } else {  
       audioQBtn.classList.toggle("is-play");
-      qPlayer.pause();
       stopQTimer();
+      qPlayer.pause();
     }
   });
   qPlayer.addEventListener("ended", () => {
     stopQTimer();
     audioQBtn.classList.toggle("is-play");
     qtimer.qtime = 0;
-    audioQProgress.value = 0;
-    audioQCurrentTime.textContent = "00:00";
   });
-  
-  audioQProgress.addEventListener("input", (e) => {
-    stopQTimer();
-    qPlayer.currentTime = +audioQProgress.value;
-    qtimer.qtime = +audioQProgress.value;
-    audioQBtn.classList.add("is-play");
-    qPlayer.play();
-    audioQProgress.setAttribute("max", Math.ceil(qPlayer.duration));
-    STATE.isStartQTimer = startQTimer(
-      audioQCurrentTime,
-      STATE.isStartQTimer,
-      audioQProgress,
-    );
-  });
-  
+    
   audioQVolume.addEventListener('input', () => {
     qPlayer.volume = audioQVolume.value / 100;
   });
@@ -351,15 +390,11 @@ function printScore(num, lang = getDataFromStorage('lang')) {
 }
 
 audioBtn.addEventListener("click", (e) => {
-  if (audioCurrentTime.textContent === audioFullTime.textContent) {
-    audioCurrentTime.textContent = "00:00";
-    stopTimer();
-  }
   if (audioBtn.classList.contains("is-play") === false) {
     audioBtn.classList.toggle("is-play");
     player.play();
-    audioProgress.value = player.currentTime;
-    audioProgress.setAttribute("max", Math.ceil(player.duration));
+    audioProgress.value = Math.floor(player.currentTime);
+    audioProgress.setAttribute("max", Math.floor(player.duration));
     STATE.isStartTimer = startTimer(
       audioCurrentTime,
       STATE.isStartTimer,
@@ -367,36 +402,9 @@ audioBtn.addEventListener("click", (e) => {
     );
   } else {
     audioBtn.classList.toggle("is-play");
-    player.pause();
     stopTimer();
+    player.pause();
   }
-});
-
-player.addEventListener("ended", () => {
-  stopTimer();
-  audioBtn.classList.toggle("is-play");
-  timer.time = 0;
-  audioCurrentTime.textContent = "00:00";
-  audioProgress.value = 0;
-});
-
-audioProgress.addEventListener("input", (e) => {
-  stopTimer();
-  player.currentTime = +audioProgress.value;
-  timer.time = +audioProgress.value;
-  audioBtn.classList.add("is-play");
-  player.play();
-  audioProgress.setAttribute("max", Math.ceil(player.duration));
-  STATE.isStartTimer = startTimer(
-    audioCurrentTime,
-    STATE.isStartTimer,
-    audioProgress
-  );
-});
-
-audioVolume.addEventListener('input', () => {
-  player.volume = audioVolume.value / 100;
-  STATE.volume = player.volume;
 });
 
 function clearQuestions() {
