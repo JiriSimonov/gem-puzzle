@@ -395,6 +395,9 @@ h6 {
   background-position: 28px center;
   cursor: url("../images/cursor/mouse-black.png"), auto;
 }
+.audio .audio__wrapper .audio__btn:disabled {
+  opacity: 0.5;
+}
 .audio .audio__wrapper .is-play {
   background-image: url("../images/icons/stop.svg");
   background-repeat: no-repeat;
@@ -500,6 +503,7 @@ h6 {
 
 .questions {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 50px;
   margin-bottom: 20px;
@@ -903,6 +907,9 @@ h6 {
   background-position: 28px center;
   cursor: url("../images/cursor/mouse-black.png"), auto;
 }
+.modal .audio__btn:disabled {
+  opacity: 0.5;
+}
 .modal .is-play {
   background-image: url("../images/icons/stop.svg");
   background-repeat: no-repeat;
@@ -1202,6 +1209,9 @@ h6 {
     padding: 20px;
     background-position: center;
     background-size: 20px;
+  }
+  .audio .audio__wrapper .audio__btn:disabled {
+    opacity: 0.5;
   }
   .audio .audio__wrapper .audio__controls .audio__volume::before {
     top: 50%;
