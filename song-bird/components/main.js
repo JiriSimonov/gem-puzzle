@@ -236,11 +236,16 @@ function createDescription(wrapper, number) {
     eClass: "audio__controls",
     parent: audioWrapper,
   });
+  const audioQLabel = createElement({
+    tag: "label",
+    eClass: "audio__label",
+    parent: audioControls,
+  });
   const audioQProgress = createElement({
     tag: "input",
     eClass: "audio__progress",
     attr: { type: "range", min: 0, max: ``, value: "0", step: "0.1", 'disabled': true },
-    parent: audioControls,
+    parent: audioQLabel,
   });
   const audioTimePanel = createElement({
     eClass: "audio__timeline",

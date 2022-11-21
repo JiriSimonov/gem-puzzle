@@ -17,11 +17,16 @@ export function createAudio(btn, input, current, max, volume, img = "", title = 
     eClass: "audio__controls",
     parent: audioWrapper,
   });
+  const audioLabel = createElement({
+    tag: 'label',
+    eClass: 'audio__label',
+    parent: audioControls,
+  });
   const audioProgressBar = createElement({
     eClass: "audio__container",
     parent: audioControls,
   });
-  audioProgressBar.appendChild(input);
+  audioLabel.appendChild(input);
   const audioTimePanel = createElement({
     eClass: "audio__timeline",
     parent: audioControls,

@@ -69,7 +69,7 @@ const modalLink = createElement({
   tag: "a",
   eClass: "modal__link",
   inner: lang == 'EN' ? `🍒Link to design's author🍒` : '🍒Ссылка на автора дизайна🍒',
-  attr: {'href': '', 'target': '_blank'},
+  attr: {'href': 'https://github.com/lyutails', 'target': '_blank'},
   parent: modalInfo,
 });
 

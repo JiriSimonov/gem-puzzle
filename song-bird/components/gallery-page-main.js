@@ -202,11 +202,15 @@ function printModal(state, num, parent) {
         eClass: "audio__controls",
         parent: audioWrapper,
     });
+    const audioGLabel = createElement({
+        eClass: "audio__label",
+        parent: audioControls,
+    });
     const audioGProgress = createElement({
         tag: "input",
         eClass: "audio__progress",
         attr: { type: "range", min: 0, max: ``, value: "0", step: "0.1" },
-        parent: audioControls,
+        parent: audioGLabel,
     });
     const audioTimePanel = createElement({
         eClass: "audio__timeline",
