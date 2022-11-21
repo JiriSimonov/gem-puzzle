@@ -258,7 +258,6 @@ function printModal(state, num, parent) {
   stopGTimer();
   timer.gtime = 0;
   gPlayer.src = BIRDS_DATA[state][num].audio;
-  console.log(gPlayer.src);
   gPlayer.currentTime = 0;
   audioGBtn.addEventListener('click', () => {
     if (audioGBtn.classList.contains("is-play") === false) {
