@@ -19,3 +19,8 @@ export interface NewsResProps {
     url: string;
     sources: string;
 }
+
+export interface MakeUrlProps {
+    endpoint: string;
+    options: { [key: string]: string };
+}
