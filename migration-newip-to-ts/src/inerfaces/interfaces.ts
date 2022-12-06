@@ -8,3 +8,14 @@ export interface NewsProps {
     url?: string;
     urlToImage?: string;
 }
+
+export interface NewsResProps {
+    category: string;
+    country: string;
+    description: string;
+    id: string;
+    language: string;
+    name: string;
+    url: string;
+    sources: string;
+}
