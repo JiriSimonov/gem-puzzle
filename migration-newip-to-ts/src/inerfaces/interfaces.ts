@@ -1,9 +1,10 @@
-export default interface NewsProps {
-    id?: string;
-    name?: string;
+export interface NewsProps {
+    author?: string;
+    content?: string;
     description?: string;
+    publishedAt?: string;
+    source?: { id: string; name: string };
+    title?: string;
     url?: string;
-    category?: string;
-    language?: string;
-    country?: string;
+    urlToImage?: string;
 }
