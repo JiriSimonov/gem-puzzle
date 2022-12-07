@@ -31,3 +31,10 @@ export interface DataProps {
     articles: NewsProps[];
     sources: NewsResProps[];
 }
+
+export interface BaseComponentProps {
+    readonly tag?: keyof HTMLElementTagNameMap;
+    className?: string;
+    text?: string;
+    parent?: HTMLElement;
+}
