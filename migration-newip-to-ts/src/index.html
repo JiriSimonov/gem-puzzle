@@ -7,23 +7,33 @@
         <title>NewsPortal</title>
     </head>
     <body>
-        <header>
+        <header class="header">
             <h1>News Portal</h1>
         </header>
-        <main>
-            <div class="sources buttons"></div>
-            <div class="news"></div>
+        <main class="main">
+            <div class="container">
+                <div class="main__content">
+                    <div class="sources buttons"></div>
+                    <div class="news"></div>
+                </div>
+            </div>
         </main>
-        <footer>
-            <p class="copyright">
-                Copyright <a href="https://newsapi.org">NewsAPI</a>
-            </p>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <a href="https://github.com/JiriSimonov" class="footer__link" target="_blank">@JiriSimonov</a>
+                    <p class="footer__copyright">
+                        Copyright <a href="https://newsapi.org" class="footer__link">NewsAPI 2022</a>
+                    </p>
+                    <a href="https://rs.school/js/" class="footer__link" target="_blank" aria-label="link to course"></a>
+                </div>
+            </div>
         </footer>
 
         <template id="sourceItemTemp">
-            <div class="source__item">
-                <span class="source__item-name"></span>
-            </div>
+                <div class="source__item">
+                    <span class="source__item-name"></span>
+                </div>
         </template>
 
         <template id="newsItemTemp">
@@ -45,7 +55,5 @@
                 </div>
             </div>
         </template>
-
-        <script src="./index.js"></script>
     </body>
 </html>

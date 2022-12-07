@@ -4,6 +4,12 @@ body {
     font-family: sans-serif;
 }
 
+.container {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1640px;
+}
+
 header {
     padding: 10px 30px;
 }
@@ -13,23 +19,44 @@ header h1 {
     font-weight: 800;
 }
 
-footer {
-    height: 100px;
+.main {
+    margin-bottom: 50px;
+}
+
+.main__content {
     display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.footer {
+    padding: 20px;
+    user-select: none;
+}
+
+.footer__content {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    gap: 20px;
 }
-footer .copyright {
+
+.footer__copyright {
     font-size: 14px;
-    color: #333;
+    color: #fff;
     text-align: center;
+    transition: .3s linear;
 }
-footer .copyright a {
-    color: #444;
+
+.footer__link:hover {
+    color: rgb(223, 190, 190);
 }
-footer .copyright a:hover {
-    color: #555;
-}
-footer .copyright:before {
+
+.footer .footer__copyright:before {
     content: '©';
+}
+
+.footer__link {
+    color: #fff;
+    text-decoration: none;
 }
