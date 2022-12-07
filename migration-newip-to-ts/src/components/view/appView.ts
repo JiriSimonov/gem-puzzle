@@ -1,4 +1,4 @@
-import { NewsProps, NewsResProps } from './../../inerfaces/interfaces';
+import { DataProps } from './../../inerfaces/interfaces';
 import News from './news/news';
 import Sources from './sources/sources';
 
@@ -10,12 +10,12 @@ export class AppView {
         this.sources = new Sources();
     }
 
-    drawNews(data: { status: string; totalResults: number; articles: NewsProps[] }) {
+    drawNews(data?: DataProps) {
         const values = data?.articles ? data?.articles : [];
         this.news.draw(values);
     }
 
-    drawSources(data: { status: string; sources: NewsResProps[] }) {
+    drawSources(data?: DataProps) {
         const values = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }

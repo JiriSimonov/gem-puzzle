@@ -1,8 +1,9 @@
-import { MakeUrlProps } from './../../inerfaces/interfaces';
+import { CallbackType } from '../../types/types';
+import { MakeUrlProps, DataProps } from './../../inerfaces/interfaces';
 import AppLoader from './appLoader';
 
 export default class AppController extends AppLoader {
-    getSources(callback: () => string) {
+    getSources(callback: CallbackType<DataProps>) {
         const props: MakeUrlProps = {
             endpoint: 'sources',
             options: {},
@@ -10,7 +11,7 @@ export default class AppController extends AppLoader {
         super.getResp(props, callback);
     }
 
-    getNews(e: Event, callback: () => string) {
+    getNews(e: PointerEvent | MouseEvent, callback: CallbackType<DataProps>) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 

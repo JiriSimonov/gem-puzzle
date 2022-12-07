@@ -24,3 +24,10 @@ export interface MakeUrlProps {
     endpoint: string;
     options: { [key: string]: string };
 }
+
+export interface DataProps {
+    readonly status: string | number;
+    readonly totalResults: number;
+    articles: NewsProps[];
+    sources: NewsResProps[];
+}
