@@ -16,6 +16,10 @@ const baseConfig = {
                 test: /\.ts$/i,
                 use: 'ts-loader',
             },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|webp)$/i,
+                type: 'asset',
+            },
         ],
     },
     resolve: {

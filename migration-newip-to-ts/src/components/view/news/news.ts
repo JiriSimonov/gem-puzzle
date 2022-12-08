@@ -11,7 +11,7 @@ function checkType(elem: HTMLElement | null, callback: string) {
 
 export default class News {
     draw(data: NewsProps[]) {
-        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+        const news = data.length >= 20 ? data.filter((_item, idx) => idx < 20) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector<HTMLTemplateElement>('#newsItemTemp');

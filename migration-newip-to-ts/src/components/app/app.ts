@@ -13,7 +13,11 @@ export class App {
 
     start() {
         const container = document.querySelector('.sources') as HTMLElement;
-        container.addEventListener('click', (e) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
+        const contentWrapper = document.querySelector('.main__content') as HTMLDivElement;
+        container.addEventListener('click', (e) => {
+            this.controller.getNews(e, (data) => this.view.drawNews(data));
+            contentWrapper.classList.add('main__content_is-open');
+        });
         this.controller.getSources((data) => {
             this.view.drawSources(data);
         });

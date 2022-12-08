@@ -1,4 +1,4 @@
-body {
+.body {
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
@@ -23,6 +23,7 @@ body {
 .header__title {
     font-size: 40px;
     font-weight: 800;
+    user-select: none;
 }
 
 .main {
@@ -62,6 +63,16 @@ body {
     font-weight: 500;
     color: #fff;
     text-decoration: none;
+}
+
+.footer__link_logo {
+    width: 150px;
+    height: 50px;
+    background-image: url('./assets/images/logo-white.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: background .3s linear;
 }
 
 .theme {
@@ -125,4 +136,89 @@ body {
 .light .source__item {
     border-color: #110d3e;
     color: #110d3e;
+}
+
+.light .footer__link_logo {
+    background-image: url('./assets/images/logo-black.svg');
+}
+
+.main__content_is-open {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.main__content_is-open .sources {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 1601px) {
+    .container {
+        max-width: 1000px;
+    }
+
+    .sources {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main__content_is-open  {
+        align-items: flex-start;
+    }
+
+    .main__content_is-open .sources {
+        margin-top: 1rem;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1001px) {
+
+    .container {
+        max-width: 720px;
+        padding: 0 10px;
+    }
+
+    .main__content_is-open {
+        grid-template-columns: 1fr 3fr;
+    }
+
+    .main__content_is-open .source__item {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer__content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .main__content_is-open {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .main__content_is-open .sources {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 601px) {
+    .container {
+        max-width: 500px;
+    }
+
+    .header__title {
+        font-size: 28px;
+    }
+
+    .header__content {
+        flex-direction: column;
+    }
+
+    .sources {
+        grid-template-columns: 1fr;
+    }
 }

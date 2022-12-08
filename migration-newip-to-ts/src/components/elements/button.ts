@@ -17,7 +17,6 @@ export default class Button extends BaseComponent {
         this.label.getNode().setAttribute('for', 'theme');
         this.input.getNode().addEventListener('click', () => {
             document.body.classList.toggle('light');
-            console.log('click');
         });
     }
     render() {
