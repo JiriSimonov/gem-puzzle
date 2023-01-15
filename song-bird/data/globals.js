@@ -46,9 +46,12 @@ export const HEADER_LINKS = [
 
 ];
 
-if (getDataFromStorage('lang') === 'EN' || getDataFromStorage('lang') === 'RU') {
-  getDataFromStorage('lang');
-} else {
+
+try {
+  if (getDataFromStorage('lang') === 'EN' || getDataFromStorage('lang') === 'RU') {
+    getDataFromStorage('lang');
+  }
+} catch (err) {
   setStateToStorage('lang', 'RU');
 }
 
