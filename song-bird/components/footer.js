@@ -30,14 +30,6 @@ export function createFooter() {
     parent: footerWrapper,
   });
 
-  const rsLink = createElement({
-    tag: "a",
-    eClass: "footer__link footer__link--bg",
-    attr: { href: 'https://rs.school/js/', target: "_blank" },
-    inner: ``,
-    parent: footerWrapper,
-  });
-
   const swan = createElement({ 
     eClass: "swan", 
     parent: footerWrapper,
