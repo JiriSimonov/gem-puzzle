@@ -1,8 +1,8 @@
 import { createElement } from './utils/createElement.js';
 import { createElementsArr } from './utils/createElementArr.js';
 
-const linksText = ['RSSchool', 'GitHub'];
-const linksHref = ['https://docs.rs.school/#/', 'https://github.com/JiriSimonov'];
+const linksText = ['GitHub'];
+const linksHref = ['https://github.com/JiriSimonov'];
 export const footer = createElement({ tag: 'footer', eClass: 'footer' });
 const bottm = createElement({ eClass: 'bottm', parent: footer });
 const bottmWrapper = createElement({ eClass: 'bottm__wrapper', parent: bottm });

@@ -13,7 +13,7 @@ import {
     statsTimerCounter,
     statsTimerCounterSeconds
 } from './stats.js';
-import { setStateToStorage, getDataFromStorage } from './utils/localStrage.js';
+import { setStateToStorage, getDataFromStorage } from './utils/localStorage.js';
 import { score, scoreList, scoreBtn } from './modal-score.js';
 
 const optionsText = ['3x3', '4x4', '5x5', '6x6', '7x7', '8x8'];

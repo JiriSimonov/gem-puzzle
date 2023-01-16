@@ -1,7 +1,7 @@
 import { createElement } from './utils/createElement.js';
 import { State } from './utils/state.js';
 import { startTimer, stopTimer, timer, playShuffleSound, randomShuffle } from './index.js';
-import { getDataFromStorage, setStateToStorage } from './utils/localStrage.js';
+import { getDataFromStorage, setStateToStorage } from './utils/localStorage.js';
 
 const body = document.querySelector('body');
 export const modal = createElement({ eClass: 'modal' });
